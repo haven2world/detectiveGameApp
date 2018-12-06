@@ -7,15 +7,17 @@ import http from './http';
  */
 
 
-/* 西山课堂--评论点赞
- - url: /classroom/apis/auth/comments/{cId}/like
+/* 注册用户
+ - url: /detective/apis/pub/users/accounts
  - method: post
  - param:{
+ loginId
+ password
  }
  */
 
-export function likedAComment(id){
-  let url = '/classroom/apis/auth/comments/' + id + '/like';
-  return http.post(url,{});
+export function signUp(param){
+  let url = '/detective/apis/pub/users/accounts';
+  return http.post(url, param);
 }
 
