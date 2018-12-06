@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e8c17d1a-6ca0-4a2d-b00c-d50072d7c888" name="Default" comment="[feat]:登录页面">
-      <change afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/config/config.dev.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/controller/globalInterceptor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/controller/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/controller/userController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/controller/userPublicController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/dao/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/model/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/service/password.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/commonUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/errorHandler.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/exceptionUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/utils/mongoUtils.js" afterDir="false" />
+    <list default="true" id="e8c17d1a-6ca0-4a2d-b00c-d50072d7c888" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/Services.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/Services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.umirc.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.umirc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,47 +20,59 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/app.js">
+      <file leaf-file-name="userPublicController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/controller/userPublicController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="300">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userAccount.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/service/userAccount.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/controller/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Services.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/utils/Services.js">
+        <entry file="file://$PROJECT_DIR$/frontend/src/pages/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
-              <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userPublicController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/controller/userPublicController.js">
+      <file leaf-file-name="global.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/global.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+            <state relative-caret-position="1280">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userAccount.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/src/service/userAccount.js">
+      <file leaf-file-name=".umirc.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/.umirc.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="400">
+              <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -100,15 +100,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mongoUtils.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/utils/mongoUtils.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -154,18 +145,15 @@
         <option value="$PROJECT_DIR$/frontend/src/utils/initUtil.js" />
         <option value="$PROJECT_DIR$/frontend/webstorm.webpack.js" />
         <option value="$PROJECT_DIR$/frontend/src/global.js" />
-        <option value="$PROJECT_DIR$/frontend/.umirc.js" />
         <option value="$PROJECT_DIR$/frontend/src/models/user.js" />
         <option value="$PROJECT_DIR$/frontend/src/pages/index.css" />
         <option value="$PROJECT_DIR$/frontend/.eslintrc" />
-        <option value="$PROJECT_DIR$/frontend/package.json" />
         <option value="$PROJECT_DIR$/backend/src/router.js" />
         <option value="$PROJECT_DIR$/backend/static/a" />
         <option value="$PROJECT_DIR$/backend/src/service/handleErrorService.js" />
         <option value="$PROJECT_DIR$/backend/directiveBackend.js" />
         <option value="$PROJECT_DIR$/backend/detectiveBackend.js" />
         <option value="$PROJECT_DIR$/backend/ecosystem.config.js" />
-        <option value="$PROJECT_DIR$/backend/package.json" />
         <option value="$PROJECT_DIR$/backend/src/utils/ErrorHandler.js" />
         <option value="$PROJECT_DIR$/backend/src/utils/CommonUtils.js" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -173,7 +161,6 @@
         <option value="$PROJECT_DIR$/backend/src/interceptor.js" />
         <option value="$PROJECT_DIR$/backend/src/controller/globalInterceptor.js" />
         <option value="$PROJECT_DIR$/frontend/src/utils/Services.js" />
-        <option value="$PROJECT_DIR$/frontend/src/pages/index.js" />
         <option value="$PROJECT_DIR$/backend/src/controller/userController.js" />
         <option value="$PROJECT_DIR$/backend/src/utils/mongoUtils.js" />
         <option value="$PROJECT_DIR$/backend/src/service/user.js" />
@@ -186,6 +173,12 @@
         <option value="$PROJECT_DIR$/backend/src/service/password.js" />
         <option value="$PROJECT_DIR$/backend/src/controller/userPublicController.js" />
         <option value="$PROJECT_DIR$/backend/src/service/userAccount.js" />
+        <option value="$PROJECT_DIR$/frontend/src/pages/index.js" />
+        <option value="$PROJECT_DIR$/frontend/src/global.css" />
+        <option value="$PROJECT_DIR$/frontend/postcss.config.js" />
+        <option value="$PROJECT_DIR$/backend/package.json" />
+        <option value="$PROJECT_DIR$/frontend/.umirc.js" />
+        <option value="$PROJECT_DIR$/frontend/package.json" />
       </list>
     </option>
   </component>
@@ -279,6 +272,19 @@
               <item name="detectiveGameApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="detectiveGameApp" type="462c0819:PsiDirectoryNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detectiveGameApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detectiveGameApp" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="detectiveGameApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="detectiveGameApp" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -420,7 +426,7 @@
       <workItem from="1542966439614" duration="1032000" />
       <workItem from="1543370027096" duration="592000" />
       <workItem from="1543378686307" duration="33623000" />
-      <workItem from="1543890087286" duration="31486000" />
+      <workItem from="1543890087286" duration="37826000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]:登录页面">
       <created>1543832335156</created>
@@ -429,15 +435,28 @@
       <option name="project" value="LOCAL" />
       <updated>1543832335156</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[feat]:后台搭建完成 注册接口done">
+      <created>1544060790506</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1544060790506</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[feat]:后台搭建完成 注册接口done">
+      <created>1544060852610</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1544060852610</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66733000" />
+    <option name="totallyTimeSpent" value="73073000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -468,19 +487,10 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="[feat]:登录页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]:登录页面" />
+    <MESSAGE value="[feat]:后台搭建完成 注册接口done" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]:后台搭建完成 注册接口done" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/build.bat" />
-    <entry file="file://$PROJECT_DIR$/frontend/src/pages/.umi/initDva.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/node_modules/react/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -492,13 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
           <caret line="793" column="13" selection-start-line="793" selection-start-column="13" selection-end-line="793" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/global.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -580,13 +583,6 @@
     <entry file="file://$PROJECT_DIR$/frontend/.eslintrc">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/.umirc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="67" selection-start-line="5" selection-start-column="67" selection-end-line="5" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/pages/index.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -596,13 +592,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/router.js" />
     <entry file="file://$PROJECT_DIR$/backend/static/a" />
-    <entry file="file://$PROJECT_DIR$/frontend/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/node_modules/path/path.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -617,13 +606,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2670">
           <caret line="180" column="70" lean-forward="true" selection-start-line="180" selection-start-column="70" selection-end-line="180" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -668,13 +650,6 @@
           <folding>
             <element signature="e#14#39#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/pages/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -726,7 +701,7 @@
     <entry file="file://$PROJECT_DIR$/backend/src/controller/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
-          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
+          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -748,13 +723,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/controller/userPublicController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -781,8 +749,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/service/userAccount.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="440">
+          <caret line="22" column="3" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/pages/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/postcss.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/global.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1280">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/controller/userPublicController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/node_modules/autoprefixer/lib/autoprefixer.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/.umirc.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
         </state>
       </provider>
     </entry>

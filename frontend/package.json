@@ -6,6 +6,7 @@
     "test": "umi test"
   },
   "devDependencies": {
+    "autoprefixer": "^9.4.2",
     "babel-eslint": "^9.0.0",
     "eslint": "^5.4.0",
     "eslint-config-umi": "^0.1.5",
@@ -15,12 +16,13 @@
     "eslint-plugin-react": "^7.11.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
+    "postcss-loader": "^3.0.0",
+    "postcss-px-to-viewport": "^0.0.3",
     "umi": "^2.1.2",
     "umi-plugin-react": "^1.1.1"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-    ]
+    "*.{js,jsx}": []
   },
   "engines": {
     "node": ">=8.0.0"
@@ -30,7 +32,6 @@
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "events": "^3.0.0",
-    "postcss-loader": "^3.0.0",
     "react": "16.7.0-alpha.2",
     "react-dom": "16.7.0-alpha.2"
   }

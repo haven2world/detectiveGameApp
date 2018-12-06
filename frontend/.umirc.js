@@ -4,8 +4,6 @@ var path = require('path');
 export default {
   chainWebpack(config, {webpack}){
     // config.resolve.alias.set('#', path.resolve(__dirname,'src'))
-
-    // config.module.rule('css').test(/\.css$/).use('postcss-loader').loader('postcss-loader')
   },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
@@ -23,4 +21,5 @@ export default {
       hardSource: false,
     }],
   ],
+  extraPostCSSPlugins:[require('autoprefixer'),require('postcss-px-to-viewport')]
 }

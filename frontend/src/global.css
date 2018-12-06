@@ -6,3 +6,68 @@ html, body, #root {
 body {
   margin: 0;
 }
+
+
+/*文本样式*/
+  .text-left{
+      text-align: left;
+  }
+
+.text-right{
+    text-align: right;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/*自由换行*/
+  .free-break{
+      word-wrap:break-word;
+      word-break:break-all;
+  }
+
+/*.error-text{*/
+    /*color:$error-color !important;*/
+/*}*/
+
+/*.gray-text{*/
+    /*color:$gray-text-color !important;*/
+/*}*/
+
+/*.blue-text{*/
+    /*color:$blue-text-color !important;*/
+/*}*/
+
+/*flex 布局样式*/
+  .flex-container{
+      display: flex;
+  }
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.flex-right{
+    display: flex;
+    justify-content: flex-end;
+}
+.flex-center{
+    display: flex;
+    justify-content: center;
+}
+.flex-left{
+    display: flex;
+    justify-content: flex-start;
+}
+
+/*功能性*/
+  .clickable{
+      cursor: pointer;
+  }
+.clickable:hover{
+    opacity: 0.4;
+}
+.clickable:active{
+    opacity: 0.2;
+}

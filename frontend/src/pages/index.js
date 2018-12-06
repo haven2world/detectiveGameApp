@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import router from 'umi/router';
+import Link from 'umi/link';
 import { Flex, WhiteSpace, WingBlank, InputItem, List} from 'antd-mobile';
 import styles from './index.css';
 
@@ -35,6 +36,11 @@ export default function(){
             >密码</InputItem>
             <WhiteSpace />
           </List>
+          <Flex>
+            <Flex.Item>
+              <Link to="/signUp">注册</Link>
+            </Flex.Item>
+          </Flex>
         </WingBlank>
       </Flex>
     </div>
