@@ -21,3 +21,19 @@ export function signUp(param){
   return http.post(url, param);
 }
 
+
+/* 检查登录
+ - url: /detective/apis/pub/users/verify-token
+ - method: get
+ - param:{
+ loginId
+ }
+ */
+
+export function verifyToken(param){
+  let url = '/detective/apis/pub/users/verify-token';
+  return http.get(url, param);
+}
+
+
+

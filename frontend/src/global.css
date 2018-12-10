@@ -1,73 +1,79 @@
+@value theme: "./assets/css/theme.css";
+
+@value danger-color, gray-color, primary-color from theme;
 
 html, body, #root {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  margin: 0;
+    margin: 0;
 }
 
-
 /*文本样式*/
-  .text-left{
-      text-align: left;
-  }
+.text-left {
+    text-align: left;
+}
 
-.text-right{
+.text-right {
     text-align: right;
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
 /*自由换行*/
-  .free-break{
-      word-wrap:break-word;
-      word-break:break-all;
-  }
+.free-break {
+    word-wrap: break-word;
+    word-break: break-all;
+}
 
-/*.error-text{*/
-    /*color:$error-color !important;*/
-/*}*/
+.error-text {
+    color: danger-color !important;
+}
 
-/*.gray-text{*/
-    /*color:$gray-text-color !important;*/
-/*}*/
+.gray-text {
+    color: gray-color !important;
+}
 
-/*.blue-text{*/
-    /*color:$blue-text-color !important;*/
-/*}*/
+.primary-text {
+    color: primary-color !important;
+}
 
 /*flex 布局样式*/
-  .flex-container{
-      display: flex;
-  }
+.flex-container {
+    display: flex;
+}
 
-.flex-wrap{
+.flex-wrap {
     flex-wrap: wrap;
 }
 
-.flex-right{
+.flex-right {
     display: flex;
     justify-content: flex-end;
 }
-.flex-center{
+
+.flex-center {
     display: flex;
     justify-content: center;
 }
-.flex-left{
+
+.flex-left {
     display: flex;
     justify-content: flex-start;
 }
 
 /*功能性*/
-  .clickable{
-      cursor: pointer;
-  }
-.clickable:hover{
+.clickable {
+    cursor: pointer;
+}
+
+.clickable:hover {
     opacity: 0.4;
 }
-.clickable:active{
+
+.clickable:active {
     opacity: 0.2;
 }

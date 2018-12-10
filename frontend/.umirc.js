@@ -2,6 +2,7 @@ var path = require('path');
 
 // ref: https://umijs.org/config/
 export default {
+  base:'/detective',
   chainWebpack(config, {webpack}){
     // config.resolve.alias.set('#', path.resolve(__dirname,'src'))
   },
@@ -21,5 +22,12 @@ export default {
       hardSource: false,
     }],
   ],
-  extraPostCSSPlugins:[require('autoprefixer'),require('postcss-px-to-viewport')]
+  extraPostCSSPlugins:[require('autoprefixer'),require('postcss-modules-values'),require('postcss-px-to-viewport')],
+  proxy:{
+    '/detective/apis':{
+      target:'http://10.11.133.148:1019',
+      changeOrigin:true,
+      pathRewrite:{}
+    }
+  }
 }

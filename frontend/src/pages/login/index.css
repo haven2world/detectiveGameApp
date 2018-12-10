@@ -1,0 +1,23 @@
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+.gameTitle{
+    font-size: 32px;
+}
+
+.titleWrapper{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-content: center;
+}
+.inputWrapper{
+    height: 400px;
+}
+
+.linkRow{
+    margin-bottom: 50px;
+}

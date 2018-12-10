@@ -1,8 +1,8 @@
 'use strict';
 
-import * as Service from './Services';
-
-
+import * as Service from './services';
+import router from 'umi/router';
+import Hashes from 'jshashes';
 
 export function isEmptyObject(obj) {
   for (var name in obj) {
@@ -243,6 +243,21 @@ export function getQueryParameterByName(url,name){
 
 //登录
 export function goToLogin(){
+  router.push('/login')
+}
 
+//判断是否登录
+export function isSignedIn() {
+  if(localStorage.loginId && localStorage.token){
+
+  }else{
+    return false
+  }
+}
+
+//加密密码
+export function getPasswordHash(pwd, salt) {
+  let resultHash = new Hashes.SHA1().b64(pwd + salt);
+  return resultHash
 }
 

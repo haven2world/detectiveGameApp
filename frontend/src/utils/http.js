@@ -1,6 +1,7 @@
 'use strict';
 import axios from 'axios'
 import {goToLogin, isInArray} from "./commonUtils";
+import {Toast} from 'antd-mobile';
 
 /**
  * 封装 axios
@@ -50,10 +51,10 @@ axios.interceptors.response.use((response) => {
       goToLogin();
       return response.data
     case 999:
-      !inWhiteList&&toast.fail('服务器开小差了');
+      !inWhiteList&&Toast.fail('服务器开小差了');
       return response.data
     default:
-      !inWhiteList&&toast.fail(response.data.message);
+      !inWhiteList&&Toast.fail(response.data.message);
       return response.data
   }
 },
@@ -108,7 +109,7 @@ axios.interceptors.response.use((response) => {
     }else{
       err.message = "连接到服务器失败"
     }
-    !inWhiteList && !cancelFlag && toast.fail(err.message);
+    !inWhiteList && !cancelFlag && Toast.fail(err.message);
     return Promise.resolve(err.response)
   }
 )
@@ -121,7 +122,7 @@ export default {
         method: 'get',
         url,
         params: param,
-        headers:{'token':localStorage.ucToken},
+        headers:{'token':localStorage.token},
         cancelToken: new CancelToken(c => {
           cancel = c
         })
@@ -137,7 +138,7 @@ export default {
         method: 'post',
         url,
         data: param,
-        headers:{'token':localStorage.ucToken},
+        headers:{'token':localStorage.token},
         cancelToken: new CancelToken(c => {
           cancel = c
         })
@@ -153,7 +154,7 @@ export default {
         method: 'delete',
         url,
         params: param,
-        headers:{'token':localStorage.ucToken},
+        headers:{'token':localStorage.token},
         cancelToken: new CancelToken(c => {
           cancel = c
         })
@@ -169,7 +170,7 @@ export default {
         method: 'put',
         url,
         data: param,
-        headers:{'token':localStorage.ucToken},
+        headers:{'token':localStorage.token},
         cancelToken: new CancelToken(c => {
           cancel = c
         })
@@ -190,7 +191,7 @@ export default {
         url,
         method:'post',
         data: formData,
-        headers:{'Content-Type':"multipart/form-data", 'token':localStorage.ucToken},
+        headers:{'Content-Type':"multipart/form-data", 'token':localStorage.token},
         cancelToken: new CancelToken(c => {
           cancel = c
         }).then(res => {
