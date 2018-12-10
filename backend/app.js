@@ -49,7 +49,7 @@ app.use(koaStatic(
 app.use(router.routes())
   .use(router.allowedMethods({throw:true}))
 
-app.use( async (ctx ) => {
+/*app.use( async (ctx ) => {
   const url = ctx.url
   const query = ctx.query
   const querystring = ctx.querystring
@@ -63,7 +63,7 @@ app.use( async (ctx ) => {
       querystring
     }
   }
-})
+})*/
 
 
 app.listen(1019);

@@ -9,15 +9,17 @@ const User = require('../model/user');
 
 module.exports = {
 //  查找用户
-  findUserByLoginId(loginId){
-    return User.findOne({loginId:loginId})
+  async findUserByLoginId(loginId){
+    return await User.findOne({loginId:loginId})
   },
 
 //  创建账户
-  createAccount(loginId, passwordHash, salt){
+  async createAccount(loginId, passwordHash, salt, token){
     let user = new User({
-      loginId, passwordHash, salt
+      loginId, passwordHash, salt, token
     })
-    return user.save()
-  }
+    return await user.save()
+  },
+
+
 };

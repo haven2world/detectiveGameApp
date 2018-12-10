@@ -14,6 +14,7 @@ let schema = new mongoose.Schema({
   },
   passwordHash:String,
   salt:String,
+  token:String
 });
 
 module.exports = mongoose.model('User',schema);

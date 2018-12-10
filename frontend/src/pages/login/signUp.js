@@ -42,7 +42,8 @@ export default function() {
       setLoading(false);
       if(result.code === 0){
         Toast.success('注册成功');
-
+        localStorage.token = result.data.token;
+        router.replace('/');
       }
     })
   };

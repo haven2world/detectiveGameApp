@@ -6,12 +6,12 @@
  */
 const user = require('../dao/user');
 const passwordService = require('./password');
+const tokenService = require('./token');
 
 module.exports = {
 //  创建用户
   async createUser(loginId, password){
     let result = await user.findUserByLoginId(loginId);
-    console.log(result)
     if(result){
       throw {
         code:global._Exceptions.PARAM_ERROR,
@@ -19,6 +19,13 @@ module.exports = {
       }
     }
     let {hash, salt} = passwordService.getPasswordHash(password);
-    let createResult = await user.createAccount(loginId, hash, salt);
+    let token = await tokenService.create(loginId);
+    let createResult = await user.createAccount(loginId, hash, salt, token);
+    console.log('creat User :\n',createResult)
+    return createResult
+  },
+//  登录
+  async login(){
+
   }
 }
