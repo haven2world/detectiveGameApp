@@ -12,12 +12,14 @@ const initGlobalInterceptor = require('./globalInterceptor');
 const userPublic = require('./userPublicController');
 
 //引入 auth api controller
+const user = require('./userController');
 
 const router = new Router({prefix:global._Config.baseUrl});
 initGlobalInterceptor(router);//引入全局拦截器
 
 //创建路由
 router.use('/apis/pub/users', userPublic.routes(), userPublic.allowedMethods());
+router.use('/apis/auth/users', user.routes(), user.allowedMethods());
 
 
 //测试样例

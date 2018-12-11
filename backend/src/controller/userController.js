@@ -9,10 +9,9 @@ const Router = require('koa-router');
 
 let router = new Router();
 
-//注册账户
-router.post('/accounts',async(ctx, next)=>{
-  console.log(ctx.request.body)
-  await next();
+//校验token是否有效
+router.get('/verify-token',async(ctx, next)=>{
+  ctx._data.loginId = ctx._userLoginId;
 })
 
 module.exports = router;

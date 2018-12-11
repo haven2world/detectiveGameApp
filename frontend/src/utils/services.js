@@ -23,16 +23,29 @@ export function signUp(param){
 
 
 /* 检查登录
- - url: /detective/apis/pub/users/verify-token
+ - url: /detective/apis/auth/users/verify-token
  - method: get
  - param:{
- loginId
  }
  */
 
 export function verifyToken(param){
-  let url = '/detective/apis/pub/users/verify-token';
+  let url = '/detective/apis/auth/users/verify-token';
   return http.get(url, param);
+}
+
+/* 登录
+ - url: /detective/apis/pub/users/signIn
+ - method: post
+ - param:{
+ loginId
+ password
+ }
+ */
+
+export function signIn(param){
+  let url = '/detective/apis/pub/users/signIn';
+  return http.post(url, param);
 }
 
 

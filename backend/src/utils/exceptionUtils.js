@@ -10,4 +10,7 @@ module.exports = {
 
 //  参数错误
   PARAM_ERROR:501,
+
+//  token失效
+  TOKEN_ERROR:401
 }

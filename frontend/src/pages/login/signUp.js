@@ -40,8 +40,9 @@ export default function() {
     setLoading(true);
     services.signUp(param).then(result=>{
       setLoading(false);
-      if(result.code === 0){
+      if( result && result.code === 0){
         Toast.success('注册成功');
+        localStorage.loginId = name;
         localStorage.token = result.data.token;
         router.replace('/');
       }
