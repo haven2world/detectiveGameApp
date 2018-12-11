@@ -21,9 +21,9 @@ function Layout(props) {
   //计算当前tab
   function getCurrentTabFromUrl(){
     const {pathname} = props.location;
-    return tabs.find((tab)=>{
+    return (tabs.find((tab)=>{
       return pathname.indexOf(tab.path)>=0
-    }).key
+    })||tabs[0]).key
   }
   //计算tab是否被选中
   function tabIsSelected(tab) {

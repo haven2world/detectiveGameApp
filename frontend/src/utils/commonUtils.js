@@ -175,7 +175,7 @@ export function isInArray (content, arr, fuzzyFlag) {
   //模糊匹配
   if(!isInArray.fuzzyMatch){
     isInArray.fuzzyMatch = (content, arr)=>{
-      return arr.findIndex(item=>item.indexOf(content)>=0)>=0
+      return arr.findIndex(item=>content.indexOf(item)>=0)>=0
     }
   }
   let calculate = fuzzyFlag?isInArray.fuzzyMatch:isInArray.exactMatch;

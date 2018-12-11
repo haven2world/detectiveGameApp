@@ -64,7 +64,7 @@ export default function() {
             defaultValue={name}
             placeholder='请输入账号'
             clear
-            onChange={(str)=>setName(str)}
+            onChange={(str)=>setName(str.trim())}
           >账号</InputItem>
           <WhiteSpace />
           <InputItem
