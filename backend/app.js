@@ -44,6 +44,7 @@ const staticPath = './static';
 app.use(koaStatic(
   path.join(__dirname, staticPath)
 ))
+//获取路径 /detective/assets/
 
 //设置路由
 app.use(router.routes())

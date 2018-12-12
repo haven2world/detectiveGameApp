@@ -28,6 +28,11 @@ export default {
       target:'http://10.11.133.148:1019',
       changeOrigin:true,
       pathRewrite:{}
+    },
+    '/detective/assets':{
+      target:'http://10.11.133.148:1019',
+      changeOrigin:true,
+      pathRewrite:{}
     }
   }
 }
