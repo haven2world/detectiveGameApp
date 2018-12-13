@@ -13,6 +13,7 @@ const userPublic = require('./userPublicController');
 
 //引入 auth api controller
 const user = require('./userController');
+const document = require('./documentController');
 
 const router = new Router({prefix:global._Config.baseUrl});
 initGlobalInterceptor(router);//引入全局拦截器
@@ -20,6 +21,7 @@ initGlobalInterceptor(router);//引入全局拦截器
 //创建路由
 router.use('/apis/pub/users', userPublic.routes(), userPublic.allowedMethods());
 router.use('/apis/auth/users', user.routes(), user.allowedMethods());
+router.use('/apis/auth/documents', document.routes(), document.allowedMethods());
 
 
 //测试样例

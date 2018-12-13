@@ -72,6 +72,9 @@ let schema = new Schema({
   tasks:[taskSchema],
   endings:[endingSchema],
   isPrivate:Boolean,
+  creator:Schema.Types.ObjectId,
+  publishFlag:Boolean,
+  composingStage:String,
   level:{
     easy:difficultyLevelSchema,
     normal:difficultyLevelSchema,

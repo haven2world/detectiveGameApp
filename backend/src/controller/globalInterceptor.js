@@ -32,6 +32,7 @@ module.exports = function (router) {
 
     let payload = await tokenService.verify(token);
     ctx._userLoginId = payload.loginId;
+    ctx._userId = payload.userId;
 
     await next();
   })

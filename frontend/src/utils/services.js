@@ -48,7 +48,30 @@ export function signIn(param){
   return http.post(url, param);
 }
 
+/* 获取剧本列表
+ - url: /detective/apis/auth/documents
+ - method: get
+ - param:{
+ }
+ */
 
+export function fetchGameDocuments(){
+  let url = '/detective/apis/auth/documents';
+  return http.get(url, {});
+}
+
+/* 创建剧本
+ - url: /detective/apis/auth/documents
+ - method: post
+ - param:{
+ name
+ }
+ */
+
+export function createDocument(param){
+  let url = '/detective/apis/auth/documents';
+  return http.post(url, param);
+}
 
 
 

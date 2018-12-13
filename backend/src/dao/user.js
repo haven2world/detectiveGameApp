@@ -2,7 +2,7 @@
 
 
 /**
- * 操作user model
+ * 操作 user model
  */
 
 const User = require('../model/user');

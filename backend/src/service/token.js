@@ -25,6 +25,7 @@ module.exports = {
         console.log('用户token不一致');
         throw null
       }
+      payload.userId = theUser._id;
 
       return payload;
     }catch (e) {

@@ -14,7 +14,7 @@ export default {
         immer:true
       },
       dynamicImport: false,
-      title: 'play',
+      title: 'Detective',
       dll: false,
       routes: {
         exclude: [],
