@@ -2,8 +2,8 @@ import styles from './signUp.css';
 import {NavBar, Toast, Icon, Flex, WhiteSpace, WingBlank, InputItem, List, NoticeBar, Button} from 'antd-mobile';
 import router from 'umi/router';
 import { useState } from 'react';
-import * as services from '../../utils/services';
-import {getPasswordHash} from '../../utils/commonUtils';
+import * as services from '@/utils/services';
+import {getPasswordHash} from '@/utils/commonUtils';
 
 export default function() {
 

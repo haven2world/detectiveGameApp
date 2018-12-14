@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Redirect from 'umi/redirect';
-import * as services from '../utils/services';
+import * as services from '@/utils/services';
 
 
 export default function(){

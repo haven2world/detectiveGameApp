@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, NavBar, Icon, Result } from 'antd-mobile';
 import styles from './history.css';
-import * as services from '../../utils/services';
+import * as services from '@/utils/services';
 import router from 'umi/router';
 
 

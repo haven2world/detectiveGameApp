@@ -1,0 +1,8 @@
+@value theme: "@/assets/css/theme.css";
+
+@value danger-color, gray-color from theme;
+
+.notice{
+    background-color: #fff;
+    color: gray-color;
+}

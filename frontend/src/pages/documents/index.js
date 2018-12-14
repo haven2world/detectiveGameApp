@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import {connect} from 'dva';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal} from 'antd-mobile';
-import styles from './index.css';
 import { Toast } from 'antd-mobile/lib/index';
-import * as services from '../../utils/services';
+import * as services from '@/utils/services';
 import router from 'umi/router';
 
-import DocumentList from '../../component/DocumentList';
+import DocumentList from '@/component/DocumentList';
 
 
 function DocumentIndex({documents, dispatch}){
@@ -48,9 +47,9 @@ function DocumentIndex({documents, dispatch}){
         onLeftClick={router.goBack}
         rightContent={<i className="fas fa-plus" style={{fontSize:16 }} onClick={createNewDocument}/>}
       >你的剧本列表</NavBar>
-      <DocumentList list={documents.list} />
+      <DocumentList list={documents.list} loading={documents.loading} />
     </div>
   )
 }
-export default connect(({documents})=>({documents}))(DocumentIndex)
+export default connect(({documents})=>({documents}))(DocumentIndex);
 

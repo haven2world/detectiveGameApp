@@ -3,8 +3,8 @@ import Link from 'umi/link';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button} from 'antd-mobile';
 import styles from './index.css';
 import { Toast } from 'antd-mobile/lib/index';
-import * as services from '../../utils/services';
-import { getPasswordHash } from '../../utils/commonUtils';
+import * as services from '@/utils/services';
+import { getPasswordHash } from '@/utils/commonUtils';
 import router from 'umi/router';
 
 

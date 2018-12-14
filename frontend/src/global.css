@@ -1,6 +1,6 @@
-@value theme: "./assets/css/theme.css";
+@value theme: "@/assets/css/theme.css";
 
-@value danger-color, gray-color, primary-color from theme;
+@value danger-color, gray-color, primary-color, dark-gray-color from theme;
 
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -37,6 +37,10 @@ body {
 
 .gray-text {
     color: gray-color !important;
+}
+
+.dark-gray-text{
+    color: dark-gray-color !important;
 }
 
 .primary-text {

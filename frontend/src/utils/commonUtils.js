@@ -4,6 +4,12 @@ import * as Service from './services';
 import router from 'umi/router';
 import Hashes from 'jshashes';
 
+export function RenderIf(flag) {
+  return function (viewContent) {
+    return flag ? viewContent : null;
+  };
+}
+
 export function isEmptyObject(obj) {
   for (var name in obj) {
     return false;
@@ -53,18 +59,32 @@ export function formatNumber(num, cent, isThousand) {
 // 格式化日期，支持各种不同分隔符
 export function formatDate(time, separator ,noZero) {
   if (!time) return '';
-  let date = new Date(time)
+  let date = new Date(time);
   let month;
   let day;
   if(noZero){
-    month = 1 + date.getMonth()
-    day =  date.getDate()
+    month = 1 + date.getMonth();
+    day =  date.getDate();
   }else{
-    month = date.getMonth() < 9 ? ('0' + (1 + date.getMonth())) : (1 + date.getMonth())
-    day = date.getDate() < 10 ? ('0' + date.getDate()) : date.getDate()
+    month = date.getMonth() < 9 ? ('0' + (1 + date.getMonth())) : (1 + date.getMonth());
+    day = date.getDate() < 10 ? ('0' + date.getDate()) : date.getDate();
   }
 
   return date.getFullYear() + separator + month + separator + day
+}
+// 格式化时间
+export function formatTime(time ,withDate) {
+  if (!time) return '';
+  let date = new Date(time);
+  let month, day, hour, minute, second;
+
+  hour = date.getHours() < 10 ? ('0' + date.getHours()) : date.getHours();
+  minute = date.getMinutes() < 10 ? ('0' + date.getMinutes()) : date.getMinutes();
+  month = date.getMonth() < 9 ? ('0' + (1 + date.getMonth())) : (1 + date.getMonth());
+  day = date.getDate() < 10 ? ('0' + date.getDate()) : date.getDate();
+  second = date.getSeconds() < 10 ? ('0' + date.getSeconds()) : date.getSeconds();
+
+  return withDate?`${month}月${day}日 ${hour}:${minute}:${second}`:`${hour}:${minute}:${second}`
 }
 //通过年月日获取date对象
 export function setNewDate({year, month ,day,hour,minute,second}) {

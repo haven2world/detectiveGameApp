@@ -73,5 +73,38 @@ export function createDocument(param){
   return http.post(url, param);
 }
 
+/* 获取剧本详情
+ - url: /detective/apis/auth/documents/:id
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchDocumentDetail(id){
+  let url = '/detective/apis/auth/documents/' + id;
+  return http.get(url, {});
+}
+
+/* 修改剧本详情
+ - url: /detective/apis/auth/documents/:id
+ - method: put
+ - param:{
+ name
+ description
+ publishFlag
+ composingStage
+ level{
+  easy {maxInquiryTimes, keepClueSecret}
+  normal
+  hard
+ }
+ }
+ */
+
+export function modifyDocumentDetail(id, params){
+  let url = '/detective/apis/auth/documents/' + id;
+  return http.put(url, params);
+}
+
 
 

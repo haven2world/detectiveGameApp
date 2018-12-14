@@ -79,7 +79,8 @@ let schema = new Schema({
     easy:difficultyLevelSchema,
     normal:difficultyLevelSchema,
     hard:difficultyLevelSchema
-  }
+  },
+  updateTime:Date,
 });
 
 module.exports = mongoose.model('GameDocument',schema);
