@@ -10,7 +10,7 @@ import LoadingPage from '@/component/LoadingPage'
 import styles from '../document.css';
 
 /**
- * 剧本基础页
+ * 剧本故事页
  */
 
 export default function({document, updateDocument, updateSaveTime}) {

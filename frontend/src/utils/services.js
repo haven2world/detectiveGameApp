@@ -106,5 +106,16 @@ export function modifyDocumentDetail(id, params){
   return http.put(url, params);
 }
 
+/* 创建剧本
+ - url: /detective/apis/auth/documents/:id/roles
+ - method: post
+ - param:{
+ name
+ }
+ */
 
+export function createRole(id, param){
+  let url = '/detective/apis/auth/documents/' + id +'/roles';
+  return http.post(url, param);
+}
 

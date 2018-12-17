@@ -1,5 +1,5 @@
 'use strict';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createElement } from 'react';
 import {connect} from 'dva';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, NoticeBar} from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
@@ -9,6 +9,8 @@ import router from 'umi/router';
 import LoadingPage from '@/component/LoadingPage'
 import styles from './document.css';
 import Base from './component/Base';
+import Role from './component/Role';
+import Story from './component/Story';
 
 /**
  * 剧本详情页
@@ -17,14 +19,7 @@ import Base from './component/Base';
 export default function({computedMatch}) {
   const {id:docId} = computedMatch.params;
 
-  const tabs = [
-    {title:'基础'},
-    {title:'故事'},
-    {title:'场景'},
-    {title:'任务'},
-    {title:'结局'},
-    {title:'难度'},
-  ];
+  let tabs = [];
 
   //状态
   const [document, setDocument] = useState(null);
@@ -53,19 +48,43 @@ export default function({computedMatch}) {
     })
   }
 
+  //计算显示的Tab
+  (function calTabs() {
+    tabs = [];
+    if(!document){
+      return
+    }
+    const tabSort = [
+      {stage:'name', title:'基础', component:Base},
+      {stage:'role', title:'角色', component:Role},
+      {stage:'story', title:'故事', component:Story},
+      {stage:'scene', title:'场景', component:Base},
+      {stage:'task', title:'任务', component:Base},
+      {stage:'ending', title:'结局', component:Base},
+      {stage:'difficulty', title:'难度', component:Base},
+    ];
+
+    for(let i=0; i<tabSort.length;++i){
+      tabs.push({title: tabSort[i].title, component: tabSort[i].component});
+      if(tabSort[i].stage === document.composingStage){
+        break
+      }
+    }
+  })();
+
 
   //渲染保存时间的壳
-  function renderTabWrapper(content){
+  function renderTabWrapper(content, index){
     let timeStr = saveTime?`最后保存于：${formatTime(saveTime,true)}`:'数据会自动保存';
     return (
-      <div className={'container'}>
+      <div className={'container'} key={index}>
         <NoticeBar className={styles.notice} icon={null}>{timeStr}</NoticeBar>
         {content}
       </div>
     )
   }
 
-  //todo 按阶段显示tab
+
 
   if(document){
 
@@ -77,10 +96,11 @@ export default function({computedMatch}) {
           onLeftClick={router.goBack}
         >剧本</NavBar>
         <Tabs
+          initialPage={1}
           tabs={tabs}
           renderTabBar={props =><Tabs.DefaultTabBar {...props} swipeable />}
         >
-          {renderTabWrapper(<Base document={document} updateDocument={updateDocument} updateSaveTime={setSaveTime} />)}
+          {tabs.map((tab, index)=>renderTabWrapper(createElement(tab.component, {document, updateDocument, updateSaveTime:setSaveTime}), index))}
         </Tabs>
       </div>
     )

@@ -49,6 +49,24 @@ router.put('/:id',async(ctx, next)=>{
   await documentService.modifyBasicInfo(ctx.params.id, ctx.request.body);
 })
 
+//修改剧本基础内容
+router.post('/:id/roles',async(ctx, next)=>{
+  const {name} = ctx.request.body;
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!name){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'请输入角色名称'
+    })
+  }
+  ctx.body.data = await documentService.createRole(ctx.params.id, name);
+})
+
 module.exports = router;
 
 

@@ -22,6 +22,7 @@ function DocumentIndex({documents, dispatch}){
             if(!value){
               Toast.info('请输入一个剧本名称');
               reject();
+              return
             }
             services.createDocument({name:value}).then(result=>{
               resolve();

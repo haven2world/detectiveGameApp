@@ -3,6 +3,10 @@
 @value danger-color, gray-color from theme;
 
 .notice{
-    background-color: #fff;
-    color: gray-color;
+    background-color: #fff !important;
+    color: gray-color !important;
+}
+
+.listButton{
+    margin: 0 5px;
 }

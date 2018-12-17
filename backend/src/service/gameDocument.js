@@ -68,6 +68,15 @@ module.exports = {
       }
     }
     await document.updateBasicInfo(id, paramToSet);
+  },
+//  创建一个角色
+  async createRole(docId, name){
+    let {doc, role} = await document.createRole(docId, name);
+    if(role && doc.composingStage === 'role'){
+     doc.composingStage = 'story';
+     await doc.save();
+    }
+    return {composingStage:doc.composingStage, role}
   }
 }
 

@@ -27,6 +27,14 @@ module.exports = {
       $set:param,
       $currentDate:{updateTime:true}
     });
+  },
+//  创建一个角色
+  async createRole(docId, name){
+    let doc = await Document.findById(docId);
+    let role = await doc.roles.create({name});
+    doc.roles.push(role);
+    await doc.save();
+    return {doc, role}
   }
 
 

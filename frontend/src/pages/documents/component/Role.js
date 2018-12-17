@@ -6,11 +6,11 @@ import { formatTime, RenderIf } from '@/utils/commonUtils';
 import { Toast } from 'antd-mobile/lib/index';
 import * as services from '@/utils/services';
 import router from 'umi/router';
-import LoadingPage from '@/component/LoadingPage'
+import RoleList from '@/component/RoleList'
 import styles from '../document.css';
 
 /**
- * 剧本基础页
+ * 剧本角色页
  */
 
 export default function({document, updateDocument, updateSaveTime}) {
@@ -18,11 +18,40 @@ export default function({document, updateDocument, updateSaveTime}) {
 
   //状态
   const [name, setName] = useState(document.name);
-  const [description, setDescription] = useState(document.description);
   const [nameTimer, setNameTimer] = useState(null);
   const [descriptionTimer, setDescriptionTimer] = useState(null);
 
-
+  //创建角色
+  function createRole() {
+    Modal.prompt(
+      '创建角色',
+      '',
+      [
+        {text:'取消'},
+        {text:'创建',onPress(value){
+            return new Promise((resolve, reject)=>{
+              if(!value){
+                Toast.info('请输入一个角色名称');
+                reject();
+                return
+              }
+              services.createRole(document._id, {name:value}).then(result=>{
+                resolve();
+                if(result && result.code === 0){
+                  Toast.success('创建成功！');
+                  document.composingStage = result.data.composingStage;
+                  document.roles.push(result.data.role);
+                  updateSaveTime(new Date);
+                }
+              })
+            })
+          }}
+      ],
+      'default',
+      '',
+      ['给人物起个名字吧']
+    )
+  }
 
   //修改名称
   function handleChangeName(str){
@@ -31,16 +60,6 @@ export default function({document, updateDocument, updateSaveTime}) {
     if(str){
       setNameTimer(setTimeout(()=>{
         save('name', str);
-      },3000));
-    }
-  }
-  //修改描述
-  const handleChangeDescription = (str)=>{
-    descriptionTimer&&clearTimeout(descriptionTimer);
-    setDescription(str);
-    if(str){
-      setDescriptionTimer(setTimeout(()=>{
-        save('description', str);
       },3000));
     }
   }
@@ -65,33 +84,21 @@ export default function({document, updateDocument, updateSaveTime}) {
 
 
 
-
+console.log(document.roles)
 
   return(
-    <div className={'container'}>
-      <List>
-        <InputItem
-          labelNumber={3}
-          defaultValue={document.name}
-          placeholder='剧本名称'
-          onChange={handleChangeName}
-          onBlur={str=>save('name', str)}
-          onVirtualKeyboardConfirm={str=>save('name', str)}
-          error={document.name && !name}
-          clear
-        >名称</InputItem>
-        <TextareaItem
-          defaultValue={document.description}
-          title="描述"
-          placeholder={'介绍一下~'}
-          autoHeight
-          labelNumber={3}
-          onChange={handleChangeDescription}
-          onBlur={str=>save('description', str)}
-          error={document.description && !description}
-          clear
-        />
+    <div className={'container'} style={{backgroundColor:'#fff'}}>
+      <List key={'button'}>
+        <WingBlank>
+          <WhiteSpace/>
+          <Button className={styles.listButton} onClick={createRole} type={'ghost'}>新增角色</Button>
+          <WhiteSpace/>
+        </WingBlank>
       </List>
+      <RoleList
+        document={document}
+        list={document.roles}
+      />
     </div>
   )
 }
