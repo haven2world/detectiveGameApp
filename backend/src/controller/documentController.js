@@ -1,12 +1,14 @@
 'use strict';
 
-
 /**
  * 剧本相关接口
  */
 
 const Router = require('koa-router');
 const documentService = require('../service/gameDocument');
+const fileService = require('../service/fileService');
+const commonUtils = require('../utils/commonUtils');
+
 
 let router = new Router();
 
@@ -49,7 +51,7 @@ router.put('/:id',async(ctx, next)=>{
   await documentService.modifyBasicInfo(ctx.params.id, ctx.request.body);
 })
 
-//修改剧本基础内容
+//创建剧本角色
 router.post('/:id/roles',async(ctx, next)=>{
   const {name} = ctx.request.body;
   if(!ctx.params.id){
@@ -65,6 +67,59 @@ router.post('/:id/roles',async(ctx, next)=>{
     })
   }
   ctx.body.data = await documentService.createRole(ctx.params.id, name);
+})
+
+//获取角色详情
+router.get('/:id/roles/:roleId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+
+  let document  = await documentService.getDocumentDetail(ctx.params.id);
+  ctx._data.role = document.roles.id(ctx.params.roleId);
+
+})
+
+//删除一个角色
+router.delete('/:id/roles/:roleId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+
+  let document  = await documentService.getDocumentDetail(ctx.params.id);
+  document.roles.id(ctx.params.roleId).remove();
+  await document.save();
+})
+
+//上传角色头像
+router.post('/:id/roles/:roleId/avatar',async(ctx, next)=>{
+  const {file} = ctx.request.files;
+  if(!ctx.params.id || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!file){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'请上传有效的图片'
+    })
+  }
+
+  console.log(file)
+  let fileName = commonUtils.GenID()+ '_' + file.name;
+  let path = _Config.path.avatar + '/' + fileName;
+
+  let result = await fileService.saveFile(path, file.path);
+  console.log(result)
+
 })
 
 module.exports = router;

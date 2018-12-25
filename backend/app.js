@@ -7,7 +7,7 @@
 
 const Koa = require('koa');
 const app = new Koa();
-const bodyParser = require('koa-bodyparser');
+const koaBody = require('koa-body');
 const koaStatic = require('koa-static');
 const path = require('path');
 
@@ -29,10 +29,12 @@ const router = require('./src/controller/index');
 mongoUtils.init();
 
 //body解析器
-app.use(bodyParser({
+app.use(koaBody({
   onerror:function (err, ctx) {
     console.error(err);
-  }
+  },
+  formLimit:'100mb',
+  multipart:true
 }));
 
 //错误处理

@@ -53,38 +53,8 @@ export default function({document, updateDocument, updateSaveTime}) {
     )
   }
 
-  //修改名称
-  function handleChangeName(str){
-    nameTimer&&clearTimeout(nameTimer);
-    setName(str);
-    if(str){
-      setNameTimer(setTimeout(()=>{
-        save('name', str);
-      },3000));
-    }
-  }
-  //保存
-  function save(key, str) {
-    if(str && document[key] !== str){
-      let param = {};
-      param[key] = str;
-      if(key === 'description' && document.composingStage === 'name'){
-        param.composingStage = 'story';
-        document.composingStage = 'story';
-      }
-      services.modifyDocumentDetail(document._id, param).then(result=>{
-        if(result && result.code === 0){
-          document[key] = str;
-          updateSaveTime(new Date);
-        }
-      })
-    }
-  }
 
 
-
-
-console.log(document.roles)
 
   return(
     <div className={'container'} style={{backgroundColor:'#fff'}}>

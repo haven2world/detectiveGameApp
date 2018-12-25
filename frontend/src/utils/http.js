@@ -192,11 +192,6 @@ export default {
         method:'post',
         data: formData,
         headers:{'Content-Type':"multipart/form-data", 'token':localStorage.token},
-        cancelToken: new CancelToken(c => {
-          cancel = c
-        }).then(res => {
-          resolve(res)
-        })
       })
     })
   },

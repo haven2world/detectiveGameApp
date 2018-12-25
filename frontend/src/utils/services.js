@@ -106,7 +106,7 @@ export function modifyDocumentDetail(id, params){
   return http.put(url, params);
 }
 
-/* 创建剧本
+/* 创建角色
  - url: /detective/apis/auth/documents/:id/roles
  - method: post
  - param:{
@@ -117,5 +117,42 @@ export function modifyDocumentDetail(id, params){
 export function createRole(id, param){
   let url = '/detective/apis/auth/documents/' + id +'/roles';
   return http.post(url, param);
+}
+
+/* 获取角色详情
+ - url: /detective/apis/auth/documents/:id/roles/:roleId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchRoleDocument(id, roleId){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId ;
+  return http.get(url, {});
+}
+
+/* 删除一个角色
+ - url: /detective/apis/auth/documents/:id/roles/:roleId
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteRoleDocument(id, roleId){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId ;
+  return http.delete(url, {});
+}
+
+/* 上传角色头像
+ - url: /detective/apis/auth/documents/:id/roles/:roleId/avatar
+ - method: upload
+ - param:{
+ file
+ }
+ */
+
+export function uploadRoleAvatar(id, roleId, param){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId + '/avatar';
+  return http.upload(url, param);
 }
 

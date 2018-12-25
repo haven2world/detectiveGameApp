@@ -281,3 +281,17 @@ export function getPasswordHash(pwd, salt) {
   return resultHash
 }
 
+//选择文件
+export function selectFile(multiple, accept='*/*') {
+  return new Promise((resolve, reject)=>{
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.multiple = multiple;
+    input.accept = accept;
+    input.onchange = function(event){
+      resolve(event.path[0].files)
+      input.remove();
+    }
+    input.click();
+  })
+}

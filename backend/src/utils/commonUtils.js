@@ -1,7 +1,8 @@
 'use strict';
 
+const util = {};
 
-export function isEmptyObject(obj) {
+util.isEmptyObject = (obj)=>{
   for (var name in obj) {
     return false;
   }
@@ -9,7 +10,7 @@ export function isEmptyObject(obj) {
 }
 
 //格式化数字
-export function formatNumber(num, cent, isThousand) {
+util.formatNumber = (num, cent, isThousand)=>{
   //为空判断
   if(num===null || typeof num === "undefined" ){
     return '';
@@ -48,7 +49,7 @@ export function formatNumber(num, cent, isThousand) {
 }
 
 // 格式化日期，支持各种不同分隔符
-export function formatDate(time, separator ,noZero) {
+util.formatDate = (time, separator ,noZero)=>{
   if (!time) return '';
   let date = new Date(time)
   let month;
@@ -64,7 +65,7 @@ export function formatDate(time, separator ,noZero) {
   return date.getFullYear() + separator + month + separator + day
 }
 //通过年月日获取date对象
-export function setNewDate({year, month ,day,hour,minute,second}) {
+util.setNewDate = ({year, month ,day,hour,minute,second})=>{
   let date = new Date();
   year && month && day && (date =  new Date(year,month-1,day));
   typeof hour !== 'undefined' && date.setHours(hour);
@@ -74,7 +75,7 @@ export function setNewDate({year, month ,day,hour,minute,second}) {
 }
 
 // 计算指定时区时间
-export function calcTime(time, offset) {
+util.calcTime = (time, offset)=>{
   let d = new Date(time)
   let utc = d.getTime() + (d.getTimezoneOffset() * 60000)
   let nd = new Date(utc + (3600000 * offset))
@@ -82,7 +83,7 @@ export function calcTime(time, offset) {
 }
 
 //节流函数
-export function throttle(func, wait, options) {
+util.throttle = (func, wait, options)=>{
   /* options的默认值
    *  表示首次调用返回值方法时，会马上调用func；否则仅会记录当前时刻，当第二次调用的时间间隔超过wait时，才调用func。
    *  options.leading = true;
@@ -125,7 +126,7 @@ export function throttle(func, wait, options) {
   };
 };
 //去抖函数
-export function debounce(func, wait, immediate) {
+util.debounce = (func, wait, immediate)=>{
   // immediate默认为false
   var timeout, args, context, timestamp, result;
 
@@ -162,7 +163,7 @@ export function debounce(func, wait, immediate) {
 };
 
 // content（字符串或数组） 是否是 arr 的子集， content元素可重复
-export function isInArray (content, arr, fuzzyFlag) {
+util.isInArray = (content, arr, fuzzyFlag)=>{
   //精确匹配
   if(!isInArray.exactMatch){
     isInArray.exactMatch = (content, arr)=>{
@@ -192,12 +193,12 @@ export function isInArray (content, arr, fuzzyFlag) {
 }
 
 //生成不重复随机id
-export function GenID(randomLength){
+util.GenID = (randomLength)=>{
   return Number(Math.random().toString().substr(3,randomLength) + Date.now()).toString(36)
 }
 
 //计算奇偶性
-export function calParity(arr, before) {
+util.calParity = (arr, before)=>{
   let currentParity;
   if (arr.length % 2) {
     currentParity = 'odd';
@@ -213,3 +214,5 @@ export function calParity(arr, before) {
   }
   return currentParity
 }
+
+module.exports = util;

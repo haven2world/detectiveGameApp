@@ -46,7 +46,7 @@ function DocumentIndex({documents, dispatch}){
         mode={'light'}
         icon={<Icon type={'left'}/>}
         onLeftClick={router.goBack}
-        rightContent={<i className="fas fa-plus" style={{fontSize:16 }} onClick={createNewDocument}/>}
+        rightContent={<i className="fas fa-plus clickable" style={{fontSize:16 }} onClick={createNewDocument}/>}
       >你的剧本列表</NavBar>
       <DocumentList list={documents.list} loading={documents.loading} />
     </div>
