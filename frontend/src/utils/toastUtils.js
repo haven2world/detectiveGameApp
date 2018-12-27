@@ -1,13 +1,12 @@
 'use strict';
-import { Toast } from 'antd-mobile/lib/index';
+import { Toast } from 'antd-mobile';
 
 /**
  * 封装toast
  */
-const toastConfig = [undefined,undefined,false];
 
 export const toast = {
-  success(content){Toast.success(content,...toastConfig)},
-  fail(content){Toast.fail(content,...toastConfig)},
-  info(content){Toast.info(content,...toastConfig)},
+  success(content){Toast.success(content,undefined,undefined,false)},
+  fail(content){Toast.fail(content,undefined,undefined,false)},
+  info(content){Toast.info(content,undefined,undefined,false)},
 }
