@@ -86,3 +86,25 @@ body {
     height: 100%;
 }
 
+
+/*light toast*/
+@keyframes light-toast-animation {
+    0%   {opacity: 0; transform: translate(200px,0);}
+    25%  {opacity: 1; transform: translate(0px,0);}
+    75%  {opacity: 1; transform: translate(0px,0);}
+    100% {opacity: 0; transform: translate(200px,0);}
+}
+.my-light-toast{
+    background-color: rgba(0,0,0,0.6);
+    padding: 8px;
+    border-radius: 3px;
+
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    transform: translate(200px,0);
+    opacity: 0;
+
+    color:#fff;
+    animation: light-toast-animation 2s;
+}

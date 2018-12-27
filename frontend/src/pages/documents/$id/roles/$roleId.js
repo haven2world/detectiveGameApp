@@ -39,7 +39,6 @@ export default function({computedMatch, role}) {
     docId={docId}
     roleId={roleId}
     loading={loading || !roleDoc}
-    name={roleDoc?roleDoc.name:''}
-    photo={roleDoc?roleDoc.photo:undefined}
+    roleDoc={roleDoc}
   />
 }

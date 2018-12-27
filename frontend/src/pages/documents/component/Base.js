@@ -49,8 +49,8 @@ export default function({document, updateDocument, updateSaveTime}) {
       let param = {};
       param[key] = str;
       if(key === 'description' && document.composingStage === 'name'){
-        param.composingStage = 'story';
-        document.composingStage = 'story';
+        param.composingStage = 'role';
+        document.composingStage = 'role';
       }
       services.modifyDocumentDetail(document._id, param).then(result=>{
         if(result && result.code === 0){
