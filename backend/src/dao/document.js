@@ -28,6 +28,17 @@ module.exports = {
       $currentDate:{updateTime:true}
     });
   },
+//  修改角色信息
+  async updateRoleInfo(id, roleId, roleParam){
+    let param = {};
+    Object.keys(roleParam).forEach(key=>{
+      param['roles.$.' + key] = roleParam[key];
+    });
+    return await Document.updateOne({_id:id, 'roles._id':roleId},{
+      $set:param,
+      $currentDate:{updateTime:true}
+    })
+  },
 //  创建一个角色
   async createRole(docId, name){
     let doc = await Document.findById(docId);

@@ -76,9 +76,6 @@ body {
     cursor: pointer;
 }
 
-.clickable:hover {
-    opacity: 0.4;
-}
 
 .clickable:active {
     opacity: 0.2;

@@ -1,5 +1,7 @@
 'use strict';
 
+const path = require('path');
+
 const util = {};
 
 util.isEmptyObject = (obj)=>{
@@ -193,7 +195,7 @@ util.isInArray = (content, arr, fuzzyFlag)=>{
 }
 
 //生成不重复随机id
-util.GenID = (randomLength)=>{
+util.GenID = (randomLength=4)=>{
   return Number(Math.random().toString().substr(3,randomLength) + Date.now()).toString(36)
 }
 
@@ -213,6 +215,11 @@ util.calParity = (arr, before)=>{
     }
   }
   return currentParity
+}
+
+//获取本地静态资源路径
+util.convertAbsPath = (relativePath)=>{
+  return path.join( __dirname ,'../../static' , relativePath)
 }
 
 module.exports = util;

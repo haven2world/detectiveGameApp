@@ -5,12 +5,11 @@
  * 剧本相关服务
  */
 
-const user = require('../dao/user');
 const document = require('../dao/document');
-const passwordService = require('./password');
-const tokenService = require('./token');
+const fileService = require('./fileService');
+const commonUtils = require('../utils/commonUtils');
 
-module.exports = {
+const service = {
 //  获取用户创建的剧本
   async getDocumentsForCreator(id){
     let result = await document.queryDocumentsForCreator(id)||[];
@@ -73,10 +72,51 @@ module.exports = {
   async createRole(docId, name){
     let {doc, role} = await document.createRole(docId, name);
     if(role && doc.composingStage === 'role'){
-     doc.composingStage = 'story';
-     await doc.save();
+      doc.composingStage = 'story';
+      await doc.save();
     }
     return {composingStage:doc.composingStage, role}
+  },
+  //  获取一个角色
+  async getRole(docId, roleId){
+    let document  = await service.getDocumentDetail(docId);
+    return  document.roles.id(roleId)
+  },
+//  删除一个角色
+  async deleteRole(docId, roleId){
+    let document  = await service.getDocumentDetail(docId);
+    document.roles.id(roleId).remove();
+    await document.save();
+    return true
+  },
+//  修改一个角色的头像
+  async modifyRoleAvatar(docId, roleId, file){
+    let fileName = commonUtils.GenID()+ '_' + file.name;
+    let url = _Config.path.avatar + '/' + fileName;
+    let path = commonUtils.convertAbsPath(url);
+
+    let successful = await fileService.saveFile(path, file.path);
+    if(successful){
+      await document.updateRoleInfo(docId, roleId, {photo:url});
+      return url
+    }
+  },
+//  修改角色信息
+  async modifyRoleInfo(docId, roleId, param){
+    const field = {
+      name: true,
+      description: true,
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+    }
+    await document.updateRoleInfo(docId, roleId, paramToSet);
   }
-}
+};
+
+module.exports = service;
 

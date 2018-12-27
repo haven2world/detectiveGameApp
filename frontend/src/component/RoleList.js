@@ -34,7 +34,11 @@ export default function(props) {
       <List >
         {list.map((role, index)=>{
           return <Item key={index} wrap onClick={()=>clickDocument(role)} arrow={'horizontal'}
-                       extra={!role.publishFlag?'未完成':null} thumb={role.photo?role.photo:require('../assets/img/contact_default.png')}
+                       extra={!role.publishFlag?'未完成':null}
+                       thumb={<img
+                         src={role.photo ? role.photo : require('../assets/img/contact_default.png')}
+                         style={{ height: 50, width: 50, borderRadius: 25, border: '1px solid #f5f5f9', objectFit: 'cover', }}
+                       />}
           >
             {role.name}
             <Item.Brief>

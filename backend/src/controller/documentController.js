@@ -6,8 +6,6 @@
 
 const Router = require('koa-router');
 const documentService = require('../service/gameDocument');
-const fileService = require('../service/fileService');
-const commonUtils = require('../utils/commonUtils');
 
 
 let router = new Router();
@@ -78,9 +76,7 @@ router.get('/:id/roles/:roleId',async(ctx, next)=>{
     })
   }
 
-  let document  = await documentService.getDocumentDetail(ctx.params.id);
-  ctx._data.role = document.roles.id(ctx.params.roleId);
-
+  ctx._data.role = await documentService.getRole(ctx.params.id, ctx.params.roleId);
 })
 
 //删除一个角色
@@ -92,9 +88,7 @@ router.delete('/:id/roles/:roleId',async(ctx, next)=>{
     })
   }
 
-  let document  = await documentService.getDocumentDetail(ctx.params.id);
-  document.roles.id(ctx.params.roleId).remove();
-  await document.save();
+  await documentService.deleteRole(ctx.params.id, ctx.params.roleId);
 })
 
 //上传角色头像
@@ -113,13 +107,20 @@ router.post('/:id/roles/:roleId/avatar',async(ctx, next)=>{
     })
   }
 
-  console.log(file)
-  let fileName = commonUtils.GenID()+ '_' + file.name;
-  let path = _Config.path.avatar + '/' + fileName;
+  ctx._data.photo = await documentService.modifyRoleAvatar(ctx.params.id, ctx.params.roleId, file);
 
-  let result = await fileService.saveFile(path, file.path);
-  console.log(result)
+})
 
+//修改角色信息
+router.put('/:id/roles/:roleId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+
+  await documentService.modifyRoleInfo(ctx.params.id, ctx.params.roleId, ctx.request.body);
 })
 
 module.exports = router;

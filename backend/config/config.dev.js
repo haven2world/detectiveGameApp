@@ -4,7 +4,6 @@
 /**
  * 开发配置
  */
-const path = require('path');
 
 const config = {
   mongodb:'mongodb://localhost:27017/detective',
@@ -12,7 +11,7 @@ const config = {
 
 //  文件路径
   path:{
-    avatar:path.resolve( __dirname ,'../static/detective/assets/avatar')
+    avatar:'/detective/assets/avatar'
   }
 };
 

@@ -181,17 +181,19 @@ export default {
   },
 //  上传文件
   upload(url, param){
-    return new Promise((resolve, reject)=>{
+    return new Promise((resolve, reject)=> {
       let formData = new FormData();
-      for(let key in param){
+      for (let key in param) {
         formData.append(key, param[key]);
       }
 
       axios({
         url,
-        method:'post',
+        method: 'post',
         data: formData,
-        headers:{'Content-Type':"multipart/form-data", 'token':localStorage.token},
+        headers: { 'Content-Type': "multipart/form-data", 'token': localStorage.token },
+      }).then(res => {
+        resolve(res)
       })
     })
   },

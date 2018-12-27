@@ -30,8 +30,8 @@ function DocumentIndex({documents, dispatch}){
                 Toast.success('创建成功！');
                 dispatch({type:'documents/fetch'});
               }
-            })
-          })
+            });
+          });
         }}
       ],
       'default',

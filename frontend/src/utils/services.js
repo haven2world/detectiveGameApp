@@ -156,3 +156,17 @@ export function uploadRoleAvatar(id, roleId, param){
   return http.upload(url, param);
 }
 
+/* 修改角色信息
+ - url: /detective/apis/auth/documents/:id/roles/:roleId
+ - method: put
+ - param:{
+ name
+ description
+ }
+ */
+
+export function modifyRoleInfo(id, roleId, param){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId ;
+  return http.put(url, param);
+}
+
