@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: 删除角色">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/utils/toastUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/fileService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/fileService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/gameDocument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/commonUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/commonUtils.js" afterDir="false" />
+    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/component/AvatarCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/AvatarCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/component/DocumentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/DocumentList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/toastUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/toastUtils.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,8 +43,8 @@
       <file leaf-file-name="gameDocument.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+            <state relative-caret-position="787">
+              <caret line="104" column="45" lean-forward="true" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -383,7 +375,7 @@
       <workItem from="1545098368110" duration="2941000" />
       <workItem from="1545356659145" duration="1201000" />
       <workItem from="1545359983009" duration="3991000" />
-      <workItem from="1545639208334" duration="30465000" />
+      <workItem from="1545639208334" duration="31073000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -413,11 +405,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545727867064</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[feat]: 更换头像 修改角色名">
+      <created>1545879875305</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545879875305</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="325822000" />
+    <option name="totallyTimeSpent" value="326430000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -456,7 +455,8 @@
     <MESSAGE value="[feat]: 创建 剧本 和实例的modal" />
     <MESSAGE value="[feat]: 创建角色" />
     <MESSAGE value="[feat]: 删除角色" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 删除角色" />
+    <MESSAGE value="[feat]: 更换头像 修改角色名" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 更换头像 修改角色名" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/controller/documentController.js">
@@ -794,8 +794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="85" column="34" lean-forward="true" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+        <state relative-caret-position="787">
+          <caret line="104" column="45" lean-forward="true" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
         </state>
       </provider>
     </entry>

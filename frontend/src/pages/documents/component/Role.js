@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import {connect} from 'dva';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar} from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
-import { Toast } from 'antd-mobile/lib/index';
+import {toast} from '@/utils/toastUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
 import RoleList from '@/component/RoleList'
@@ -31,14 +31,14 @@ export default function({document, updateDocument, updateSaveTime}) {
         {text:'创建',onPress(value){
             return new Promise((resolve, reject)=>{
               if(!value){
-                Toast.info('请输入一个角色名称');
+                toast.info('请输入一个角色名称');
                 reject();
                 return
               }
               services.createRole(document._id, {name:value}).then(result=>{
                 resolve();
                 if(result && result.code === 0){
-                  Toast.success('创建成功！');
+                  toast.success('创建成功！');
                   document.composingStage = result.data.composingStage;
                   document.roles.push(result.data.role);
                   updateSaveTime(new Date);

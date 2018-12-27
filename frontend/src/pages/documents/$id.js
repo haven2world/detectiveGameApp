@@ -3,7 +3,6 @@ import { useState, useEffect, createElement } from 'react';
 import {connect} from 'dva';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, NoticeBar} from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
-import { Toast } from 'antd-mobile/lib/index';
 import * as services from '@/utils/services';
 import router from 'umi/router';
 import LoadingPage from '@/component/LoadingPage'

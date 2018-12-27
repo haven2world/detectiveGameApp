@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, ImagePicker} from 'antd-mobile';
 import { RenderIf, selectFile } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
-import { Toast } from 'antd-mobile/lib/index';
+import {toast} from '@/utils/toastUtils';
 
 /**
  * 头像卡片
@@ -37,14 +37,14 @@ export default function({editable, url, name, docId, roleId}) {
         {text:'确定',onPress(value){
             return new Promise((resolve, reject)=>{
               if(!value){
-                Toast.info('请输入一个角色名称');
+                toast.info('请输入一个角色名称');
                 reject();
                 return
               }
               services.modifyRoleInfo(docId, roleId, { name:value }).then(result=>{
                 resolve();
                 if (result && result.code === 0) {
-                  Toast.success('保存成功！');
+                  toast.success('保存成功！');
                   setName(value);
                 }
               });

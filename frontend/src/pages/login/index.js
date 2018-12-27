@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'umi/link';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button} from 'antd-mobile';
 import styles from './index.css';
-import { Toast } from 'antd-mobile/lib/index';
+import {toast} from '@/utils/toastUtils';
 import * as services from '@/utils/services';
 import { getPasswordHash } from '@/utils/commonUtils';
 import router from 'umi/router';
@@ -20,11 +20,11 @@ export default function(){
   function signIn() {
     //校验
     if(!name){
-      Toast.info('请输入账号');
+      toast.info('请输入账号');
       return;
     }
     if(!pwd){
-      Toast.info('请输入密码');
+      toast.info('请输入密码');
       return;
     }
     let param = {

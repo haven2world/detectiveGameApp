@@ -1,6 +1,7 @@
 import styles from './signUp.css';
-import {NavBar, Toast, Icon, Flex, WhiteSpace, WingBlank, InputItem, List, NoticeBar, Button} from 'antd-mobile';
+import {NavBar, Icon, Flex, WhiteSpace, WingBlank, InputItem, List, NoticeBar, Button} from 'antd-mobile';
 import router from 'umi/router';
+import {toast} from '@/utils/toastUtils';
 import { useState } from 'react';
 import * as services from '@/utils/services';
 import {getPasswordHash} from '@/utils/commonUtils';
@@ -17,19 +18,19 @@ export default function() {
   let handleSignUp = ()=>{
     //校验
     if(!name){
-      Toast.info('请输入账号');
+      toast.info('请输入账号');
       return;
     }
     if(!pwd){
-      Toast.info('请输入密码');
+      toast.info('请输入密码');
       return;
     }
     if(!rePwd){
-      Toast.info('请重复输入密码');
+      toast.info('请重复输入密码');
       return;
     }
     if(pwd!==rePwd){
-      Toast.info('两次输入密码不一致');
+      toast.info('两次输入密码不一致');
       return;
     }
 
@@ -41,7 +42,7 @@ export default function() {
     services.signUp(param).then(result=>{
       setLoading(false);
       if( result && result.code === 0){
-        Toast.success('注册成功');
+        toast.success('注册成功');
         localStorage.loginId = name;
         localStorage.token = result.data.token;
         router.replace('/');

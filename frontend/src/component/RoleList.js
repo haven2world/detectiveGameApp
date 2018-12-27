@@ -1,7 +1,6 @@
 'use strict';
 import { useState } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal} from 'antd-mobile';
-import { Toast } from 'antd-mobile/lib/index';
 import router from 'umi/router';
 import DefaultPage from '@/component/DefaultPage';
 import LoadingPage from '@/component/LoadingPage';

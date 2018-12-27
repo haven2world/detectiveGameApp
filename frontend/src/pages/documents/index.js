@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {connect} from 'dva';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal} from 'antd-mobile';
-import { Toast } from 'antd-mobile/lib/index';
+import {toast} from '@/utils/toastUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
 
@@ -20,14 +20,14 @@ function DocumentIndex({documents, dispatch}){
         {text:'创建',onPress(value){
           return new Promise((resolve, reject)=>{
             if(!value){
-              Toast.info('请输入一个剧本名称');
+              toast.info('请输入一个剧本名称');
               reject();
               return
             }
             services.createDocument({name:value}).then(result=>{
               resolve();
               if(result && result.code === 0){
-                Toast.success('创建成功！');
+                toast.success('创建成功！');
                 dispatch({type:'documents/fetch'});
               }
             });

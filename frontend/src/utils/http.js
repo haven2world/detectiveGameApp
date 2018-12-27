@@ -1,7 +1,7 @@
 'use strict';
 import axios from 'axios'
 import {goToLogin, isInArray} from "./commonUtils";
-import {Toast} from 'antd-mobile';
+import {toast} from '@/utils/toastUtils';
 
 /**
  * 封装 axios
@@ -51,10 +51,10 @@ axios.interceptors.response.use((response) => {
       goToLogin();
       return response.data
     case 999:
-      !inWhiteList&&Toast.fail('服务器开小差了');
+      !inWhiteList&&toast.fail('服务器开小差了');
       return response.data
     default:
-      !inWhiteList&&Toast.fail(response.data.message);
+      !inWhiteList&&toast.fail(response.data.message);
       return response.data
   }
 },
@@ -109,7 +109,7 @@ axios.interceptors.response.use((response) => {
     }else{
       err.message = "连接到服务器失败"
     }
-    !inWhiteList && !cancelFlag && Toast.fail(err.message);
+    !inWhiteList && !cancelFlag && toast.fail(err.message);
     return Promise.resolve(err.response)
   }
 )
