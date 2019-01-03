@@ -7,6 +7,7 @@
 
 const document = require('../dao/document');
 const fileService = require('./fileService');
+const skill = require('../dao/skill');
 const commonUtils = require('../utils/commonUtils');
 
 const service = {
@@ -115,6 +116,10 @@ const service = {
       }
     }
     await document.updateRoleInfo(docId, roleId, paramToSet);
+  },
+//  获取当前剧本下的所有技能
+  async getSkills(docId){
+    return await skill.findSkillByDocId(docId)
   }
 };
 

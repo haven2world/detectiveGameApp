@@ -16,10 +16,8 @@ export default function({computedMatch, role}) {
 
   //初始化
   useEffect(()=>{
-    if(!roleDoc && !loading){
-      updateRole();
-    }
-  });
+    updateRole();
+  },[]);
 
 
   //获取角色详情
@@ -27,9 +25,11 @@ export default function({computedMatch, role}) {
     setLoading(true);
     services.fetchRoleDocument(docId, roleId).then(result=>{
       if(result && result.code === 0){
-        setRoleDoc(result.data.role);
+        let roleDoc = result.data.role;
+        roleDoc.allSkills = result.data.skills;
+        setRoleDoc(roleDoc);
+        setLoading(false);
       }
-      setLoading(false);
     })
   }
 

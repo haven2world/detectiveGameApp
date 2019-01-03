@@ -47,6 +47,10 @@ body {
     color: primary-color !important;
 }
 
+.sm-text{
+    font-size: 14px;
+}
+
 /*flex 布局样式*/
 .flex-container {
     display: flex;
@@ -108,3 +112,18 @@ body {
     color:#fff;
     animation: light-toast-animation 2s;
 }
+
+/*小标题*/
+.title-row{
+    padding-left: 10px;
+    border: 0 solid primary-color;
+    border-left-width: 4px;
+
+}
+
+.title-row .subtitle{
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+

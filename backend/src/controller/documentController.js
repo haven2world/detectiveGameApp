@@ -77,6 +77,7 @@ router.get('/:id/roles/:roleId',async(ctx, next)=>{
   }
 
   ctx._data.role = await documentService.getRole(ctx.params.id, ctx.params.roleId);
+  ctx._data.skills = await documentService.getSkills(ctx.params.id);
 })
 
 //删除一个角色

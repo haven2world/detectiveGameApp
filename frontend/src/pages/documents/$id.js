@@ -27,10 +27,8 @@ export default function({computedMatch}) {
 
   //初始化
   useEffect(()=>{
-    if(!document && !loading){
-      updateDocument();
-    }
-  });
+    updateDocument();
+  },[]);
 
 
   //获取剧本详情
@@ -42,8 +40,8 @@ export default function({computedMatch}) {
         if(!saveTime && result.data.document.updateTime){
           setSaveTime(new Date(result.data.document.updateTime));
         }
+        setLoading(false);
       }
-      setLoading(false);
     })
   }
 

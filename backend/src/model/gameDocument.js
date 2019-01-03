@@ -2,15 +2,14 @@
 
 
 /**
- * 剧本modal
+ * 剧本model
  */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //技能
 let skillSchema = new Schema({
-  name:String,
-  description:String,
+  skillInfo:{type:Schema.Types.ObjectId, ref:'GameDocument'},
   maxCount:Number
 });
 
