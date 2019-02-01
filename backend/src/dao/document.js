@@ -49,6 +49,7 @@ const dao = {
     let doc = await Document.findById(docId);
     let role = await doc.roles.create({name});
     doc.roles.push(role);
+    doc.updateTime = new Date();
     await doc.save();
     return {doc, role}
   },
@@ -58,6 +59,7 @@ const dao = {
     let role = await doc.roles.id(roleId);
     let skill = await role.skills.create({skillInfo:skillId});
     role.skills.push(skill);
+    doc.updateTime = new Date();
     await doc.save();
     return skill;
   },
@@ -76,10 +78,21 @@ const dao = {
     let doc = await Document.findById(docId);
     let role = await doc.roles.id(roleId);
     role.skills.id(roleSkillId).remove();
+    doc.updateTime = new Date();
     let result = await doc.save();
     return !!result;
   },
-
+//  创建一个故事阶段
+  async createStoryStage(docId){
+    let doc = await Document.findById(docId);
+    if(typeof doc.storyStageCount === 'undefined'){
+      doc.storyStageCount = 0;
+    }
+    doc.storyStageCount += 1;
+    doc.updateTime = new Date();
+    await doc.save();
+    return doc.storyStageCount
+  },
 
 };
 

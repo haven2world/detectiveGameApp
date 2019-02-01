@@ -93,7 +93,7 @@ export default function({computedMatch}) {
           onLeftClick={router.goBack}
         >剧本</NavBar>
         <Tabs
-          initialPage={1}
+          initialPage={2}
           tabs={tabs}
           renderTabBar={props =><Tabs.DefaultTabBar {...props} swipeable />}
         >

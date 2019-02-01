@@ -74,6 +74,7 @@ let schema = new Schema({
   creator:Schema.Types.ObjectId,
   publishFlag:Boolean,
   composingStage:String,
+  storyStageCount:Number,
   level:{
     easy:difficultyLevelSchema,
     normal:difficultyLevelSchema,

@@ -136,6 +136,16 @@ router.delete('/:id/roles/:roleId/skills/:roleSkillId',async(ctx, next)=>{
   await documentService.deleteSkillForRole(ctx.params.id, ctx.params.roleId, ctx.params.roleSkillId);
 })
 
+//创建剧本角色
+router.post('/:id/stages',async(ctx, next)=>{
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.storyStageCount = await documentService.addStoryStage(ctx.params.id);
+})
 module.exports = router;
 
 

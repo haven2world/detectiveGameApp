@@ -28,6 +28,7 @@ const service = {
       creator:user,
       publishFlag:false,
       composingStage:'name',
+      storyStageCount:1,
       level:{
         easy:{
           maxInquiryTimes:null,
@@ -88,6 +89,7 @@ const service = {
     let document  = await service.getDocumentDetail(docId);
     document.roles.id(roleId).remove();
     await document.save();
+    //todo: 删除与角色相关的故事
     return true
   },
 //  修改一个角色的头像
@@ -146,6 +148,13 @@ const service = {
     if(!result){
       throw {code:_Exceptions.DB_ERROR, message:'数据库操作失败'};
     }
+  },
+
+  // 增加故事阶段
+  async addStoryStage(docId){
+    let currentStageCount = await document.createStoryStage(docId);
+
+    return currentStageCount
   },
 };
 

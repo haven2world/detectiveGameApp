@@ -213,3 +213,15 @@ export function deleteSkill(id, roleId, roleSkillId){
   let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId + '/skills/' + roleSkillId;
   return http.delete(url, {});
 }
+
+/* 创建故事阶段
+ - url: /detective/apis/auth/documents/:id/stages
+ - method: post
+ - param:{
+ }
+ */
+
+export function createStoryStage(id){
+  let url = '/detective/apis/auth/documents/' + id +'/stages';
+  return http.post(url, {});
+}
