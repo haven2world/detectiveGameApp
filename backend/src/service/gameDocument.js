@@ -6,7 +6,8 @@
  */
 
 const document = require('../dao/document');
-const fileService = require('./fileService');
+const fileService = require('./file');
+const skillService = require('./skill');
 const skill = require('../dao/skill');
 const commonUtils = require('../utils/commonUtils');
 
@@ -80,8 +81,7 @@ const service = {
   },
   //  获取一个角色
   async getRole(docId, roleId){
-    let document  = await service.getDocumentDetail(docId);
-    return  document.roles.id(roleId)
+    return await document.getRole(docId, roleId);
   },
 //  删除一个角色
   async deleteRole(docId, roleId){
@@ -120,8 +120,36 @@ const service = {
 //  获取当前剧本下的所有技能
   async getSkills(docId){
     return await skill.findSkillByDocId(docId)
-  }
+  },
+// 在某个角色下增加技能
+  async addSkillForRole(name, docId, roleId){
+    let theSkill = await skill.findSkillByNameAndDocId(name, docId);
+    if(!theSkill){
+      theSkill = await skillService.createSkillForDoc(name,docId);
+    }
+    let result = await document.addSkillForRole(docId, roleId, theSkill._id);
+    result._doc.skillInfo = theSkill;
+    return result;
+  },
+
+// 修改某个角色某个技能的使用最大次数
+  async modifySkillCount(docId, roleId, skillId, count){
+    let result = await document.updateSkillCount(docId, roleId, skillId, count);
+    if(!result){
+      throw {code:_Exceptions.DB_ERROR, message:'数据库操作失败'};
+    }
+  },
+
+  // 删除某个角色某个技能
+  async deleteSkillForRole(docId, roleId, roleSkillId){
+    let result = await document.deleteSkillForRole(docId, roleId, roleSkillId);
+    if(!result){
+      throw {code:_Exceptions.DB_ERROR, message:'数据库操作失败'};
+    }
+  },
 };
+
+
 
 module.exports = service;
 

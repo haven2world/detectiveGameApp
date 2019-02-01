@@ -22,7 +22,12 @@ module.exports = {
     let skill = new Skill({belongToDocId:docId, name})
     return await skill.save()
   },
-
+// 修改一个技能的信息
+  async updateSkillById(skillId, param){
+    return await Skill.updateOne({_id:skillId},{
+      $set:param,
+    })
+  }
 
 
 };

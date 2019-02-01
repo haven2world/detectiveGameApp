@@ -170,3 +170,46 @@ export function modifyRoleInfo(id, roleId, param){
   return http.put(url, param);
 }
 
+/* 创建技能
+ - url: /detective/apis/auth/skills
+ - method: post
+ - param:{
+  name
+  docId
+  roleId
+ }
+ */
+
+export function createSkill(param){
+  let url = '/detective/apis/auth/skills';
+  return http.post(url, param);
+}
+
+/* 修改技能
+ - url: /detective/apis/auth/skills/:skillId
+ - method: put
+ - param:{
+  name
+  description
+  count
+  docId
+  roleId
+ }
+ */
+
+export function modifySkill(skillId, param){
+  let url = '/detective/apis/auth/skills/' + skillId;
+  return http.put(url, param);
+}
+
+/* 删除技能
+ - url: /detective/apis/auth/documents/:id/roles/:roleId/skills/:roleSkillId
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteSkill(id, roleId, roleSkillId){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId + '/skills/' + roleSkillId;
+  return http.delete(url, {});
+}

@@ -7,6 +7,7 @@ import * as services from '@/utils/services';
 import router from 'umi/router';
 import LoadingPage from '@/component/LoadingPage'
 import styles from '../document.css';
+import { useInputAutoSave } from '@/utils/hookUtils';
 
 /**
  * 剧本基础页
@@ -16,33 +17,9 @@ export default function({document, updateDocument, updateSaveTime}) {
 
 
   //状态
-  const [name, setName] = useState(document.name);
-  const [description, setDescription] = useState(document.description);
-  const [nameTimer, setNameTimer] = useState(null);
-  const [descriptionTimer, setDescriptionTimer] = useState(null);
+  const autoName = useInputAutoSave(str=>save('name',str),document.name);
+  const autoDescription = useInputAutoSave(str=>save('description',str),document.description);
 
-
-
-  //修改名称
-  function handleChangeName(str){
-    nameTimer&&clearTimeout(nameTimer);
-    setName(str);
-    if(str){
-      setNameTimer(setTimeout(()=>{
-        save('name', str);
-      },3000));
-    }
-  }
-  //修改描述
-  const handleChangeDescription = (str)=>{
-    descriptionTimer&&clearTimeout(descriptionTimer);
-    setDescription(str);
-    if(str){
-      setDescriptionTimer(setTimeout(()=>{
-        save('description', str);
-      },3000));
-    }
-  }
   //保存
   function save(key, str) {
     if(str && document[key] !== str){
@@ -63,31 +40,23 @@ export default function({document, updateDocument, updateSaveTime}) {
 
 
 
-
-
-
   return(
     <div className={'container'}>
       <List>
         <InputItem
           labelNumber={3}
-          defaultValue={document.name}
           placeholder='剧本名称'
-          onChange={handleChangeName}
-          onBlur={str=>save('name', str)}
-          onVirtualKeyboardConfirm={str=>save('name', str)}
-          error={document.name && !name}
+          {...autoName}
+          error={document.name && !autoName.current}
           clear
         >名称</InputItem>
         <TextareaItem
-          defaultValue={document.description}
           title="描述"
-          placeholder={'介绍一下~'}
           autoHeight
           labelNumber={3}
-          onChange={handleChangeDescription}
-          onBlur={str=>save('description', str)}
-          error={document.description && !description}
+          placeholder={'介绍一下~'}
+          {...autoDescription}
+          error={document.description && !autoDescription.current}
           clear
         />
       </List>

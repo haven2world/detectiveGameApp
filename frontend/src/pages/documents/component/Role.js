@@ -16,11 +16,6 @@ import styles from '../document.css';
 export default function({document, updateDocument, updateSaveTime}) {
 
 
-  //状态
-  const [name, setName] = useState(document.name);
-  const [nameTimer, setNameTimer] = useState(null);
-  const [descriptionTimer, setDescriptionTimer] = useState(null);
-
   //创建角色
   function createRole() {
     Modal.prompt(

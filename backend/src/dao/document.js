@@ -7,7 +7,7 @@
 
 const Document = require('../model/gameDocument');
 
-module.exports = {
+const dao = {
 //  查找一个用户创建的剧本列表
   async queryDocumentsForCreator(userId){
     return await Document.find({creator:userId}, {name:1, description:1, publishFlag:1, roles:1, updateTime:1})
@@ -39,6 +39,11 @@ module.exports = {
       $currentDate:{updateTime:true}
     })
   },
+//  获取一个角色的信息
+  async getRole(docId, roleId){
+    let documentWithSkillInfo = await Document.findById(docId).populate('roles.skills.skillInfo');
+    return documentWithSkillInfo.roles.id(roleId);
+  },
 //  创建一个角色
   async createRole(docId, name){
     let doc = await Document.findById(docId);
@@ -46,8 +51,36 @@ module.exports = {
     doc.roles.push(role);
     await doc.save();
     return {doc, role}
-  }
-
+  },
+//  为一个角色增加一个技能
+  async addSkillForRole(docId, roleId, skillId){
+    let doc = await Document.findById(docId);
+    let role = await doc.roles.id(roleId);
+    let skill = await role.skills.create({skillInfo:skillId});
+    role.skills.push(skill);
+    await doc.save();
+    return skill;
+  },
+// 修改某个角色某个技能的使用最大次数
+  async updateSkillCount(docId, roleId, skillId, count){
+    let doc = await Document.findById(docId);
+    let role = await doc.roles.id(roleId);
+    let skill = role.skills.find(skill=>skill.skillInfo.toString() === skillId);
+    skill.maxCount = count;
+    doc.updateTime = new Date();
+    let result = await doc.save();
+    return !!result;
+  },
+  // 删除某个角色某个技能
+  async deleteSkillForRole(docId, roleId, roleSkillId){
+    let doc = await Document.findById(docId);
+    let role = await doc.roles.id(roleId);
+    role.skills.id(roleSkillId).remove();
+    let result = await doc.save();
+    return !!result;
+  },
 
 
 };
+
+module.exports = dao;

@@ -14,6 +14,7 @@ const userPublic = require('./userPublicController');
 //引入 auth api controller
 const user = require('./userController');
 const document = require('./documentController');
+const skill = require('./skillController');
 
 const router = new Router({prefix:global._Config.baseUrl});
 initGlobalInterceptor(router);//引入全局拦截器
@@ -22,6 +23,7 @@ initGlobalInterceptor(router);//引入全局拦截器
 router.use('/apis/pub/users', userPublic.routes(), userPublic.allowedMethods());
 router.use('/apis/auth/users', user.routes(), user.allowedMethods());
 router.use('/apis/auth/documents', document.routes(), document.allowedMethods());
+router.use('/apis/auth/skills', skill.routes(), skill.allowedMethods());
 
 
 //测试样例

@@ -12,5 +12,9 @@ module.exports = {
   PARAM_ERROR:501,
 
 //  token失效
-  TOKEN_ERROR:401
+  TOKEN_ERROR:401,
+
+//  数据库操作失败
+  DB_ERROR:1000
+
 }

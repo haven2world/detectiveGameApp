@@ -26,7 +26,7 @@ export default function({computedMatch, role}) {
     services.fetchRoleDocument(docId, roleId).then(result=>{
       if(result && result.code === 0){
         let roleDoc = result.data.role;
-        roleDoc.allSkills = result.data.skills;
+        roleDoc.allSkills = result.data.skills.map(skill=>skill.name);
         setRoleDoc(roleDoc);
         setLoading(false);
       }
@@ -40,5 +40,6 @@ export default function({computedMatch, role}) {
     roleId={roleId}
     loading={loading || !roleDoc}
     roleDoc={roleDoc}
+    updateRole={updateRole}
   />
 }

@@ -124,6 +124,18 @@ router.put('/:id/roles/:roleId',async(ctx, next)=>{
   await documentService.modifyRoleInfo(ctx.params.id, ctx.params.roleId, ctx.request.body);
 })
 
+//删除某个角色的某个技能
+router.delete('/:id/roles/:roleId/skills/:roleSkillId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.roleId || !ctx.params.roleSkillId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+
+  await documentService.deleteSkillForRole(ctx.params.id, ctx.params.roleId, ctx.params.roleSkillId);
+})
+
 module.exports = router;
 
 

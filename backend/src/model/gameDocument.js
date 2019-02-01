@@ -9,7 +9,7 @@ const Schema = mongoose.Schema;
 
 //技能
 let skillSchema = new Schema({
-  skillInfo:{type:Schema.Types.ObjectId, ref:'GameDocument'},
+  skillInfo:{type:Schema.Types.ObjectId, ref:'SkillInfo'},
   maxCount:Number
 });
 

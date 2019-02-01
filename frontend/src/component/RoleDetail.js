@@ -1,13 +1,14 @@
 'use strict';
 import { useState, useEffect } from 'react';
 import router from 'umi/router';
-import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, TextareaItem} from 'antd-mobile';
+import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, TextareaItem, Stepper} from 'antd-mobile';
 import LoadingPage from '@/component/LoadingPage';
 import AvatarCard from '@/component/AvatarCard';
 import InputSelect from '@/component/InputSelect/InputSelect';
 import * as services from '@/utils/services';
 import { toast } from '@/utils/toastUtils';
-import { RenderIf } from '@/utils/commonUtils';
+import { isInArray, RenderIf } from '@/utils/commonUtils';
+import { useInputAutoSave } from '@/utils/hookUtils';
 
 /**
  * 角色详情页
@@ -17,8 +18,7 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
 
 
 
-  //角色介绍
-  const [descriptionTimer, setDescriptionTimer] = useState(null);
+
   const [skillModalVisible, setSkillModalVisible] = useState(false);
   const [newSkillName, setNewSkillName] = useState('');
 
@@ -39,25 +39,11 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
     ]);
   }
 
-  //修改名称
-  function handleChangeDescription(str){
-    descriptionTimer&&clearTimeout(descriptionTimer);
-    if(str){
-      setDescriptionTimer(setTimeout(()=>{
-        save('description', str);
-      },3000));
-    }
-  }
   //保存
   function save(key, data) {
     if(data && roleDoc[key] !== data){
       let param = {};
       param[key] = data;
-      //todo
-      if(key === 'skill' && roleDoc.composingStage === 'role'){
-        param.composingStage = 'story';
-        roleDoc.composingStage = 'story';
-      }
       services.modifyRoleInfo(docId, roleId, param).then(result=>{
         if(result && result.code === 0){
           roleDoc[key] = data;
@@ -69,7 +55,24 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
 
   //新增技能
   function addSkill(){
-
+    if(!newSkillName){
+      toast.info('请输入技能名');
+      return;
+    }
+    if(roleDoc.skills.find(skill=>skill.skillInfo.name === newSkillName)){
+      toast.info('请不要使用重复的技能名');
+      return;
+    }
+    services.createSkill({name:newSkillName, docId, roleId}).then(result=>{
+      if(result && result.code === 0){
+        roleDoc.skills.push(result.data.skill);
+        if(!isInArray(newSkillName, roleDoc.allSkills)){
+          roleDoc.allSkills.push(newSkillName);
+        }
+        toast.light('已保存');
+      }
+      closeModal();
+    });
   }
 
   //关闭modal
@@ -92,9 +95,10 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
       title={'新增技能'}
       footer={footerBtn}
     >
+      <div style={{paddingBottom:5}}>技能名</div>
       <InputSelect
-        onChange={(value)=>{console.log(value);setNewSkillName(value)}}
-        list={['test','ttes','testt']}
+        onChange={(value)=>{setNewSkillName(value)}}
+        list={roleDoc.allSkills}
       />
     </Modal>)
   }
@@ -111,6 +115,9 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
       </div>
     )
   }else{
+    //角色介绍
+    const autoDescription = useInputAutoSave(str=>save('description',str), roleDoc.description);
+
     return (
       <div className={'container'}>
         <NavBar
@@ -130,12 +137,10 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
             <TextareaItem
               placeholder="介绍一下这个角色吧"
               autoHeight
-              defaultValue={roleDoc.description}
               labelNumber={3}
-              onChange={handleChangeDescription}
-              onBlur={str=>save('description', str)}
-              clear
               editable={editable}
+              clear
+              {...autoDescription}
             />
           </ListItem>
           <ListItem>
@@ -146,10 +151,94 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
               )}
             </div>
           </ListItem>
-
+          {roleDoc.skills.map((skill, index)=>{
+            let info = skill.skillInfo;
+            return <SkillItem
+              key={index}
+              name={info.name}
+              description={info.description}
+              count={skill.maxCount}
+              roleId={roleId}
+              docId={docId}
+              skillId={info._id}
+              roleSkillId={skill._id}
+              editable={editable}
+            />
+          })}
         </List>
         {renderSkillModal()}
       </div>
     )
+  }
+}
+
+function SkillItem({name, description, count, editable, roleId, skillId, docId, roleSkillId}) {
+
+  const autoName = useInputAutoSave(saveName, name);
+  const autoDescription = useInputAutoSave(saveDescription, description);
+  const [_count, setCount] = useState(count||0);
+  const [visible, setVisible] = useState(true);
+
+  const baseParam = {roleId, docId};
+
+  function saveName(name) {
+    services.modifySkill(skillId, {...baseParam, name}).then(result=>{
+      if(result && result.code === 0){
+        toast.light('已保存');
+      }
+    })
+  }
+
+  function saveDescription(description) {
+    services.modifySkill(skillId, {...baseParam, description}).then(result=>{
+      if(result && result.code === 0){
+        toast.light('已保存');
+      }
+    })
+  }
+
+  function saveCount(value) {
+    setCount(value);
+    services.modifySkill(skillId, {...baseParam, count:value}).then(result=>{
+      if(result && result.code === 0){
+        toast.light('已保存');
+      }
+    })
+  }
+
+  function deleteSkill() {
+    services.deleteSkill(docId, roleId, roleSkillId).then(result=>{
+      if(result && result.code === 0){
+        toast.light('已删除');
+        setVisible(false);
+      }
+    })
+  }
+
+  if(visible){
+    return <ListItem>
+      <div>
+        <span className={'gray-text'}>名称：</span>
+        <InputItem {...autoName} editable={editable}/>
+      </div>
+      <div>
+        <span className={'gray-text'}>效果：</span>
+        <InputItem {...autoDescription} editable={editable} placeholder="描述一下这个技能"/>
+      </div>
+      <div>
+        <span className={'gray-text'}>最大使用次数：</span>
+        <ListItem>
+          <span style={{marginRight:10, width:80, display:'inline-block'}}>{_count||'无限次'}</span>
+          {RenderIf(editable)(
+            <Stepper min={0} value={_count} onChange={saveCount} showNumber={false} style={{ width: 80}}/>
+          )}
+        </ListItem>
+      </div>
+      <div className={'primary-text'} style={{position:'absolute', right: 20, top: 5, zIndex:100}}>
+        <i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={deleteSkill}/>
+      </div>
+    </ListItem>
+  }else{
+    return null;
   }
 }
