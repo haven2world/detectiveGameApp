@@ -88,8 +88,8 @@ const service = {
   async deleteRole(docId, roleId){
     let document  = await service.getDocumentDetail(docId);
     document.roles.id(roleId).remove();
+    document.stories = document.stories.filter(story=>story.belongToRoleId!==roleId);
     await document.save();
-    //todo: 删除与角色相关的故事
     return true
   },
 //  修改一个角色的头像
@@ -157,7 +157,7 @@ const service = {
     return currentStageCount
   },
 
-  //减少一个股市阶段
+  //减少一个故事阶段
   async reduceStoryStage(docId){
     let currentStageCount = await document.reduceStoryStage(docId);
 
@@ -167,7 +167,7 @@ const service = {
   //  获取某阶段的故事列表
   async getAllRolesStoriesInStage(docId, stageCount){
     let doc = await document.getDocumentById(docId);
-    let roles = doc.roles;
+    let roles = doc.roles.toObject();
     let storyMap = {};
     doc.stories.forEach(story=>{
       if(story.stage === stageCount){
@@ -175,9 +175,8 @@ const service = {
       }
     });
     roles.forEach(role=>{
-      role._doc.story = storyMap[role._id];
+      role.story = storyMap[role._id];
     });
-
     return roles;
   },
 

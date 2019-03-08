@@ -6,6 +6,7 @@ import { formatTime, RenderIf } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
 import LoadingPage from '@/component/LoadingPage'
+import ScrollableList from '@/component/ScrollableList';
 import styles from '../document.css';
 import { toast } from '@/utils/toastUtils';
 const ListItem = List.Item;
@@ -62,18 +63,13 @@ export default function({document, updateDocument, updateSaveTime}) {
         <Button className={styles.listButton} onClick={createStoryStage} type={'ghost'}>新增阶段</Button>
         <WhiteSpace/>
       </WingBlank>
-      <div style={{flex:1,position:'relative'}}>
-        <List
-          className={'container'}
-          style={{position:'absolute',overflow:'scroll'}}
-          renderFooter={()=>RenderIf(document.storyStageCount>0)(
-            <Button onClick={deleteLastStage} type={'warning'}>删除最后一个阶段</Button>
-          )}
-        >
-          {renderStageList()}
-        </List>
-      </div>
-
+      <ScrollableList
+        renderFooter={()=>RenderIf(document.storyStageCount>0)(
+          <Button onClick={deleteLastStage} type={'warning'}>删除最后一个阶段</Button>
+        )}
+      >
+        {renderStageList()}
+      </ScrollableList>
     </div>
   )
 }
