@@ -60,3 +60,21 @@ export function useInputAutoSave(onSave, defaultValue) {
     current:value
   };
 }
+
+//在sessionStorage中记录tab
+export function useTab(initialPage, key) {
+  let initTab = Number(sessionStorage['_tabSaver-' + key]);
+  if(initTab === undefined){
+    initTab = initialPage;
+    sessionStorage['_tabSaver-' + key] = initTab;
+  }
+
+  let [tab, setTab] = useState(initTab);
+
+  let beforeSet = (value)=>{
+    sessionStorage['_tabSaver-' + key] = value;
+    setTab(value);
+  };
+
+  return [tab, beforeSet];
+}

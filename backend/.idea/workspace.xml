@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: 更换头像 修改角色名">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/documentController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/gameDocument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Base.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Base.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Role.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Role.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Story.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Story.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/hookUtils/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/hookUtils/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -383,7 +372,7 @@
       <workItem from="1546930524560" duration="1798000" />
       <workItem from="1547536565568" duration="23000" />
       <workItem from="1548990975912" duration="6970000" />
-      <workItem from="1552016335051" duration="7279000" />
+      <workItem from="1552016335051" duration="7508000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -424,7 +413,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="362155000" />
+    <option name="totallyTimeSpent" value="362384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />

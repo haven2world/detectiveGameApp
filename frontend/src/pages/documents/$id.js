@@ -6,6 +6,7 @@ import { formatTime, RenderIf } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
 import LoadingPage from '@/component/LoadingPage'
+import {useTab} from '@/utils/hookUtils';
 import styles from './document.css';
 import Base from './component/Base';
 import Role from './component/Role';
@@ -24,6 +25,7 @@ export default function({computedMatch}) {
   const [document, setDocument] = useState(null);
   const [loading, setLoading] = useState(false);
   const [saveTime, setSaveTime] = useState(null);
+  const [tab, setTab] = useTab(2,'documents-index-tab');
 
   //初始化
   useEffect(()=>{
@@ -86,7 +88,6 @@ export default function({computedMatch}) {
   }
 
 
-
   if(document){
 
     return(
@@ -97,7 +98,8 @@ export default function({computedMatch}) {
           onLeftClick={router.goBack}
         >剧本</NavBar>
         <Tabs
-          initialPage={2}
+          page={tab}
+          onChange={(tab,index)=>setTab(index)}
           tabs={tabs}
           renderTabBar={props =><Tabs.DefaultTabBar {...props} swipeable />}
         >
