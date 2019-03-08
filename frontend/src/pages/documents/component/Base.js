@@ -41,7 +41,7 @@ export default function({document, updateDocument, updateSaveTime}) {
 
 
   return(
-    <div className={'container'}>
+    <div>
       <List>
         <InputItem
           labelNumber={3}

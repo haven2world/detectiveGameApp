@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: 更换头像 修改角色名">
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/documentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/document.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/global.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Base.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Role.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Role.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Story.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Story.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
     </list>
@@ -27,26 +32,8 @@
       <file leaf-file-name="documentController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/documentController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="130" column="35" lean-forward="true" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="skillController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/skillController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            <state relative-caret-position="447">
+              <caret line="161" column="23" selection-start-line="161" selection-start-column="23" selection-end-line="161" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -54,8 +41,8 @@
       <file leaf-file-name="gameDocument.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="129" column="66" lean-forward="true" selection-start-line="129" selection-start-column="66" selection-end-line="129" selection-end-column="66" />
+            <state relative-caret-position="141">
+              <caret line="40" column="14" lean-forward="true" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -63,8 +50,17 @@
       <file leaf-file-name="document.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dao/document.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="87" column="48" selection-start-line="87" selection-start-column="48" selection-end-line="87" selection-end-column="48" />
+            <state relative-caret-position="667">
+              <caret line="108" column="4" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="exceptionUtils.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/exceptionUtils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -81,8 +77,8 @@
       <file leaf-file-name="gameDocument.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="61" column="24" lean-forward="true" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+            <state relative-caret-position="327">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -118,6 +114,7 @@
     <findStrings>
       <find>_data</find>
       <find>_</find>
+      <find>throw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,8 +149,8 @@
         <option value="$PROJECT_DIR$/src/controller/skillController.js" />
         <option value="$PROJECT_DIR$/src/model/gameDocument.js" />
         <option value="$PROJECT_DIR$/src/service/gameDocument.js" />
-        <option value="$PROJECT_DIR$/src/controller/documentController.js" />
         <option value="$PROJECT_DIR$/src/dao/document.js" />
+        <option value="$PROJECT_DIR$/src/controller/documentController.js" />
       </list>
     </option>
   </component>
@@ -180,10 +177,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-16" />
-    <option name="y" value="-16" />
-    <option name="width" value="3872" />
-    <option name="height" value="2112" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -191,7 +188,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,6 +239,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -385,7 +382,8 @@
       <workItem from="1546856306222" duration="1865000" />
       <workItem from="1546930524560" duration="1798000" />
       <workItem from="1547536565568" duration="23000" />
-      <workItem from="1548990975912" duration="6914000" />
+      <workItem from="1548990975912" duration="6970000" />
+      <workItem from="1552016335051" duration="7279000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -426,7 +424,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="354820000" />
+    <option name="totallyTimeSpent" value="362155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -436,7 +434,6 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -451,6 +448,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -746,26 +744,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/exceptionUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ecosystem.config.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/skillController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
+        <state relative-caret-position="980">
           <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
         </state>
       </provider>
@@ -784,31 +768,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/document.js">
+    <entry file="file://$PROJECT_DIR$/src/controller/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="87" column="48" selection-start-line="87" selection-start-column="48" selection-end-line="87" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="61" column="24" lean-forward="true" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="129" column="66" lean-forward="true" selection-start-line="129" selection-start-column="66" selection-end-line="129" selection-end-column="66" />
+        <state relative-caret-position="141">
+          <caret line="40" column="14" lean-forward="true" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/exceptionUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/document.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="108" column="4" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/documentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="130" column="35" lean-forward="true" selection-start-line="130" selection-start-column="35" selection-end-line="130" selection-end-column="35" />
+        <state relative-caret-position="447">
+          <caret line="161" column="23" selection-start-line="161" selection-start-column="23" selection-end-line="161" selection-end-column="23" />
         </state>
       </provider>
     </entry>

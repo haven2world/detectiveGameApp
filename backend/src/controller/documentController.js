@@ -136,7 +136,7 @@ router.delete('/:id/roles/:roleId/skills/:roleSkillId',async(ctx, next)=>{
   await documentService.deleteSkillForRole(ctx.params.id, ctx.params.roleId, ctx.params.roleSkillId);
 })
 
-//创建剧本角色
+//创建新阶段
 router.post('/:id/stages',async(ctx, next)=>{
   if(!ctx.params.id){
     ctx.throw({
@@ -146,6 +146,30 @@ router.post('/:id/stages',async(ctx, next)=>{
   }
   ctx._data.storyStageCount = await documentService.addStoryStage(ctx.params.id);
 })
+
+//删除最后一个阶段
+router.delete('/:id/stages',async(ctx, next)=>{
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.storyStageCount = await documentService.reduceStoryStage(ctx.params.id);
+})
+
+//获取某一阶段的故事列表
+router.get('/:id/stages/:stageCount',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.stageCount){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+
+  ctx._data.stories = await documentService.getAllRolesStoriesInStage(ctx.params.id, ctx.params.stageCount);
+})
+
 module.exports = router;
 
 

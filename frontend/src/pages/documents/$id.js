@@ -74,9 +74,13 @@ export default function({computedMatch}) {
   function renderTabWrapper(content, index){
     let timeStr = saveTime?`最后保存于：${formatTime(saveTime,true)}`:'数据会自动保存';
     return (
-      <div className={'container'} key={index}>
-        <NoticeBar className={styles.notice} icon={null}>{timeStr}</NoticeBar>
-        {content}
+      <div key={index} className={'container flex-column-container'}>
+        <div style={{height:44}}>
+          <NoticeBar className={styles.notice} icon={null}>{timeStr}</NoticeBar>
+        </div>
+        <div style={{flex:1}}>
+          {content}
+        </div>
       </div>
     )
   }
@@ -86,7 +90,7 @@ export default function({computedMatch}) {
   if(document){
 
     return(
-      <div className={'container'}>
+      <div className={'container flex-column-container'}>
         <NavBar
           mode={'light'}
           icon={<Icon type={'left'}/>}

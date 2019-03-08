@@ -156,6 +156,31 @@ const service = {
 
     return currentStageCount
   },
+
+  //减少一个股市阶段
+  async reduceStoryStage(docId){
+    let currentStageCount = await document.reduceStoryStage(docId);
+
+    return currentStageCount
+  },
+
+  //  获取某阶段的故事列表
+  async getAllRolesStoriesInStage(docId, stageCount){
+    let doc = await document.getDocumentById(docId);
+    let roles = doc.roles;
+    let storyMap = {};
+    doc.stories.forEach(story=>{
+      if(story.stage === stageCount){
+        storyMap[story.belongToRoleId] = story;
+      }
+    });
+    roles.forEach(role=>{
+      role._doc.story = storyMap[role._id];
+    });
+
+    return roles;
+  },
+
 };
 
 

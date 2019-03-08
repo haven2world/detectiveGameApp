@@ -56,6 +56,11 @@ body {
     display: flex;
 }
 
+.flex-column-container{
+    display: flex;
+    flex-direction: column;
+}
+
 .flex-wrap {
     flex-wrap: wrap;
 }

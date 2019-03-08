@@ -94,6 +94,19 @@ const dao = {
     return doc.storyStageCount
   },
 
+//  减少一个故事阶段
+  async reduceStoryStage(docId){
+    let doc = await Document.findById(docId);
+    if(typeof doc.storyStageCount === 'undefined' || doc.storyStageCount === 0){
+      doc.storyStageCount = 0;
+      await doc.save();
+      throw {message:'无可用阶段'}
+    }
+    doc.storyStageCount -= 1;
+    doc.updateTime = new Date();
+    await doc.save();
+    return doc.storyStageCount
+  },
 };
 
 module.exports = dao;

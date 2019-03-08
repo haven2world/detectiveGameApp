@@ -30,20 +30,25 @@ export default function(props) {
   }
   if(list.length>0){
     return (
-      <List >
-        {list.map((role, index)=>{
-          return <Item key={index} wrap onClick={()=>clickDocument(role)} arrow={'horizontal'}
-                       thumb={<img
-                         src={role.photo ? role.photo : require('../assets/img/contact_default.png')}
-                         style={{ height: 50, width: 50, borderRadius: 25, border: '1px solid #f5f5f9', objectFit: 'cover', }}
-                       />}
-          >
-            {role.name}
-            <Item.Brief>
-              {role.description||'暂无描述'}</Item.Brief>
-          </Item>
-        })}
-      </List>
+      <div style={{ flex: 1, position: 'relative' }}>
+        <List
+          className={'container'}
+          style={{ position: 'absolute', overflow: 'scroll' }}
+        >
+          {list.map((role, index) => {
+            return <Item key={index} wrap onClick={() => clickDocument(role)} arrow={'horizontal'}
+                         thumb={<img
+                           src={role.photo ? role.photo : require('../assets/img/contact_default.png')}
+                           style={{ height: 50, width: 50, borderRadius: 25, border: '1px solid #f5f5f9', objectFit: 'cover', }}
+                         />}
+            >
+              {role.name}
+              <Item.Brief>
+                {role.description || '暂无描述'}</Item.Brief>
+            </Item>;
+          })}
+        </List>
+      </div>
     )
   }else{
     return (

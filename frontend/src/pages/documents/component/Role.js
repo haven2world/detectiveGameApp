@@ -52,14 +52,12 @@ export default function({document, updateDocument, updateSaveTime}) {
 
 
   return(
-    <div className={'container'} style={{backgroundColor:'#fff'}}>
-      <List key={'button'}>
-        <WingBlank>
-          <WhiteSpace/>
-          <Button className={styles.listButton} onClick={createRole} type={'ghost'}>新增角色</Button>
-          <WhiteSpace/>
-        </WingBlank>
-      </List>
+    <div className={'container flex-column-container'} style={{backgroundColor:'#fff'}}>
+      <WingBlank>
+        <WhiteSpace/>
+        <Button className={styles.listButton} onClick={createRole} type={'ghost'}>新增角色</Button>
+        <WhiteSpace/>
+      </WingBlank>
       <RoleList
         document={document}
         list={document.roles}

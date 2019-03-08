@@ -225,3 +225,27 @@ export function createStoryStage(id){
   let url = '/detective/apis/auth/documents/' + id +'/stages';
   return http.post(url, {});
 }
+
+/* 获取当前阶段的故事
+ - url: /detective/apis/auth/documents/:id/stages/:stageCount
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchStoriesInStage(id, stageCount){
+  let url = '/detective/apis/auth/documents/' + id +'/stages/' + stageCount;
+  return http.get(url, {});
+}
+
+/* 删除技能
+ - url: /detective/apis/auth/documents/:id/stages
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteLastStage(id){
+  let url = '/detective/apis/auth/documents/' + id + '/stages';
+  return http.delete(url, {});
+}
