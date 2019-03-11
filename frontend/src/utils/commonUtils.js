@@ -289,9 +289,49 @@ export function selectFile(multiple, accept='*/*') {
     input.multiple = multiple;
     input.accept = accept;
     input.onchange = function(event){
-      resolve(event.path[0].files)
+      resolve(event.path[0].files);
       input.remove();
-    }
+    };
     input.click();
   })
+}
+
+//修改query
+export function changeQuery(searchString) {
+  let currentUrl = window.location.href;
+  if(window.location.search){
+    currentUrl = currentUrl.replace(/\?.*/,searchString);
+  }else{
+    currentUrl += searchString;
+  }
+  window.history.pushState('','',currentUrl);
+}
+
+//  判断浏览器平台
+function isMobile(){
+  if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+    return true
+  }else{
+    return false
+  }
+}
+
+//识别文件后缀
+export function validateFileByExtensionName(file,ext1,ext2){
+  let ext = [].slice.call(arguments,1);
+  if(!file || !file.name){
+    throw new Error('请输入文件');
+  }
+  for(let i=0;i<ext.length;++i){
+    if(typeof ext[i] !== 'string'){
+      throw new Error('扩展名请输入字符串');
+    }
+  }
+  if(ext.length===0){
+    return true;
+  }else{
+    let temp = file.name.split('.');
+    let extName = temp[temp.length-1].toLowerCase();
+    return isInArray(extName,ext)
+  }
 }
