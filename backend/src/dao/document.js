@@ -53,6 +53,22 @@ const dao = {
     await doc.save();
     return {doc, role}
   },
+//  删除角色
+  async deleteRole(docId, roleId){
+    let document  = await Document.findById(id);
+    document.roles.id(roleId).remove();
+    let storyArr = [];
+    document.stories.forEach(story=>{
+      if(story.belongToRoleId.toString()===roleId){
+        storyArr.push(story._id);
+      }
+    });
+    storyArr.forEach(storyId=>{
+      document.stories.pull(storyId);
+    });
+
+    await document.save();
+  },
 //  为一个角色增加一个技能
   async addSkillForRole(docId, roleId, skillId){
     let doc = await Document.findById(docId);
@@ -102,6 +118,17 @@ const dao = {
       await doc.save();
       throw {message:'无可用阶段'}
     }
+
+    let storyArr = [];
+    doc.stories.forEach(story=>{
+      if(story.stage===doc.storyStageCount-1){
+        storyArr.push(story._id);
+      }
+    });
+    storyArr.forEach(storyId=>{
+      doc.stories.pull(storyId);
+    });
+
     doc.storyStageCount -= 1;
     doc.updateTime = new Date();
     await doc.save();

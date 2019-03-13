@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 完成故事的富文本编辑与导入word">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/documentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/commonUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/commonUtils.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -45,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="$stageCount.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="$stageCount.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -81,8 +78,8 @@
       <file leaf-file-name="commonUtils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1392">
-              <caret line="201" column="28" lean-forward="true" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
+            <state relative-caret-position="313">
+              <caret line="286" column="48" lean-forward="true" selection-start-line="286" selection-start-column="48" selection-end-line="286" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -96,7 +93,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScrollableList.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ScrollableList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/component/ScrollableList.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
@@ -196,10 +193,10 @@
         <option value="$PROJECT_DIR$/src/component/StoryEditor.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/story.css" />
         <option value="$PROJECT_DIR$/src/component/StoryEditor/story.css" />
-        <option value="$PROJECT_DIR$/src/utils/commonUtils.js" />
         <option value="$PROJECT_DIR$/src/utils/services.js" />
         <option value="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
+        <option value="$PROJECT_DIR$/src/utils/commonUtils.js" />
       </list>
     </option>
   </component>
@@ -372,7 +369,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="ser&#9;FILE&#9;file://E:/myWorkspace/detectiveGameApp/frontend/src/utils/services.js&#10;my-light-toast&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="ut&#9;FILE&#9;file://E:/myWorkspace/detectiveGameApp/frontend/src/utils/commonUtils.js&#10;ser&#9;FILE&#9;file://E:/myWorkspace/detectiveGameApp/frontend/src/utils/services.js&#10;my-light-toast&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/webstorm.webpack.js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -524,7 +521,7 @@
       <workItem from="1547197602960" duration="1546000" />
       <workItem from="1548990983840" duration="7397000" />
       <workItem from="1549008168204" duration="1629000" />
-      <workItem from="1552016330711" duration="44931000" />
+      <workItem from="1552016330711" duration="47041000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -635,7 +632,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="467563000" />
+    <option name="totallyTimeSpent" value="469673000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1009,13 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/ScrollableList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/story.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1067,13 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1392">
-          <caret line="201" column="28" lean-forward="true" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/StoryEditor/story.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1105,6 +1088,20 @@
           <folding>
             <element signature="e#15#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="286" column="48" lean-forward="true" selection-start-line="286" selection-start-column="48" selection-end-line="286" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/ScrollableList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
         </state>
       </provider>
     </entry>

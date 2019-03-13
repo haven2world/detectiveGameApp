@@ -304,7 +304,7 @@ export function changeQuery(searchString) {
   }else{
     currentUrl += searchString;
   }
-  window.history.pushState('','',currentUrl);
+  window.history.replaceState('','',currentUrl);
 }
 
 //  判断浏览器平台

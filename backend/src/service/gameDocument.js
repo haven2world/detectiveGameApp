@@ -86,11 +86,8 @@ const service = {
   },
 //  删除一个角色
   async deleteRole(docId, roleId){
-    let document  = await service.getDocumentDetail(docId);
-    document.roles.id(roleId).remove();
-    document.stories = document.stories.filter(story=>story.belongToRoleId!==roleId);
-    await document.save();
-    return true
+    let result = await service.deleteRole(docId, roleId);
+    return !!result
   },
 //  修改一个角色的头像
   async modifyRoleAvatar(docId, roleId, file){
