@@ -11,6 +11,14 @@ const skillService = require('./skill');
 const skill = require('../dao/skill');
 const commonUtils = require('../utils/commonUtils');
 
+//编写阶段
+const stageList = [
+  'name',
+  'role',
+  'story',
+  'scene'
+];
+
 const service = {
 //  获取用户创建的剧本
   async getDocumentsForCreator(id){
@@ -27,7 +35,7 @@ const service = {
       isPrivate:true,
       creator:user,
       publishFlag:false,
-      composingStage:'name',
+      composingStage:stageList[0],
       storyStageCount:1,
       level:{
         easy:{
@@ -71,13 +79,22 @@ const service = {
     }
     await document.updateBasicInfo(id, paramToSet);
   },
+//  推动剧本编写阶段
+  async changeDocumentComposingStage(docInstance, stage){
+    if(!docInstance){
+      throw {message:'无有效剧本'}
+    }
+    let currentStageIndex = stageList.findIndex(item=>item===docInstance.composingStage);
+    let targetStageIndex = stageList.findIndex(item=>item===stage);
+    if(targetStageIndex>=currentStageIndex){
+      docInstance.composingStage = stage;
+      await docInstance.save();
+    }
+  },
 //  创建一个角色
   async createRole(docId, name){
     let {doc, role} = await document.createRole(docId, name);
-    if(role && doc.composingStage === 'role'){
-      doc.composingStage = 'story';
-      await doc.save();
-    }
+    service.changeDocumentComposingStage(doc, 'story');
     return {composingStage:doc.composingStage, role}
   },
   //  获取一个角色
@@ -179,8 +196,9 @@ const service = {
 
 //  创建新故事
   async createStory(docId, roleId, stageCount, content){
-    let story = await document.createStoryInDocument(docId,{stage:stageCount,content,belongToRoleId:roleId});
-    return story;
+    let {doc, roleInstance} = await document.createStoryInDocument(docId,{stage:stageCount,content,belongToRoleId:roleId});
+    service.changeDocumentComposingStage(doc, 'scene');
+    return roleInstance;
   },
 
 //  修改故事

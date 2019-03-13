@@ -143,7 +143,7 @@ const dao = {
     doc.updateTime = new Date();
     console.log(doc)
     await doc.save();
-    return roleInstance;
+    return {doc, roleInstance};
   },
 
 //  修改故事
