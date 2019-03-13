@@ -12,8 +12,8 @@ import mammoth from 'mammoth';
  * 简化富文本
  */
 
-export default function({story}) {
-  const editor = useRef(null);
+export default function({story, saveStory}) {
+  const editorRef = useRef(null);
 
   const config = {
     toolbar:['bold','undo'],
@@ -29,6 +29,7 @@ export default function({story}) {
   //解析word
   function importWord() {
     Modal.alert('警告','如果导入word文件将会覆盖已有内容，是否确认？',[
+      {text:'取消'},
       {text:'确认', onPress:async()=>{
           let files = await selectFile(false, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
           let file = files[0];
@@ -45,13 +46,18 @@ export default function({story}) {
             reader.readAsArrayBuffer(file);
           }
         }},
-      {text:'取消'},
     ]);
   }
 
   function displayResult(result) {
-    editor.current.setData(result.value)
+    editorRef.current.setData(result.value)
     console.log(result.message)
+  }
+
+  //保存故事
+  function onSave() {
+    let data = editorRef.current.getData();
+    saveStory && saveStory(data);
   }
 
 
@@ -60,15 +66,15 @@ export default function({story}) {
       <WhiteSpace/>
       <div className={styles.toolbar}>
         <Button type={'ghost'} size={'small'} inline onClick={importWord}>导入word</Button>
-        <Button type={'primary'} size={'small'} inline >保存</Button>
+        <Button type={'primary'} size={'small'} inline onClick={onSave}>保存</Button>
       </div>
       <WhiteSpace/>
       <div className={styles.editorWrapper}>
         <CKEditor
-          onInit={item=>editor.current=item}
+          onInit={item=>editorRef.current=item}
           editor={ ClassicEditor }
           config={config}
-          data="<p>Hello from CKEditor 5!</p>"
+          data={story?story.content:''}
           onChange={onChange}
           placeholder={'开始编写该阶段的故事吧'}
         />

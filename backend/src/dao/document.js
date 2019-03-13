@@ -107,6 +107,25 @@ const dao = {
     await doc.save();
     return doc.storyStageCount
   },
+
+// 创建一个故事
+  async createStoryInDocument(docId, story){
+    let doc = await Document.findById(docId);
+    let roleInstance = await doc.stories.create(story);
+    doc.stories.push(roleInstance);
+    doc.updateTime = new Date();
+    console.log(doc)
+    await doc.save();
+    return roleInstance;
+  },
+
+//  修改故事
+  async modifyStoryContent(docId, storyId, content){
+    return await Document.updateOne({_id:docId, 'stories._id':storyId},{
+      $set:{'stories.$.content':content},
+      $currentDate:{updateTime:true}
+    })
+  }
 };
 
 module.exports = dao;

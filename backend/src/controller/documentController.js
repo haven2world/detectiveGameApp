@@ -170,6 +170,48 @@ router.get('/:id/stages/:stageCount',async(ctx, next)=>{
   ctx._data.stories = await documentService.getAllRolesStoriesInStage(ctx.params.id, ctx.params.stageCount);
 })
 
+//创建故事
+router.post('/:id/stories',async(ctx, next)=>{
+  const {roleId, stageCount, content} = ctx.request.body;
+  if(!ctx.params.id || !roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(typeof stageCount !== "number"){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效阶段'
+    })
+  }
+  if(!content){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效故事内容'
+    })
+  }
+  ctx._data.story = await documentService.createStory(ctx.params.id, roleId, stageCount, content);
+})
+
+//修改故事
+router.put('/:id/stories/:storyId',async(ctx, next)=>{
+  const {content} = ctx.request.body;
+  if(!ctx.params.id || !ctx.params.storyId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!content){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效故事内容'
+    })
+  }
+  await documentService.modifyStory(ctx.params.id, ctx.params.storyId, content);
+})
+
 module.exports = router;
 
 

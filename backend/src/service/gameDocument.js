@@ -43,7 +43,7 @@ const service = {
           keepClueSecret:true,
         }
       }
-    }
+    };
     let result = await document.createDocument({...basicDocument, name});
     if(!result){
       throw {message:'创建剧本失败'}
@@ -170,7 +170,7 @@ const service = {
     let roles = doc.roles.toObject();
     let storyMap = {};
     doc.stories.forEach(story=>{
-      if(story.stage === stageCount){
+      if(story.stage === Number(stageCount)){
         storyMap[story.belongToRoleId] = story;
       }
     });
@@ -178,6 +178,18 @@ const service = {
       role.story = storyMap[role._id];
     });
     return roles;
+  },
+
+//  创建新故事
+  async createStory(docId, roleId, stageCount, content){
+    let story = await document.createStoryInDocument(docId,{stage:stageCount,content,belongToRoleId:roleId});
+    return story;
+  },
+
+//  修改故事
+  async modifyStory(docId,storyId,content){
+    let result = await document.modifyStoryContent(docId, storyId, content);
+    return !!result;
   },
 
 };

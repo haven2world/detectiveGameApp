@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/component/StoryEditor/story.css" afterDir="false" />
+    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 完成故事的富文本编辑与导入word">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/documentController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/document.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/login/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/login/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/commonUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/commonUtils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/services.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -37,11 +36,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="$stageCount.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="127">
+              <caret line="249" column="28" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="$stageCount.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+            <state relative-caret-position="390">
+              <caret line="122" column="36" lean-forward="true" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
               <folding>
                 <element signature="e#15#59#0" expanded="true" />
               </folding>
@@ -49,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoryEditor.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StoryEditor.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+            <state relative-caret-position="367">
+              <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
               <folding>
                 <element signature="e#15#73#0" expanded="true" />
               </folding>
@@ -125,6 +133,8 @@
       <find>container</find>
       <find>conso</find>
       <find>query</find>
+      <find>editor</find>
+      <find>slice</find>
     </findStrings>
     <dirStrings>
       <dir>E:\myWorkspace\detectiveGameApp\frontend\src\utils</dir>
@@ -169,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/component/InputSelect/InputSelect.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/roles/$roleId.js" />
         <option value="$PROJECT_DIR$/src/component/RoleDetail.js" />
-        <option value="$PROJECT_DIR$/src/utils/services.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/component/Base.js" />
         <option value="$PROJECT_DIR$/src/pages/main/start.js" />
         <option value="$PROJECT_DIR$/src/pages/main/history.js" />
@@ -186,10 +195,11 @@
         <option value="$PROJECT_DIR$/src/component/RichEditor.js" />
         <option value="$PROJECT_DIR$/src/component/StoryEditor.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/story.css" />
-        <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
         <option value="$PROJECT_DIR$/src/component/StoryEditor/story.css" />
         <option value="$PROJECT_DIR$/src/utils/commonUtils.js" />
+        <option value="$PROJECT_DIR$/src/utils/services.js" />
         <option value="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" />
+        <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
       </list>
     </option>
   </component>
@@ -514,7 +524,7 @@
       <workItem from="1547197602960" duration="1546000" />
       <workItem from="1548990983840" duration="7397000" />
       <workItem from="1549008168204" duration="1629000" />
-      <workItem from="1552016330711" duration="37773000" />
+      <workItem from="1552016330711" duration="44931000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -614,11 +624,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552039505850</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="[feat]: 完成故事的富文本编辑与导入word">
+      <created>1552298442329</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1552298442329</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="460405000" />
+    <option name="totallyTimeSpent" value="467563000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -638,9 +655,9 @@
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32960895" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="3" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32960895" />
       <window_info anchor="bottom" id="TypeScript" order="0" weight="0.32960895" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19652265" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19652265" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32960895" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -703,7 +720,8 @@
     <MESSAGE value="[feat]:调整布局css同时创建故事列表页面" />
     <MESSAGE value="[feat]:增加tab保存方法" />
     <MESSAGE value="[feat]: 显示故事列表 封装列表" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 显示故事列表 封装列表" />
+    <MESSAGE value="[feat]: 完成故事的富文本编辑与导入word" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 完成故事的富文本编辑与导入word" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,13 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1087">
-          <caret line="249" column="30" lean-forward="true" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1056,16 +1067,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-          <folding>
-            <element signature="e#15#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1392">
@@ -1080,12 +1081,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="249" column="28" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+        <state relative-caret-position="367">
+          <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
           <folding>
             <element signature="e#15#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="122" column="36" lean-forward="true" selection-start-line="122" selection-start-column="36" selection-end-line="122" selection-end-column="36" />
+          <folding>
+            <element signature="e#15#59#0" expanded="true" />
           </folding>
         </state>
       </provider>

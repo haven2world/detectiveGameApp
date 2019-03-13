@@ -61,6 +61,7 @@ export default function({computedMatch,location:{query}}) {
   //渲染角色列表
   function renderList() {
     return stories.map((role,index)=>{
+      let brief = role.story?role.story.content.replace(/<[^>]+>/g,'').slice(0,10)+'...' : '尚未编写故事';
       return (
         <ListItem key={index} wrap onClick={() => clickStory(role)} arrow={'horizontal'}
               thumb={<img
@@ -70,7 +71,7 @@ export default function({computedMatch,location:{query}}) {
         >
           {role.name}
           <ListItem.Brief>
-            {role.story?role.story.content.slice(0,10)+'...' : '尚未编写故事'}</ListItem.Brief>
+            {brief}</ListItem.Brief>
         </ListItem>);
     });
   }
@@ -78,6 +79,7 @@ export default function({computedMatch,location:{query}}) {
   if(stories){
     if(roleData){
       return <StoryEditorPage
+        docId={docId}
         role={roleData}
         closeEditor={closeEditor}
         stageCount={stageCount}
@@ -112,8 +114,27 @@ export default function({computedMatch,location:{query}}) {
 
 }
 
-function StoryEditorPage({role, closeEditor, stageCount}) {
+function StoryEditorPage({role, closeEditor, stageCount, docId}) {
 
+  function saveStory(data) {
+    if(role.story && role.story._id){
+      services.modifyStory(docId, role.story._id, {content:data}).then(result=>{
+        if(result && result.code ===0){
+          role.story.content = data;
+          toast.light('保存成功');
+        }
+      });
+    }else{
+      services.createStory(docId,{roleId: role._id, stageCount, content:data}).then(result=>{
+        if(result && result.code ===0){
+          role.story = result.data.story;
+          console.log(role.story)
+          toast.light('保存成功');
+        }
+      });
+    }
+  }
+  
   return (
     <div className={'container flex-column-container'}>
       <NavBar
@@ -123,6 +144,7 @@ function StoryEditorPage({role, closeEditor, stageCount}) {
       >{role.name} - 第{stageCount+1}阶段</NavBar>
       <StoryEditor
         story={role.story}
+        saveStory={saveStory}
       />
     </div>
   )

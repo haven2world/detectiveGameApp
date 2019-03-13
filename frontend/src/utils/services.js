@@ -249,3 +249,32 @@ export function deleteLastStage(id){
   let url = '/detective/apis/auth/documents/' + id + '/stages';
   return http.delete(url, {});
 }
+
+/* 创建故事
+ - url: /detective/apis/auth/documents/:id/stories
+ - method: post
+ - param:{
+  roleId,
+  stageCount,
+  content
+ }
+ */
+
+export function createStory(id, param){
+  let url = '/detective/apis/auth/documents/' + id +'/stories';
+  return http.post(url, param);
+}
+
+
+/* 修改故事
+ - url: /detective/apis/auth/documents/:id/stories/:storyId
+ - method: put
+ - param:{
+  content
+ }
+ */
+
+export function modifyStory(id, storyId, param){
+  let url = '/detective/apis/auth/documents/' + id +'/stories/' + storyId;
+  return http.put(url, param);
+}

@@ -24,7 +24,7 @@ let roleSchema = new Schema({
 //故事
 let storySchema = new Schema({
   stage:Number,
-  content:[String],
+  content:String,
   belongToRoleId:Schema.Types.ObjectId,
 });
 
