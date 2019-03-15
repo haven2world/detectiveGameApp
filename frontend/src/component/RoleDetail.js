@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import router from 'umi/router';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, TextareaItem, Stepper} from 'antd-mobile';
 import LoadingPage from '@/component/LoadingPage';
+import ScrollableList from '@/component/ScrollableList';
 import AvatarCard from '@/component/AvatarCard';
 import InputSelect from '@/component/InputSelect/InputSelect';
 import * as services from '@/utils/services';
@@ -16,15 +17,19 @@ import { useInputAutoSave } from '@/utils/hookUtils';
 const ListItem = List.Item;
 export default function({editable, roleDoc, roleId, docId, loading}) {
 
-
-
-
+  const [roleDetail, setRoleDetail] = useState(null);
   const [skillModalVisible, setSkillModalVisible] = useState(false);
   const [newSkillName, setNewSkillName] = useState('');
 
+  useEffect(()=>{
+    if(roleDoc){
+      setRoleDetail(roleDoc);
+    }
+  },[roleDoc]);
+
   //删除角色
   function deleteRole() {
-    Modal.alert('提示', '确定要删除'+roleDoc.name+'吗？',[
+    Modal.alert('提示', '确定要删除'+roleDetail.name+'吗？',[
       {text:'取消'},
       {
         text:'确定',
@@ -41,12 +46,14 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
 
   //保存
   function save(key, data) {
-    if(data && roleDoc[key] !== data){
+    if(data && roleDetail[key] !== data){
       let param = {};
       param[key] = data;
       services.modifyRoleInfo(docId, roleId, param).then(result=>{
         if(result && result.code === 0){
-          roleDoc[key] = data;
+          let temp = {...roleDetail};
+          temp[key] = data;
+          setRoleDetail(temp);
           toast.light('已保存');
         }
       })
@@ -59,17 +66,19 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
       toast.info('请输入技能名');
       return;
     }
-    if(roleDoc.skills.find(skill=>skill.skillInfo.name === newSkillName)){
+    if(roleDetail.skills.find(skill=>skill.skillInfo.name === newSkillName)){
       toast.info('请不要使用重复的技能名');
       return;
     }
     services.createSkill({name:newSkillName, docId, roleId}).then(result=>{
       if(result && result.code === 0){
-        roleDoc.skills.push(result.data.skill);
-        if(!isInArray(newSkillName, roleDoc.allSkills)){
-          roleDoc.allSkills.push(newSkillName);
+        let temp = {...roleDetail};
+        temp.skills.push(result.data.skill);
+        if(!isInArray(newSkillName, temp.allSkills)){
+          temp.allSkills.push(newSkillName);
         }
-        toast.light('已保存');
+        setRoleDetail(temp);
+        toast.light('已创建');
       }
       closeModal();
     });
@@ -79,6 +88,13 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
   function closeModal(){
     setSkillModalVisible(false);
     setNewSkillName('');
+  }
+
+  //删除技能
+  function onDelete(roleSkillId){
+    let temp = {...roleDetail};
+    temp.skills = temp.skills.filter(skill=>skill._id!==roleSkillId);
+    setRoleDetail(temp);
   }
 
   //渲染新增技能modal
@@ -98,7 +114,7 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
       <div style={{paddingBottom:5}}>技能名</div>
       <InputSelect
         onChange={(value)=>{setNewSkillName(value)}}
-        list={roleDoc.allSkills}
+        list={roleDetail.allSkills}
       />
     </Modal>)
   }
@@ -116,19 +132,19 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
     )
   }else{
     //角色介绍
-    const autoDescription = useInputAutoSave(str=>save('description',str), roleDoc.description);
+    const autoDescription = useInputAutoSave(str=>save('description',str), roleDetail.description);
 
     return (
-      <div className={'container'}>
+      <div className={'container  flex-column-container'}>
         <NavBar
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
           rightContent={<i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={deleteRole}/>}
         >角色详情</NavBar>
-        <List>
+        <ScrollableList>
           <ListItem>
-            <AvatarCard editable={editable} roleId={roleId} docId={docId} url={roleDoc.photo} name={roleDoc.name}/>
+            <AvatarCard editable={editable} roleId={roleId} docId={docId} url={roleDetail.photo} name={roleDetail.name}/>
           </ListItem>
           <ListItem>
             <div className={'title-row'}>简介</div>
@@ -145,13 +161,13 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
           </ListItem>
           <ListItem>
             <div className={'title-row'}>技能
-              <span className={'gray-text subtitle'}>共&nbsp;{roleDoc.skills.length}</span>
+              <span className={'gray-text subtitle'}>共&nbsp;{roleDetail.skills.length}</span>
               {RenderIf(editable)(
-                <span className={'pull-right clickable'} onClick={()=>setSkillModalVisible(true)}>新增</span>
+                <span className={'pull-right clickable primary-text'} onClick={()=>setSkillModalVisible(true)}>新增</span>
               )}
             </div>
           </ListItem>
-          {roleDoc.skills.map((skill, index)=>{
+          {roleDetail.skills.map((skill, index)=>{
             let info = skill.skillInfo;
             return <SkillItem
               key={index}
@@ -163,16 +179,17 @@ export default function({editable, roleDoc, roleId, docId, loading}) {
               skillId={info._id}
               roleSkillId={skill._id}
               editable={editable}
+              onDelete={onDelete}
             />
           })}
-        </List>
+        </ScrollableList>
         {renderSkillModal()}
       </div>
     )
   }
 }
 
-function SkillItem({name, description, count, editable, roleId, skillId, docId, roleSkillId}) {
+function SkillItem({name, description, count, editable, roleId, skillId, docId, roleSkillId, onDelete}) {
 
   const autoName = useInputAutoSave(saveName, name);
   const autoDescription = useInputAutoSave(saveDescription, description);
@@ -211,6 +228,7 @@ function SkillItem({name, description, count, editable, roleId, skillId, docId, 
       if(result && result.code === 0){
         toast.light('已删除');
         setVisible(false);
+        onDelete(roleSkillId);
       }
     })
   }

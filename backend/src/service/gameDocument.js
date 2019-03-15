@@ -207,6 +207,74 @@ const service = {
     return !!result;
   },
 
+//  创建新场景
+  async createScene(docId, name){
+    let sceneInstance = await document.createSceneInDocument(docId,{name,enableStage:1});
+    return sceneInstance;
+  },
+
+//  删除场景
+  async deleteScene(docId, sceneId){
+    let result = await document.deleteScene(docId, sceneId);
+    return !!result;
+  },
+//  获取某场景的详情
+  async getSceneDetail(docId, sceneId){
+    let {doc, scene} = await document.getScene(docId, sceneId);
+    return {scene, storyStageCount:doc.storyStageCount};
+  },
+//  修改场景详情
+  async modifyScene(docId, sceneId, param){
+    const field = {
+      name: true,
+      enableStage: true,
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+    }
+    await document.updateScene(docId, sceneId, paramToSet);
+  },
+  //  创建新线索
+  async createClue(docId, sceneId){
+    let clue = await document.createClueInScene(docId, sceneId, {name:'',content:'',enableStage:1,repeatable:false,needSkill:false,});
+    return clue;
+  },
+  //  删除线索
+  async deleteClue(docId, sceneId, clueId){
+    let result = await document.deleteClue(docId, sceneId, clueId);
+    return !!result;
+  },
+//  修改线索详情
+  async modifyClue(docId, sceneId, clueId, param){
+    const field = {
+      name:true,
+      content:true,
+      enableStage:true,
+      repeatable:true,
+      contentForSkill:true,
+      skillId:true,
+      needSkill:true
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+      if(key === 'skillId'){
+        let allSkills = await service.getSkills(docId);
+        if(!allSkills.find(skill=>skill._id.toString()===param.skillId)){
+          throw {code:_Exceptions.PARAM_ERROR,message:'未找到该技能'}
+        }
+      }
+    }
+    await document.updateClue(docId, sceneId, clueId, paramToSet);
+  },
+
 };
 
 

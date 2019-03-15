@@ -48,9 +48,9 @@ export default function({document, updateDocument, updateSaveTime}) {
   //渲染阶段列表
   function renderStageList() {
     let listView = [];
-    for(let i=0;i<document.storyStageCount;++i){
+    for(let i=1;i<=document.storyStageCount;++i){
       listView.push(<ListItem key={i} onClick={()=>clickRow(i)} arrow={'horizontal'}>
-        第{i+1}阶段
+        第{i}阶段
       </ListItem>);
     }
     return listView

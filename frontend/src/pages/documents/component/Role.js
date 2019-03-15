@@ -45,7 +45,7 @@ export default function({document, updateDocument, updateSaveTime}) {
       'default',
       '',
       ['给人物起个名字吧']
-    )
+    );
   }
 
 

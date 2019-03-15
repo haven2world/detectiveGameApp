@@ -30,11 +30,12 @@ let storySchema = new Schema({
 
 //线索
 let clueSchema = new Schema({
+  name:String,
   content:String,
   enableStage:Number,
   repeatable:Boolean,
   contentForSkill:String,
-  SkillId:Schema.Types.ObjectId,
+  skillId:Schema.Types.ObjectId,
   needSkill:Boolean
 });
 

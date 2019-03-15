@@ -278,3 +278,98 @@ export function modifyStory(id, storyId, param){
   let url = '/detective/apis/auth/documents/' + id +'/stories/' + storyId;
   return http.put(url, param);
 }
+
+/* 创建场景
+ - url: /detective/apis/auth/documents/:id/scenes
+ - method: post
+ - param:{
+  name
+ }
+ */
+
+export function createScene(id, param){
+  let url = '/detective/apis/auth/documents/' + id +'/scenes';
+  return http.post(url, param);
+}
+
+/* 获取场景详情
+ - url: /detective/apis/auth/documents/:id/scenes/:sceneId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchSceneDetail(id, sceneId){
+  let url = '/detective/apis/auth/documents/' + id +'/scenes/' + sceneId;
+  return http.get(url, {});
+}
+
+/* 删除场景
+ - url: /detective/apis/auth/documents/:id/scenes/:sceneId
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteSceneDocument(docId, sceneId){
+  let url = '/detective/apis/auth/documents/' + docId + '/scenes/' + sceneId;
+  return http.delete(url, {});
+}
+
+
+/* 修改场景
+ - url: /detective/apis/auth/documents/:id/scenes/:sceneId
+ - method: put
+ - param:{
+ name
+ enableStage
+ }
+ */
+
+export function modifySceneInfo(docId, sceneId, param){
+  let url = '/detective/apis/auth/documents/' + docId + '/scenes/' + sceneId;
+  return http.put(url, param);
+}
+
+/* 创建线索
+ - url: /detective/apis/auth/documents/:id/scenes/:sceneId/clues
+ - method: post
+ - param:{
+ }
+ */
+
+export function createClue(id, sceneId){
+  let url = '/detective/apis/auth/documents/' + id +'/scenes/' + sceneId + '/clues';
+  return http.post(url, {});
+}
+
+/* 修改线索
+ - url: /detective/apis/auth/documents/:id/scenes/:sceneId/clues/:clueId
+ - method: put
+ - param:{
+  name:String,
+  content:String,
+  enableStage:Number,
+  repeatable:Boolean,
+  contentForSkill:String,
+  skillId:ObjectId,
+  needSkill:Boolean
+ }
+ */
+
+export function modifyClueInfo(docId, sceneId, clueId, param){
+  let url = '/detective/apis/auth/documents/' + docId + '/scenes/' + sceneId + '/clues/' + clueId;
+  return http.put(url, param);
+}
+
+/* 删除线索
+ - url: /detective/apis/auth/documents/:id/scenes/:sceneId/clues/:clueId
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteClue(docId, sceneId, clueId){
+  let url = '/detective/apis/auth/documents/' + docId + '/scenes/' + sceneId + '/clues/' + clueId;
+  return http.delete(url, {});
+}

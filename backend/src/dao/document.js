@@ -109,7 +109,6 @@ const dao = {
     await doc.save();
     return doc.storyStageCount
   },
-
 //  减少一个故事阶段
   async reduceStoryStage(docId){
     let doc = await Document.findById(docId);
@@ -134,25 +133,84 @@ const dao = {
     await doc.save();
     return doc.storyStageCount
   },
-
 // 创建一个故事
   async createStoryInDocument(docId, story){
     let doc = await Document.findById(docId);
     let roleInstance = await doc.stories.create(story);
     doc.stories.push(roleInstance);
     doc.updateTime = new Date();
-    console.log(doc)
     await doc.save();
     return {doc, roleInstance};
   },
-
 //  修改故事
   async modifyStoryContent(docId, storyId, content){
     return await Document.updateOne({_id:docId, 'stories._id':storyId},{
       $set:{'stories.$.content':content},
       $currentDate:{updateTime:true}
     })
-  }
+  },
+// 创建一个故事
+  async createSceneInDocument(docId, scene){
+    let doc = await Document.findById(docId);
+    let sceneInstance = await doc.scenes.create(scene);
+    doc.scenes.push(sceneInstance);
+    doc.updateTime = new Date();
+    await doc.save();
+    return sceneInstance;
+  },
+//  删除一个场景
+  async deleteScene(docId, sceneId){
+    let document  = await Document.findById(docId);
+    document.scenes.id(sceneId).remove();
+    await document.save();
+  },
+//  获取场景详情
+  async getScene(docId, sceneId){
+    let document  = await Document.findById(docId);
+    let scene = document.scenes.id(sceneId);
+    return {doc:document, scene};
+  },
+//  修改场景
+  async updateScene(id, sceneId, sceneParam){
+    let param = {};
+    Object.keys(sceneParam).forEach(key=>{
+      param['scenes.$.' + key] = sceneParam[key];
+    });
+    return await Document.updateOne({_id:id, 'scenes._id':sceneId},{
+      $set:param,
+      $currentDate:{updateTime:true}
+    })
+  },
+//  创建线索
+  async createClueInScene(docId, sceneId, clue){
+    let doc = await Document.findById(docId);
+    let scene = await doc.scenes.id(sceneId);
+    let clueInstance = await scene.clues.create(clue);
+    scene.clues.push(clueInstance);
+    doc.updateTime = new Date();
+    await doc.save();
+    return clueInstance;
+  },
+//  删除一个线索
+  async deleteClue(docId, sceneId, clueId){
+    let document  = await Document.findById(docId);
+    let scene = document.scenes.id(sceneId);
+    console.log(scene,clueId,scene.clues.id(clueId));
+    scene.clues.id(clueId).remove();
+    await document.save();
+  },
+//  修改线索
+  async updateClue(id, sceneId, clueId, sceneParam){
+    let doc = await Document.findById(id);
+    let scene = await doc.scenes.id(sceneId);
+    let clue = scene.clues.id(clueId);
+    Object.keys(sceneParam).forEach(key=>{
+      clue[key] = sceneParam[key];
+    });
+    doc.updateTime = new Date();
+    let result = await doc.save();
+    return !!result;
+  },
 };
 
 module.exports = dao;

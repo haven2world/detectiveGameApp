@@ -91,7 +91,7 @@ export default function({computedMatch,location:{query}}) {
             mode={'light'}
             icon={<Icon type={'left'}/>}
             onLeftClick={router.goBack}
-          >第{stageCount+1}阶段</NavBar>
+          >第{stageCount}阶段</NavBar>
           <ScrollableList>
             {renderList()}
           </ScrollableList>
@@ -106,7 +106,7 @@ export default function({computedMatch,location:{query}}) {
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
-        >第{stageCount+1}阶段</NavBar>
+        >第{stageCount}阶段</NavBar>
         <LoadingPage/>
       </div>
     )

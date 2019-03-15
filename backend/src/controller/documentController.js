@@ -212,6 +212,93 @@ router.put('/:id/stories/:storyId',async(ctx, next)=>{
   await documentService.modifyStory(ctx.params.id, ctx.params.storyId, content);
 })
 
+//创建场景
+router.post('/:id/scenes',async(ctx, next)=>{
+  const {name} = ctx.request.body;
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!name){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'缺少场景名称'
+    })
+  }
+  ctx._data.scene = await documentService.createScene(ctx.params.id, name);
+})
+
+//删除场景
+router.delete('/:id/scenes/:sceneId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.sceneId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  await documentService.deleteScene(ctx.params.id, ctx.params.sceneId);
+})
+
+//获取场景详情
+router.get('/:id/scenes/:sceneId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.sceneId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  let {storyStageCount, scene} = await documentService.getSceneDetail(ctx.params.id, ctx.params.sceneId);
+  ctx._data.scene = scene;
+  ctx._data.storyStageCount = storyStageCount;
+  ctx._data.allSkills = await documentService.getSkills(ctx.params.id);
+})
+
+//修改场景详情
+router.put('/:id/scenes/:sceneId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.sceneId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.scene = await documentService.modifyScene(ctx.params.id, ctx.params.sceneId, ctx.request.body);
+})
+
+//创建线索
+router.post('/:id/scenes/:sceneId/clues',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.sceneId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.clue = await documentService.createClue(ctx.params.id, ctx.params.sceneId);
+})
+
+//删除线索
+router.delete('/:id/scenes/:sceneId/clues/:clueId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.sceneId || !ctx.params.clueId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.clue = await documentService.deleteClue(ctx.params.id, ctx.params.sceneId, ctx.params.clueId);
+})
+
+//修改线索
+router.put('/:id/scenes/:sceneId/clues/:clueId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.sceneId || !ctx.params.clueId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.clue = await documentService.modifyClue(ctx.params.id, ctx.params.sceneId, ctx.params.clueId, ctx.request.body);
+})
+
 module.exports = router;
 
 

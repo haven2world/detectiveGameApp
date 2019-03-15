@@ -11,6 +11,7 @@ import styles from './document.css';
 import Base from './component/Base';
 import Role from './component/Role';
 import Story from './component/Story';
+import Scene from './component/Scene';
 
 /**
  * 剧本详情页
@@ -25,7 +26,7 @@ export default function({computedMatch}) {
   const [document, setDocument] = useState(null);
   const [loading, setLoading] = useState(false);
   const [saveTime, setSaveTime] = useState(null);
-  const [tab, setTab] = useTab(2,'documents-index-tab');
+  const [tab, setTab] = useTab(3,'documents-index-tab');
 
   //初始化
   useEffect(()=>{
@@ -57,7 +58,7 @@ export default function({computedMatch}) {
       {stage:'name', title:'基础', component:Base},
       {stage:'role', title:'角色', component:Role},
       {stage:'story', title:'故事', component:Story},
-      {stage:'scene', title:'场景', component:Base},
+      {stage:'scene', title:'场景', component:Scene},
       {stage:'task', title:'任务', component:Base},
       {stage:'ending', title:'结局', component:Base},
       {stage:'difficulty', title:'难度', component:Base},
