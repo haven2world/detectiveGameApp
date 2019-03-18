@@ -35,7 +35,7 @@ router.get('/:id',async(ctx, next)=>{
       message:'无有效ID'
     })
   }
-  ctx._data.document = await documentService.getDocumentDetail(ctx.params.id);
+  ctx._data.document = await documentService.getDocumentSimpleInfo(ctx.params.id);
 })
 
 //修改剧本基础内容

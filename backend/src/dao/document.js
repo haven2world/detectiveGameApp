@@ -189,7 +189,7 @@ const dao = {
     scene.clues.push(clueInstance);
     doc.updateTime = new Date();
     await doc.save();
-    return clueInstance;
+    return {doc, clueInstance};
   },
 //  删除一个线索
   async deleteClue(docId, sceneId, clueId){

@@ -16,7 +16,8 @@ const stageList = [
   'name',
   'role',
   'story',
-  'scene'
+  'scene',
+  'task'
 ];
 
 const service = {
@@ -58,8 +59,13 @@ const service = {
     }
   },
 //  获取一个剧本的详情
-  async getDocumentDetail(id){
-    return await document.getDocumentById(id);
+  async getDocumentSimpleInfo(id){
+    let doc = await document.getDocumentById(id);
+    //去除剧本等冗余信息 避免数据过大
+    doc = doc.toObject();
+    doc.stories = [];
+    doc.tasks = [];
+    return doc;
   },
 //  修改一个剧本的基础信息
   async modifyBasicInfo(id, param){
@@ -240,8 +246,9 @@ const service = {
   },
   //  创建新线索
   async createClue(docId, sceneId){
-    let clue = await document.createClueInScene(docId, sceneId, {name:'',content:'',enableStage:1,repeatable:false,needSkill:false,});
-    return clue;
+    let {doc, clueInstance} = await document.createClueInScene(docId, sceneId, {name:'',content:'',enableStage:1,repeatable:false,needSkill:false,});
+    await service.changeDocumentComposingStage(doc,'task');
+    return clueInstance;
   },
   //  删除线索
   async deleteClue(docId, sceneId, clueId){

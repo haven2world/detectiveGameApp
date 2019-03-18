@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 完成故事的富文本编辑与导入word">
-      <change afterPath="$PROJECT_DIR$/src/component/SceneDetail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/documents/$id/scenes/$sceneId.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/documents/component/Scene.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/documents/component/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/documentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/RoleDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/RoleDetail.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/documents/$id.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/component/Role.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/component/Role.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/component/Story.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/component/Story.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/services.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -55,14 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SceneDetail.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SceneDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/component/SceneDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="256" column="30" selection-start-line="256" selection-start-column="30" selection-end-line="256" selection-end-column="30" />
-              <folding>
-                <element signature="e#14#58#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="640">
+              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -70,7 +59,7 @@
       <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
+            <state relative-caret-position="7180">
               <caret line="359" column="16" selection-start-line="359" selection-start-column="16" selection-end-line="359" selection-end-column="16" />
             </state>
           </provider>
@@ -85,14 +74,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="$id.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="$id.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/documents/$id.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+            <state relative-caret-position="700">
+              <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
               <folding>
                 <element signature="e#14#73#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Role.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/documents/component/Role.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+              <folding>
+                <element signature="e#14#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/documents/component/Task.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="$stageCount.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="830">
+              <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -144,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/component/LoadingPage.js" />
         <option value="$PROJECT_DIR$/src/component/DefaultPage.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/models/document.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/component/base.js" />
@@ -186,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/component/StoryEditor/story.css" />
         <option value="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" />
         <option value="$PROJECT_DIR$/src/utils/commonUtils.js" />
-        <option value="$PROJECT_DIR$/src/pages/documents/$id.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/component/Role.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/component/Scene.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
@@ -195,6 +212,8 @@
         <option value="$PROJECT_DIR$/src/utils/services.js" />
         <option value="$PROJECT_DIR$/src/component/RoleDetail.js" />
         <option value="$PROJECT_DIR$/src/component/SceneDetail.js" />
+        <option value="$PROJECT_DIR$/src/pages/documents/component/Task.js" />
+        <option value="$PROJECT_DIR$/src/pages/documents/$id.js" />
       </list>
     </option>
   </component>
@@ -216,7 +235,6 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -226,6 +244,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -372,7 +391,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,18 +410,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\documents\$id\scenes" />
-      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\documents\component" />
-      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component\StoryEditor" />
-      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\documents\$id" />
-      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component\StoryEditor" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\utils\hookUtils" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component\InputSelect" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\games\$id" />
+      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\documents\component" />
+      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\documents\$id\scenes" />
+      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component\StoryEditor" />
+      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\documents\$id" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\component" />
     </key>
   </component>
@@ -530,6 +548,7 @@
       <workItem from="1549008168204" duration="1629000" />
       <workItem from="1552016330711" duration="61878000" />
       <workItem from="1552640928478" duration="4059000" />
+      <workItem from="1552872092899" duration="2245000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -640,7 +659,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="488569000" />
+    <option name="totallyTimeSpent" value="490814000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -655,23 +674,23 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19652265" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19652265" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32960895" />
-      <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="3" />
+      <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32960895" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="0" weight="0.32960895" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TypeScript" order="0" weight="0.32960895" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32960895" />
     </layout>
@@ -734,13 +753,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/@types/react/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="772" column="9" selection-start-line="772" selection-start-column="9" selection-end-line="772" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/antd-mobile/lib/nav-bar/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -787,9 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
           <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -961,26 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/documents/component/Role.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
-          <folding>
-            <element signature="e#14#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="60" column="51" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
-          <folding>
-            <element signature="e#14#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/roles/$roleId.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -995,9 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="53" column="9" selection-start-line="53" selection-start-column="9" selection-end-line="58" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1019,16 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-          <folding>
-            <element signature="e#14#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1067,25 +1043,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-953">
           <caret line="177" column="27" lean-forward="true" selection-start-line="177" selection-start-column="27" selection-end-line="177" selection-end-column="27" />
-          <folding>
-            <element signature="e#14#58#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
+        <state relative-caret-position="7180">
           <caret line="359" column="16" selection-start-line="359" selection-start-column="16" selection-end-line="359" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/SceneDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="256" column="30" selection-start-line="256" selection-start-column="30" selection-end-line="256" selection-end-column="30" />
+        <state relative-caret-position="640">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/component/Role.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
           <folding>
             <element signature="e#14#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/component/Task.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="830">
+          <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
+          <folding>
+            <element signature="e#14#73#0" expanded="true" />
           </folding>
         </state>
       </provider>
