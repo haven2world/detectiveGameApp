@@ -17,7 +17,9 @@ const stageList = [
   'role',
   'story',
   'scene',
-  'task'
+  'task',
+  'ending',
+  'difficulty'
 ];
 
 const service = {
@@ -281,7 +283,37 @@ const service = {
     }
     await document.updateClue(docId, sceneId, clueId, paramToSet);
   },
+//获取某个人的全部任务
+  async getOnesTasks(docId, roleId){
+    let {doc, tasks} = await document.getTaskForRole(docId, roleId);
+    let name = doc.roles.id(roleId).name;
+    return {name, tasks};
+  },
+//创建一个task
+  async createTask(docId, roleId){
+    let {doc, taskInstance} = await document.createTask(docId, roleId);
+    await service.changeDocumentComposingStage(doc,'ending');
+    return taskInstance;
+  },
+//  修改任务详情
+  async modifyTaskDetail(docId, taskId, param){
+    const field = {
+      content:true,
+    };
 
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+    }
+    await document.updateTask(docId, taskId, paramToSet);
+  },
+//  删除任务
+  async deleteTask(docId, taskId){
+    let result = await document.deleteTask(docId, taskId);
+    return !!result;
+  },
 };
 
 

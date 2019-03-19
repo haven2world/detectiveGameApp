@@ -5,7 +5,7 @@ import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Mod
 import { formatTime, RenderIf } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
-import LoadingPage from '@/component/LoadingPage'
+import RoleList from '@/component/RoleList'
 import ScrollableList from '@/component/ScrollableList';
 import styles from '../document.css';
 import { toast } from '@/utils/toastUtils';
@@ -18,24 +18,17 @@ const ListItem = List.Item;
 export default function({document, updateDocument, updateSaveTime}) {
 
   //进入角色任务详情
-  function clickRow(sceneId) {
-    router.push('/documents/' + document._id + '/scenes/' + sceneId);
-  }
-
-  //渲染角色列表
-  function renderRoleList() {
-    let listView = document.scenes.map((scene, index)=>(
-      <ListItem key={index} onClick={()=>clickRow(scene._id)} arrow={'horizontal'}>
-        {scene.name}
-      </ListItem>));
-    return listView
+  function clickRow(role) {
+    router.push('/documents/' + document._id + '/tasks/roles/' + role._id);
   }
 
   return(
     <div className={'flex-column-container container'} style={{backgroundColor:'#fff'}}>
-      <ScrollableList>
-        {renderRoleList()}
-      </ScrollableList>
+      <RoleList
+        document={document}
+        list={document.roles}
+        onClickRow={clickRow}
+      />
     </div>
   )
 }

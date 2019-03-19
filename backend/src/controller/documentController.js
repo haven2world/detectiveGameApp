@@ -299,6 +299,53 @@ router.put('/:id/scenes/:sceneId/clues/:clueId',async(ctx, next)=>{
   ctx._data.clue = await documentService.modifyClue(ctx.params.id, ctx.params.sceneId, ctx.params.clueId, ctx.request.body);
 })
 
+//获取任务详情
+router.get('/:id/roles/:roleId/tasks',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  let {name, tasks} = await documentService.getOnesTasks(ctx.params.id, ctx.params.roleId);
+  ctx._data.tasks  = tasks;
+  ctx._data.roleName = name;
+})
+
+//创建任务
+router.post('/:id/roles/:roleId/tasks',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.task  = await documentService.createTask(ctx.params.id, ctx.params.roleId);
+})
+
+//修改任务
+router.put('/:id/tasks/:taskId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.taskId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.task  = await documentService.modifyTaskDetail(ctx.params.id, ctx.params.taskId, ctx.request.body);
+})
+
+
+//删除任务
+router.delete('/:id/tasks/:taskId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.taskId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.task  = await documentService.deleteTask(ctx.params.id, ctx.params.taskId);
+})
+
 module.exports = router;
 
 

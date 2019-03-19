@@ -373,3 +373,52 @@ export function deleteClue(docId, sceneId, clueId){
   let url = '/detective/apis/auth/documents/' + docId + '/scenes/' + sceneId + '/clues/' + clueId;
   return http.delete(url, {});
 }
+
+/* 获取任务列表
+ - url: /detective/apis/auth/documents/:id/roles/:roleId/tasks
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchTaskList(id, roleId){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId + '/tasks';
+  return http.get(url, {});
+}
+
+/* 创建任务
+ - url: /detective/apis/auth/documents/:id/roles/:roleId/tasks
+ - method: post
+ - param:{
+ }
+ */
+
+export function createTask(id, roleId){
+  let url = '/detective/apis/auth/documents/' + id +'/roles/' + roleId + '/tasks';
+  return http.post(url, {});
+}
+
+/* 修改任务
+ - url: /detective/apis/auth/documents/:id/tasks/:taskId
+ - method: put
+ - param:{
+  content
+ }
+ */
+
+export function modifyTaskInfo(id, taskId, param){
+  let url = '/detective/apis/auth/documents/' + id + '/tasks/' + taskId;
+  return http.put(url, param);
+}
+
+/* 删除任务
+ - url: /detective/apis/auth/documents/:id/tasks/:taskId
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteTask(id, taskId){
+  let url = '/detective/apis/auth/documents/' + id + '/tasks/' + taskId;
+  return http.delete(url, {});
+}

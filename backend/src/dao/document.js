@@ -195,7 +195,6 @@ const dao = {
   async deleteClue(docId, sceneId, clueId){
     let document  = await Document.findById(docId);
     let scene = document.scenes.id(sceneId);
-    console.log(scene,clueId,scene.clues.id(clueId));
     scene.clues.id(clueId).remove();
     await document.save();
   },
@@ -211,6 +210,39 @@ const dao = {
     let result = await doc.save();
     return !!result;
   },
+//  获取某个人的任务
+  async getTaskForRole(docId, roleId){
+    let doc  = await Document.findById(docId);
+    let tasks = doc.toObject().tasks.filter(task=>task.belongToRoleId.toString() === roleId);
+    return {doc, tasks};
+  },
+//  创建任务
+  async createTask(docId, roleId){
+    let doc = await Document.findById(docId);
+    let taskInstance = await doc.tasks.create({belongToRoleId:roleId});
+    doc.tasks.push(taskInstance);
+    doc.updateTime = new Date();
+    await doc.save();
+    return {doc, taskInstance};
+  },
+//  修改任务
+  async updateTask(docId, taskId, taskParam){
+    let param = {};
+    Object.keys(taskParam).forEach(key=>{
+      param['tasks.$.' + key] = taskParam[key];
+    });
+    return await Document.updateOne({_id:docId, 'tasks._id':taskId},{
+      $set:param,
+      $currentDate:{updateTime:true}
+    })
+  },
+//  删除任务
+  async deleteTask(docId, taskId){
+    let doc  = await Document.findById(docId);
+    doc.tasks.id(taskId).remove();
+    await doc.save();
+  },
+
 };
 
 module.exports = dao;

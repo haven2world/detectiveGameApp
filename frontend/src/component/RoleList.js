@@ -16,12 +16,14 @@ const {Item} = List;
 
 export default function(props) {
   //id可能是 docId 也可能是 gameId
-  const {list, loading, document, game} = props;
+  const {list, loading, document, game, onClickRow} = props;
 
 
   //点击行
   function clickDocument(role) {
-    if(game){
+    if(onClickRow){
+      onClickRow(role);
+    }else if(game){
       router.push('/games/' + game._id + '/roles/' + role._id);
     }else{
       router.push('/documents/' + document._id + '/roles/' + role._id);

@@ -8,7 +8,7 @@ import * as services from '@/utils/services';
  * 剧本场景详情
  */
 
-export default function({computedMatch, role}) {
+export default function({computedMatch}) {
   const {id:docId, sceneId} = computedMatch.params;
 
   const [sceneDoc, setSceneDoc] = useState(undefined);
