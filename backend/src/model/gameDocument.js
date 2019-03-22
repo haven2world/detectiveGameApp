@@ -54,6 +54,7 @@ let taskSchema = new Schema({
 
 //结局
 let endingSchema = new Schema({
+  name:String,
   content:String,
   conditionsTaskId:[Schema.Types.ObjectId]
 });

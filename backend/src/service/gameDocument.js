@@ -67,6 +67,9 @@ const service = {
     doc = doc.toObject();
     doc.stories = [];
     doc.tasks = [];
+    doc.endings.forEach(ending=>{
+      ending.content = '';
+    });
     return doc;
   },
 //  修改一个剧本的基础信息
@@ -311,9 +314,77 @@ const service = {
   },
 //  删除任务
   async deleteTask(docId, taskId){
-    let result = await document.deleteTask(docId, taskId);
-    return !!result;
+    let doc = await document.deleteTask(docId, taskId);
+    doc.endings.forEach(ending=>{
+      ending.conditionsTaskId = ending.conditionsTaskId.filter(task=>task!==taskId);
+    });
+    await doc.save();
+    return true;
   },
+
+//创建一个结局片段
+  async createEndingWithName(docId, name){
+    let {doc, endingInstance} = await document.createEnding(docId, {name});
+    await service.changeDocumentComposingStage(doc,'difficulty');
+    return endingInstance;
+  },
+//  获取结局片段
+  async getEndingDetail(docId, endingId){
+    let {doc, ending} = await document.getEnding(docId, endingId);
+    //将角色信息和人物信息写入结局片段中
+    doc = doc.toObject();
+    ending = ending.toObject();
+    let roleTaskMap = {};
+    let taskMap = {};
+    let roleMap = {};
+    doc.tasks.forEach(task=>{
+      if(!roleTaskMap[task.belongToRoleId]){
+        roleTaskMap[task.belongToRoleId] = [];
+      }
+      roleTaskMap[task.belongToRoleId].push(task);
+      taskMap[task._id] = task;
+    });
+    let roles = doc.roles.map(role=>{
+      roleMap[role._id] = {
+        _id:role._id,
+        name:role.name,
+      };
+      return {
+        _id:role._id,
+        name:role.name,
+        tasks:roleTaskMap[role._id]
+      }
+    });
+    ending.roles = roles;
+    ending.roleMap = roleMap;
+    ending.taskMap = taskMap;
+    return ending;
+  },
+  //  修改结局详情
+  async modifyEndingDetail(docId, endingId, param){
+    const field = {
+      name:true,
+      content:true,
+      conditionsTaskId:true,
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+        if(key === 'conditionsTaskId'){
+          let allTasks = await document.getAllTasks(docId);
+          for(let i=0;i<param.conditionsTaskId.length;++i){
+            if(!allTasks.find(task=>task._id.toString()===param.conditionsTaskId[i])){
+              throw {code:_Exceptions.PARAM_ERROR,message:'未找到该任务'}
+            }
+          }
+        }
+      }
+    }
+    await document.updateTask(docId, endingId, paramToSet);
+  },
+
 };
 
 

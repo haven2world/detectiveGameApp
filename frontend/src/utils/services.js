@@ -422,3 +422,45 @@ export function deleteTask(id, taskId){
   let url = '/detective/apis/auth/documents/' + id + '/tasks/' + taskId;
   return http.delete(url, {});
 }
+
+/* 创建结局
+ - url: /detective/apis/auth/documents/:id/endings
+ - method: post
+ - param:{
+ }
+ */
+
+export function createEnding(id, param){
+  let url = '/detective/apis/auth/documents/' + id + '/endings';
+  return http.post(url, param);
+}
+
+/* 获取结局
+ - url: /detective/apis/auth/documents/:id/endings/:endingId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchEnding(id, endingId){
+  let url = '/detective/apis/auth/documents/' + id + '/endings/' + endingId;
+  return http.get(url, {});
+}
+
+
+/* 获取结局
+ - url: /detective/apis/auth/documents/:id/endings/:endingId
+ - method: put
+ - param:{
+ name
+ content
+ conditionsTaskId
+ }
+ */
+
+export function modifyEnding(id, endingId, param){
+  let url = '/detective/apis/auth/documents/' + id + '/endings/' + endingId;
+  return http.put(url, param);
+}
+
+

@@ -13,6 +13,7 @@ import Role from './component/Role';
 import Story from './component/Story';
 import Scene from './component/Scene';
 import Task from './component/Task';
+import Ending from './component/Ending';
 
 /**
  * 剧本详情页
@@ -61,7 +62,7 @@ export default function({computedMatch}) {
       {stage:'story', title:'故事', component:Story},
       {stage:'scene', title:'场景', component:Scene},
       {stage:'task', title:'任务', component:Task},
-      {stage:'ending', title:'结局', component:Base},
+      {stage:'ending', title:'结局', component:Ending},
       {stage:'difficulty', title:'难度', component:Base},
     ];
 

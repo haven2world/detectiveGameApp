@@ -5,7 +5,7 @@ import router from 'umi/router';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, TextareaItem, Stepper} from 'antd-mobile';
 import LoadingPage from '@/component/LoadingPage';
 import ScrollableList from '@/component/ScrollableList';
-import StoryEditor from '@/component/StoryEditor/StoryEditor';
+import RichEditor from '@/component/RichEditor/RichEditor';
 import * as services from '@/utils/services';
 import { toast } from '@/utils/toastUtils';
 import { changeQuery, isInArray, RenderIf } from '@/utils/commonUtils';
@@ -142,9 +142,9 @@ function StoryEditorPage({role, closeEditor, stageCount, docId}) {
         icon={<Icon type={'left'}/>}
         onLeftClick={closeEditor}
       >{role.name} - 第{stageCount+1}阶段</NavBar>
-      <StoryEditor
-        story={role.story}
-        saveStory={saveStory}
+      <RichEditor
+        defaultValue={role.story?role.story.content:''}
+        onSaveContent={saveStory}
       />
     </div>
   )

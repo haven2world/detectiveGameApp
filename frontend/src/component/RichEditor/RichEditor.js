@@ -2,7 +2,7 @@
 
 import { useState, useLayoutEffect, useRef } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, TextareaItem, Stepper} from 'antd-mobile';
-import styles from './story.css';
+import styles from './editor.css';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { selectFile, validateFileByExtensionName } from '@/utils/commonUtils';
@@ -12,7 +12,7 @@ import mammoth from 'mammoth';
  * 简化富文本
  */
 
-export default function({story, saveStory}) {
+export default function({defaultValue, onSaveContent, onChange, onBlur}) {
   const editorRef = useRef(null);
 
   const config = {
@@ -21,9 +21,16 @@ export default function({story, saveStory}) {
 
 
   //文字变化
-  function onChange(event, editor ) {
+  function _onChange(event, editor ) {
     const data = editor.getData();
-    console.log( { event, editor, data } );
+    onChange && onChange(data);
+    // console.log( { event, editor, data } );
+  }
+
+  //失去焦点
+  function _onBlur(event, editor) {
+    const data = editor.getData();
+    onBlur && onBlur(data);
   }
 
   //解析word
@@ -54,10 +61,10 @@ export default function({story, saveStory}) {
     console.log(result.message)
   }
 
-  //保存故事
+  //保存内容
   function onSave() {
     let data = editorRef.current.getData();
-    saveStory && saveStory(data);
+    onSaveContent && onSaveContent(data);
   }
 
 
@@ -74,8 +81,9 @@ export default function({story, saveStory}) {
           onInit={item=>editorRef.current=item}
           editor={ ClassicEditor }
           config={config}
-          data={story?story.content:''}
-          onChange={onChange}
+          data={defaultValue?defaultValue:''}
+          onChange={_onChange}
+          onBlur={_onBlur}
           placeholder={'开始编写该阶段的故事吧'}
         />
       </div>

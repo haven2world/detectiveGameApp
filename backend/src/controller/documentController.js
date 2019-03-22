@@ -346,6 +346,46 @@ router.delete('/:id/tasks/:taskId',async(ctx, next)=>{
   ctx._data.task  = await documentService.deleteTask(ctx.params.id, ctx.params.taskId);
 })
 
+//创建结局
+router.post('/:id/endings',async(ctx, next)=>{
+  let {name} = ctx.request.body;
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!name){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'结局片段需要一个名字'
+    })
+  }
+  ctx._data.ending  = await documentService.createEndingWithName(ctx.params.id, name);
+})
+
+//获取结局片段
+router.get('/:id/endings/:endingId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.endingId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.ending  = await documentService.getEndingDetail(ctx.params.id, ctx.params.endingId);
+})
+
+//修改结局片段
+router.put('/:id/endings/:endingId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.endingId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.ending  = await documentService.modifyEndingDetail(ctx.params.id, ctx.params.endingId, ctx.request.body);
+})
+
 module.exports = router;
 
 
