@@ -382,7 +382,7 @@ const service = {
         }
       }
     }
-    await document.updateTask(docId, endingId, paramToSet);
+    await document.updateEnding(docId, endingId, paramToSet);
   },
 
 };

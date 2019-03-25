@@ -216,6 +216,15 @@ const dao = {
     let tasks = doc.toObject().tasks.filter(task=>task.belongToRoleId.toString() === roleId);
     return {doc, tasks};
   },
+  //  创建任务
+  async createTask(docId, roleId){
+    let doc = await Document.findById(docId);
+    let taskInstance = await doc.tasks.create({belongToRoleId:roleId});
+    doc.tasks.push(taskInstance);
+    doc.updateTime = new Date();
+    await doc.save();
+    return {doc, taskInstance};
+  },
   //  获取某剧本全部的任务
   async getAllTasks(docId){
     let doc  = await Document.findById(docId);
@@ -260,7 +269,6 @@ const dao = {
     Object.keys(endingParam).forEach(key=>{
       param['endings.$.' + key] = endingParam[key];
     });
-    console.log(param,endingParam)
     return await Document.updateOne({_id:docId, 'endings._id':endingId},{
       $set:param,
       $currentDate:{updateTime:true}

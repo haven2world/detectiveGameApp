@@ -73,7 +73,10 @@ export default function({computedMatch,location:{query}}) {
       param[key] = data;
       services.modifyEnding(docId, endingId, param).then(result=>{
         if(result && result.code === 0){
-          document[key] = data;
+          let temp = JSON.parse(JSON.stringify(endingDoc));
+          temp[key] = data;
+          setEndingDoc(temp);
+          toast.light('已保存');
         }
       })
     }
@@ -104,13 +107,16 @@ export default function({computedMatch,location:{query}}) {
 
   //渲染条件列表
   function renderConditions() {
+    const {taskMap, roleMap} = endingDoc;
     return endingDoc.conditionsTaskId.map((condition, index)=>
-      <Checkbox.CheckboxItem
+      <ListItem
         key={index}
         extra={<i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={()=>onChangeCondition('delete',condition)}/>}
       >
-        {condition.content}
-      </Checkbox.CheckboxItem>
+        <div style={{width:'100%', whiteSpace:'normal'}}>
+          {roleMap[taskMap[condition].belongToRoleId].name}：{taskMap[condition].content}
+        </div>
+      </ListItem>
     )
   }
 

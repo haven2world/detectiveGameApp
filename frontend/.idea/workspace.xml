@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 完成故事的富文本编辑与导入word">
-      <change afterPath="$PROJECT_DIR$/src/component/PickerCaller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/documents/component/Ending.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/documentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/document.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/model/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/RichEditor/story.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/StoryEditor/StoryEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/$id.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/component/Scene.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/component/Scene.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/services.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -64,11 +55,20 @@
       <file leaf-file-name="$endingId.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+            <state relative-caret-position="527">
+              <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
               <folding>
                 <element signature="e#15#67#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/hookUtils/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="55" column="16" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -182,8 +182,8 @@
         <option value="$PROJECT_DIR$/src/pages/documents/component/Ending.js" />
         <option value="$PROJECT_DIR$/src/utils/services.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
-        <option value="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" />
         <option value="$PROJECT_DIR$/src/component/PickerCaller.js" />
+        <option value="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js" />
       </list>
     </option>
@@ -549,7 +549,7 @@
       <workItem from="1549008168204" duration="1629000" />
       <workItem from="1552016330711" duration="61878000" />
       <workItem from="1552640928478" duration="4059000" />
-      <workItem from="1552872092899" duration="24717000" />
+      <workItem from="1552872092899" duration="29162000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -660,7 +660,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="513286000" />
+    <option name="totallyTimeSpent" value="517731000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -793,13 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1020,20 +1013,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/hookUtils/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-233">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/component/RichEditor/RichEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1367">
-          <caret line="75" column="83" lean-forward="true" selection-start-line="75" selection-start-column="83" selection-end-line="75" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/scenes/$sceneId.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -1050,16 +1029,6 @@
           <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
           <folding>
             <element signature="e#14#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-          <folding>
-            <element signature="e#15#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1125,10 +1094,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1833">
+          <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+          <folding>
+            <element signature="e#15#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/RichEditor/RichEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+          <folding>
+            <element signature="e#15#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/hookUtils/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="55" column="16" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="75" column="31" lean-forward="true" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+        <state relative-caret-position="527">
+          <caret line="78" column="29" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
           <folding>
             <element signature="e#15#67#0" expanded="true" />
           </folding>
