@@ -114,7 +114,7 @@ const service = {
   },
 //  删除一个角色
   async deleteRole(docId, roleId){
-    let result = await service.deleteRole(docId, roleId);
+    let result = await document.deleteRole(docId, roleId);
     return !!result
   },
 //  修改一个角色的头像
@@ -398,6 +398,67 @@ const service = {
       }
     }
     await document.updateLevel(docId, level, paramToSet);
+  },
+//  发布剧本
+  async toPublishDocument(docId){
+    let doc = await document.getDocumentById(docId);
+    service.checkPublish(doc);
+
+    let paramToSet = {publishFlag:true};
+
+    await document.updateBasicInfo(docId, paramToSet);
+  },
+//  检查剧本发布条件
+  checkPublish(doc){
+    doc = doc.toObject();
+    if(!doc.name){
+      throw {
+        code:global._Exceptions.VALIDATE_ERROR,
+        message:'剧本缺少名字，无法发布'
+      }
+    }
+    if(!doc.description){
+      throw {
+        code:global._Exceptions.VALIDATE_ERROR,
+        message:'剧本缺少描述，无法发布'
+      }
+    }
+    if(!doc.roles.length){
+      throw {
+        code:global._Exceptions.VALIDATE_ERROR,
+        message:'剧本缺少角色，无法发布'
+      }
+    }
+    let roleMap = {};
+    doc.roles.forEach(role=>{
+      roleMap[role._id] = role;
+    });
+    doc.stories.forEach(story=>{
+      roleMap[story.belongToRoleId].storyFlag = true;
+    });
+    doc.tasks.forEach(task=>{
+      roleMap[task.belongToRoleId].taskFlag = true;
+    });
+    doc.roles.forEach(role=>{
+      if(!role.storyFlag){
+        throw {
+          code:global._Exceptions.VALIDATE_ERROR,
+          message:`角色${role.name}缺少故事，无法发布`
+        }
+      }
+      if(!role.taskFlag){
+        throw {
+          code:global._Exceptions.VALIDATE_ERROR,
+          message:`角色${role.name}缺少任务，无法发布`
+        }
+      }
+    });
+    if(!doc.endings.length){
+      throw {
+        code:global._Exceptions.VALIDATE_ERROR,
+        message:'剧本缺少结局，无法发布'
+      }
+    }
   },
 
 };

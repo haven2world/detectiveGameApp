@@ -478,3 +478,15 @@ export function modifyDocumentLevelDetail(id, param){
   return http.put(url, param);
 }
 
+
+/* 发布
+ - url: /detective/apis/auth/documents/:id/publish
+ - method: put
+ - param:{
+ }
+ */
+
+export function publishDocument(id){
+  let url = '/detective/apis/auth/documents/' + id + '/publish' ;
+  return http.put(url, {});
+}

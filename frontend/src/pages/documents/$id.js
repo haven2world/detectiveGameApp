@@ -6,6 +6,7 @@ import { formatTime, RenderIf } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
 import LoadingPage from '@/component/LoadingPage'
+import {toast} from '@/utils/toastUtils';
 import {useTab} from '@/utils/hookUtils';
 import styles from './document.css';
 import Base from './component/Base';
@@ -51,6 +52,22 @@ export default function({computedMatch}) {
     })
   }
 
+  //发布剧本
+  function publish() {
+    Modal.alert('确认发布','一旦发布就可以在游戏中创建了,之后的修改都会实时生效在之后创建的游戏中',[
+      {text:'取消',},
+      {text:'发布',onPress:()=>{
+        services.publishDocument(docId).then(result=>{
+          if(result && result.code === 0){
+            document.publishFlag = true;
+            toast.light('发布成功');
+            setSaveTime(new Date());
+          }
+        })
+        }}
+    ])
+  }
+
   //计算显示的Tab
   (function calTabs() {
     tabs = [];
@@ -91,6 +108,16 @@ export default function({computedMatch}) {
     )
   }
 
+  //渲染发布键
+  function renderPublish() {
+    if(document.publishFlag){
+      return <div style={{padding:5,opacity:0.6}} >已发布</div>
+    }else if(document.composingStage === 'difficulty'){
+      return <div style={{padding:5}} onClick={publish}>发布</div>
+    }else{
+      return <div style={{padding:5,opacity:0.6}} onClick={()=>toast.info('还未编写完成所有内容，请完成后发布')}>发布</div>
+    }
+  }
 
   if(document){
 
@@ -100,6 +127,7 @@ export default function({computedMatch}) {
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
+          rightContent={renderPublish()}
         >剧本</NavBar>
         <Tabs
           page={tab}

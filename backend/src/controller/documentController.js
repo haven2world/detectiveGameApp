@@ -403,6 +403,17 @@ router.put('/:id/difficulty',async(ctx, next)=>{
   }
   ctx._data.difficulty  = await documentService.modifyDifficultyDetail(ctx.params.id, level, ctx.request.body);
 })
+
+//发布剧本
+router.put('/:id/publish',async(ctx, next)=>{
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  await documentService.toPublishDocument(ctx.params.id);
+})
 module.exports = router;
 
 

@@ -55,7 +55,7 @@ const dao = {
   },
 //  删除角色
   async deleteRole(docId, roleId){
-    let document  = await Document.findById(id);
+    let document  = await Document.findById(docId);
     document.roles.id(roleId).remove();
     let storyArr = [];
     document.stories.forEach(story=>{

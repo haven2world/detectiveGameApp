@@ -15,6 +15,9 @@ module.exports = {
   TOKEN_ERROR:401,
 
 //  数据库操作失败
-  DB_ERROR:1000
+  DB_ERROR:1000,
+
+//  数据校验出错
+  VALIDATE_ERROR:1001
 
 }
