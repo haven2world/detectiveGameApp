@@ -384,6 +384,21 @@ const service = {
     }
     await document.updateEnding(docId, endingId, paramToSet);
   },
+//  修改难度等级
+  async modifyDifficultyDetail(docId, level, param){
+    const field = {
+      maxInquiryTimes:true,
+      keepClueSecret:true,
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+    }
+    await document.updateLevel(docId, level, paramToSet);
+  },
 
 };
 

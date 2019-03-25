@@ -14,6 +14,7 @@ import Story from './component/Story';
 import Scene from './component/Scene';
 import Task from './component/Task';
 import Ending from './component/Ending';
+import Difficulty from './component/Difficulty';
 
 /**
  * 剧本详情页
@@ -63,7 +64,7 @@ export default function({computedMatch}) {
       {stage:'scene', title:'场景', component:Scene},
       {stage:'task', title:'任务', component:Task},
       {stage:'ending', title:'结局', component:Ending},
-      {stage:'difficulty', title:'难度', component:Base},
+      {stage:'difficulty', title:'难度', component:Difficulty},
     ];
 
     for(let i=0; i<tabSort.length;++i){

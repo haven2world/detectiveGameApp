@@ -386,6 +386,23 @@ router.put('/:id/endings/:endingId',async(ctx, next)=>{
   ctx._data.ending  = await documentService.modifyEndingDetail(ctx.params.id, ctx.params.endingId, ctx.request.body);
 })
 
+//修改难度设置
+router.put('/:id/difficulty',async(ctx, next)=>{
+  let {level} = ctx.request.body;
+  if(!ctx.params.id){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!level){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'需要一个有效的难度等级'
+    })
+  }
+  ctx._data.difficulty  = await documentService.modifyDifficultyDetail(ctx.params.id, level, ctx.request.body);
+})
 module.exports = router;
 
 

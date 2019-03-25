@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/component/Difficulty.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/documentController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/documentController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dao/document.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/document.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RichEditor/RichEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RichEditor/RichEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/endings/$endingId.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/endings/$endingId.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,26 +26,26 @@
       <file leaf-file-name="documentController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/documentController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="322" column="52" selection-start-line="322" selection-start-column="42" selection-end-line="322" selection-end-column="52" />
+            <state relative-caret-position="647">
+              <caret line="399" column="35" lean-forward="true" selection-start-line="399" selection-start-column="35" selection-end-line="399" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gameDocument.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="gameDocument.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-353">
-              <caret line="291" column="41" lean-forward="true" selection-start-line="291" selection-start-column="41" selection-end-line="291" selection-end-column="41" />
+            <state relative-caret-position="727">
+              <caret line="399" column="30" selection-start-line="399" selection-start-column="30" selection-end-line="399" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="document.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="document.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dao/document.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="215" column="93" lean-forward="true" selection-start-line="215" selection-start-column="93" selection-end-line="215" selection-end-column="93" />
+            <state relative-caret-position="567">
+              <caret line="282" column="47" selection-start-line="282" selection-start-column="47" selection-end-line="282" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -60,8 +62,8 @@
       <file leaf-file-name="gameInstance.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/gameInstance.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="200">
+              <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -69,8 +71,8 @@
       <file leaf-file-name="gameDocument.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="61" column="4" lean-forward="true" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+            <state relative-caret-position="547">
+              <caret line="70" column="21" lean-forward="true" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -362,7 +364,7 @@
       <workItem from="1548990975912" duration="6970000" />
       <workItem from="1552016335051" duration="34672000" />
       <workItem from="1552640923331" duration="3242000" />
-      <workItem from="1552872094848" duration="23627000" />
+      <workItem from="1552872094848" duration="28364000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -445,7 +447,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416417000" />
+    <option name="totallyTimeSpent" value="421154000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -804,13 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gameInstance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/skill.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -818,31 +813,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
+    <entry file="file://$PROJECT_DIR$/src/model/gameInstance.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="61" column="4" lean-forward="true" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        <state relative-caret-position="200">
+          <caret line="10" column="30" lean-forward="true" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/documentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="322" column="52" selection-start-line="322" selection-start-column="42" selection-end-line="322" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/document.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="215" column="93" lean-forward="true" selection-start-line="215" selection-start-column="93" selection-end-line="215" selection-end-column="93" />
+        <state relative-caret-position="647">
+          <caret line="399" column="35" lean-forward="true" selection-start-line="399" selection-start-column="35" selection-end-line="399" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-353">
-          <caret line="291" column="41" lean-forward="true" selection-start-line="291" selection-start-column="41" selection-end-line="291" selection-end-column="41" />
+        <state relative-caret-position="727">
+          <caret line="399" column="30" selection-start-line="399" selection-start-column="30" selection-end-line="399" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="70" column="21" lean-forward="true" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/document.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="282" column="47" selection-start-line="282" selection-start-column="47" selection-end-line="282" selection-end-column="47" />
         </state>
       </provider>
     </entry>

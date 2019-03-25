@@ -448,7 +448,7 @@ export function fetchEnding(id, endingId){
 }
 
 
-/* 获取结局
+/* 修改结局
  - url: /detective/apis/auth/documents/:id/endings/:endingId
  - method: put
  - param:{
@@ -463,4 +463,18 @@ export function modifyEnding(id, endingId, param){
   return http.put(url, param);
 }
 
+/* 修改难度设置
+ - url: /detective/apis/auth/documents/:id/difficulty
+ - method: put
+ - param:{
+ level
+ maxInquiryTimes
+ keepClueSecret
+ }
+ */
+
+export function modifyDocumentLevelDetail(id, param){
+  let url = '/detective/apis/auth/documents/' + id + '/difficulty' ;
+  return http.put(url, param);
+}
 

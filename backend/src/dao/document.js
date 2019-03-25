@@ -274,7 +274,17 @@ const dao = {
       $currentDate:{updateTime:true}
     })
   },
-
+  //  修改难度
+  async updateLevel(docId, level, levelParam){
+    let param = {};
+    Object.keys(levelParam).forEach(key=>{
+      param['level.' + level + '.' + key] = levelParam[key];
+    });
+    return await Document.updateOne({_id:docId,},{
+      $set:param,
+      $currentDate:{updateTime:true}
+    })
+  },
 
 };
 
