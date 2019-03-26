@@ -19,7 +19,7 @@ export default function(){
         <WhiteSpace/>
         <Card>
           <Card.Header
-            title={localStorage.loginId}
+            title={<div className={styles.name}>{localStorage.loginId}</div>}
             thumb={<img src={'/detective/assets/img/yanzu.jpg'} style={{height:60}}/>}
           />
           <Card.Body>

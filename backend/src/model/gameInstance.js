@@ -30,6 +30,12 @@ let messageSchema = new Schema({
   hasResponse:Boolean
 });
 
+//难度
+let difficultyLevelSchema = new Schema({
+  maxInquiryTimes:Number,
+  keepClueSecret:Boolean
+});
+
 let schema = new Schema({
   document:{type:Schema.Types.ObjectId, ref:'GameDocument'},
   players:[Schema.Types.ObjectId],
@@ -42,7 +48,7 @@ let schema = new Schema({
   }],
   stage:Number,
   status:String,
-  difficultyLevel:Schema.Types.ObjectId,
+  difficultyLevel:difficultyLevelSchema,
 });
 
 module.exports = mongoose.model('User',schema);

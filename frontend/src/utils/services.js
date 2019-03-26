@@ -21,6 +21,18 @@ export function signUp(param){
   return http.post(url, param);
 }
 
+/* 获取匿名账户
+ - url: /detective/apis/pub/users/anonymousAccounts
+ - method: post
+ - param:{
+ }
+ */
+
+export function anonymousSignUp(){
+  let url = '/detective/apis/pub/users/anonymousAccounts';
+  return http.post(url, {});
+}
+
 
 /* 检查登录
  - url: /detective/apis/auth/users/verify-token
