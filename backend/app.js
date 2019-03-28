@@ -6,7 +6,8 @@
  */
 
 const Koa = require('koa');
-const app = new Koa();
+const websocketfy = require('koa-websocket');
+const app = websocketfy(new Koa());
 const koaBody = require('koa-body');
 const koaStatic = require('koa-static');
 const path = require('path');
@@ -24,6 +25,7 @@ global._Exceptions = require('./src/utils/exceptionUtils');
 const errorHandler = require('./src/utils/errorHandler');
 const mongoUtils = require('./src/utils/mongoUtils');
 const router = require('./src/controller/index');
+const wsRouter = require('./src/controller/websocket/index');
 
 //初始化 mongodb
 mongoUtils.init();
@@ -48,9 +50,14 @@ app.use(koaStatic(
 ))
 //获取路径 /detective/assets/
 
+/*app.ws.use(function(ctx, next) {
+
+  return next();
+});*/
+app.ws.use(wsRouter);
 //设置路由
 app.use(router.routes())
-  .use(router.allowedMethods({throw:true}))
+  .use(router.allowedMethods({throw:true}));
 
 /*app.use( async (ctx ) => {
   const url = ctx.url

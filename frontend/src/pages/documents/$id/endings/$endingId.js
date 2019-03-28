@@ -48,7 +48,7 @@ export default function({computedMatch,location:{query}}) {
   function initPicker(roles) {
     let config = {
       data:[],
-      col:2,
+      cols:2,
       title:'请选择角色任务',
       cascade:true
     };
@@ -102,7 +102,7 @@ export default function({computedMatch,location:{query}}) {
 
   //选择条件
   function onSelectCondition() {
-    picker.current.showPicker()
+    picker.current.showPicker();
   }
 
   //渲染条件列表

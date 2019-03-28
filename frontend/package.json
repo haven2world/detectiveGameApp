@@ -39,6 +39,7 @@
     "jshashes": "^1.0.7",
     "mammoth": "^1.4.7",
     "react": "16.7.0-alpha.2",
-    "react-dom": "16.7.0-alpha.2"
+    "react-dom": "16.7.0-alpha.2",
+    "reconnecting-websocket":"github:joewalnes/reconnecting-websocket"
   }
 }

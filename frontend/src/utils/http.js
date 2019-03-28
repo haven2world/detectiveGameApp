@@ -1,5 +1,6 @@
 'use strict';
-import axios from 'axios'
+import axios from 'axios';
+import WS from 'reconnecting-websocket/reconnecting-websocket';
 import {goToLogin, isInArray} from "./commonUtils";
 import {toast} from '@/utils/toastUtils';
 
@@ -112,7 +113,102 @@ axios.interceptors.response.use((response) => {
     !inWhiteList && !cancelFlag && toast.fail(err.message);
     return Promise.resolve(err.response)
   }
-)
+);
+
+//webSocket 封装
+class WebSocketWrapper extends Object{
+  // 构造
+  constructor(url) {
+    super();
+    this.socket = new WS(url, null, { debug: true, reconnectInterval: 3000 });
+    this.listener = [];
+    this.toSendMessage = [];
+    this.isOpen = false;
+
+    this.socket.onopen = this.onWSOpen;
+    this.socket.onclose = this.onWSClose;
+    this.socket.onmessage = this.onWSMessage;
+    this.socket.onerror = this.onWSError;
+  }
+
+  open = ()=>{
+    this.socket.open();
+  }
+  close = ()=>{
+    this.socket.close();
+  }
+
+  send = (message, force)=>{
+    if(this.isOpen || force){
+      let sendData = {
+        token:localStorage.token,
+        data:message
+      };
+      this.socket.send(JSON.stringify(sendData));
+    }else{
+      this.toSendMessage.push(message);
+    }
+  }
+
+  addListener = (listener)=>{
+    this.listener.push(listener);
+  }
+
+  handleError = (data)=>{
+    if(data){
+      switch (data.code){
+        case 0:
+          return true;
+        case 401:
+          goToLogin();
+          this.close();
+          return false;
+        case 404:
+          toast.fail('未知的action type');
+          return false;
+        case 999:
+          toast.fail('服务器开小差了');
+          return true;
+        default:
+          toast.fail(data.message);
+          return true;
+      }
+    }else{
+      toast.fail('服务器开小差了');
+    }
+  };
+
+  onWSMessage = (messageEvent)=>{
+    let data = JSON.parse(messageEvent.data);
+    if(data.code !== 0 && !this.handleError(data)){
+      return;
+    }
+    if (this.listener.length) {
+      this.listener.forEach(listener => listener(data, messageEvent));
+    } else {
+      console.log('ws:', messageEvent);
+    }
+  };
+
+  onWSOpen = (messageEvent)=>{
+    this.isOpen = true;
+    while(this.toSendMessage.length>0){
+      let message = this.toSendMessage.shift();
+      this.send(message, true);
+    }
+  }
+
+  onWSError = (messageEvent)=>{
+    console.log('wsError:',messageEvent);
+    this.handleError();
+  }
+
+  onWSClose = (messageEvent)=>{
+    this.isOpen = false;
+  }
+}
+// let ws = new WebSocketWrapper('ws://10.11.133.148:1019/detective/ws/auth/gamers');
+
 
 export default {
   //get请求
@@ -222,5 +318,9 @@ export default {
         }
       })
     })
+  },
+//  webSocket
+  ws(url){
+    return new WebSocketWrapper(url);
   }
 }

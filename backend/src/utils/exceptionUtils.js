@@ -14,10 +14,13 @@ module.exports = {
 //  token失效
   TOKEN_ERROR:401,
 
+//  未知的请求
+  NOT_FOUND_ERROR:404,
+
 //  数据库操作失败
   DB_ERROR:1000,
 
 //  数据校验出错
-  VALIDATE_ERROR:1001
+  VALIDATE_ERROR:1001,
 
 }
