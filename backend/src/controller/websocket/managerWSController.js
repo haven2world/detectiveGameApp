@@ -2,10 +2,9 @@
 
 
 /**
- * 游戏相关接口
+ * 游戏房主websocket 相关接口
  */
 
-const Router = require('koa-router');
 const documentService = require('../service/gameDocument');
 
 //连接池

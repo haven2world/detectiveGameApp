@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 实现匿名登录">
-      <change afterPath="$PROJECT_DIR$/../backend/src/controller/gameController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/gamerWSController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/globalInterceptor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/dao/game.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/service/game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/managerWSController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/utils/exceptionUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/utils/exceptionUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/controller/gameController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/controller/websocket/gamerWSController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/gamerWSController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/controller/websocket/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/model/gameInstance.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/model/gameInstance.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/$id/endings/$endingId.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/start.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -486,7 +478,7 @@
       <workItem from="1552016330711" duration="61878000" />
       <workItem from="1552640928478" duration="4059000" />
       <workItem from="1552872092899" duration="56444000" />
-      <workItem from="1553681114124" duration="5553000" />
+      <workItem from="1553681114124" duration="5858000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -625,7 +617,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="550566000" />
+    <option name="totallyTimeSpent" value="550871000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

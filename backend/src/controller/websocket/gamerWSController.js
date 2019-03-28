@@ -5,18 +5,42 @@
  * 游戏websocket 相关接口
  */
 
-const Router = require('koa-router');
+const documentService = require('../service/gameDocument');
 
+//连接池
+const ctxs = {};//ctxs - userid
 
-let router = new Router();
+//初始化ws
+module.exports = async function (ctx) {
+  const ws = ctx.websocket;
+  const userId = ctx._userId;
 
+  ctxs[userId] = ctx;
 
-//游戏参与者ws
-router.all('/',async(ctx, next)=>{
-  ctx.websocket.on('message',message=>{
-    console.log(message)
-  });
+  ws.on('message',async function (message) {
+    message = JSON.parse(message);
+    const {data, data:{type}} = message;
+    if(receiver[type]){
+      await receiver[type](data);
+    }else{
+      ws.sendJSON({
+        code:global._Exceptions.NOT_FOUND_ERROR,
+      });
+    }
+  })
 
-});
+};
 
-module.exports = router;
+//接收消息
+const receiver = {
+  TEST:async function(){
+    await sender.TEST();
+  }
+};
+
+//发送消息
+const sender = {
+  TEST:async function(){
+
+  }
+};

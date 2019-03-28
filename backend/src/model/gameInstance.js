@@ -39,6 +39,7 @@ let difficultyLevelSchema = new Schema({
 let schema = new Schema({
   document:{type:Schema.Types.ObjectId, ref:'GameDocument'},
   players:[Schema.Types.ObjectId],
+  manager:Schema.Types.ObjectId,
   roles:[{
     roleDocumentId:Schema.Types.ObjectId,
     skillUse:[skillSchema],
