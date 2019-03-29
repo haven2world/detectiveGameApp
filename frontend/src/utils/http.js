@@ -1,7 +1,7 @@
 'use strict';
 import axios from 'axios';
 import WS from 'reconnecting-websocket/reconnecting-websocket';
-import {goToLogin, isInArray} from "./commonUtils";
+import { GenID, goToLogin, isInArray } from './commonUtils';
 import {toast} from '@/utils/toastUtils';
 
 /**
@@ -129,6 +129,8 @@ class WebSocketWrapper extends Object{
     this.socket.onclose = this.onWSClose;
     this.socket.onmessage = this.onWSMessage;
     this.socket.onerror = this.onWSError;
+
+    this.respondMap = {};
   }
 
   open = ()=>{
@@ -138,15 +140,25 @@ class WebSocketWrapper extends Object{
     this.socket.close();
   }
 
-  send = (message, force)=>{
-    if(this.isOpen || force){
-      let sendData = {
-        token:localStorage.token,
-        data:message
-      };
-      this.socket.send(JSON.stringify(sendData));
+  send = (message, delayResolve)=>{
+    let exec = function(resolve) {
+      if(this.isOpen || delayResolve){
+        let uuid = GenID();
+        let sendData = {
+          token:localStorage.token,
+          data:message,
+          uuid,
+        };
+        this.socket.send(JSON.stringify(sendData));
+        this.respondMap[uuid] = resolve;
+      }else{
+        this.toSendMessage.push({content:message, resolve});
+      }
+    };
+    if(delayResolve){
+      exec(delayResolve);
     }else{
-      this.toSendMessage.push(message);
+      return new Promise(exec);
     }
   }
 
@@ -183,10 +195,15 @@ class WebSocketWrapper extends Object{
     if(data.code !== 0 && !this.handleError(data)){
       return;
     }
-    if (this.listener.length) {
-      this.listener.forEach(listener => listener(data, messageEvent));
-    } else {
-      console.log('ws:', messageEvent);
+    if(data.uuid && this.respondMap[data.uuid]){
+      this.respondMap[data.uuid](data, messageEvent);
+      this.respondMap[data.uuid] = null;
+    }else{
+      if (this.listener.length) {
+        this.listener.forEach(listener => listener(data, messageEvent));
+      } else {
+        console.log('ws:', messageEvent);
+      }
     }
   };
 
@@ -194,7 +211,7 @@ class WebSocketWrapper extends Object{
     this.isOpen = true;
     while(this.toSendMessage.length>0){
       let message = this.toSendMessage.shift();
-      this.send(message, true);
+      this.send(message.content, message.resolve);
     }
   }
 

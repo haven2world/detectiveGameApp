@@ -15,6 +15,14 @@ module.exports = async function (ctx) {
     return this.send(JSON.stringify(data));
   };
 
+  ws.respond = function (data, uuid) {
+    this.send(JSON.stringify({
+      code:0,
+      data:data,
+      uuid,
+    }));
+  };
+
   if(url.indexOf('/ws/auth')>=0){
     ws.on('message',async (message)=>{
       message = JSON.parse(message);
