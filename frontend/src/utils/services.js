@@ -502,3 +502,16 @@ export function publishDocument(id){
   let url = '/detective/apis/auth/documents/' + id + '/publish' ;
   return http.put(url, {});
 }
+
+
+/* 建立游戏 websocket
+ - url: /detective/ws/auth/gamers
+ - method: ws
+ - param:{
+ }
+ */
+
+export function establishWSForGamer(){
+  let url = '/detective/ws/auth/gamers';
+  return http.ws(url);
+}

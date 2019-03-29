@@ -5,7 +5,7 @@
  * 游戏websocket 相关接口
  */
 
-const documentService = require('../service/gameDocument');
+const documentService = require('../../service/gameDocument');
 
 //连接池
 const ctxs = {};//ctxs - userid
