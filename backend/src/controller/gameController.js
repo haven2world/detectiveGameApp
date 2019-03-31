@@ -7,28 +7,23 @@
 
 const Router = require('koa-router');
 const documentService = require('../service/gameDocument');
+const gameService = require('../service/game');
 
 
 let router = new Router();
 
 
-//创建技能
+//创建房间
 router.post('/',async(ctx, next)=>{
-  const {name, roleId, docId} = ctx.request.body;
-  if(!name){
-    ctx.throw({
-      code:_Exceptions.PARAM_ERROR,
-      message:'请提供技能名称'
-    })
-  }
-  if(!roleId || !docId){
+  const {docId} = ctx.request.body;
+  if(!docId){
     ctx.throw({
       code:_Exceptions.PARAM_ERROR,
       message:'无有效ID'
     })
   }
 
-  ctx._data.skill = await documentService.addSkillForRole(name, docId, roleId);
+  ctx._data.gameId = await gameService.createGameInstanceWithManager(ctx._userId, docId);
 });
 
 

@@ -33,7 +33,7 @@ const service = {
     return result
   },
 //  初始化并创建一个剧本
-  async createDocumentWithNameAndUser(name, user){
+  async createGameInstance(docId){
     const basicDocument = {
       isPrivate:true,
       creator:user,
@@ -42,7 +42,7 @@ const service = {
       storyStageCount:1,
       level:{
         easy:{
-          maxInquiryTimes:null,
+          maxInquiryTimes:999,
           keepClueSecret:false,
         },
         normal:{

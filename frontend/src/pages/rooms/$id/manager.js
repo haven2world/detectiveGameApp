@@ -35,9 +35,6 @@ export default function({computedMatch}) {
     services.fetchDocumentDetail(docId).then(result=>{
       if(result && result.code === 0){
         setDocument(result.data.document);
-        if(!saveTime && result.data.document.updateTime){
-          setSaveTime(new Date(result.data.document.updateTime));
-        }
         setLoading(false);
       }
     })
@@ -52,7 +49,6 @@ export default function({computedMatch}) {
           if(result && result.code === 0){
             document.publishFlag = true;
             toast.light('发布成功');
-            setSaveTime(new Date());
           }
         })
         }}
@@ -65,15 +61,6 @@ export default function({computedMatch}) {
     if(!document){
       return
     }
-    const tabSort = [
-      {stage:'name', title:'基础', component:Base},
-      {stage:'role', title:'角色', component:Role},
-      {stage:'story', title:'故事', component:Story},
-      {stage:'scene', title:'场景', component:Scene},
-      {stage:'task', title:'任务', component:Task},
-      {stage:'ending', title:'结局', component:Ending},
-      {stage:'difficulty', title:'难度', component:Difficulty},
-    ];
 
     for(let i=0; i<tabSort.length;++i){
       tabs.push({title: tabSort[i].title, component: tabSort[i].component});

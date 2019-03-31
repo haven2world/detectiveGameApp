@@ -15,7 +15,7 @@ const userPublic = require('./userPublicController');
 const user = require('./userController');
 const document = require('./documentController');
 const skill = require('./skillController');
-const manager = require('./gameManagerController')
+const game = require('./gameController')
 
 const router = new Router({prefix:global._Config.baseUrl});
 initGlobalInterceptor(router);//引入全局拦截器
@@ -25,7 +25,7 @@ router.use('/apis/pub/users', userPublic.routes(), userPublic.allowedMethods());
 router.use('/apis/auth/users', user.routes(), user.allowedMethods());
 router.use('/apis/auth/documents', document.routes(), document.allowedMethods());
 router.use('/apis/auth/skills', skill.routes(), skill.allowedMethods());
-router.use('/apis/auth/managers', manager.routes(), manager.allowedMethods());
+router.use('/apis/auth/games', game.routes(), game.allowedMethods());
 
 
 //测试样例

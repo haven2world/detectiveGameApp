@@ -25,12 +25,12 @@ export default {
   extraPostCSSPlugins:[require('autoprefixer'),require('postcss-modules-values'),require('postcss-px-to-viewport')],
   proxy:{
     '/detective/apis':{
-      target:'http://10.11.133.148:1019',
+      target:'http://localhost:1019',
       changeOrigin:true,
       pathRewrite:{}
     },
     '/detective/assets':{
-      target:'http://10.11.133.148:1019',
+      target:'http://localhost:1019',
       changeOrigin:true,
       pathRewrite:{}
     }

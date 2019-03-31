@@ -10,7 +10,9 @@ import { toast } from '@/utils/toastUtils';
 export default function(){
 
   //已发布的个人剧本
-  const [docsConfig, setDocsConfig] = useState([]);
+  const [pickerConfig, setPickerConfig] = useState({});
+  const [docs, setDocs] = useState([]);
+  const [chosenDocId, setDocId] = useState(null);
   const picker = useRef(null);
 
   //初始化
@@ -18,23 +20,53 @@ export default function(){
     services.fetchGameDocuments().then(result=>{
       if(result && result.code === 0){
         let docsTemp = result.data.documents.filter(doc=>doc.publishFlag);
-        let config = docsTemp.map(doc=>({label:doc.name,value:doc._id}));
-        setDocsConfig(config);
+        let data = docsTemp.map(doc=>({label:doc.name,value:doc._id}));
+        setDocs(data);
       }
     });
   },[]);
 
   //创建房间
   function toCreateGame() {
-    if(docsConfig.length===0){
+    if(docs.length===0){
       toast.fail('请先创建并发布剧本');
       return;
     }
+    let config = {data:docs, title:'请选择一个剧本'};
+    setPickerConfig(config);
+    setDocId(null);
     picker.current.showPicker();
   }
 
-  function createGame(docId) {
+  //选择难度
+  function toChooseLevel() {
+    let config = {
+      data: [
+        { label: '简单难度', value: 'easy' },
+        { label: '普通难度', value: 'normal' },
+        { label: '困难难度', value: 'hard' },
+      ],
+      title: '请选择一个难度',
+    };
+    setPickerConfig(config);
+    picker.current.showPicker();
+  }
 
+  function onPickerChosen(data) {
+    if(chosenDocId){
+      createGame(data, chosenDocId);
+    }else{
+      setDocId(data);
+      setTimeout(toChooseLevel);
+    }
+  }
+
+  function createGame(level, docId) {
+    services.createGameInstance({level, docId}).then(result=>{
+      if(result && result.code === 0){
+        router.push('/rooms/' + resutl.data.gameId + '/manager');
+      }
+    })
   }
 
   return (
@@ -55,10 +87,9 @@ export default function(){
       </Flex>
       <PickerCaller
         ref={picker}
-        onOk={([docId])=>{createGame(docId)}}
-        data={docsConfig}
+        onOk={([data])=>{onPickerChosen(data)}}
         cols={1}
-        title={'请选择一个剧本'}
+        {...pickerConfig}
       />
     </div>
   )

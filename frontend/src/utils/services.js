@@ -503,6 +503,19 @@ export function publishDocument(id){
   return http.put(url, {});
 }
 
+/* 创建新的游戏房间
+ - url: /detective/apis/auth/games
+ - method: post
+ - param:{
+  docId
+ }
+ */
+
+export function createGameInstance(param){
+  let url = '/detective/apis/auth/games';
+  return http.post(url, param);
+}
+
 
 /* 建立游戏 websocket
  - url: /detective/ws/auth/gamers
