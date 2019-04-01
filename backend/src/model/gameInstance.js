@@ -52,4 +52,4 @@ let schema = new Schema({
   difficultyLevel:difficultyLevelSchema,
 });
 
-module.exports = mongoose.model('User',schema);
+module.exports = mongoose.model('GameInstance',schema);

@@ -20,7 +20,7 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 //全局部分变量
-global._Exceptions = require('./src/utils/exceptionUtils');
+global._Exceptions = require('./src/constant/exceptions');
 
 const errorHandler = require('./src/utils/errorHandler');
 const mongoUtils = require('./src/utils/mongoUtils');

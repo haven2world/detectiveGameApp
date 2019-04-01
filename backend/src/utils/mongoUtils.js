@@ -8,10 +8,12 @@
 const mongoose = require('mongoose');
 
 let init = ()=>{
+  mongoose.set('useCreateIndex', true);
   //mongodb 连接
   mongoose.connect(global._Config.mongodb,{
     keepAlive:true,
-    keepAliveInitialDelay:300000
+    keepAliveInitialDelay:300000,
+    useNewUrlParser: true
   });
 
   let db = mongoose.connection;

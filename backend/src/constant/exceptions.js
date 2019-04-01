@@ -23,4 +23,7 @@ module.exports = {
 //  数据校验出错
   VALIDATE_ERROR:1001,
 
+//  业务错误
+  NORMAL_ERROR:900,
+
 }

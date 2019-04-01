@@ -508,6 +508,7 @@ export function publishDocument(id){
  - method: post
  - param:{
   docId
+  level
  }
  */
 
@@ -516,6 +517,29 @@ export function createGameInstance(param){
   return http.post(url, param);
 }
 
+/* 获取游戏详情
+ - url: /detective/apis/auth/games/:gameId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchGameDetail(gameId){
+  let url = '/detective/apis/auth/games/' + gameId;
+  return http.get(url, {});
+}
+
+/* 获取进行中的游戏
+ - url: /detective/apis/auth/games/playingGames
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchPlayingGame(){
+  let url = '/detective/apis/auth/games/playingGames';
+  return http.get(url, {});
+}
 
 /* 建立游戏 websocket
  - url: /detective/ws/auth/gamers

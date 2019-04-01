@@ -12,15 +12,7 @@ const skill = require('../dao/skill');
 const commonUtils = require('../utils/commonUtils');
 
 //编写阶段
-const stageList = [
-  'name',
-  'role',
-  'story',
-  'scene',
-  'task',
-  'ending',
-  'difficulty'
-];
+const stageList = require('../constant/documentStageList');
 
 const service = {
 //  获取用户创建的剧本

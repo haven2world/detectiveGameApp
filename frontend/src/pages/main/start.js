@@ -26,6 +26,19 @@ export default function(){
     });
   },[]);
 
+  //加入游戏
+  async function toJoinGame() {
+    let result = await services.fetchPlayingGame();
+    if(result && result.code === 0 && result.data.gameId){
+      if(result.data.managerFlag){
+      //  进入游戏管理页面
+        router.push('/rooms/' + result.data.gameId + '/manager');
+      }else{
+      //  以普通玩家加入游戏
+      }
+    }
+  }
+
   //创建房间
   function toCreateGame() {
     if(docs.length===0){
@@ -64,7 +77,7 @@ export default function(){
   function createGame(level, docId) {
     services.createGameInstance({level, docId}).then(result=>{
       if(result && result.code === 0){
-        router.push('/rooms/' + resutl.data.gameId + '/manager');
+        router.push('/rooms/' + result.data.gameId + '/manager');
       }
     })
   }
@@ -77,7 +90,7 @@ export default function(){
         </div>
         <div style={{width:'100%'}}>
           <WhiteSpace size={'lg'}/>
-          <Button type={'primary'}>加入游戏</Button>
+          <Button type={'primary'} onClick={toJoinGame}>加入游戏</Button>
           <WhiteSpace size={'lg'}/>
           <Button onClick={toCreateGame}>创建房间</Button>
           <WhiteSpace size={'lg'}/>
