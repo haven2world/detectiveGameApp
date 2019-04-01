@@ -1,4 +1,5 @@
 # detectiveGameApp
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
 一个自用的app
 
 ## 账户密码保护
