@@ -28,7 +28,7 @@ const dao = {
   },
 //  获取一个游戏和它的剧本
   async getGamePopulateBasicDoc(gameId){
-    let gameWithBasicDoc = await Game.findById(gameId).populate('document', ['name', 'roles', 'scenes', 'endings']);
+    let gameWithBasicDoc = await Game.findById(gameId).populate('document', ['name', 'roles', 'scenes', 'endings', 'storyStageCount']);
     return gameWithBasicDoc;
   },
   // 修改游戏属性

@@ -49,6 +49,7 @@ let schema = new Schema({
   }],
   stage:Number,
   status:String,
+  sentEnding:Boolean,
   difficultyLevel:difficultyLevelSchema,
   updateTime:Date,
 });

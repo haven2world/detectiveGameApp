@@ -41,6 +41,7 @@ const service = {
       manager:userId,
       stage:0,
       status:gameStatus.preparation,
+      sentEnding:false,
       difficultyLevel:{
         maxInquiryTimes: doc.level[level].maxInquiryTimes,
         keepClueSecret: doc.level[level].keepClueSecret,
