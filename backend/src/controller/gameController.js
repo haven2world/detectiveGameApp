@@ -48,5 +48,25 @@ router.get('/:gameId',async(ctx, next)=>{
   ctx._data.game = await gameService.getGameWithDocument(ctx.params.gameId);
 });
 
+//获取游戏详情
+router.put('/:gameId',async(ctx, next)=>{
+  if(!ctx.params.gameId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!(await gameService.verifyManagerForGame(ctx._userId, ctx.params.gameId))){
+    ctx.throw({
+      code:_Exceptions.NORMAL_ERROR,
+      message:'当前用户无权限操作'
+    })
+  }
+  await gameService.modifyGameStatus(ctx.params.gameId, ctx.request.body);
+  if(ctx.request.body.action){
+//todo handle action
+  }
+});
+
 
 module.exports = router;

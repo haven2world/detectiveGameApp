@@ -17,6 +17,11 @@ const service = {
     let gameInstance = await game.findPlayingGameForManager(userId);
     return !gameInstance;
   },
+//  验证用户为某游戏房主
+  async verifyManagerForGame(userId, gameId){
+    let gameInstance = await game.findGameById(gameId);
+    return gameInstance.manager.toString() === userId;
+  },
 //  初始化并创建一个游戏
   async createGameInstanceWithManager(userId, docId, level){
     if(!await service.couldCreateGame(userId)){
@@ -62,6 +67,22 @@ const service = {
     gameInstance = await game.findPlayingGameForPlayer(userId);
     managerFlag = false;
     return {game: gameInstance,managerFlag};
+  },
+  //  修改游戏状态
+  async modifyGameStatus(docId, endingId, param){
+    const field = {
+      status:true,
+      stage:true,
+      difficultyLevel:true,
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+    }
+    await game.updateDetail(docId, endingId, paramToSet);
   },
 };
 

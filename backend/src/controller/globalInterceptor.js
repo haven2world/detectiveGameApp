@@ -33,8 +33,8 @@ module.exports = function (router) {
     }
 
     let payload = await tokenService.verify(token);
-    ctx._userLoginId = payload.loginId;
-    ctx._userId = payload.userId;
+    ctx._userLoginId = payload.loginId.toString();
+    ctx._userId = payload.userId.toString();
 
     await next();
   })

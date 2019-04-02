@@ -15,10 +15,6 @@ import { useInputAutoSave } from '@/utils/hookUtils';
 export default function({game, updateGame}) {
 
 
-  //状态
-  const autoName = useInputAutoSave(str=>save('name',str),game.name);
-  const autoDescription = useInputAutoSave(str=>save('description',str),game.description);
-
   //保存
   function save(key, str) {
     if(str && game[key] !== str){
@@ -44,8 +40,6 @@ export default function({game, updateGame}) {
         <InputItem
           labelNumber={3}
           placeholder='剧本名称'
-          {...autoName}
-          error={game.name && !autoName.current}
           clear
         >名称</InputItem>
         <TextareaItem
@@ -53,8 +47,6 @@ export default function({game, updateGame}) {
           autoHeight
           labelNumber={3}
           placeholder={'介绍一下~'}
-          {...autoDescription}
-          error={game.description && !autoDescription.current}
           clear
         />
       </List>

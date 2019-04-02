@@ -50,6 +50,7 @@ let schema = new Schema({
   stage:Number,
   status:String,
   difficultyLevel:difficultyLevelSchema,
+  updateTime:Date,
 });
 
 module.exports = mongoose.model('GameInstance',schema);

@@ -529,6 +529,21 @@ export function fetchGameDetail(gameId){
   return http.get(url, {});
 }
 
+
+/* 修改游戏状态
+ - url: /detective/apis/auth/games/:gameId
+ - method: put
+ - param:{
+ action
+ status
+ }
+ */
+
+export function changeGameStatus(gameId, param){
+  let url = '/detective/apis/auth/games/' + gameId;
+  return http.put(url, param);
+}
+
 /* 获取进行中的游戏
  - url: /detective/apis/auth/games/playingGames
  - method: get

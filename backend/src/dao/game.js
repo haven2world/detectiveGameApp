@@ -9,6 +9,10 @@ const Game = require('../model/gameInstance');
 const gameStatus = require('../constant/gameStatus');
 
 const dao = {
+  //  通过id查找游戏
+  async findGameById(gameId){
+    return await Game.findById(gameId);
+  },
 //  查找房主名下未结束的游戏
   async findPlayingGameForManager(userId){
     return await Game.findOne({manager:userId, status:{$ne:gameStatus.over}});
@@ -26,6 +30,13 @@ const dao = {
   async getGamePopulateBasicDoc(gameId){
     let gameWithBasicDoc = await Game.findById(gameId).populate('document', ['name', 'roles', 'scenes', 'endings']);
     return gameWithBasicDoc;
+  },
+  // 修改游戏属性
+  async updateDetail(id, param){
+    return await Game.updateOne({_id:id,},{
+      $set:param,
+      $currentDate:{updateTime:true}
+    })
   },
 };
 

@@ -9,6 +9,8 @@ import LoadingPage from '@/component/LoadingPage'
 import {toast} from '@/utils/toastUtils';
 import {useTab} from '@/utils/hookUtils';
 import Overview from './component/Overview';
+import gameStatus from '@/constant/gameStatus';
+import managerActions from '@/constant/managerActions';
 
 /**
  * 房主详情页
@@ -38,6 +40,22 @@ export default function({computedMatch}) {
       }
     })
   }
+  
+  //结束游戏
+  function endGame() {
+    Modal.alert('警告','一旦结束游戏，所有玩家都将无法继续游戏，也无法重新开启，请慎重操作',[
+      {text:'取消',},
+      {text:'确认结束',onPress:()=>{
+          services.changeGameStatus(gameId,{status:gameStatus.over, action:managerActions.OVER_GAME}).then(result=>{
+            if(result && result.code === 0){
+              toast.success('游戏已结束');
+              router.goBack();
+            }
+          })
+        },
+      style:{color:'#ff4040'}}
+    ])
+  }
 
   const tabs = [
     {stage:'overView', title:'总览', component:Overview},
@@ -54,6 +72,7 @@ export default function({computedMatch}) {
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
+          rightContent={<span style={{fontSize:16, color:'#ff4040' }} onClick={endGame}>结束</span> }
         >{game.document.name} - 管理</NavBar>
         <Tabs
           page={tab}
