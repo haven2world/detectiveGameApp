@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: ws调整">
-      <change beforePath="$PROJECT_DIR$/src/controller/gameController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/gameController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/main/history.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/main/history.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/main/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/main/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/Overview.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/Overview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />

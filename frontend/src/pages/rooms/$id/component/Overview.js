@@ -84,6 +84,23 @@ export default function({game, updateGame}) {
     ])
   }
 
+  //暂停游戏或继续
+  function pauseGame() {
+    let isPaused = game.status===gameStatus.pause;
+    Modal.alert('提示',`确认要${isPaused?'继续':'暂停'}游戏吗？`,[
+      {text:'取消',},
+      {text:'确认',onPress:async ()=>{
+          let result = await save({
+            status:isPaused?gameStatus.playing:gameStatus.pause,
+            action:isPaused?managerActions.RESUME_GAME:managerActions.PAUSE_GAME
+          });
+          result && toast.light(`游戏已${isPaused?'继续':'暂停'}`);
+        },
+        style:{color:'#ff4040'}
+      }
+    ])
+  }
+
   //渲染阶段
   function renderStage() {
     let started = game.status!==gameStatus.preparation;
@@ -108,17 +125,48 @@ export default function({game, updateGame}) {
       <ListItem>
         <div className={'title-row flex-container'}>
           <span style={{flex:1}}>当前阶段</span>
-          <Button type={'ghost'} size={'small'} onClick={clickHandler} disabled={game.sentEnding}>{buttonContent}</Button>
+          <Button type={'ghost'} size={'small'} onClick={clickHandler} disabled={game.status===gameStatus.over}>{buttonContent}</Button>
         </div>
         <div className={'flex-center'}>{currentStageView}</div>
       </ListItem>
     )
   }
 
+  //渲染状态
+  function renderStatus() {
+    let started = game.status!==gameStatus.preparation;
+    let isPaused = game.status===gameStatus.pause;
+
+    let statusMap = {
+      [gameStatus.preparation]:'准备中',
+      [gameStatus.playing]:'进行中',
+      [gameStatus.pause]:'已暂停',
+      [gameStatus.over]:'已结束',
+    };
+    let currentStatus = statusMap[game.status];
+    let buttonContent = isPaused?'继续游戏':'暂停';
+    let clickHandler = pauseGame;
+
+    if(!started){
+      buttonContent = '开始游戏';
+      clickHandler = startGame;
+    }
+
+    return(
+      <ListItem>
+        <div className={'title-row flex-container'}>
+          <span style={{flex:1}}>游戏状态</span>
+          <Button type={'ghost'} size={'small'} onClick={clickHandler} disabled={game.status===gameStatus.over}>{buttonContent}</Button>
+        </div>
+        <div className={'flex-center'}><span className={'gray-text'}>{currentStatus}</span></div>
+      </ListItem>
+    )
+  }
   return(
     <div className={'container flex-column-container'}>
       <ScrollableList>
         {renderStage()}
+        {renderStatus()}
       </ScrollableList>
     </div>
   )
