@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: ws调整">
-      <change beforePath="$PROJECT_DIR$/src/controller/gameController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/gameController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/game.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/Role.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/Overview.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/Overview.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,8 +48,8 @@
       <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dao/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+            <state relative-caret-position="307">
+              <caret line="29" column="76" lean-forward="true" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -521,7 +519,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="483079000" />
+    <option name="totallyTimeSpent" value="486830000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,7 +531,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21496312" />
@@ -901,8 +899,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="33" column="30" lean-forward="true" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+        <state relative-caret-position="307">
+          <caret line="29" column="76" lean-forward="true" selection-start-line="29" selection-start-column="76" selection-end-line="29" selection-end-column="76" />
         </state>
       </provider>
     </entry>
