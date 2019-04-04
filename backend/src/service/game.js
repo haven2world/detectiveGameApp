@@ -22,6 +22,33 @@ const service = {
     let gameInstance = await game.findGameById(gameId);
     return gameInstance.manager.toString() === userId;
   },
+//  检查当前游戏可操作
+  async checkStatusPlaying(gameId, param){
+    let gameInstance = await game.findGameById(gameId);
+    if(gameInstance.status === gameStatus.playing){
+      console.log(1)
+      return true;
+    }else if(param && param.status && param.status === gameStatus.playing){
+      console.log(2)
+      return true
+    }else if(gameInstance.status === gameStatus.preparation){
+      throw {
+        code:global._Execptions.NORMAL_ERROR,
+        message:'游戏尚未开始，无法操作'
+      }
+    }else if(gameInstance.status === gameStatus.over){
+      console.log(3)
+      throw {
+        code:global._Execptions.NORMAL_ERROR,
+        message:'游戏已结束，无法操作'
+      }
+    }else if(gameInstance.status === gameStatus.pause){
+      throw {
+        code:global._Execptions.NORMAL_ERROR,
+        message:'游戏已暂停，无法操作,请联系房主'
+      }
+    }
+  },
 //  初始化并创建一个游戏
   async createGameInstanceWithManager(userId, docId, level){
     if(!await service.couldCreateGame(userId)){

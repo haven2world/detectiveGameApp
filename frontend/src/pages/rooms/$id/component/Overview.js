@@ -21,7 +21,7 @@ export default function({game, updateGame}) {
 
 
   //保存
-  function save() {
+  async function save() {
     let key = arguments[0];
     let param = {};
     if(typeof key === 'object'){
@@ -34,11 +34,11 @@ export default function({game, updateGame}) {
     }else{
       return;
     }
-    services.changeGameStatus(game._id, param).then(result=>{
-      if(result && result.code === 0){
-        updateGame();
-      }
-    })
+    let result = await services.changeGameStatus(game._id, param);
+    if(result && result.code === 0){
+      updateGame();
+      return true;
+    }
   }
 
   //推送结局
@@ -47,17 +47,41 @@ export default function({game, updateGame}) {
      toast.fail('已经推送过结局');
      return;
     }
-    save({sentEnding:true, action:managerActions.SEND_ENDING});
+    Modal.alert('提示','一旦推送结局，游戏将结束，之后只能通过历史记录查看游戏',[
+      {text:'取消',},
+      {text:'确认推送',onPress:async ()=>{
+          let result = await save({sentEnding:true, action:managerActions.SEND_ENDING});
+          result && toast.success('结局已经推送，游戏已经结束');
+        },
+        style:{color:'#ff4040'}
+      }
+    ])
   }
 
   //推送下一阶段
   function pushNextStage() {
-    save({stage:game.stage+1, action:managerActions.PUSH_STAGE});
+    Modal.alert('提示','确认要推送第' + (game.stage+1) + '阶段故事给玩家吗？',[
+      {text:'取消',},
+      {text:'确认推送',onPress:async ()=>{
+          let result = await save({stage:game.stage+1, action:managerActions.PUSH_STAGE});
+          result && toast.light('推送成功');
+        },
+        style:{color:'#ff4040'}
+      }
+    ])
   }
 
   //开始游戏
   function startGame() {
-    save({status:gameStatus.playing, stage:1, action:managerActions.START_GAME});
+    Modal.alert('提示','确认要开始游戏吗？',[
+      {text:'取消',},
+      {text:'确认',onPress:async ()=>{
+          let result = await save({status:gameStatus.playing, stage:1, action:managerActions.START_GAME});
+          result && toast.light('游戏已开始');
+        },
+        style:{color:'#ff4040'}
+      }
+    ])
   }
 
   //渲染阶段
@@ -84,7 +108,7 @@ export default function({game, updateGame}) {
       <ListItem>
         <div className={'title-row flex-container'}>
           <span style={{flex:1}}>当前阶段</span>
-          <Button type={'ghost'} size={'small'} onClick={clickHandler}>{buttonContent}</Button>
+          <Button type={'ghost'} size={'small'} onClick={clickHandler} disabled={game.sentEnding}>{buttonContent}</Button>
         </div>
         <div className={'flex-center'}>{currentStageView}</div>
       </ListItem>

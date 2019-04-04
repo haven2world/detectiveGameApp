@@ -62,6 +62,7 @@ router.put('/:gameId',async(ctx, next)=>{
       message:'当前用户无权限操作'
     })
   }
+  await gameService.checkStatusPlaying(ctx.params.gameId, ctx.request.body);
   await gameService.modifyGameStatus(ctx.params.gameId, ctx.request.body);
   if(ctx.request.body.action){
 //todo handle action

@@ -9,7 +9,7 @@ const tokenService = require('../service/token');
 
 module.exports = function (router) {
   router.use('/',async(ctx,next)=>{
-    console.log('receive request:' + ctx.url);
+    console.log('receive request:' + ctx.request.method + ' ' + ctx.url);
 
     ctx.body = {
       code:0,
