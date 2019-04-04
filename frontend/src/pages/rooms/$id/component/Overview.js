@@ -1,7 +1,7 @@
 'use strict';
 import { useState, useEffect } from 'react';
 import {connect} from 'dva';
-import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar} from 'antd-mobile';
+import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, Stepper, Switch} from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
 import router from 'umi/router';
@@ -101,6 +101,14 @@ export default function({game, updateGame}) {
     ])
   }
 
+  //修改难度
+  async function adjustDifficulty(key, value) {
+    let difficulty = {...game.difficultyLevel};
+    difficulty[key] = value;
+    let result = await save({difficultyLevel:difficulty, action:managerActions.ADJUST_DIFFICULTY});
+    result && toast.light('调整已生效');
+  }
+
   //渲染阶段
   function renderStage() {
     let started = game.status!==gameStatus.preparation;
@@ -162,11 +170,43 @@ export default function({game, updateGame}) {
       </ListItem>
     )
   }
+
+  //渲染难度
+  function renderDifficulty() {
+    let difficulty = game.difficultyLevel;
+    return (
+      <ListItem>
+        <div className={'title-row'}>难度调整</div>
+        <div style={{ width:'100%',marginTop:10,marginBottom:5}} >
+          <div className={'gray-text'}>每个人最多获取线索次数：</div>
+          <div style={{paddingTop:5}}>
+            <Stepper
+              showNumber
+              max={100}
+              min={1}
+              value={difficulty.maxInquiryTimes}
+              onChange={(v)=>adjustDifficulty('maxInquiryTimes', v)}
+            />
+          </div>
+        </div>
+        <div style={{ width:'100%',marginBottom:10}} className={'flex-container'}>
+          <div style={{flex:1}} className={'gray-text'}>是否自动公开所有线索：</div>
+          <div >
+            <Switch
+              checked={difficulty.keepClueSecret}
+              onChange={(v)=>adjustDifficulty('keepClueSecret',v)}
+            />
+          </div>
+        </div>
+      </ListItem>
+    )
+  }
   return(
     <div className={'container flex-column-container'}>
       <ScrollableList>
         {renderStage()}
         {renderStatus()}
+        {renderDifficulty()}
       </ScrollableList>
     </div>
   )

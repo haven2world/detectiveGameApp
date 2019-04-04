@@ -53,7 +53,7 @@ router.get('/:gameId',async(ctx, next)=>{
   ctx._data.game = await gameService.getGameWithDocument(ctx.params.gameId);
 });
 
-//获取游戏详情
+//修改游戏详情
 router.put('/:gameId',async(ctx, next)=>{
   if(!ctx.params.gameId){
     ctx.throw({

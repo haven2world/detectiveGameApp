@@ -41,6 +41,7 @@ const dao = {
   },
   // 修改游戏属性
   async updateDetail(id, param){
+    console.log(param)
     return await Game.updateOne({_id:id,},{
       $set:param,
       $currentDate:{updateTime:true}
