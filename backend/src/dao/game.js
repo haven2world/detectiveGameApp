@@ -21,6 +21,14 @@ const dao = {
   async findPlayingGameForPlayer(userId){
     return await Game.findOne({players: userId, status:{$ne:gameStatus.over}});
   },
+  //  查找房主名下未结束的游戏
+  async findAllGameForManager(userId){
+    return await Game.find({manager:userId}).populate('document',['name']);
+  },
+//  查找玩家名下未结束的游戏
+  async findAllGameForPlayer(userId){
+    return await Game.find({players: userId}).populate('document',['name']);
+  },
 //  创建一个剧本
   async createGame(prop){
     let game = new Game(prop);

@@ -517,6 +517,18 @@ export function createGameInstance(param){
   return http.post(url, param);
 }
 
+/* 获取历史游戏
+ - url: /detective/apis/auth/games
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchHistoryGames(){
+  let url = '/detective/apis/auth/games';
+  return http.get(url, {});
+}
+
 /* 获取游戏详情
  - url: /detective/apis/auth/games/:gameId
  - method: get

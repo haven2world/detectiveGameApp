@@ -50,7 +50,7 @@ export default function({game, updateGame}) {
     Modal.alert('提示','一旦推送结局，游戏将结束，之后只能通过历史记录查看游戏',[
       {text:'取消',},
       {text:'确认推送',onPress:async ()=>{
-          let result = await save({sentEnding:true, action:managerActions.SEND_ENDING});
+          let result = await save({sentEnding:true, status:gameStatus.over , action:managerActions.SEND_ENDING});
           result && toast.success('结局已经推送，游戏已经结束');
         },
         style:{color:'#ff4040'}

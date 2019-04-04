@@ -29,6 +29,11 @@ router.post('/',async(ctx, next)=>{
   ctx._data.gameId = (await gameService.createGameInstanceWithManager(ctx._userId, docId, level))._id;
 });
 
+//查找历史游戏记录
+router.get('/',async(ctx, next)=>{
+  ctx._data.games = await gameService.gameHistoryForUser(ctx._userId);
+});
+
 
 //获取进行中的游戏
 router.get('/playingGames',async(ctx, next)=>{

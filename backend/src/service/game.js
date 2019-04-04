@@ -17,6 +17,13 @@ const service = {
     let gameInstance = await game.findPlayingGameForManager(userId);
     return !gameInstance;
   },
+//  查找所有游戏历史
+  async gameHistoryForUser(userId){
+    let data = {manage:[],play:[]};
+    data.manage = await game.findAllGameForManager(userId);
+    data.play = await game.findAllGameForPlayer(userId);
+    return data;
+  },
 //  验证用户为某游戏房主
   async verifyManagerForGame(userId, gameId){
     let gameInstance = await game.findGameById(gameId);
@@ -26,25 +33,22 @@ const service = {
   async checkStatusPlaying(gameId, param){
     let gameInstance = await game.findGameById(gameId);
     if(gameInstance.status === gameStatus.playing){
-      console.log(1)
       return true;
     }else if(param && param.status && param.status === gameStatus.playing){
-      console.log(2)
       return true
     }else if(gameInstance.status === gameStatus.preparation){
       throw {
-        code:global._Execptions.NORMAL_ERROR,
+        code:global._Exceptions.NORMAL_ERROR,
         message:'游戏尚未开始，无法操作'
       }
     }else if(gameInstance.status === gameStatus.over){
-      console.log(3)
       throw {
-        code:global._Execptions.NORMAL_ERROR,
+        code:global._Exceptions.NORMAL_ERROR,
         message:'游戏已结束，无法操作'
       }
     }else if(gameInstance.status === gameStatus.pause){
       throw {
-        code:global._Execptions.NORMAL_ERROR,
+        code:global._Exceptions.NORMAL_ERROR,
         message:'游戏已暂停，无法操作,请联系房主'
       }
     }
