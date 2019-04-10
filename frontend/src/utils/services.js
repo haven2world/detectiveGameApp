@@ -568,6 +568,32 @@ export function fetchPlayingGame(){
   return http.get(url, {});
 }
 
+
+/* 获取游戏中的角色状态概览
+ - url: /detective/apis/auth/games/:gameId/roles/:roleId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchPlayingRoleDetail(gameId, roleId){
+  let url = '/detective/apis/auth/games/' + gameId + '/roles/' + roleId;
+  return http.get(url, {});
+}
+
+/* 修改任务完成状况
+ - url: /detective/apis/auth/games/:gameId/roles/:roleId/tasks/:taskId
+ - method: put
+ - param:{
+ finished
+ }
+ */
+
+export function changeTaskStatus(gameId, roleId, taskId, param){
+  let url = '/detective/apis/auth/games/' + gameId + '/roles/' + roleId + '/tasks/' + taskId;
+  return http.put(url, param);
+}
+
 /* 建立游戏 websocket
  - url: /detective/ws/auth/gamers
  - method: ws

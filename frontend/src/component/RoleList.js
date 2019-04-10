@@ -24,7 +24,7 @@ export default function(props) {
     if(onClickRow){
       onClickRow(role);
     }else if(game){
-      router.push('/games/' + game._id + '/roles/' + role._id);
+      router.push('/rooms/' + game._id + '/roles-manager/' + role._id);
     }else{
       router.push('/documents/' + document._id + '/roles/' + role._id);
     }
@@ -36,6 +36,10 @@ export default function(props) {
     return (
       <ScrollableList>
         {list.map((role, index) => {
+          let desc = role.description || '暂无描述';
+          if(game){
+            desc = '扮演者：' + role.player;
+          }
           return <Item key={index} wrap onClick={() => clickDocument(role)} arrow={'horizontal'}
                        thumb={<img
                          src={role.photo ? role.photo : require('@/assets/img/contact_default.png')}
@@ -43,8 +47,7 @@ export default function(props) {
                        />}
           >
             {role.name}
-            <Item.Brief>
-              {role.description || '暂无描述'}</Item.Brief>
+            <Item.Brief>{desc}</Item.Brief>
           </Item>;
         })}
       </ScrollableList>

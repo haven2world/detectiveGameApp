@@ -74,5 +74,38 @@ router.put('/:gameId',async(ctx, next)=>{
   }
 });
 
+//获取游戏中的角色详情
+router.get('/:gameId/roles/:roleId',async(ctx, next)=>{
+  if(!ctx.params.gameId || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.role = await gameService.getRoleInGameWithDocument(ctx.params.gameId, ctx.params.roleId);
+});
+
+//修改任务完成状况
+router.put('/:gameId/roles/:roleId/tasks/:taskId',async(ctx, next)=>{
+  if(!ctx.params.gameId || !ctx.params.roleId || !ctx.params.taskId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!(await gameService.verifyManagerForGame(ctx._userId, ctx.params.gameId))){
+    ctx.throw({
+      code:_Exceptions.NORMAL_ERROR,
+      message:'当前用户无权限操作'
+    })
+  }
+  await gameService.checkStatusPlaying(ctx.params.gameId, ctx.request.body);
+  await gameService.modifyTaskStatus(ctx.params.gameId, ctx.params.roleId, ctx.params.taskId, ctx.request.body.finished);
+  if(ctx.request.body.action){
+  //todo handle action
+  }
+});
+
+
 
 module.exports = router;

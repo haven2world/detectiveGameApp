@@ -213,7 +213,7 @@ const dao = {
 //  获取某个人的任务
   async getTaskForRole(docId, roleId){
     let doc  = await Document.findById(docId);
-    let tasks = doc.toObject().tasks.filter(task=>task.belongToRoleId.toString() === roleId);
+    let tasks = doc.toObject().tasks.filter(task=>task.belongToRoleId.toString() === roleId.toString());
     return {doc, tasks};
   },
   //  创建任务

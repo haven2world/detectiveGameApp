@@ -7,7 +7,6 @@
 
 const document = require('../dao/document');
 const game = require('../dao/game');
-const commonUtils = require('../utils/commonUtils');
 const documentService = require('../service/gameDocument');
 const gameStatus = require('../constant/gameStatus');
 
@@ -101,7 +100,7 @@ const service = {
     return {game: gameInstance,managerFlag};
   },
   //  修改游戏状态
-  async modifyGameStatus(docId, endingId, param){
+  async modifyGameStatus(gameId, param){
     const field = {
       status:true,
       stage:true,
@@ -114,7 +113,37 @@ const service = {
         paramToSet[key] = param[key];
       }
     }
-    await game.updateDetail(docId, endingId, paramToSet);
+    await game.updateDetail(gameId, paramToSet);
+  },
+//  获取游戏中的角色
+  async getRoleInGameWithDocument(gameId, roleId){
+    let gameInstance = await game.getGamePopulateBasicDoc(gameId);
+    let roleInstance = gameInstance.roles.id(roleId);
+    roleInstance = roleInstance.toObject();
+    service.assembleDocumentToRole(gameInstance.document, roleInstance);
+    roleInstance.clues.forEach(clue=>service.assembleDocumentToClue(gameInstance.document, clue));
+    let {tasks} = await document.getTaskForRole(gameInstance.document, roleInstance.document._id);
+    roleInstance.tasks = tasks;
+
+    return roleInstance;
+  },
+//  组装role document
+  async assembleDocumentToRole(document, role){
+    let roleDoc = document.roles.id(role.roleDocumentId);
+    role.document = roleDoc.toObject();
+    return role;
+  },
+//  组装clue document
+  async assembleDocumentToClue(document, clue){
+    let sceneDoc = document.scenes.id(clue.sceneId);
+    let clueDoc = sceneDoc.clues.id(clue.clueDocumentId);
+    clue.document = clueDoc.toObject();
+    clue.scene = sceneDoc.name;
+    return clue;
+  },
+//修改任务完成状况
+  async modifyTaskStatus(gameId, roleId, taskId, finished){
+    await game.updateTaskStatus(gameId, roleId, taskId, finished);
   },
 };
 

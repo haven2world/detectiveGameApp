@@ -36,16 +36,36 @@ const dao = {
   },
 //  获取一个游戏和它的剧本
   async getGamePopulateBasicDoc(gameId){
-    let gameWithBasicDoc = await Game.findById(gameId).populate('document', ['name', 'roles', 'scenes', 'endings', 'storyStageCount']);
+    let gameWithBasicDoc = await Game.findById(gameId)
+      .populate({
+        path:'document',
+        select:['name', 'roles', 'scenes', 'endings', 'storyStageCount'],
+        populate:{
+          path:'roles.skills.skillInfo'
+        }
+      })
+      .populate('players', ['loginId']);
     return gameWithBasicDoc;
   },
   // 修改游戏属性
   async updateDetail(id, param){
-    console.log(param)
     return await Game.updateOne({_id:id,},{
       $set:param,
       $currentDate:{updateTime:true}
     })
+  },
+  // 修改任务完成状态
+  async updateTaskStatus(gameId, roleId, taskId, finished){
+    let game = await Game.findById(gameId);
+    let finishedTask = game.roles.id(roleId).finishedTask;
+    if(finishedTask[taskId.toString()] !== finished){
+      let roleIndex = game.roles.findIndex(role=>role._id.toString()===roleId.toString());
+      finishedTask[taskId.toString()] = finished;
+      game.updateTime = new Date();
+      game.markModified(`roles.${roleIndex}.finishedTask`);
+      await game.save();
+    }
+    return true;
   },
 };
 

@@ -18,6 +18,7 @@ let clueSchema = new Schema({
   founder:Schema.Types.ObjectId,
   sillUser:Schema.Types.ObjectId,
   sceneId:Schema.Types.ObjectId,
+  shared:Boolean,
 });
 
 //消息
@@ -36,17 +37,21 @@ let difficultyLevelSchema = new Schema({
   keepClueSecret:Boolean
 });
 
+//角色
+let roleSchema = new Schema({
+  roleDocumentId:Schema.Types.ObjectId,
+  skillUse:[skillSchema],
+  player:Schema.Types.ObjectId,
+  clues:[clueSchema],
+  messages:[messageSchema],
+  finishedTask:Schema.Types.Mixed
+});
+
 let schema = new Schema({
   document:{type:Schema.Types.ObjectId, ref:'GameDocument'},
-  players:[Schema.Types.ObjectId],
+  players:[{type:Schema.Types.ObjectId, ref:'User'}],
   manager:Schema.Types.ObjectId,
-  roles:[{
-    roleDocumentId:Schema.Types.ObjectId,
-    skillUse:[skillSchema],
-    player:Schema.Types.ObjectId,
-    clues:[clueSchema],
-    messages:[messageSchema]
-  }],
+  roles:[roleSchema],
   stage:Number,
   status:String,
   sentEnding:Boolean,
