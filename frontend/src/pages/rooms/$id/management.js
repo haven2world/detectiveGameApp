@@ -10,6 +10,7 @@ import {toast} from '@/utils/toastUtils';
 import {useTab} from '@/utils/hookUtils';
 import Overview from './component/Overview';
 import Role from './component/Role';
+import Scene from './component/Scene';
 import gameStatus from '@/constant/gameStatus';
 import managerActions from '@/constant/managerActions';
 
@@ -61,7 +62,7 @@ export default function({computedMatch}) {
   const tabs = [
     {stage:'overView', title:'总览', component:Overview},
     {stage:'role', title:'角色', component:Role},
-    {stage:'scene', title:'场景', component:Overview},
+    {stage:'scene', title:'场景', component:Scene},
     {stage:'ending', title:'结局', component:Overview},
   ];
 

@@ -14,7 +14,7 @@ const ListItem = List.Item;
  * 场景详情页
  */
 
-export default function({editable, sceneDoc, sceneId, docId, loading}) {
+export default function({editable=false, sceneDoc, sceneId, docId, loading}) {
 
   const [sceneDetail, setSceneDetail] = useState(null);
   const allSkills = useRef([]);
@@ -113,7 +113,7 @@ export default function({editable, sceneDoc, sceneId, docId, loading}) {
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
-          rightContent={<i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={deleteScene}/>}
+          rightContent={RenderIf(editable)(<i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={deleteScene}/>)}
         >场景详情</NavBar>
         <ScrollableList>
           <ListItem>
@@ -124,7 +124,7 @@ export default function({editable, sceneDoc, sceneId, docId, loading}) {
               {...autoName}
             >名称</InputItem></div>
           </ListItem>
-          <ListItem extra={
+          <ListItem extra={editable?
             <Stepper
               style={{ width: '100%', minWidth: '100px' }}
               showNumber
@@ -132,7 +132,7 @@ export default function({editable, sceneDoc, sceneId, docId, loading}) {
               min={1}
               value={sceneDetail.enableStage}
               onChange={onChangeStage}
-            />
+            />:<div>第{sceneDetail.enableStage}阶段</div>
           }>
             <div className={'title-row'}>生效阶段</div>
           </ListItem>
@@ -197,11 +197,19 @@ function ClueItem({index, clue, maxStage, allSkills, editable, sceneId, clueId, 
     })
   }
 
-  return (<ListItem>
+  const style = index?{border:'0 solid #2c8ae9',borderTopWidth:'1px'}:{};
+
+  return (<ListItem style={style} wrap>
     <div>
-      <span className={'gray-text'}>线索&nbsp;{index+1}：</span>
+      <span className={'gray-text'}>线索&nbsp;{index+1}：{RenderIf(clueDetail.gameStatus)(clueDetail.gameStatus&&clueDetail.gameStatus.shared?'【已公开】':'【未公开】')}</span>
       <InputItem {...autoName} editable={editable} placeholder={'输入线索名称'}/>
     </div>
+    {RenderIf(clueDetail.gameStatus)(
+      <div style={{width:'100%'}} className={'free-break'}>
+        <span className={'gray-text'}>持有人：&nbsp;</span>
+        <span>{clueDetail.gameStatus&&clueDetail.gameStatus.shared?'所有人':clueDetail.gameStatus&&clueDetail.gameStatus.founder.map(i=>i.name).join(',')}</span>
+      </div>
+    )}
     <div>
       <span className={'gray-text'}>内容：</span>
       <TextareaItem
@@ -215,37 +223,40 @@ function ClueItem({index, clue, maxStage, allSkills, editable, sceneId, clueId, 
     <div style={{ width:'100%'}} className={'flex-container'}>
       <div style={{flex:1}} className={'gray-text'}>生效阶段：</div>
       <div >
-        <Stepper
-          showNumber
-          max={clueDetail.maxStageCount}
-          min={1}
-          value={clueDetail.enableStage}
-          onChange={(v)=>save('enableStage',v)}
-        />
+        {RenderIf(editable)(<Stepper
+        showNumber
+        max={clueDetail.maxStageCount}
+        min={1}
+        value={clueDetail.enableStage}
+        onChange={(v)=>save('enableStage',v)}
+      />)}
+        {RenderIf(!editable)(<div className={'gray-text'}>第{clueDetail.enableStage}阶段</div>)}
       </div>
     </div>
-    <div style={{ width:'100%'}} className={'flex-container'}>
-      <div style={{flex:1}} className={'gray-text'}>可被重复获取：</div>
-      <div>
-        <Switch
-          checked={clueDetail.repeatable}
-          onChange={(v)=>save('repeatable',v)}
-        />
-      </div>
-    </div>
-    <div style={{ width:'100%',marginTop:5}} className={'flex-container'}>
-      <div style={{flex:1}} className={'gray-text'}>需要技能：</div>
-      <div>
-        <Switch
-          checked={clueDetail.needSkill}
-          onChange={(v)=>save('needSkill',v)}
-        />
-      </div>
-    </div>
+    {RenderIf(editable)(
+      <div style={{ width: '100%' }} className={'flex-container'}>
+        <div style={{ flex: 1 }} className={'gray-text'}>可被重复获取：</div>
+        <div>
+          <Switch
+            checked={clueDetail.repeatable}
+            onChange={(v) => save('repeatable', v)}
+          />
+        </div>
+      </div>)}
+    {RenderIf(editable)(
+      <div style={{ width:'100%',marginTop:5}} className={'flex-container'}>
+        <div style={{flex:1}} className={'gray-text'}>需要技能：</div>
+        <div>
+          <Switch
+            checked={clueDetail.needSkill}
+            onChange={(v)=>save('needSkill',v)}
+          />
+        </div>
+      </div>)}
     {RenderIf(clueDetail.needSkill)(
       <div style={{width:'100%'}}>
         <div style={{ width:'100%',marginTop:5}} className={'flex-container'}>
-          <div className={'gray-text flex-column-container flex-center'} >技能：</div>
+          <div className={'gray-text flex-column-container flex-center'} >{!editable?'需要':''}技能：</div>
           <div style={{flex:1}}>
             <Picker
               data={allSkills}
@@ -253,7 +264,7 @@ function ClueItem({index, clue, maxStage, allSkills, editable, sceneId, clueId, 
               cols={1}
               onOk={(v)=>save('skillId',v[0])}
               title={'请选择需要的技能'}
-              disabled={false}
+              disabled={!editable}
             ><List.Item>&nbsp;</List.Item></Picker>
           </div>
         </div>
@@ -269,9 +280,11 @@ function ClueItem({index, clue, maxStage, allSkills, editable, sceneId, clueId, 
         </div>
       </div>
     )}
-    <div className={'primary-text'} style={{position:'absolute', right: 20, top: 5, zIndex:100}}>
-      <i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={deleteClue}/>
-    </div>
+    {RenderIf(editable)(
+    <div className={'primary-text'} style={{ position: 'absolute', right: 20, top: 5, zIndex: 100 }}>
+      <i className="fas fa-trash-alt clickable" style={{ fontSize: 16 }} onClick={deleteClue}/>
+    </div>)}
+
   </ListItem>)
 
 }

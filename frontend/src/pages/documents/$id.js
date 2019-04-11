@@ -54,7 +54,7 @@ export default function({computedMatch}) {
 
   //发布剧本
   function publish() {
-    Modal.alert('确认发布','一旦发布就可以在游戏中创建了,之后的修改都会实时生效在之后创建的游戏中',[
+    Modal.alert('确认发布','一旦发布就可以在游戏中创建了,之后的修改都会实时生效在创建的游戏中',[
       {text:'取消',},
       {text:'发布',onPress:()=>{
         services.publishDocument(docId).then(result=>{

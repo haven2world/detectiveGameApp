@@ -594,6 +594,18 @@ export function changeTaskStatus(gameId, roleId, taskId, param){
   return http.put(url, param);
 }
 
+/* 获取游戏中的场景状态概览
+ - url: /detective/apis/auth/games/:gameId/scenes/:sceneId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchPlayingSceneDetail(gameId, sceneId){
+  let url = '/detective/apis/auth/games/' + gameId + '/scenes/' + sceneId;
+  return http.get(url, {});
+}
+
 /* 建立游戏 websocket
  - url: /detective/ws/auth/gamers
  - method: ws

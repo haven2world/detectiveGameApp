@@ -106,6 +106,20 @@ router.put('/:gameId/roles/:roleId/tasks/:taskId',async(ctx, next)=>{
   }
 });
 
+//获取游戏中的场景详情
+router.get('/:gameId/scenes/:sceneId',async(ctx, next)=>{
+  if(!ctx.params.gameId || !ctx.params.sceneId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  const {sceneInstance, gameInstance} = await gameService.getSceneInGameWithDocument(ctx.params.gameId, ctx.params.sceneId);
+  const allSkills = await documentService.getSkills(gameInstance.document._id);
+  ctx._data.scene = sceneInstance;
+  ctx._data.allSkills = allSkills;
+});
+
 
 
 module.exports = router;

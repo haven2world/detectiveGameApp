@@ -127,19 +127,47 @@ const service = {
 
     return roleInstance;
   },
-//  组装role document
-  async assembleDocumentToRole(document, role){
-    let roleDoc = document.roles.id(role.roleDocumentId);
+//  获取游戏中的场景
+  async getSceneInGameWithDocument(gameId, sceneId){
+    let gameInstance = await game.getGamePopulateBasicDoc(gameId);
+    let sceneInstance = gameInstance.document.scenes.id(sceneId).toObject();
+    service.assembleGameStatusToCluesDocument(gameInstance, sceneInstance.clues);
+
+    return {sceneInstance, gameInstance};
+  },
+//  组装 role document
+  assembleDocumentToRole(documentInstance, role){
+    let roleDoc = documentInstance.roles.id(role.roleDocumentId);
     role.document = roleDoc.toObject();
     return role;
   },
-//  组装clue document
-  async assembleDocumentToClue(document, clue){
-    let sceneDoc = document.scenes.id(clue.sceneId);
+//  组装 clue document
+  assembleDocumentToClue(documentInstance, clue){
+    let sceneDoc = documentInstance.scenes.id(clue.sceneId);
     let clueDoc = sceneDoc.clues.id(clue.clueDocumentId);
     clue.document = clueDoc.toObject();
     clue.scene = sceneDoc.name;
     return clue;
+  },
+//  组装 clue game status
+  assembleGameStatusToCluesDocument(gameInstance, clues){
+    let documentInstance = gameInstance.document;
+    gameInstance = gameInstance.toObject();
+    let clueMap = {};
+    gameInstance.roles.forEach(role=>{
+      service.assembleDocumentToRole(documentInstance, role);
+      role.clues.forEach(clue=>{
+        let temp = clueMap[clue.clueDocumentId]||{founder:[], shared:false, sceneId:clue.sceneId,};
+        temp.founder.push({_id:clue.founder,name:role.document.name});
+        temp.shared = temp.shared||clue.shared;
+        clueMap[clue.clueDocumentId] = temp;
+      });
+    });
+
+    clues.forEach(clue=>{
+      clue.gameStatus = clueMap[clue._id];
+    });
+    return clues;
   },
 //修改任务完成状况
   async modifyTaskStatus(gameId, roleId, taskId, finished){

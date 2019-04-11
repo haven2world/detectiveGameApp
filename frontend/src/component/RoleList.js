@@ -24,7 +24,7 @@ export default function(props) {
     if(onClickRow){
       onClickRow(role);
     }else if(game){
-      router.push('/rooms/' + game._id + '/roles-manager/' + role._id);
+      router.push('/rooms/' + game._id + '/management/roles/' + role._id);
     }else{
       router.push('/documents/' + document._id + '/roles/' + role._id);
     }

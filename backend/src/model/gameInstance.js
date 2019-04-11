@@ -16,7 +16,7 @@ let skillSchema = new Schema({
 let clueSchema = new Schema({
   clueDocumentId:Schema.Types.ObjectId,
   founder:Schema.Types.ObjectId,
-  sillUser:Schema.Types.ObjectId,
+  skillUser:Schema.Types.ObjectId,
   sceneId:Schema.Types.ObjectId,
   shared:Boolean,
 });

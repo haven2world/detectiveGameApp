@@ -32,7 +32,7 @@ export default function(){
     if(result && result.code === 0 && result.data.gameId){
       if(result.data.managerFlag){
       //  进入游戏管理页面
-        router.push('/rooms/' + result.data.gameId + '/manager');
+        router.push('/rooms/' + result.data.gameId + '/management');
       }else{
       //  以普通玩家加入游戏
       }
@@ -77,7 +77,7 @@ export default function(){
   function createGame(level, docId) {
     services.createGameInstance({level, docId}).then(result=>{
       if(result && result.code === 0){
-        router.push('/rooms/' + result.data.gameId + '/manager');
+        router.push('/rooms/' + result.data.gameId + '/management');
       }
     })
   }

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, NoticeBar, Accordion, Checkbox} from 'antd-mobile';
 import * as services from '@/utils/services';
-import { useInputAutoSave } from '@/utils/hookUtils';
+import { useInputAutoSave } from '@/utils/hookUtils/index';
 import { RenderIf } from '@/utils/commonUtils';
 import ScrollableList from '@/component/ScrollableList'
 import LoadingPage from '@/component/LoadingPage'
