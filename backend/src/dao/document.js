@@ -199,12 +199,12 @@ const dao = {
     await document.save();
   },
 //  修改线索
-  async updateClue(id, sceneId, clueId, sceneParam){
+  async updateClue(id, sceneId, clueId, clueParam){
     let doc = await Document.findById(id);
     let scene = await doc.scenes.id(sceneId);
     let clue = scene.clues.id(clueId);
-    Object.keys(sceneParam).forEach(key=>{
-      clue[key] = sceneParam[key];
+    Object.keys(clueParam).forEach(key=>{
+      clue[key] = clueParam[key];
     });
     doc.updateTime = new Date();
     let result = await doc.save();
@@ -285,7 +285,36 @@ const dao = {
       $currentDate:{updateTime:true}
     })
   },
-
+//  创建结局条件
+  async createEndingCondition(docId, endingId, condition){
+    let doc = await Document.findById(docId);
+    let endingInstance = await doc.endings.id(endingId);
+    let conditionInstance = await endingInstance.conditions.create(condition);
+    endingInstance.conditions.push(conditionInstance);
+    doc.updateTime = new Date();
+    await doc.save();
+    return conditionInstance;
+  },
+//  删除结局条件
+  async deleteEndingCondition(docId, endingId, conditionId){
+    let doc  = await Document.findById(docId);
+    let ending = doc.endings.id(endingId);
+    ending.conditions.id(conditionId).remove();
+    await doc.save();
+    return doc;
+  },
+//  修改结局条件
+  async updateEndingCondition(id, endingId, conditionId, conditionParam){
+    let doc = await Document.findById(id);
+    let ending = await doc.endings.id(endingId);
+    let condition = ending.conditions.id(conditionId);
+    Object.keys(conditionParam).forEach(key=>{
+      condition[key] = conditionParam[key];
+    });
+    doc.updateTime = new Date();
+    let result = await doc.save();
+    return !!result;
+  },
 };
 
 module.exports = dao;

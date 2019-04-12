@@ -135,6 +135,13 @@ const service = {
 
     return {sceneInstance, gameInstance};
   },
+//  获取游戏中的结局
+  async getEndingInGameWithDocument(gameId, endingId){
+    let gameInstance = await game.getGamePopulateBasicDoc(gameId);
+    let endingInstance = await documentService.getEndingDetail(gameInstance.document._id, endingId);
+    endingInstance.roles = gameInstance.roles;
+    return endingInstance;
+  },
 //  组装 role document
   assembleDocumentToRole(documentInstance, role){
     let roleDoc = documentInstance.roles.id(role.roleDocumentId);

@@ -120,6 +120,16 @@ router.get('/:gameId/scenes/:sceneId',async(ctx, next)=>{
   ctx._data.allSkills = allSkills;
 });
 
+//获取游戏中的结局详情
+router.get('/:gameId/endings/:endingId',async(ctx, next)=>{
+  if(!ctx.params.gameId || !ctx.params.endingId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.ending = await gameService.getEndingInGameWithDocument(ctx.params.gameId, ctx.params.endingId);
+});
 
 
 module.exports = router;

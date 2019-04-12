@@ -50,7 +50,11 @@ export default function({computedMatch}) {
       finished:!role.finishedTask[task._id],
       action:!role.finishedTask[task._id]?managerActions.ENSURE_TASK:managerActions.CANCEL_TASK
     };
-    Modal.alert('提示','请确认要修改' + role.document.name + '的任务完成情况吗 (' + task.content +')',[
+    let finishStatusMap = {
+      true:'完成',
+      false:'未完成'
+    };
+    Modal.alert('提示',<div>将{role.document.name}的该任务设为<strong className={'error-text'}>{finishStatusMap[param.finished]}</strong>吗 ?({task.content})</div>,[
       {text:'取消',onPress:()=>{setRole(role)}},
       {text:'确认',onPress:()=>{
           services.changeTaskStatus(gameId, roleId, task._id, param).then(result=>{

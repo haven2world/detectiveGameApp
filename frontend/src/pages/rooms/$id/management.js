@@ -11,6 +11,7 @@ import {useTab} from '@/utils/hookUtils';
 import Overview from './component/Overview';
 import Role from './component/Role';
 import Scene from './component/Scene';
+import Ending from './component/Ending';
 import gameStatus from '@/constant/gameStatus';
 import managerActions from '@/constant/managerActions';
 
@@ -63,7 +64,7 @@ export default function({computedMatch}) {
     {stage:'overView', title:'总览', component:Overview},
     {stage:'role', title:'角色', component:Role},
     {stage:'scene', title:'场景', component:Scene},
-    {stage:'ending', title:'结局', component:Overview},
+    {stage:'ending', title:'结局', component:Ending},
   ];
 
   if(game){

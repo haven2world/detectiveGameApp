@@ -466,13 +466,49 @@ export function fetchEnding(id, endingId){
  - param:{
  name
  content
- conditionsTaskId
  }
  */
 
 export function modifyEnding(id, endingId, param){
   let url = '/detective/apis/auth/documents/' + id + '/endings/' + endingId;
   return http.put(url, param);
+}
+
+/* 新增结局条件
+ - url: /detective/apis/auth/documents/:id/endings/:endingId/tasks/:taskId
+ - method: post
+ - param:{
+ }
+ */
+
+export function createEndingCondition(id, endingId, taskId){
+  let url = '/detective/apis/auth/documents/' + id + '/endings/' + endingId + '/tasks/' + taskId;
+  return http.post(url, {});
+}
+
+/* 修改结局条件
+ - url: /detective/apis/auth/documents/:id/endings/:endingId/conditions/:conditionId
+ - method: put
+ - param:{
+  achieved
+ }
+ */
+
+export function modifyEndingCondition(id, endingId, conditionId, param){
+  let url = '/detective/apis/auth/documents/' + id + '/endings/' + endingId + '/conditions/' + conditionId;
+  return http.put(url, param);
+}
+
+/* 删除结局条件
+ - url: /detective/apis/auth/documents/:id/endings/:endingId/conditions/:conditionId
+ - method: delete
+ - param:{
+ }
+ */
+
+export function deleteTaskCondition(id, endingId, conditionId){
+  let url = '/detective/apis/auth/documents/' + id + '/endings/' + endingId + '/conditions/' + conditionId;
+  return http.delete(url, {});
 }
 
 /* 修改难度设置
@@ -603,6 +639,18 @@ export function changeTaskStatus(gameId, roleId, taskId, param){
 
 export function fetchPlayingSceneDetail(gameId, sceneId){
   let url = '/detective/apis/auth/games/' + gameId + '/scenes/' + sceneId;
+  return http.get(url, {});
+}
+
+/* 获取游戏中的结局状态概览
+ - url: /detective/apis/auth/games/:gameId/ending/:endingId
+ - method: get
+ - param:{
+ }
+ */
+
+export function fetchPlayingEndingDetail(gameId, endingId){
+  let url = '/detective/apis/auth/games/' + gameId + '/endings/' + endingId;
   return http.get(url, {});
 }
 

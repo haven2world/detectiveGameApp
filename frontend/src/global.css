@@ -1,6 +1,6 @@
 @value theme: "@/assets/css/theme.css";
 
-@value danger-color, gray-color, primary-color, dark-gray-color from theme;
+@value danger-color, gray-color, primary-color, dark-gray-color, success-color from theme;
 
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 @import "../node_modules/draft-js/dist/Draft.css";
@@ -46,6 +46,10 @@ body {
 
 .primary-text {
     color: primary-color !important;
+}
+
+.success-text {
+    color: success-color !important;
 }
 
 .sm-text{
@@ -131,6 +135,25 @@ body {
 .title-row .subtitle{
     font-size: 14px;
     padding-left: 5px;
+}
+
+/*重写红色X的checkbox样式*/
+.closed-checkbox span:not(.am-checkbox-checked) .am-checkbox-inner:after{
+    transform: none;
+    display: block;
+    content:'x';
+    color:#fff;
+    background-color: danger-color;
+    border-width: 0;
+    left:6px;
+    top: -2px;
+    width:0;
+    height:0;
+    font-size: 15px;
+}
+.closed-checkbox  .am-checkbox-inner{
+    border-color: danger-color;
+    background-color: danger-color;
 }
 
 

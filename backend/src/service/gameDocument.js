@@ -307,13 +307,16 @@ const service = {
 //  删除任务
   async deleteTask(docId, taskId){
     let doc = await document.deleteTask(docId, taskId);
-    doc.endings.forEach(ending=>{
-      ending.conditionsTaskId = ending.conditionsTaskId.filter(task=>task!==taskId);
+    await doc.endings.forEach(async(ending)=>{
+      ending.conditions = await ending.conditions.forEach(async (condition)=>{
+        if(condition.taskId.toString() === taskId.toString()){
+          await service.deleteEndingCondition(docId, ending._id, condition._id);
+        }
+      });
     });
     await doc.save();
     return true;
   },
-
 //创建一个结局片段
   async createEndingWithName(docId, name){
     let {doc, endingInstance} = await document.createEnding(docId, {name});
@@ -357,24 +360,44 @@ const service = {
     const field = {
       name:true,
       content:true,
-      conditionsTaskId:true,
     };
 
     let paramToSet = {};
     for(let key in param){
       if(field[key]){
         paramToSet[key] = param[key];
-        if(key === 'conditionsTaskId'){
-          let allTasks = await document.getAllTasks(docId);
-          for(let i=0;i<param.conditionsTaskId.length;++i){
-            if(!allTasks.find(task=>task._id.toString()===param.conditionsTaskId[i])){
-              throw {code:_Exceptions.PARAM_ERROR,message:'未找到该任务'}
-            }
-          }
-        }
       }
     }
     await document.updateEnding(docId, endingId, paramToSet);
+  },
+//创建一个结局条件
+  async createEndingCondition(docId, endingId, taskId){
+    let allTasks = await document.getAllTasks(docId);
+    if(!allTasks.find(task=>task._id.toString()===taskId)){
+      throw {code:_Exceptions.PARAM_ERROR,message:'未找到该任务'}
+    }
+    let condition = await document.createEndingCondition(docId, endingId, {taskId,achieved:true});
+    return condition;
+  },
+  //  修改结局条件
+  async modifyEndingCondition(docId, endingId, conditionId, param){
+    const field = {
+      achieved:true,
+    };
+
+    let paramToSet = {};
+    for(let key in param){
+      if(field[key]){
+        paramToSet[key] = param[key];
+      }
+    }
+    await document.updateEndingCondition(docId, endingId, conditionId, paramToSet);
+  },
+//  删除结局条件
+  async deleteEndingCondition(docId, endingId, conditionId){
+    let doc = await document.deleteEndingCondition(docId, endingId, conditionId);
+    await doc.save();
+    return true;
   },
 //  修改难度等级
   async modifyDifficultyDetail(docId, level, param){

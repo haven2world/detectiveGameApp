@@ -386,6 +386,39 @@ router.put('/:id/endings/:endingId',async(ctx, next)=>{
   ctx._data.ending  = await documentService.modifyEndingDetail(ctx.params.id, ctx.params.endingId, ctx.request.body);
 })
 
+//创建结局条件
+router.post('/:id/endings/:endingId/tasks/:taskId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.endingId || !ctx.params.taskId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  ctx._data.condition  = await documentService.createEndingCondition(ctx.params.id, ctx.params.endingId, ctx.params.taskId);
+})
+
+//删除结局条件
+router.delete('/:id/endings/:endingId/conditions/:conditionId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.endingId || !ctx.params.conditionId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  await documentService.deleteEndingCondition(ctx.params.id, ctx.params.endingId, ctx.params.conditionId);
+})
+
+//修改结局条件
+router.put('/:id/endings/:endingId/conditions/:conditionId',async(ctx, next)=>{
+  if(!ctx.params.id || !ctx.params.endingId || !ctx.params.conditionId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  await documentService.modifyEndingCondition(ctx.params.id, ctx.params.endingId, ctx.params.conditionId, ctx.request.body);
+})
+
 //修改难度设置
 router.put('/:id/difficulty',async(ctx, next)=>{
   let {level} = ctx.request.body;

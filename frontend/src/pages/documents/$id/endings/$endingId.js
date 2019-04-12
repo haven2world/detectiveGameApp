@@ -83,38 +83,58 @@ export default function({computedMatch,location:{query}}) {
   }
 
   //修改条件
-  function onChangeCondition(action, taskId) {
-    switch(action){
-      case 'add':{
-        let temp = JSON.parse(JSON.stringify(endingDoc.conditionsTaskId));
-        temp.push(taskId);
-        save('conditionsTaskId', temp);
-        break;
+  function onAddCondition(taskId) {
+    services.createEndingCondition(docId, endingId, taskId).then(result=>{
+      if(result && result.code === 0){
+        let temp = JSON.parse(JSON.stringify(endingDoc));
+        temp.conditions.push(result.data.condition);
+        setEndingDoc(temp);
+        toast.light('已保存');
       }
-      case 'delete':{
-        let temp = JSON.parse(JSON.stringify(endingDoc.conditionsTaskId));
-        temp = temp.filter(task=>task!==taskId) ;
-        save('conditionsTaskId', temp);
-        break;
+    });
+  }
+  //删除条件
+  function onDeleteCondition(conditionId) {
+    services.deleteTaskCondition(docId, endingId, conditionId).then(result=>{
+      if(result && result.code === 0){
+        let temp = JSON.parse(JSON.stringify(endingDoc));
+        temp.conditions = temp.conditions.filter(condition=>condition._id !== conditionId);
+        setEndingDoc(temp);
+        toast.light('已保存');
       }
-    }
+    })
   }
 
   //选择条件
   function onSelectCondition() {
     picker.current.showPicker();
   }
+  
+  //勾选条件
+  function toggleTask(condition) {
+    let param = {achieved: !condition.achieved};
+    services.modifyEndingCondition(docId, endingId, condition._id, param).then(result=>{
+      if(result && result.code === 0){
+        let temp = JSON.parse(JSON.stringify(endingDoc));
+        let theCondition = temp.conditions.find(item=>item._id === condition._id);
+        theCondition.achieved = param.achieved;
+        setEndingDoc(temp);
+        toast.light('已保存');
+      }
+    })
+  }
 
   //渲染条件列表
   function renderConditions() {
     const {taskMap, roleMap} = endingDoc;
-    return endingDoc.conditionsTaskId.map((condition, index)=>
+    return endingDoc.conditions.map((condition, index)=>
       <ListItem
         key={index}
-        extra={<i className="fas fa-trash-alt clickable" style={{fontSize:16 }} onClick={()=>onChangeCondition('delete',condition)}/>}
+        thumb={<Checkbox className={'closed-checkbox'} checked={condition.achieved} onChange={()=>toggleTask(condition)} />}
+        extra={<div style={{width:'100%'}}  onClick={()=>onDeleteCondition(condition._id)}><i className="fas fa-trash-alt clickable" style={{fontSize:16 }}/></div>}
       >
         <div style={{width:'100%', whiteSpace:'normal'}}>
-          {roleMap[taskMap[condition].belongToRoleId].name}：{taskMap[condition].content}
+          {roleMap[taskMap[condition.taskId].belongToRoleId].name}：{taskMap[condition.taskId].content}
         </div>
       </ListItem>
     )
@@ -149,12 +169,13 @@ export default function({computedMatch,location:{query}}) {
             </div>
             <InputItem {...autoName}/>
           </ListItem>
-          <ListItem>
+          <ListItem wrap>
             <div className={'title-row'}>
               <span className={'gray-text'}>生效条件：需同时满足</span>
               <span className={'primary-text pull-right'}><i className="fas fa-plus clickable" style={{fontSize:16 }} onClick={onSelectCondition}/></span>
             </div>
             {renderConditions()}
+            <div className={'gray-text'}>ps&nbsp;:&nbsp;&nbsp;勾选则条件为<strong>达成</strong>任务，不勾选为<strong>未达成</strong>，默认为勾选</div>
           </ListItem>
           <ListItem>
             <div className={'title-row'}>
@@ -168,7 +189,7 @@ export default function({computedMatch,location:{query}}) {
         </ScrollableList>
         <PickerCaller
           ref={picker}
-          onOk={([roleId,taskId])=>{onChangeCondition('add',taskId)}}
+          onOk={([roleId,taskId])=>{onAddCondition(taskId)}}
           {...pickerConfig}
         />
       </div>

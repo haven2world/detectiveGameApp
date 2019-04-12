@@ -52,11 +52,17 @@ let taskSchema = new Schema({
   belongToRoleId:Schema.Types.ObjectId,
 });
 
+//结局条件
+let endingConditionSchema = new Schema({
+  taskId:Schema.Types.ObjectId,
+  achieved:Boolean,
+});
+
 //结局
 let endingSchema = new Schema({
   name:String,
   content:String,
-  conditionsTaskId:[Schema.Types.ObjectId]
+  conditions:[endingConditionSchema]
 });
 
 //难度
