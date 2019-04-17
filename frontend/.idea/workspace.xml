@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 结局部分完成">
-      <change afterPath="$PROJECT_DIR$/src/pages/rooms/$id/player.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/rooms/$id/roles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/rooms/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/controller/gameController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/gameController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backend/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/component/RoleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/RoleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constant/managerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/managerActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/start.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/commonUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/commonUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/services.js" afterDir="false" />
-    </list>
+    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -67,8 +51,8 @@
       <file leaf-file-name="roles.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/roles.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="79" column="91" selection-start-line="79" selection-start-column="91" selection-end-line="79" selection-end-column="91" />
+            <state relative-caret-position="364">
+              <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="101" selection-end-column="11" />
               <folding>
                 <element signature="e#14#58#0" expanded="true" />
               </folding>
@@ -575,7 +559,7 @@
       <workItem from="1553954664222" duration="1205000" />
       <workItem from="1554015740819" duration="4730000" />
       <workItem from="1554109475510" duration="76922000" />
-      <workItem from="1555402358371" duration="7379000" />
+      <workItem from="1555402358371" duration="7840000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -780,11 +764,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555063601113</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="[feat]: 加入游戏与移除玩家">
+      <created>1555490498272</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1555490498272</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="653873000" />
+    <option name="totallyTimeSpent" value="654334000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -803,7 +794,7 @@
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32960895" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32960895" />
-      <window_info anchor="bottom" id="Version Control" order="12" weight="0.32960895" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.32960895" />
       <window_info anchor="bottom" id="Run" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32849163" />
@@ -861,7 +852,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="[feat]:剧本基础部分基本完成" />
     <MESSAGE value="[feat]:封装toast" />
     <MESSAGE value="[feat]:修改角色简介" />
     <MESSAGE value="[feat]:封装一个更轻的提示" />
@@ -886,7 +876,8 @@
     <MESSAGE value="[feat]: 角色部分完成" />
     <MESSAGE value="[feat]: 场景部分完成" />
     <MESSAGE value="[feat]: 结局部分完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 结局部分完成" />
+    <MESSAGE value="[feat]: 加入游戏与移除玩家" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 加入游戏与移除玩家" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/component/TaskDetail.js">
@@ -1268,8 +1259,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/roles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="79" column="91" selection-start-line="79" selection-start-column="91" selection-end-line="79" selection-end-column="91" />
+        <state relative-caret-position="364">
+          <caret line="100" column="40" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="101" selection-end-column="11" />
           <folding>
             <element signature="e#14#58#0" expanded="true" />
           </folding>

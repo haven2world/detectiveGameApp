@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"detective.users"},{"v":2,"unique":true,"key":{"loginId":1},"name":"loginId_1","ns":"detective.users","background":true}],"uuid":"7f49381cffc346d3b0a76bdd56301a99"}

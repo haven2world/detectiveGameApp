@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]:">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/player.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/roles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/gameController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/gameController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RoleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/main/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/main/start.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/management/roles/$roleId.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/management/roles/$roleId.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/commonUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/commonUtils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
-    </list>
+    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]:" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
