@@ -21,9 +21,9 @@ export function isEmptyObject(obj) {
 export function formatNumber(num, cent, isThousand) {
   //为空判断
   if(num===null || typeof num === "undefined" ){
-    return '';
+    return '-';
   }
-  num = num.toString().replace(/\$|\,/g, '');
+  num = num.toString().replace(/\$,/g,'');
 
   // 检查传入数值为数值类型
   if (isNaN(num))
@@ -33,10 +33,10 @@ export function formatNumber(num, cent, isThousand) {
   }
 
   // 获取符号(正/负数)
-  var sign = (num == (num = Math.abs(num)));
+  let sign = (num === (num = Math.abs(num)));
 
   num = Math.floor(num * Math.pow(10, cent) + 0.50000000001); // 把指定的小数位先转换成整数.多余的小数位四舍五入
-  var cents = num % Math.pow(10, cent);       // 求出小数位数值
+  let cents = num % Math.pow(10, cent);       // 求出小数位数值
   num = Math.floor(num / Math.pow(10, cent)).toString();  // 求出整数位数值
   cents = cents.toString();        // 把小数位转换成字符串,以便求小数位长度
 
@@ -46,7 +46,7 @@ export function formatNumber(num, cent, isThousand) {
 
   if (isThousand) {
     // 对整数部分进行千分位格式化.
-    for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+    for (let i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
       num = num.substring(0, num.length - (4 * i + 3)) + ',' + num.substring(num.length - (4 * i + 3));
   }
 
@@ -308,7 +308,7 @@ export function changeQuery(searchString) {
 }
 
 //  判断浏览器平台
-function isMobile(){
+export function isMobile(){
   if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
     return true
   }else{

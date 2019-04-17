@@ -13,6 +13,7 @@ export default function(){
   const [pickerConfig, setPickerConfig] = useState({});
   const [docs, setDocs] = useState([]);
   const [chosenDocId, setDocId] = useState(null);
+  const [gameData, setGameData] = useState(null);
   const picker = useRef(null);
 
   //初始化
@@ -24,18 +25,30 @@ export default function(){
         setDocs(data);
       }
     });
+    checkPlayingGame();
   },[]);
 
+  //检查是否有进行中的游戏
+  function checkPlayingGame() {
+    services.fetchPlayingGame().then(result=>{
+      if(result && result.code === 0 && result.data.gameId){
+        setGameData(result.data);
+      }
+    });
+  }
+
   //加入游戏
-  async function toJoinGame() {
-    let result = await services.fetchPlayingGame();
-    if(result && result.code === 0 && result.data.gameId){
-      if(result.data.managerFlag){
+  function toJoinGame() {
+    if(gameData && gameData.gameId){
+      if(gameData.managerFlag){
       //  进入游戏管理页面
-        router.push('/rooms/' + result.data.gameId + '/management');
+        router.push('/rooms/' + gameData.gameId + '/management');
       }else{
       //  以普通玩家加入游戏
+        router.push('/rooms/' + gameData.gameId + '/player');
       }
+    }else{
+      router.push('/rooms');
     }
   }
 
@@ -90,7 +103,7 @@ export default function(){
         </div>
         <div style={{width:'100%'}}>
           <WhiteSpace size={'lg'}/>
-          <Button type={'primary'} onClick={toJoinGame}>加入游戏</Button>
+          <Button type={'primary'} onClick={toJoinGame}>{gameData?'回到游戏':'加入游戏'}</Button>
           <WhiteSpace size={'lg'}/>
           <Button onClick={toCreateGame}>创建房间</Button>
           <WhiteSpace size={'lg'}/>

@@ -69,6 +69,21 @@ export default function({computedMatch}) {
     ])
   }
 
+  //将一位玩家移出房间
+  function removePlayer() {
+    Modal.alert('提示',<div>确定将<strong className={'error-text'}>{role.document.name}</strong>的扮演者<strong className={'error-text'}>请离</strong>当前游戏吗 ?<br/>(请离后其他人无法再扮演该角色可能导致游戏异常)</div>,[
+      {text:'取消',onPress:()=>{setRole(role)}},
+      {text:'确认',onPress:()=>{
+          services.removeRoleFromGame(gameId, roleId, {action:managerActions.REMOVE_PLAYER}).then(result=>{
+            if(result && result.code === 0){
+              toast.success('移除成功');
+              router.goBack();
+            }
+          })
+        }}
+    ])
+  }
+
   //渲染拥有的线索
   function renderClue() {
     return (<List>
@@ -134,7 +149,7 @@ export default function({computedMatch}) {
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
-          rightContent={<i className="fas fa-trash-alt clickable" style={{fontSize:16 }} />}
+          rightContent={<span className="clickable error-text" style={{fontSize:16,}} onClick={removePlayer} >请离</span>}
         >{role.document.name}</NavBar>
         <ScrollableList>
           <Accordion defaultActiveKey={'clue'} accordion>

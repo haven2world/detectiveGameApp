@@ -42,6 +42,11 @@ router.get('/playingGames',async(ctx, next)=>{
   ctx._data.managerFlag = managerFlag;
 });
 
+//获取未完成的游戏
+router.get('/unfinished',async(ctx, next)=>{
+  ctx._data.games = await gameService.getAllGameUnfinished();
+});
+
 //获取游戏详情
 router.get('/:gameId',async(ctx, next)=>{
   if(!ctx.params.gameId){
@@ -130,6 +135,39 @@ router.get('/:gameId/endings/:endingId',async(ctx, next)=>{
   }
   ctx._data.ending = await gameService.getEndingInGameWithDocument(ctx.params.gameId, ctx.params.endingId);
 });
+
+//加入一个游戏
+router.post('/:gameId/roles/:roleId',async(ctx, next)=>{
+  if(!ctx.params.gameId || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  await gameService.joinGameWithRole(ctx.params.gameId, ctx.params.roleId, ctx._userId);
+});
+
+//将玩家请离游戏
+router.delete('/:gameId/roles/:roleId',async(ctx, next)=>{
+  if(!ctx.params.gameId || !ctx.params.roleId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!(await gameService.verifyManagerForGame(ctx._userId, ctx.params.gameId))){
+    ctx.throw({
+      code:_Exceptions.NORMAL_ERROR,
+      message:'当前用户无权限操作'
+    })
+  }
+  await gameService.removeRoleFromGame(ctx.params.gameId, ctx.params.roleId);
+  if(ctx.request.body.action){
+    //todo handle action
+  }
+});
+
+
 
 
 module.exports = router;

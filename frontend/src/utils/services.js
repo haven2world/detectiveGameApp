@@ -654,6 +654,43 @@ export function fetchPlayingEndingDetail(gameId, endingId){
   return http.get(url, {});
 }
 
+/* 获取未完成的游戏
+ - url: /detective/apis/auth/games/unfinished
+ - method: get
+ - param:{
+ }
+ */
+
+export function getAllGamesUnfinished(){
+  let url = '/detective/apis/auth/games/unfinished';
+  return http.get(url, {});
+}
+
+/* 加入一个游戏
+ - url: /detective/apis/auth/games/:gameId/roles/:roleId
+ - method: post
+ - param:{
+ }
+ */
+
+export function joinGameWithRole(gameId, roleId){
+  let url = '/detective/apis/auth/games/' + gameId + '/roles/' + roleId;
+  return http.post(url, {});
+}
+
+/* 将玩家请离游戏
+ - url: /detective/apis/auth/games/:gameId/roles/:roleId
+ - method: delete
+ - param:{
+ action
+ }
+ */
+
+export function removeRoleFromGame(gameId, roleId, param){
+  let url = '/detective/apis/auth/games/' + gameId + '/roles/' + roleId;
+  return http.delete(url, param);
+}
+
 /* 建立游戏 websocket
  - url: /detective/ws/auth/gamers
  - method: ws

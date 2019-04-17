@@ -16,7 +16,7 @@ const {Item} = List;
 
 export default function(props) {
   //id可能是 docId 也可能是 gameId
-  const {list, loading, document, game, onClickRow} = props;
+  const {list, loading, document, game,  onClickRow} = props;
 
 
   //点击行

@@ -29,6 +29,10 @@ const dao = {
   async findAllGameForPlayer(userId){
     return await Game.find({players: userId}).populate('document',['name']);
   },
+//  查找所有下未结束的游戏
+  async findAllGameUnfinished(){
+    return await Game.find({status:{$ne:gameStatus.over}}).populate('document',['name','description','roles']);
+  },
 //  创建一个剧本
   async createGame(prop){
     let game = new Game(prop);
@@ -66,6 +70,25 @@ const dao = {
       await game.save();
     }
     return true;
+  },
+//  为一个游戏添加玩家
+  async addPlayerToGameAndCreateRole(gameId, role, userId, gameInstance){
+    if(!gameInstance){
+      gameInstance = await Game.findById(gameId);
+    }
+    let roleInstance = gameInstance.roles.create(role);
+    gameInstance.roles.push(roleInstance);
+    gameInstance.players.push(userId);
+    await gameInstance.save();
+  },
+//  移除一个角色扮演者
+  async removeRoleAndItsPlayer(gameId, roleId){
+    let gameInstance = await Game.findById(gameId);
+    let roleInstance = gameInstance.roles.id(roleId);
+    let playerId = roleInstance.player;
+    gameInstance.players = gameInstance.players.filter(item=>item.toString()!==playerId.toString());
+    roleInstance.remove(roleId);
+    await gameInstance.save();
   },
 };
 
