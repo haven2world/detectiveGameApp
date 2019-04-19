@@ -6,6 +6,9 @@ export default {
   chainWebpack(config, {webpack}){
     // config.resolve.alias.set('#', path.resolve(__dirname,'src'))
   },
+  define:{
+    'process.env.NODE_ENV':'development'
+  },
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {

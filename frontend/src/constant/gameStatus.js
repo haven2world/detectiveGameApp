@@ -1,13 +1,8 @@
 'use strict';
-
+import gameStatus from '@/../../backend/src/constant/gameStatus'
 
 /**
  * 游戏状态
  */
 
-module.exports = {
-  preparation:'preparation',
-  playing:'playing',
-  pause:'pause',
-  over:'over'
-};
+module.exports = gameStatus;

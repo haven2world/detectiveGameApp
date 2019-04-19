@@ -1,27 +1,49 @@
 'use strict';
-import { useState, useEffect } from 'react';
-import {connect} from 'dva';
-import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar} from 'antd-mobile';
-import { formatTime, RenderIf } from '@/utils/commonUtils';
-import {toast} from '@/utils/toastUtils';
+import React,{useReducer,  useState, useEffect } from 'react';
+import Main from './component/player/Main';
+import {playerReducer, initState} from './component/player/playerReducer';
 import * as services from '@/utils/services';
-import router from 'umi/router';
-import LoadingPage from '@/component/LoadingPage';
-import ScrollableList from '@/component/ScrollableList';
-
-const ListItem = List.Item;
-
 /**
- * 游戏页面
+ * 游戏根页面
  */
-export default function({computedMatch}) {
-  const {id:gameId} = computedMatch.params;
 
-  return <div>
-    <NavBar
-      mode={'light'}
-      icon={<Icon type={'left'}/>}
-      onLeftClick={router.goBack}
-    >play</NavBar>
-  </div>
+const PlayerContext = React.createContext(null);
+
+export default function Player(props) {
+  const {computedMatch} = props;
+  const {id:gameId} = computedMatch.params;
+  const [ws, setWS] = useState(null);
+
+  //建立ws
+  useEffect(()=>{
+    let wsInstance = services.establishWSForGamer();
+    setWS(wsInstance);
+    return ()=>{
+      wsInstance.close();
+    }
+  },[]);
+
+  if(ws){
+    const [store, dispatch] = useReducer(playerReducer(ws), initState);
+    const actions = (type)=>{
+      dispatch(()=>({type}));
+    };
+
+    useEffect(()=>{
+      //监听ws
+      ws.addListener((data)=>{
+        dispatch(()=>data);
+      });
+    },[]);
+
+    return (
+      <PlayerContext.Provider value={{store, actions, gameId}}>
+        <Main/>
+      </PlayerContext.Provider>
+    );
+  }else{
+    return <div/>;
+  }
 }
+
+Player.Context = PlayerContext;

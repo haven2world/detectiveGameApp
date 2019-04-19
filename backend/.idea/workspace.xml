@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]:" />
+    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]:">
+      <change afterPath="$PROJECT_DIR$/src/constant/managerActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constant/playerActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.idea/libraries/backend.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/.umirc.prod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/constant/playerActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/playerReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.idea/frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/frontend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.umirc.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.umirc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/constant/gameStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constant/gameStatus.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/constant/managerActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/player.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/services.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -41,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dao/game.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="740">
-              <caret line="94" column="21" lean-forward="true" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+              <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -68,29 +87,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="documentController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/documentController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8240">
-              <caret line="412" column="50" selection-start-line="412" selection-start-column="50" selection-end-line="412" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="document.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dao/document.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="647">
-              <caret line="298" column="60" lean-forward="true" selection-start-line="298" selection-start-column="60" selection-end-line="298" selection-end-column="60" />
+              <caret line="298" column="60" selection-start-line="298" selection-start-column="60" selection-end-line="298" selection-end-column="60" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="managerActions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constant/managerActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="360">
+              <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userPublicController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/userPublicController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -202,7 +230,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="y" value="-4" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -301,14 +329,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\myWorkspace\detectiveGameApp\backend\src\constant" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\myWorkspace\detectiveGameApp\backend\src\constant" />
       <recent name="E:\myWorkspace\detectiveGameApp\backend\src\controller" />
       <recent name="E:\myWorkspace\detectiveGameApp\backend\src\controller\websocket" />
       <recent name="E:\myWorkspace\detectiveGameApp\backend\src\dao" />
       <recent name="E:\myWorkspace\detectiveGameApp\backend\src\model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\myWorkspace\detectiveGameApp\backend\src\constant" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -438,7 +467,7 @@
       <workItem from="1553911349232" duration="357000" />
       <workItem from="1553954664221" duration="1277000" />
       <workItem from="1554015739999" duration="5401000" />
-      <workItem from="1555402382117" duration="4015000" />
+      <workItem from="1555402382117" duration="7295000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -549,7 +578,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="529071000" />
+    <option name="totallyTimeSpent" value="532351000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -616,13 +645,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="[feat]: role demo" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/dao/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/gameDocument.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -714,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/userPublicController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="52" lean-forward="true" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/skill.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -767,13 +782,6 @@
     </entry>
     <entry file="file://C:/Program Files/MongoDB/Server/4.0/bin/mongod.cfg" />
     <entry file="file://$USER_HOME$/Desktop/mongod.cfg" />
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="45" column="10" lean-forward="true" selection-start-line="45" selection-start-column="10" selection-end-line="45" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -910,14 +918,35 @@
     <entry file="file://$PROJECT_DIR$/src/dao/document.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
-          <caret line="298" column="60" lean-forward="true" selection-start-line="298" selection-start-column="60" selection-end-line="298" selection-end-column="60" />
+          <caret line="298" column="60" selection-start-line="298" selection-start-column="60" selection-end-line="298" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
-          <caret line="94" column="21" lean-forward="true" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+          <caret line="94" column="21" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constant/managerActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/userPublicController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
         </state>
       </provider>
     </entry>

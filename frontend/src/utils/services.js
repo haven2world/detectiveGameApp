@@ -677,7 +677,6 @@ export function joinGameWithRole(gameId, roleId){
   let url = '/detective/apis/auth/games/' + gameId + '/roles/' + roleId;
   return http.post(url, {});
 }
-
 /* 将玩家请离游戏
  - url: /detective/apis/auth/games/:gameId/roles/:roleId
  - method: delete
@@ -700,5 +699,10 @@ export function removeRoleFromGame(gameId, roleId, param){
 
 export function establishWSForGamer(){
   let url = '/detective/ws/auth/gamers';
+  if(process.env.NODE_ENV==='development'){
+    url = 'ws://10.11.133.148:1019' + url;
+  }else if(process.env.NODE_ENV === 'production'){
+    url = 'ws://' + location.hostname + ':1019' + url;
+  }
   return http.ws(url);
 }

@@ -200,7 +200,11 @@ class WebSocketWrapper extends Object{
       this.respondMap[data.uuid] = null;
     }else{
       if (this.listener.length) {
-        this.listener.forEach(listener => listener(data, messageEvent));
+        this.listener.forEach(listener => {
+          if(listener && typeof listener === 'function'){
+            listener(data, messageEvent);
+          }
+        });
       } else {
         console.log('ws:', messageEvent);
       }
@@ -208,6 +212,7 @@ class WebSocketWrapper extends Object{
   };
 
   onWSOpen = (messageEvent)=>{
+    // console.log('wsOpen');
     this.isOpen = true;
     while(this.toSendMessage.length>0){
       let message = this.toSendMessage.shift();
