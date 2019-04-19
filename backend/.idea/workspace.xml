@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/RoleListHorizontal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/player.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/websocket/globalInterceptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/websocket/globalInterceptor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/websocket/playerWSController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/websocket/playerWSController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/main/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/main/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/playerReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/player.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/utils/http.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -456,7 +447,7 @@
       <workItem from="1553911349232" duration="357000" />
       <workItem from="1553954664221" duration="1277000" />
       <workItem from="1554015739999" duration="5401000" />
-      <workItem from="1555402382117" duration="21594000" />
+      <workItem from="1555402382117" duration="21804000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -574,7 +565,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="546650000" />
+    <option name="totallyTimeSpent" value="546860000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

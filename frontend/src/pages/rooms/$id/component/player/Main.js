@@ -8,6 +8,7 @@ import ScrollableList from '@/component/ScrollableList';
 import Player from '../../player';
 import playerActions from '@/constant/playerActions';
 import gameStatus from '@/constant/gameStatus';
+import RoleListHorizontal from './RoleListHorizontal';
 
 const ListItem = List.Item;
 
@@ -24,6 +25,10 @@ export default function(props) {
     ctx.actions(playerActions.INIT_GAME)
   },[]);
 
+  //渲染主体部分
+  function renderContentView() {
+
+  }
 
   //渲染标题
   function renderTitle() {
@@ -38,7 +43,7 @@ export default function(props) {
 
   if(!game){
     return (
-      <div>
+      <div className='container'>
         <NavBar
           mode={'light'}
           icon={<Icon type={'left'}/>}
@@ -48,12 +53,16 @@ export default function(props) {
       </div>);
   }else{
     return (
-      <div>
+      <div className='container flex-column-container'>
         <NavBar
           mode={'light'}
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
         >{renderTitle()}</NavBar>
+        <RoleListHorizontal/>
+        <div style={{flex:1}}>
+          {renderContentView()}
+        </div>
       </div>);
   }
 }
