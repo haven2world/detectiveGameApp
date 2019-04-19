@@ -225,18 +225,19 @@ const service = {
 
     //去除游戏中其他玩家的消息
     let role = null;
-    result.roles.forEach(item=>{
+    result.roles.forEach(async item=>{
       if(item.player.toString()===userId.toString()){
         role = item;
       }else{
         delete item.messages
       }
+      //组装文档
+      await service.assembleDocumentToRole(game.document, item);
     });
     //增加其他玩家共享的线索
     role.sharedClues = await service.findCluesOtherPlayersShared(game, userId);
 
     //组装文档
-    await service.assembleDocumentToRole(game.document, role);
     role.clues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
     role.sharedClues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
 
@@ -271,9 +272,9 @@ const service = {
   async cleanOtherPlayersInfo(gameObject, roleDocId){
     const doc = gameObject.document;
   //  去除其他玩家的技能信息
-    doc.roles.forEach(role=>{
-      if(role._id.toString() !== roleDocId.toString()){
-        delete role.skills;
+    gameObject.roles.forEach(role=>{
+      if(role.roleDocumentId.toString() !== roleDocId.toString()){
+        delete role.document.skills;
       }
     });
   //  去除其他玩家的剧本

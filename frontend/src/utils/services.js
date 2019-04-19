@@ -700,7 +700,7 @@ export function removeRoleFromGame(gameId, roleId, param){
 export function establishWSForGamer(){
   let url = '/detective/ws/auth/gamers';
   if(process.env.NODE_ENV==='development'){
-    url = 'ws://10.11.133.148:1019' + url;
+    url = 'ws://' + location.hostname + ':1019' + url;
   }else if(process.env.NODE_ENV === 'production'){
     url = 'ws://' + location.hostname + ':1019' + url;
   }
