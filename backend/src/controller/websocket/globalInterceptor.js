@@ -15,19 +15,24 @@ module.exports = async function (ctx) {
     return this.send(JSON.stringify(data));
   };
 
-  ws.respond = function (data, uuid) {
-    this.send(JSON.stringify({
+  ws.sendType = function (data, type){
+    return this.sendJSON({
       code:0,
-      data:data,
+      data,
+      type,
+    });
+  };
+
+  ws.respond = function (data, uuid) {
+    this.sendJSON({
+      code:0,
+      data,
       uuid,
-    }));
+    });
   };
 
   if(url.indexOf('/ws/auth')>=0){
-    ws.on('message',async (message)=>{
-      message = JSON.parse(message);
-      const {token} = message;
-
+    let checkToken = async (token)=>{
       if(!token){
         ws.sendJSON({
           code:global._Exceptions.TOKEN_ERROR,
@@ -49,6 +54,13 @@ module.exports = async function (ctx) {
           ws.close();
         }
       }
+    };
+    await checkToken(ctx.cookies.get('token'));
+
+    ws.on('message',async (message)=>{
+      message = JSON.parse(message);
+      const {token} = message;
+      await checkToken(token);
     });
   }
 

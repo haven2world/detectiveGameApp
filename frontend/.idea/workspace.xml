@@ -2,24 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../backend/src/constant/managerActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../backend/src/constant/playerActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/backend.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.umirc.prod.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/constant/playerActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../backend/.idea/dictionaries/Administrator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frontend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/controller/websocket/globalInterceptor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/globalInterceptor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/controller/websocket/playerWSController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/playerWSController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/game.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/gameDocument.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constant/gameStatus.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/gameStatus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constant/managerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/managerActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/player.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/player.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/services.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -34,38 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="gameStatus.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../backend/src/constant/gameStatus.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="playerActions.js" pinned="true" current-in-tab="false">
+      <file leaf-file-name="playerActions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../backend/src/constant/playerActions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="managerActions.js" pinned="true" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constant/managerActions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="59" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="699" column="26" selection-start-line="699" selection-start-column="26" selection-end-line="699" selection-end-column="26" />
+            <state relative-caret-position="160">
+              <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -73,8 +43,8 @@
       <file leaf-file-name="playerReducer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
+            <state relative-caret-position="280">
+              <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -85,8 +55,8 @@
       <file leaf-file-name="Main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state relative-caret-position="287">
+              <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
               </folding>
@@ -94,11 +64,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playerActions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constant/playerActions.js">
+      <file leaf-file-name="global.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/global.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="280">
+              <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="theme.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/assets/css/theme.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -172,7 +151,6 @@
         <option value="$PROJECT_DIR$/node_modules/reconnecting-websocket/reconnecting-websocket.js" />
         <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/src/pages/main/history.js" />
-        <option value="$PROJECT_DIR$/src/pages/main/user.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/manager.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Role.js" />
@@ -192,7 +170,6 @@
         <option value="$PROJECT_DIR$/src/component/RoleList.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/index.js" />
         <option value="$PROJECT_DIR$/src/utils/commonUtils.js" />
-        <option value="$PROJECT_DIR$/src/global.css" />
         <option value="$PROJECT_DIR$/src/pages/main/start.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/roles.js" />
@@ -204,13 +181,15 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/.umirc.js" />
         <option value="$PROJECT_DIR$/.umirc.prod.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" />
         <option value="$PROJECT_DIR$/src/utils/services.js" />
-        <option value="$PROJECT_DIR$/src/utils/http.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/player.js" />
         <option value="$PROJECT_DIR$/../backend/src/constant/playerActions.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
         <option value="$PROJECT_DIR$/src/constant/playerActions.js" />
+        <option value="$PROJECT_DIR$/src/utils/http.js" />
+        <option value="$PROJECT_DIR$/src/pages/main/user.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/player.js" />
+        <option value="$PROJECT_DIR$/src/global.css" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
       </list>
     </option>
   </component>
@@ -236,7 +215,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="y" value="-4" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -297,12 +276,6 @@
               <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="constant" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -310,28 +283,6 @@
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="documents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="documents" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -546,7 +497,7 @@
       <workItem from="1553954664222" duration="1205000" />
       <workItem from="1554015740819" duration="4730000" />
       <workItem from="1554109475510" duration="76922000" />
-      <workItem from="1555402358371" duration="21788000" />
+      <workItem from="1555402358371" duration="29405000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -769,7 +720,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="668282000" />
+    <option name="totallyTimeSpent" value="675899000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -899,13 +850,6 @@
     <entry file="file://$PROJECT_DIR$/src/pages/games/$id/roles/$roleId.js" />
     <entry file="file://$PROJECT_DIR$/src/pages/main/index.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/main/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/main/history.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1055,20 +999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/global.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
@@ -1173,27 +1103,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/http.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="204" column="41" selection-start-line="204" selection-start-column="41" selection-end-line="204" selection-end-column="41" />
-          <folding>
-            <element signature="e#14#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constant/gameStatus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="57" lean-forward="true" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../backend/src/constant/gameStatus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        <state relative-caret-position="398">
+          <caret line="693" column="33" lean-forward="true" selection-start-line="693" selection-start-column="33" selection-end-line="693" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1201,33 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="59" selection-start-line="1" selection-start-column="59" selection-end-line="1" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="45" lean-forward="true" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
-          <folding>
-            <element signature="e#14#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="699" column="26" selection-start-line="699" selection-start-column="26" selection-end-line="699" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="55" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1240,15 +1126,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../backend/src/constant/playerActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="2" lean-forward="true" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        <state relative-caret-position="160">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/http.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-618">
+          <caret line="144" column="2" selection-start-line="144" selection-start-column="2" selection-end-line="144" selection-end-column="2" />
+          <folding>
+            <element signature="e#14#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/main/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="26" column="71" lean-forward="true" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="71" />
+          <folding>
+            <element signature="e#14#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constant/gameStatus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="57" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../backend/src/constant/gameStatus.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/global.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="24" lean-forward="true" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state relative-caret-position="287">
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
           </folding>

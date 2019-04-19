@@ -6,6 +6,8 @@
  */
 
 const documentService = require('../../service/gameDocument');
+const gameService = require('../../service/game');
+const playerActions = require('../../constant/playerActions');
 
 //连接池
 const ctxs = {};//ctxs - userid
@@ -18,13 +20,21 @@ module.exports = async function (ctx) {
   ctxs[userId] = ctx;
 
   ws.on('message',async function (message) {
-    message = JSON.parse(message);
-    const {data, data:{type}} = message;
-    if(receiver[type]){
-      await receiver[type](data);
-    }else{
+    try{
+      message = JSON.parse(message);
+      const {data:{type}} = message;
+      if(receiver[type]){
+        await receiver[type](ctx, message);
+      }else{
+        ws.sendJSON({
+          code:global._Exceptions.NOT_FOUND_ERROR,
+        });
+      }
+    }catch (e) {
+      console.error(e);
       ws.sendJSON({
-        code:global._Exceptions.NOT_FOUND_ERROR,
+        code:global._Exceptions.UNKNOWN_ERROR,
+        message:'服务器开小差了'
       });
     }
   })
@@ -33,14 +43,25 @@ module.exports = async function (ctx) {
 
 //接收消息
 const receiver = {
-  TEST:async function(){
-    await sender.TEST();
-  }
+  [playerActions.INIT_GAME]:async function(ctx, message){
+    const {websocket:ws, _userId:userId} = ctx;
+    const {data, uuid} = message;
+    const game = await gameService.findPlayingGameAndCompleteDocument(userId);
+
+    //保存游戏相关属性
+    ctx.gameId = game._id;
+    let role = game.roles.find(item=>item.player.toString()===userId.toString());
+    ctx.roleId = role._id;
+
+    let gameData = await gameService.generatePlayerData(game, userId);
+
+    ws.respond({game:gameData}, uuid);
+  },
 };
 
 //发送消息
 const sender = {
-  TEST:async function(){
+  [playerActions.INIT_GAME]:async function(ctx, game){
 
   }
 };

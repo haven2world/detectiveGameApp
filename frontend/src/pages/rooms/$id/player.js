@@ -26,7 +26,11 @@ export default function Player(props) {
   if(ws){
     const [store, dispatch] = useReducer(playerReducer(ws), initState);
     const actions = (type)=>{
-      dispatch(()=>({type}));
+      ws.send({type}).then(result=>{
+        if(result && result.code === 0){
+          dispatch({type, data:result.data});
+        }
+      });
     };
 
     useEffect(()=>{

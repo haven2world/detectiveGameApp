@@ -1,6 +1,6 @@
 @value theme: "@/assets/css/theme.css";
 
-@value danger-color, gray-color, primary-color, dark-gray-color, success-color from theme;
+@value danger-color, gray-color, primary-color, dark-gray-color, success-color, warning-color from theme;
 
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 @import "../node_modules/draft-js/dist/Draft.css";
@@ -50,6 +50,10 @@ body {
 
 .success-text {
     color: success-color !important;
+}
+
+.warning-text {
+    color: warning-color !important;
 }
 
 .sm-text{

@@ -8,9 +8,15 @@ import managerActions from '@/constant/managerActions';
 
 
 export const initState = {
-
+  game:null,
 };
 
 export const playerReducer = (ws)=>(state, action)=>{
-
-}
+  const {data} = action;
+  console.log(action)
+  switch (action.type){
+    case playerActions.INIT_GAME:
+      return {...state, game: data.game};
+  }
+  return initState;
+};

@@ -99,6 +99,10 @@ const service = {
     managerFlag = false;
     return {game: gameInstance, managerFlag};
   },
+  //获取玩家参与的游戏与全部剧本
+  async findPlayingGameAndCompleteDocument(userId){
+    return await game.findPlayingGameForPlayer(userId, true);
+  },
   //  修改游戏状态
   async modifyGameStatus(gameId, param) {
     const field = {
@@ -121,7 +125,7 @@ const service = {
     let roleInstance = gameInstance.roles.id(roleId);
     roleInstance = roleInstance.toObject();
     service.assembleDocumentToRole(gameInstance.document, roleInstance);
-    roleInstance.clues.forEach(clue => service.assembleDocumentToClue(gameInstance.document, clue));
+    roleInstance.clues.forEach(async clue => await service.assembleDocumentToClue(gameInstance.document, clue));
     let {tasks} = await document.getTaskForRole(gameInstance.document, roleInstance.document._id);
     roleInstance.tasks = tasks;
 
@@ -131,7 +135,7 @@ const service = {
   async getSceneInGameWithDocument(gameId, sceneId) {
     let gameInstance = await game.getGamePopulateBasicDoc(gameId);
     let sceneInstance = gameInstance.document.scenes.id(sceneId).toObject();
-    service.assembleGameStatusToCluesDocument(gameInstance, sceneInstance.clues);
+    await service.assembleGameStatusToCluesDocument(gameInstance, sceneInstance.clues);
 
     return {sceneInstance, gameInstance};
   },
@@ -143,13 +147,13 @@ const service = {
     return endingInstance;
   },
 //  组装 role document
-  assembleDocumentToRole(documentInstance, role) {
+  async assembleDocumentToRole(documentInstance, role) {
     let roleDoc = documentInstance.roles.id(role.roleDocumentId);
     role.document = roleDoc.toObject();
     return role;
   },
 //  组装 clue document
-  assembleDocumentToClue(documentInstance, clue) {
+  async assembleDocumentToClue(documentInstance, clue) {
     let sceneDoc = documentInstance.scenes.id(clue.sceneId);
     let clueDoc = sceneDoc.clues.id(clue.clueDocumentId);
     clue.document = clueDoc.toObject();
@@ -157,12 +161,12 @@ const service = {
     return clue;
   },
 //  组装 clue game status
-  assembleGameStatusToCluesDocument(gameInstance, clues) {
+  async assembleGameStatusToCluesDocument(gameInstance, clues) {
     let documentInstance = gameInstance.document;
     gameInstance = gameInstance.toObject();
     let clueMap = {};
-    gameInstance.roles.forEach(role => {
-      service.assembleDocumentToRole(documentInstance, role);
+    gameInstance.roles.forEach(async role => {
+      await service.assembleDocumentToRole(documentInstance, role);
       role.clues.forEach(clue => {
         let temp = clueMap[clue.clueDocumentId] || {founder: [], shared: false, sceneId: clue.sceneId,};
         temp.founder.push({_id: clue.founder, name: role.document.name});
@@ -214,6 +218,80 @@ const service = {
   async removeRoleFromGame(gameId, roleId) {
     return await game.removeRoleAndItsPlayer(gameId, roleId);
   },
+//  初始化玩家数据
+  async generatePlayerData(game, userId){
+
+    let result = game.toObject();
+
+    //去除游戏中其他玩家的消息
+    let role = null;
+    result.roles.forEach(item=>{
+      if(item.player.toString()===userId.toString()){
+        role = item;
+      }else{
+        delete item.messages
+      }
+    });
+    //增加其他玩家共享的线索
+    role.sharedClues = await service.findCluesOtherPlayersShared(game, userId);
+
+    //组装文档
+    await service.assembleDocumentToRole(game.document, role);
+    role.clues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
+    role.sharedClues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
+
+    //清洗剧本中其他玩家的信息
+    await service.cleanOtherPlayersInfo(result, role.roleDocumentId);
+    //去除剧本中的线索与非当前阶段的场景和故事
+    await service.cleanStorySceneAndClue(result);
+
+    //检查是否发送结局
+    if(!game.sentEnding){
+      delete result.document.endings;
+    }
+
+    return result;
+  },
+//  查找其他玩家共享的线索
+  async findCluesOtherPlayersShared(game, userId){
+    game = game.toObject();
+    let result = [];
+    game.roles.forEach(role=>{
+      if(role.player.toString() !== userId.toString()){
+        role.clues.forEach(clue=>{
+          if(clue.shared){
+            result.push(clue);
+          }
+        });
+      }
+    });
+    return result;
+  },
+//  清洗剧本中其他玩家的信息
+  async cleanOtherPlayersInfo(gameObject, roleDocId){
+    const doc = gameObject.document;
+  //  去除其他玩家的技能信息
+    doc.roles.forEach(role=>{
+      if(role._id.toString() !== roleDocId.toString()){
+        delete role.skills;
+      }
+    });
+  //  去除其他玩家的剧本
+    doc.stories = doc.stories.filter(story=>story.belongToRoleId.toString() === roleDocId.toString());
+  //  去除其他玩家的任务
+    doc.tasks = doc.tasks.filter(task=>task.belongToRoleId.toString() === roleDocId.toString());
+
+  },
+  //去除剧本中的线索与非当前阶段的场景
+  async cleanStorySceneAndClue(gameObject){
+    const currentStage = gameObject.stage;
+    const doc = gameObject.document;
+    doc.scenes = doc.scenes.filter(scene=>{
+      delete scene.clues;
+      return scene.enableStage <= currentStage;
+    });
+    doc.stories = doc.stories.filter(story=>story.stage <= currentStage);
+  }
 };
 
 module.exports = service;

@@ -3,6 +3,7 @@ import { Card, Flex, WhiteSpace, WingBlank, InputItem, List, NavBar, Icon, Butto
 import styles from './user.css';
 import * as services from '@/utils/services';
 import router from 'umi/router';
+import Cookies from 'js-cookie';
 
 
 export default function(){
@@ -21,6 +22,7 @@ export default function(){
   function signOut() {
     localStorage.removeItem('loginId');
     localStorage.removeItem('token');
+    Cookies.remove('token');
     router.push('/login');
   }
 

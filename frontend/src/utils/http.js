@@ -3,6 +3,7 @@ import axios from 'axios';
 import WS from 'reconnecting-websocket/reconnecting-websocket';
 import { GenID, goToLogin, isInArray } from './commonUtils';
 import {toast} from '@/utils/toastUtils';
+import Cookies from 'js-cookie';
 
 /**
  * 封装 axios
@@ -120,6 +121,7 @@ class WebSocketWrapper extends Object{
   // 构造
   constructor(url) {
     super();
+    Cookies.set('token', localStorage.token, {expire:1});
     this.socket = new WS(url, null, { debug: true, reconnectInterval: 3000 });
     this.listener = [];
     this.toSendMessage = [];
@@ -141,7 +143,7 @@ class WebSocketWrapper extends Object{
   }
 
   send = (message, delayResolve)=>{
-    let exec = function(resolve) {
+    let exec = (resolve)=>{
       if(this.isOpen || delayResolve){
         let uuid = GenID();
         let sendData = {

@@ -18,8 +18,19 @@ const dao = {
     return await Game.findOne({manager:userId, status:{$ne:gameStatus.over}});
   },
 //  查找玩家名下未结束的游戏
-  async findPlayingGameForPlayer(userId){
-    return await Game.findOne({players: userId, status:{$ne:gameStatus.over}});
+  async findPlayingGameForPlayer(userId, populateFlag){
+    if(populateFlag){
+      return await Game.findOne({players: userId, status: {$ne: gameStatus.over}})
+        .populate({
+          path: 'document',
+          populate: {
+            path: 'roles.skills.skillInfo'
+          }
+        })
+        .populate('players', ['loginId']);;
+    }else{
+      return await Game.findOne({players: userId, status:{$ne:gameStatus.over}});
+    }
   },
   //  查找房主名下未结束的游戏
   async findAllGameForManager(userId){
