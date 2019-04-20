@@ -1,0 +1,76 @@
+import React,{useEffect, useState, useContext} from 'react';
+import router from 'umi/router';
+import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, } from 'antd-mobile';
+import { formatTime, RenderIf } from '@/utils/commonUtils';
+import { toast } from '@/utils/toastUtils';
+import LoadingPage from '@/component/LoadingPage';
+import ScrollableList from '@/component/ScrollableList';
+import Player from '../../player';
+import playerActions from '@/constant/playerActions';
+import gameViewActions from '@/constant/gameViewActions';
+import gameStatus from '@/constant/gameStatus';
+import styles from './player.css';
+
+/**
+ * 底部操作栏
+ */
+
+export default function(props) {
+  const ctx = useContext(Player.Context);
+  const {game, currentStage, showStage} = ctx.store;
+  const {setContentView} = props;
+
+  //toggle 阶段选择
+  function toggleStageDrawer() {
+    ctx.dispatch({type:gameViewActions.TOGGLE_STAGE});
+  }
+
+  //打开线索页面
+  function openClueView(){
+    setContentView('clue');
+  }
+
+  //跳转下一阶段
+  function nextStage() {
+    if(game.stage-currentStage){
+      ctx.dispatch({type:gameViewActions.SET_STAGE, data:{stage:currentStage+1}});
+    }else{
+      toast.info('当前已经是最新阶段，请等待房主推进剧情');
+    }
+  }
+
+  const buttons = [
+    {
+      title:'阶段',
+      icon:'fa-bars',
+      onClick:toggleStageDrawer,
+      active:showStage
+    },
+    {
+      title:'线索',
+      icon:'fa-eye',
+      onClick:openClueView,
+    }
+  ];
+
+  return (<div className={classnames(['flex-container', styles.bottomBarWrapper])}>
+    {buttons.map((button, index)=>
+      <BarButton {...button} key={index} />)}
+    <div className={'flex-container'} style={{flex:1, justifyContent: 'flex-end'}}>
+      <div className={classnames([styles.bottomBarPrimaryButton, styles.bottomBarSearchButton, 'clickable'])} onClick={()=>setContentView('scene')}>
+        搜证
+      </div>
+      <div className={classnames([styles.bottomBarPrimaryButton, 'clickable'])} onClick={nextStage}>
+        下一阶段
+      </div>
+    </div>
+  </div>)
+}
+
+function BarButton({title, icon, onClick, active}) {
+
+  return (<div className={classnames(['flex-column-container', 'clickable', styles.bottomBarButton, active?styles.bottomBarButtonActive:''])} onClick={onClick}>
+    <i className={'fa '+ icon} />
+    <div>{title}</div>
+  </div>)
+}

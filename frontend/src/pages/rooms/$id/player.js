@@ -41,7 +41,7 @@ export default function Player(props) {
     },[]);
 
     return (
-      <PlayerContext.Provider value={{store, actions, gameId}}>
+      <PlayerContext.Provider value={{store, dispatch, actions, gameId}}>
         <Main/>
       </PlayerContext.Provider>
     );

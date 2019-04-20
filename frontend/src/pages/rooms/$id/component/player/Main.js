@@ -1,4 +1,4 @@
-import React,{useEffect, useState, useContext} from 'react';
+import React,{useEffect, useState, useContext, createElement} from 'react';
 import router from 'umi/router';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, } from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
@@ -9,6 +9,11 @@ import Player from '../../player';
 import playerActions from '@/constant/playerActions';
 import gameStatus from '@/constant/gameStatus';
 import RoleListHorizontal from './RoleListHorizontal';
+import Story from './Story';
+import BottomBar from './BottomBar';
+import Clue from './Clue';
+import Scene from './Scene';
+import styles from './player.css';
 
 const ListItem = List.Item;
 
@@ -20,6 +25,8 @@ export default function(props) {
   const ctx = useContext(Player.Context);
   const {game} = ctx.store;
 
+  const [contentView, setContentView] = useState('story');
+
   //初始化数据
   useEffect(()=>{
     ctx.actions(playerActions.INIT_GAME)
@@ -27,7 +34,12 @@ export default function(props) {
 
   //渲染主体部分
   function renderContentView() {
-
+    const viewMap = {
+      story:Story,
+      clue:Clue,
+      scene:Scene,
+    };
+    return createElement(viewMap[contentView])
   }
 
   //渲染标题
@@ -60,9 +72,17 @@ export default function(props) {
           onLeftClick={router.goBack}
         >{renderTitle()}</NavBar>
         <RoleListHorizontal/>
-        <div style={{flex:1}}>
+        <div style={{flex:1}} className={styles.contentView}>
+          {/*重置页面为story*/}
+          {RenderIf(contentView!=='story')(
+            <div className={classnames([styles.resetButton, 'clickable'])} onClick={()=>{setContentView('story')}}>
+              <div className={styles.resetButtonBackground} >
+                <Icon type='cross' style={{color:'#fff'}} className={styles.resetButtonX}/></div>
+            </div>
+          )}
           {renderContentView()}
         </div>
+        <BottomBar setContentView={setContentView}/>
       </div>);
   }
 }

@@ -7,4 +7,5 @@
 
 module.exports = {
   INIT_GAME:'INIT_GAME',
+
 };

@@ -23,3 +23,72 @@
     padding: 5px 10px;
     text-align: center;
 }
+
+.contentView{
+    background: #fff;
+}
+
+.resetButton{
+    float: right;
+    width:  30px;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+}
+.resetButtonBackground{
+    position: absolute;
+    width:  60px;
+    height: 60px;
+    border-radius: 30px;
+    background: primary-color;
+
+    top: -30px;
+}
+.resetButtonX{
+    position: relative;
+    top: 30px;
+    left: 8px;
+}
+
+.storyContainer{
+    background: #fff;
+}
+
+.bottomBarWrapper{
+    height: 40px;
+    border: 0 solid background-gray-color;
+    border-top-width: 1px;
+    background-color: #fff;
+
+    width: 100%;
+}
+
+.bottomBarButton{
+    height: calc(100% - 6px);
+    width: 40px;
+    padding: 3px;
+
+    justify-content: space-around;
+    align-items: center;
+    font-size: 12px;
+
+}
+.bottomBarButtonActive{
+    color:primary-color;
+}
+
+.bottomBarPrimaryButton{
+    height:  100%;
+    padding: 0 20px;
+    background-color: primary-color;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #fff;
+}
+
+.bottomBarSearchButton{
+    background-color: warning-color;
+}
