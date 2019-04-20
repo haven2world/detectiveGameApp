@@ -13,16 +13,15 @@ export default function() {
   const {game} = ctx.store;
 
   return (<div className={styles.roleList}>
-    {game.roles.map(role=><Avatar image={role.document.image} name={role.document.name} />)}
+      {game.roles.map(role=><Avatar image={role.document.photo} name={role.document.name} key={role._id}/>)}
   </div>);
 }
 
 function Avatar({image, name}) {
-
   return (
     <div className={styles.avatarWrapper}>
       <img
-        src={image}
+        src={image||require('@/assets/img/contact_default.png')}
         style={{height:40,width:40,borderRadius:20, border:'1px solid #f5f5f9',objectFit:'cover'}}
       />
       <div >{name}</div>

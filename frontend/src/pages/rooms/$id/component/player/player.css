@@ -10,11 +10,16 @@
 
     width: 100%;
     overflow-x: auto;
-}
+    white-space: nowrap;
 
+
+}
+.roleList::-webkit-scrollbar{
+    display:none;
+}
 .avatarWrapper{
     display: inline-block;
-    height:100%;
+    height: calc(100% - 10px);
     padding: 5px 10px;
     text-align: center;
 }
