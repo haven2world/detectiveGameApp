@@ -30,7 +30,7 @@ export default function(){
           if(game.manageFlag){
             return <ListItem
               key={'manage_'+ game._id}
-              onClick={()=>router.push('/rooms/' + game._id + '/manager')}
+              onClick={()=>router.push('/rooms/' + game._id + '/management')}
               arrow={'horizontal'}
               wrap
             >

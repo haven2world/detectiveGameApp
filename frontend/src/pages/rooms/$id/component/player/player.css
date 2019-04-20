@@ -26,6 +26,7 @@
 
 .contentView{
     background: #fff;
+    padding: 10px 10px;
 }
 
 .resetButton{
@@ -34,6 +35,8 @@
     height: 30px;
     overflow: hidden;
     position: relative;
+    bottom: 10px;
+    left: 10px;
 }
 .resetButtonBackground{
     position: absolute;
@@ -91,4 +94,14 @@
 
 .bottomBarSearchButton{
     background-color: warning-color;
+}
+
+.drawer{
+    position: relative;
+    flex: 1;
+}
+
+.activeStageInDrawer{
+    background-color: primary-color;
+    color: #fff;
 }

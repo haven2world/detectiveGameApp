@@ -18,7 +18,17 @@ export default function(props) {
   const ctx = useContext(Player.Context);
   const {game, currentStage} = ctx.store;
 
-  return (<div className={classnames(['container', styles.storyContainer])}>
+  if(game.stage){
 
-  </div>)
+    let story = game.document.stories.find(story=>story.stage===currentStage);
+
+    return (<div className={classnames(['container', styles.storyContainer])}>
+      <div className='title-row'>阶段&nbsp;{currentStage}</div>
+      <div dangerouslySetInnerHTML={{__html:story.content}}/>
+    </div>)
+  }else{
+    return (<div className={classnames(['container','flex-container','flex-center', styles.storyContainer])}>
+      <div className='gray-text' style={{padding:'50px 0'}}>房主暂未开始游戏，请稍候</div>
+    </div>)
+  }
 }

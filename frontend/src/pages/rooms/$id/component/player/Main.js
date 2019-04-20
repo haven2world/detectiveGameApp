@@ -1,6 +1,6 @@
 import React,{useEffect, useState, useContext, createElement} from 'react';
 import router from 'umi/router';
-import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, } from 'antd-mobile';
+import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, Drawer} from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
 import { toast } from '@/utils/toastUtils';
 import LoadingPage from '@/component/LoadingPage';
@@ -13,7 +13,9 @@ import Story from './Story';
 import BottomBar from './BottomBar';
 import Clue from './Clue';
 import Scene from './Scene';
+import StageDrawer from './StageDrawer';
 import styles from './player.css';
+import gameViewActions from '@/constant/gameViewActions';
 
 const ListItem = List.Item;
 
@@ -23,7 +25,7 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game} = ctx.store;
+  const {game, showStage} = ctx.store;
 
   const [contentView, setContentView] = useState('story');
 
@@ -71,17 +73,26 @@ export default function(props) {
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
         >{renderTitle()}</NavBar>
-        <RoleListHorizontal/>
-        <div style={{flex:1}} className={styles.contentView}>
-          {/*重置页面为story*/}
-          {RenderIf(contentView!=='story')(
-            <div className={classnames([styles.resetButton, 'clickable'])} onClick={()=>{setContentView('story')}}>
-              <div className={styles.resetButtonBackground} >
-                <Icon type='cross' style={{color:'#fff'}} className={styles.resetButtonX}/></div>
-            </div>
-          )}
-          {renderContentView()}
-        </div>
+        <Drawer
+          className={styles.drawer}
+          sidebar={<StageDrawer/>}
+          onOpenChange={()=> ctx.dispatch({type:gameViewActions.TOGGLE_STAGE})}
+          contentStyle={{display:'flex', flexDirection:'column', }}
+          sidebarStyle={{background:'#fff',height:'100%'}}
+          open={showStage}
+        >
+          <RoleListHorizontal/>
+          <div style={{flex:1}} className={styles.contentView}>
+            {/*重置页面为story*/}
+            {RenderIf(contentView!=='story')(
+              <div className={classnames([styles.resetButton, 'clickable'])} onClick={()=>{setContentView('story')}}>
+                <div className={styles.resetButtonBackground} >
+                  <Icon type='cross' style={{color:'#fff'}} className={styles.resetButtonX}/></div>
+              </div>
+            )}
+            {renderContentView()}
+          </div>
+        </Drawer>
         <BottomBar setContentView={setContentView}/>
       </div>);
   }
