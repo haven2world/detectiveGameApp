@@ -1,5 +1,5 @@
 'use strict';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, ImagePicker} from 'antd-mobile';
 import { RenderIf, selectFile } from '@/utils/commonUtils';
 import * as services from '@/utils/services';
@@ -9,9 +9,14 @@ import {toast} from '@/utils/toastUtils';
  * 头像卡片
  */
 
-export default function({editable, url, name, docId, roleId}) {
+export default function({editable, url, name, description, docId, roleId}) {
   const [image, setImage] = useState(url||require('@/assets/img/contact_default.png'));
   const [roleName, setName] = useState(name);
+
+  useEffect(()=>{
+    setImage(url||require('@/assets/img/contact_default.png'));
+    setName(name);
+  }),[name, url];
 
   //修改头像
   async function changeAvatar() {
@@ -56,7 +61,8 @@ export default function({editable, url, name, docId, roleId}) {
       ['给人物起个名字吧']
     )
   }
-  return (<Flex style={{height:200,backgroundColor:'#fff'}} direction={'column'} >
+
+  return (<Flex style={{height:editable?200:400,backgroundColor:'#fff'}} direction={'column'} >
     <div className={editable?'clickable':''} style={{marginTop:20, display:'flex', justifyContent: 'center'}} onClick={changeAvatar} >
       <img
         src={image}
@@ -68,5 +74,12 @@ export default function({editable, url, name, docId, roleId}) {
         {roleName}
       </div>
     </Flex>
+    {RenderIf(!editable)(
+      <Flex style={{flex:1}}>
+        <div className='gray-text' >
+          {description}
+        </div>
+      </Flex>
+    )}
   </Flex>)
 }

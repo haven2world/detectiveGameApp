@@ -12,6 +12,7 @@ export const initState = {
   game:null,
   currentStage:1,
   showStage:false,
+  shownRowDetail:null,
 };
 
 export const playerReducer = (ws)=>(state, action)=>{
@@ -25,6 +26,8 @@ export const playerReducer = (ws)=>(state, action)=>{
       return {...state, currentStage:data.stage};
     case gameViewActions.TOGGLE_STAGE:
       return {...state, showStage:!state.showStage};
+    case gameViewActions.SET_ROLE_SHOWN:
+      return {...state, shownRowDetail:data.role};
 
   }
   return initState;

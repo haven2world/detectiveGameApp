@@ -8,5 +8,5 @@
 export default {
   SET_STAGE:'SET_STAGE',
   TOGGLE_STAGE:'TOGGLE_STAGE',
-
+  SET_ROLE_SHOWN:'SET_ROLE_SHOWN',
 }

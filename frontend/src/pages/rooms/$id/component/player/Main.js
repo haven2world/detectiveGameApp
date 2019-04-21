@@ -5,6 +5,7 @@ import { formatTime, RenderIf } from '@/utils/commonUtils';
 import { toast } from '@/utils/toastUtils';
 import LoadingPage from '@/component/LoadingPage';
 import ScrollableList from '@/component/ScrollableList';
+import AvatarCard from '@/component/AvatarCard';
 import Player from '../../player';
 import playerActions from '@/constant/playerActions';
 import gameStatus from '@/constant/gameStatus';
@@ -25,7 +26,7 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, showStage} = ctx.store;
+  const {game, showStage, shownRowDetail} = ctx.store;
 
   const [contentView, setContentView] = useState('story');
 
@@ -41,7 +42,17 @@ export default function(props) {
       clue:Clue,
       scene:Scene,
     };
-    return createElement(viewMap[contentView])
+    if(contentView === 'role'){
+      let props = {
+        editable:false,
+        url:shownRowDetail.document.photo,
+        name:shownRowDetail.document.name,
+        description:shownRowDetail.document.description
+      };
+      return createElement(AvatarCard, props);
+    }else{
+      return createElement(viewMap[contentView]);
+    }
   }
 
   //渲染标题
@@ -81,7 +92,7 @@ export default function(props) {
           sidebarStyle={{background:'#fff',height:'100%'}}
           open={showStage}
         >
-          <RoleListHorizontal/>
+          <RoleListHorizontal setContentView={setContentView}/>
           <div style={{flex:1}} className={styles.contentView}>
             {/*重置页面为story*/}
             {RenderIf(contentView!=='story')(
