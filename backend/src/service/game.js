@@ -160,8 +160,8 @@ const service = {
     clue.scene = sceneDoc.name;
     return clue;
   },
-//  组装 clue game status
-  async assembleGameStatusToCluesDocument(gameInstance, clues) {
+//  组装 clue game status 传入scene的时候将部分属性增加到scene
+  async assembleGameStatusToCluesDocument(gameInstance, clues, scene) {
     let documentInstance = gameInstance.document;
     gameInstance = gameInstance.toObject();
     let clueMap = {};
@@ -178,7 +178,44 @@ const service = {
     clues.forEach(clue => {
       clue.gameStatus = clueMap[clue._id];
     });
+    if(scene){
+      scene.clueCount = scene.clues.length;
+      scene.clueLeftCount = 0;
+      for(let i=0; i<scene.clues.length;++i){
+        let clue = scene.clues[i];
+        if(!clueMap[clue._id]){
+          ++scene.clueLeftCount;
+          scene.searchable = true;
+        }
+        if(clue.repeatable){
+          scene.searchable = true;
+        }
+      }
+    }
     return clues;
+  },
+//  为玩家增加场景线索状态
+  async assembleClueStatusToScene(gameInstance, scene){
+    gameInstance = gameInstance.toObject();
+    let clueMap = {};
+    gameInstance.roles.forEach(async role => {
+      role.clues.forEach(clue => {
+        clueMap[clue.clueDocumentId] = clue;
+      });
+    });
+    scene.clueCount = scene.clues.length;
+    scene.clueLeftCount = 0;
+    for(let i=0; i<scene.clues.length;++i){
+      let clue = scene.clues[i];
+      if(!clueMap[clue._id]){
+        ++scene.clueLeftCount;
+        scene.searchable = true;
+      }
+      if(clue.repeatable){
+        scene.searchable = true;
+      }
+    }
+    return scene;
   },
 //修改任务完成状况
   async modifyTaskStatus(gameId, roleId, taskId, finished) {
@@ -240,6 +277,7 @@ const service = {
     //组装文档
     role.clues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
     role.sharedClues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
+    result.document.scenes.forEach(async scene=>await service.assembleClueStatusToScene(game, scene));
 
     //清洗剧本中其他玩家的信息
     await service.cleanOtherPlayersInfo(result, role.roleDocumentId);
@@ -292,7 +330,74 @@ const service = {
       return scene.enableStage <= currentStage;
     });
     doc.stories = doc.stories.filter(story=>story.stage <= currentStage);
-  }
+  },
+//  在某个场景搜证
+  async combSomewhere(gameId, sceneId, gameRoleId){
+    let gameInstance = await game.getGamePopulateBasicDoc(gameId);
+    console.log(sceneId)
+    let scene = gameInstance.document.scenes.id(sceneId).toObject();
+    await service.assembleGameStatusToCluesDocument(gameInstance, scene.clues, scene);
+    if(!scene.searchable){
+      throw {
+        code: global._Exceptions.COMB_ERROR,
+        message: '该场景已经一干二净没有更多线索了'
+      }
+    }
+    if(!await service.checkRoleCanComb(gameInstance, gameRoleId)){
+      throw {
+        code: global._Exceptions.COMB_ERROR,
+        message: '你已经精疲力尽无法继续搜证'
+      }
+    }
+    scene.clues = scene.clues.filter(clue=>{
+      if(clue.enableStage<= gameInstance.stage ){
+        if(!clue.gameStatus){
+          return true;
+        }else if(clue.repeatable  && !clue.gameStatus.shared && !clue.gameStatus.founder.find(gameRole=>gameRole._id===gameRoleId)){
+          return true;
+        }else {
+          return false
+        }
+      }
+    });
+
+    let clueCount = scene.clues.length;
+    let random = Math.floor(Math.random()*clueCount);
+    let theClue = scene.clues[random];
+
+    let currentRole = gameInstance.roles.id(gameRoleId);
+    let currentRoleDoc = gameInstance.document.roles.find(role=>role._id.toString()===currentRole.roleDocumentId.toString());
+    let useSkillFlag = false;
+    let theSkillIndex;
+    if(theClue.needSkill){
+      theSkillIndex = currentRoleDoc.skills.findIndex(skill=>skill.skillInfo._id=== theClue.skillId);
+      let theSkill = theSkillIndex !== -1?currentRoleDoc.skills[theSkillIndex]:null;
+      if(theSkillIndex !== -1 && (theSkill.maxCount===0||theSkill.maxCount-currentRole.skillUse[theSkillIndex].count>0) ){
+        useSkillFlag = true;
+      }else{
+        throw {
+          code: global._Exceptions.COMB_ERROR,
+          message: theClue.contentForSkill + '但你没得到有用的线索'
+        }
+      }
+    }
+
+
+    let clueInstance = {
+      clueDocumentId: theClue._id,
+      founder: gameRoleId,
+      skillUser: useSkillFlag?gameRoleId:undefined,
+      sceneId: sceneId,
+      shared: !gameInstance.difficultyLevel.keepClueSecret,
+    };
+    let skillUse = await game.addClueToRole(gameId, gameRoleId, clueInstance, useSkillFlag, theSkillIndex);
+
+    return {skillUse, clueInstance}
+  },
+//  检查某个角色是否还能搜证
+  async checkRoleCanComb(gameInstance, gameRoleId){
+    return gameInstance.difficultyLevel.maxInquiryTimes - gameInstance.roles.id(gameRoleId).clues.length;
+  },
 };
 
 module.exports = service;

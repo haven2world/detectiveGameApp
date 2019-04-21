@@ -101,6 +101,23 @@ const dao = {
     roleInstance.remove(roleId);
     await gameInstance.save();
   },
+//  为一个玩家增加一个线索
+  async addClueToRole(gameId, roleId, clue, useSkillFlag, theSkillIndex){
+    let gameInstance = await Game.findById(gameId);
+    let roleInstance = gameInstance.roles.id(roleId);
+    let clueInstance = roleInstance.clues.create(clue);
+    roleInstance.clues.push(clueInstance);
+
+    if(useSkillFlag){
+      if(!roleInstance.skillUse[theSkillIndex]){
+        roleInstance.skillUse[theSkillIndex] = {count:0};
+      }
+      ++roleInstance.skillUse[theSkillIndex].count;
+    }
+
+    await gameInstance.save();
+    return roleInstance.skillUse;
+  },
 };
 
 module.exports = dao;

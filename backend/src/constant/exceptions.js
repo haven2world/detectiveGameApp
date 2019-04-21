@@ -26,4 +26,6 @@ module.exports = {
 //  业务错误
   NORMAL_ERROR:900,
 
+//  搜证失败
+  COMB_ERROR:901,
 }

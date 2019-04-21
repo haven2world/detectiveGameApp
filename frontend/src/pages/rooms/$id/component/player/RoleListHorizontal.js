@@ -24,19 +24,20 @@ export default function({setContentView}) {
         name={role.document.name}
         key={role._id}
         index={index}
+        isPlayer={!!role.sharedClues}
         onClickRole={onClickRole}
       />)}
   </div>);
 }
 
-function Avatar({image, name, onClickRole, index}) {
+function Avatar({image, name, onClickRole, index, isPlayer}) {
   return (
     <div className={classnames([styles.avatarWrapper, 'clickable'])} onClick={()=>{onClickRole(index)}}>
       <img
         src={image||require('@/assets/img/contact_default.png')}
         style={{height:40,width:40,borderRadius:20, border:'1px solid #f5f5f9',objectFit:'cover'}}
       />
-      <div >{name}</div>
+      <div ><span className='gray-text'>{isPlayer?'[扮演]':''}</span>{name}</div>
     </div>
   )
 }

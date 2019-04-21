@@ -269,9 +269,9 @@ function ClueItem({index, clue, maxStage, allSkills, editable, sceneId, clueId, 
           </div>
         </div>
         <div>
-          <span className={'gray-text'}>隐藏线索内容：</span>
+          <span className={'gray-text'}>技能失败提示内容：</span>
           <TextareaItem
-            placeholder="描述一下线索"
+            placeholder="无所需技能时的提示"
             autoHeight
             labelNumber={3}
             editable={editable}

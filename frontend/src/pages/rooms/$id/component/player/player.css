@@ -37,6 +37,7 @@
     position: relative;
     bottom: 10px;
     left: 10px;
+    z-index: 2;
 }
 .resetButtonBackground{
     position: absolute;
@@ -104,4 +105,8 @@
 .activeStageInDrawer{
     background-color: primary-color;
     color: #fff;
+}
+
+.searchOverviewBox div:nth-child(n+1) {
+    padding-top: 5px;
 }

@@ -40,6 +40,21 @@ module.exports = async function (ctx) {
   })
 
 };
+//获取游戏参数
+async function getGameProps(ctx, refreshFlag) {
+  const {websocket:ws, _userId:userId} = ctx;
+
+  if(refreshFlag || !ctx.gameId || !ctx.roleId){
+    const game = await gameService.findPlayingGameAndCompleteDocument(userId);
+    //保存游戏相关属性
+    ctx.gameId = game._id;
+    let role = game.roles.find(item=>item.player.toString()===userId.toString());
+    ctx.roleId = role._id;
+    return {gameId: game._id, roleId: role._id}
+  }else{
+    return {gameId: ctx.gameId, roleId: ctx.roleId}
+  }
+}
 
 //接收消息
 const receiver = {
@@ -47,15 +62,25 @@ const receiver = {
     const {websocket:ws, _userId:userId} = ctx;
     const {data, uuid} = message;
     const game = await gameService.findPlayingGameAndCompleteDocument(userId);
-
-    //保存游戏相关属性
-    ctx.gameId = game._id;
-    let role = game.roles.find(item=>item.player.toString()===userId.toString());
-    ctx.roleId = role._id;
+    await getGameProps(ctx, true);
 
     let gameData = await gameService.generatePlayerData(game, userId);
 
     ws.respond({game:gameData}, uuid);
+  },
+  [playerActions.COMB_SCENE]:async function(ctx, message){
+    const {websocket:ws, _userId:userId,} = ctx;
+    const {data:{sceneId}, uuid} = message;
+    const {gameId, roleId} = await getGameProps(ctx);
+
+    try {
+      let {skillUse, clueInstance} = await gameService.combSomewhere(gameId, sceneId, roleId);
+      ws.respond({skillUse, clueInstance}, uuid);
+    }catch (e) {
+      if(!e.code){e.code = global._Exceptions.UNKNOWN_ERROR}
+      console.error(e);
+      ws.respond(null, uuid, e);
+    }
   },
 };
 

@@ -151,6 +151,7 @@ class WebSocketWrapper extends Object{
           data:message,
           uuid,
         };
+        console.log('ws send:',message)
         this.socket.send(JSON.stringify(sendData));
         this.respondMap[uuid] = resolve;
       }else{
@@ -194,8 +195,8 @@ class WebSocketWrapper extends Object{
 
   onWSMessage = (messageEvent)=>{
     let data = JSON.parse(messageEvent.data);
-    if(data.code !== 0 && !this.handleError(data)){
-      return;
+    if(data.code !== 0 ){
+      this.handleError(data);
     }
     if(data.uuid && this.respondMap[data.uuid]){
       this.respondMap[data.uuid](data, messageEvent);

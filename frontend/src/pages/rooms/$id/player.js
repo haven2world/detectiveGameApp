@@ -25,18 +25,21 @@ export default function Player(props) {
 
   if(ws){
     const [store, dispatch] = useReducer(playerReducer(ws), initState);
-    const actions = (type)=>{
-      ws.send({type}).then(result=>{
-        if(result && result.code === 0){
-          dispatch({type, data:result.data});
-        }
+    const actions = (type, param)=>{
+      return new Promise((resolve)=>{
+        ws.send({type, ...param}).then(result=>{
+          if(result && result.code === 0){
+            dispatch({type, data:result.data});
+          }
+          resolve(result);
+        });
       });
     };
 
     useEffect(()=>{
       //监听ws
       ws.addListener((data)=>{
-        dispatch(()=>data);
+        dispatch(data);
       });
     },[]);
 

@@ -23,12 +23,20 @@ module.exports = async function (ctx) {
     });
   };
 
-  ws.respond = function (data, uuid) {
-    this.sendJSON({
-      code:0,
-      data,
-      uuid,
-    });
+  ws.respond = function (data, uuid, error) {
+    if(error){
+      this.sendJSON({
+        code: error.code,
+        message: error.message,
+        uuid,
+      });
+    }else{
+      this.sendJSON({
+        code:0,
+        data,
+        uuid,
+      });
+    }
   };
 
   if(url.indexOf('/ws/auth')>=0){

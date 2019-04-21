@@ -20,7 +20,16 @@ export const playerReducer = (ws)=>(state, action)=>{
   console.log(action)
   switch (action.type){
     case playerActions.INIT_GAME:
+      //增加当前角色引用
+      data.game.currentRole = data.game.roles.find(role=>!!role.sharedClues);
       return {...state, game: data.game};
+    case playerActions.COMB_SCENE:
+      const {skillUse, clueInstance} = data;
+      let newGame = {...state.game};
+      newGame.currentRole.skillUse = skillUse;
+      newGame.currentRole.clues.unshift(clueInstance);
+      return {...state, game:newGame};
+
 
     case gameViewActions.SET_STAGE:
       return {...state, currentStage:data.stage};

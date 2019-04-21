@@ -28,7 +28,7 @@ export default function(props) {
   const ctx = useContext(Player.Context);
   const {game, showStage, shownRowDetail} = ctx.store;
 
-  const [contentView, setContentView] = useState('story');
+  const [contentView, setContentView] = useState('scene');
 
   //初始化数据
   useEffect(()=>{
