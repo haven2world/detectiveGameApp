@@ -9,11 +9,12 @@ import gameViewActions from '@/constant/gameViewActions';
  * 选择阶段的抽屉
  */
 
-export default function(props) {
+export default function({setContentView}) {
   const ctx = useContext(Player.Context);
   const {game, currentStage} = ctx.store;
 
   function onChooseStage(i){
+    setContentView('story');
     ctx.dispatch({type:gameViewActions.SET_STAGE, data:{stage:i}});
     ctx.dispatch({type:gameViewActions.TOGGLE_STAGE});
   }

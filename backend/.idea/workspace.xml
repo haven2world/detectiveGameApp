@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: 共享线索完成">
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RichEditor/RichEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RichEditor/RichEditor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RichEditor/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RichEditor/editor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/stages/$stageCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/management/endings/$endingId.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/management/endings/$endingId.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/StageDrawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/StageDrawer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />

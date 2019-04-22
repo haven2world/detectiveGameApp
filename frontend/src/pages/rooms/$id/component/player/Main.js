@@ -86,7 +86,7 @@ export default function(props) {
         >{renderTitle()}</NavBar>
         <Drawer
           className={styles.drawer}
-          sidebar={<StageDrawer/>}
+          sidebar={<StageDrawer setContentView={setContentView}/>}
           onOpenChange={()=> ctx.dispatch({type:gameViewActions.TOGGLE_STAGE})}
           contentStyle={{display:'flex', flexDirection:'column', }}
           sidebarStyle={{background:'#fff',height:'100%'}}
