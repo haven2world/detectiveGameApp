@@ -88,6 +88,15 @@ export const playerReducer = (ws)=>(state, action)=>{
         return state;
       }
     }
+    case managerActions.ADJUST_DIFFICULTY:{
+      const {gameId, difficultyLevel} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game, difficultyLevel};
+        return {...state, game: newGame};
+      }else{
+        return state;
+      }
+    }
   }
   return initState;
 };

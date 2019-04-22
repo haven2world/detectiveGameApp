@@ -78,6 +78,11 @@ router.put('/:gameId',async(ctx, next)=>{
   await gameService.modifyGameStatus(ctx.params.gameId, ctx.request.body);
   if(ctx.request.body.action){
 //todo handle action
+    switch (ctx.request.body.action) {
+      case managerActions.ADJUST_DIFFICULTY:{
+        playerSender[managerActions.ADJUST_DIFFICULTY](ctx.params.gameId, ctx.request.body.difficultyLevel);
+      }
+    }
   }
 });
 

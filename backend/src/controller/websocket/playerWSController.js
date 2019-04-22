@@ -151,7 +151,6 @@ playWSController.sender = {
   },
   [managerActions.ENSURE_TASK]:async function(gameId, roleId, taskId){
     let userId;
-    console.log(userGameRoleMap, gameId.toString(), roleId.toString())
     if(userGameRoleMap[gameId.toString()] && userGameRoleMap[gameId.toString()][roleId.toString()]){
       userId = userGameRoleMap[gameId.toString()][roleId.toString()];
     }else{
@@ -171,7 +170,6 @@ playWSController.sender = {
   },
   [managerActions.CANCEL_TASK]:async function(gameId, roleId, taskId){
     let userId;
-    console.log(userGameRoleMap, gameId.toString(), roleId.toString())
     if(userGameRoleMap[gameId.toString()] && userGameRoleMap[gameId.toString()][roleId.toString()]){
       userId = userGameRoleMap[gameId.toString()][roleId.toString()];
     }else{
@@ -185,6 +183,27 @@ playWSController.sender = {
           ctxs[userId.toString()].websocket.sendType({gameId, roleId, taskId}, managerActions.CANCEL_TASK);
         }catch (e) {
           console.error(e);
+        }
+      }
+    }
+  },
+  [managerActions.ADJUST_DIFFICULTY]:async function(gameId, difficultyLevel){
+    let userIds;
+    console.log(userGameRoleMap, gameId, userGameRoleMap[gameId.toString()],  Object.keys(userGameRoleMap[gameId.toString()]))
+    if(userGameRoleMap[gameId.toString()]){
+      userIds = Object.keys(userGameRoleMap[gameId.toString()]).map(roleId=>userGameRoleMap[gameId.toString()][roleId.toString()]);
+    }else{
+      return;
+    }
+    for(let userId of userIds){
+      if(ctxs[userId.toString()]){
+        const props = await getGameProps(ctxs[userId.toString()]);
+        if(props.gameId.toString()===gameId.toString()){
+          try{
+            ctxs[userId.toString()].websocket.sendType({gameId, difficultyLevel}, managerActions.ADJUST_DIFFICULTY);
+          }catch (e) {
+            console.error(e);
+          }
         }
       }
     }
