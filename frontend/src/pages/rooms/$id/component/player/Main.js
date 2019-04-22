@@ -14,6 +14,7 @@ import Story from './Story';
 import BottomBar from './BottomBar';
 import Clue from './Clue';
 import Scene from './Scene';
+import Task from './Task';
 import StageDrawer from './StageDrawer';
 import styles from './player.css';
 import gameViewActions from '@/constant/gameViewActions';
@@ -47,6 +48,7 @@ export default function(props) {
       story:Story,
       clue:Clue,
       scene:Scene,
+      task:Task,
     };
     if(contentView === 'role'){
       let props = {

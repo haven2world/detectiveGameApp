@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 调整交互">
+    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 清理房间-玩家">
+      <change afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Task.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/controller/gameController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/gameController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/controller/websocket/playerWSController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/controller/websocket/playerWSController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/dao/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/service/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constant/gameViewActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/gameViewActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/http.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -29,79 +30,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="65" column="94" selection-start-line="65" selection-start-column="94" selection-end-line="65" selection-end-column="94" />
+            <state relative-caret-position="-40">
+              <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="692">
-              <caret line="56" column="8" lean-forward="true" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+            <state relative-caret-position="360">
+              <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/component/RichEditor/RichEditor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="92" column="37" selection-start-line="92" selection-start-column="37" selection-end-line="92" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
-              <caret line="78" column="21" selection-start-line="78" selection-start-column="21" selection-end-line="78" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/component/RichEditor/editor.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="84" column="92" lean-forward="true" selection-start-line="84" selection-start-column="92" selection-end-line="84" selection-end-column="92" />
-              <folding>
-                <element signature="e#0#60#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/StageDrawer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="30" column="3" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/http.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="154" column="42" lean-forward="true" selection-start-line="154" selection-start-column="42" selection-end-line="154" selection-end-column="42" />
-              <folding>
-                <element signature="e#14#40#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,6 +65,60 @@
               <folding>
                 <element signature="e#14#76#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Scene.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="45" selection-start-line="45" selection-end-line="50" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Task.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="692">
+              <caret line="102" column="23" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constant/gameViewActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="11" column="14" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -187,7 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Role.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/roles-manager/$roleId.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Scene.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id.js" />
@@ -218,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/global.css" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Story.js" />
         <option value="$PROJECT_DIR$/src/pages/main/history.js" />
-        <option value="$PROJECT_DIR$/src/constant/gameViewActions.js" />
         <option value="$PROJECT_DIR$/src/component/AvatarCard.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js" />
@@ -226,18 +219,20 @@
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/player.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Scene.js" />
         <option value="$PROJECT_DIR$/../backend/src/constant/playerActions.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js" />
         <option value="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" />
         <option value="$PROJECT_DIR$/src/component/RichEditor/editor.css" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/StageDrawer.js" />
         <option value="$PROJECT_DIR$/src/utils/http.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
+        <option value="$PROJECT_DIR$/src/constant/gameViewActions.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Task.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js" />
       </list>
     </option>
   </component>
@@ -380,11 +375,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\rooms\$id\component\player" />
       <recent name="E:\workspace\detectiveGameApp\frontend\src\pages\rooms\$id\component\player" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\rooms\$id\management\endings" />
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\rooms\$id\component" />
-      <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\rooms\$id\management\scenes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\myWorkspace\detectiveGameApp\frontend\src\pages\rooms\$id\component\player" />
@@ -524,7 +519,7 @@
       <workItem from="1554015740819" duration="4730000" />
       <workItem from="1554109475510" duration="76922000" />
       <workItem from="1555402358371" duration="30666000" />
-      <workItem from="1555901002886" duration="15545000" />
+      <workItem from="1555901002886" duration="18385000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -806,11 +801,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555923997872</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="[feat]: 清理房间-玩家">
+      <created>1555928843715</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1555928843715</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="728503000" />
+    <option name="totallyTimeSpent" value="731343000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -898,7 +900,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="[feat]: 显示故事列表 封装列表" />
     <MESSAGE value="[feat]: 完成故事的富文本编辑与导入word" />
     <MESSAGE value="[feat]: 结局编辑完成" />
     <MESSAGE value="[feat]: 难度编辑完成" />
@@ -923,30 +924,10 @@
     <MESSAGE value="[feat]: 人物介绍完成" />
     <MESSAGE value="[feat]: 搜证完成" />
     <MESSAGE value="[feat]: 调整交互" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 调整交互" />
+    <MESSAGE value="[feat]: 清理房间-玩家" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 清理房间-玩家" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.umirc.prod.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.umirc.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constant/managerActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1025,13 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
           <caret line="32" column="74" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constant/gameViewActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1143,16 +1117,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" selection-start-line="45" selection-end-line="50" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constant/playerActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1171,16 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="59" column="52" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1246,16 +1200,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="84" column="92" lean-forward="true" selection-start-line="84" selection-start-column="92" selection-end-line="84" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="812">
@@ -1280,19 +1224,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="65" column="94" selection-start-line="65" selection-start-column="94" selection-end-line="65" selection-end-column="94" />
+        <state relative-caret-position="360">
+          <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="32" selection-end-line="45" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
+    <entry file="file://$PROJECT_DIR$/src/component/TaskDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="69" column="34" lean-forward="true" selection-start-line="69" selection-start-column="34" selection-end-line="69" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/tasks/roles/$roleId.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="e#15#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="45" selection-start-line="45" selection-end-line="50" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constant/gameViewActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Clue.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Task.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40">
+          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/BottomBar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="692">
-          <caret line="56" column="8" lean-forward="true" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
+          <caret line="102" column="23" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="23" />
           <folding>
-            <element signature="e#0#75#0" expanded="true" />
+            <element signature="e#0#60#0" expanded="true" />
           </folding>
         </state>
       </provider>

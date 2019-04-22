@@ -14,6 +14,8 @@ export const initState = {
   showStage:false,
   shownRowDetail:null,
   leaveFlag:false,
+  clueNewFlag:false,
+  taskNewFlag:true,
 };
 
 export const playerReducer = (ws)=>(state, action)=>{
@@ -41,7 +43,7 @@ export const playerReducer = (ws)=>(state, action)=>{
       const {gameClueId} = data;
       let newGame = {...state.game};
       newGame.currentRole.clues.find(clue=>clue._id===gameClueId).shared = true;
-      return {...state, game:newGame};
+      return {...state, game:newGame, clueNewFlag:true};
     }
     case playerActions.SHARE_EFFECT:{
       const {scenes, sharedClues} = data;
@@ -59,15 +61,33 @@ export const playerReducer = (ws)=>(state, action)=>{
       return {...state, showStage:!state.showStage};
     case gameViewActions.SET_ROLE_SHOWN:
       return {...state, shownRowDetail:data.role};
+    case gameViewActions.SET_NEW_FLAG:
+      return {...state, ...data};
 
-    case managerActions.REMOVE_PLAYER:
+
+
+    case managerActions.REMOVE_PLAYER:{
       const {gameId, roleId} = data;
-      console.log(gameId, roleId ,state.game)
       if(!state.game || (gameId === state.game._id && roleId === state.game.currentRole._id)){
         return {...state, leaveFlag:true};
       }else{
         return state;
       }
+    }
+    case managerActions.CANCEL_TASK:
+    case managerActions.ENSURE_TASK:{
+      const {gameId, roleId, taskId} = data;
+      if(state.game && gameId === state.game._id && roleId === state.game.currentRole._id){
+        let newGame = {...state.game};
+        if(!newGame.currentRole.finishedTask){
+          newGame.currentRole.finishedTask = {};
+        }
+        newGame.currentRole.finishedTask[taskId] = {[managerActions.ENSURE_TASK]:true,[managerActions.CANCEL_TASK]:false}[action.type];
+        return {...state, game: newGame, taskNewFlag:true};
+      }else{
+        return state;
+      }
+    }
   }
   return initState;
 };

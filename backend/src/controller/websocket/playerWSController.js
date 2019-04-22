@@ -11,7 +11,8 @@ const playerActions = require('../../constant/playerActions');
 const managerActions = require('../../constant/managerActions');
 
 //连接池
-const ctxs = {};//ctxs - userid
+const ctxs = {};// userId : ctx
+const userGameRoleMap = {};// gameId : roleId : userId
 
 //初始化ws
 async function playWSController(ctx) {
@@ -51,6 +52,12 @@ async function getGameProps(ctx, refreshFlag) {
     ctx.gameId = game._id;
     let role = game.roles.find(item=>item.player.toString()===userId.toString());
     ctx.roleId = role._id;
+
+    if(!userGameRoleMap[ctx.gameId.toString()]){
+      userGameRoleMap[ctx.gameId.toString()] = {};
+    }
+    userGameRoleMap[ctx.gameId.toString()][ctx.roleId.toString()] = userId;
+
     return {gameId: game._id, roleId: role._id}
   }else{
     return {gameId: ctx.gameId, roleId: ctx.roleId}
@@ -141,7 +148,46 @@ playWSController.sender = {
         }
       }
     }
-
+  },
+  [managerActions.ENSURE_TASK]:async function(gameId, roleId, taskId){
+    let userId;
+    console.log(userGameRoleMap, gameId.toString(), roleId.toString())
+    if(userGameRoleMap[gameId.toString()] && userGameRoleMap[gameId.toString()][roleId.toString()]){
+      userId = userGameRoleMap[gameId.toString()][roleId.toString()];
+    }else{
+      return;
+    }
+    if(ctxs[userId.toString()]){
+      const props = await getGameProps(ctxs[userId.toString()]);
+      if(props.roleId.toString()===roleId.toString()
+        && props.gameId.toString()===gameId.toString()){
+        try{
+          ctxs[userId.toString()].websocket.sendType({gameId, roleId, taskId}, managerActions.ENSURE_TASK);
+        }catch (e) {
+          console.error(e);
+        }
+      }
+    }
+  },
+  [managerActions.CANCEL_TASK]:async function(gameId, roleId, taskId){
+    let userId;
+    console.log(userGameRoleMap, gameId.toString(), roleId.toString())
+    if(userGameRoleMap[gameId.toString()] && userGameRoleMap[gameId.toString()][roleId.toString()]){
+      userId = userGameRoleMap[gameId.toString()][roleId.toString()];
+    }else{
+      return;
+    }
+    if(ctxs[userId.toString()]){
+      const props = await getGameProps(ctxs[userId.toString()]);
+      if(props.roleId.toString()===roleId.toString()
+        && props.gameId.toString()===gameId.toString()){
+        try{
+          ctxs[userId.toString()].websocket.sendType({gameId, roleId, taskId}, managerActions.CANCEL_TASK);
+        }catch (e) {
+          console.error(e);
+        }
+      }
+    }
   },
 };
 module.exports = playWSController;

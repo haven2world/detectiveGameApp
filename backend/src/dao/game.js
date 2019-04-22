@@ -72,6 +72,9 @@ const dao = {
   // 修改任务完成状态
   async updateTaskStatus(gameId, roleId, taskId, finished){
     let game = await Game.findById(gameId);
+    if(!game.roles.id(roleId).finishedTask){
+      game.roles.id(roleId).finishedTask = {};
+    }
     let finishedTask = game.roles.id(roleId).finishedTask;
     if(finishedTask[taskId.toString()] !== finished){
       let roleIndex = game.roles.findIndex(role=>role._id.toString()===roleId.toString());
@@ -80,7 +83,7 @@ const dao = {
       game.markModified(`roles.${roleIndex}.finishedTask`);
       await game.save();
     }
-    return true;
+    return game;
   },
 //  为一个游戏添加玩家
   async addPlayerToGameAndCreateRole(gameId, role, userId, gameInstance){

@@ -10,6 +10,7 @@ import playerActions from '@/constant/playerActions';
 import gameStatus from '@/constant/gameStatus';
 import styles from './player.css';
 import SearchOverView from '@/pages/rooms/$id/component/player/SearchOverView';
+import gameViewActions from '@/constant/gameViewActions';
 const ListItem = List.Item;
 
 /**
@@ -18,7 +19,7 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, currentStage} = ctx.store;
+  const {game, clueNewFlag} = ctx.store;
 
   const [list, setList] = useState({self:[],shared:[]});
   const [filterScene, setFilterScene] = useState('all');
@@ -31,6 +32,11 @@ export default function(props) {
     generateSceneFilter(game);
     calcList(game, filterScene);
   },[game]);
+
+  if(clueNewFlag){
+    //置为已读
+    ctx.dispatch({type:gameViewActions.SET_NEW_FLAG, data:{clueNewFlag: false}});
+  }
 
   //生成所有标签
   function generateSceneFilter(game){

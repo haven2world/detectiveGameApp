@@ -1,6 +1,6 @@
 import React,{useEffect, useState, useContext} from 'react';
 import router from 'umi/router';
-import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, } from 'antd-mobile';
+import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, Badge, } from 'antd-mobile';
 import { formatTime, RenderIf } from '@/utils/commonUtils';
 import { toast } from '@/utils/toastUtils';
 import LoadingPage from '@/component/LoadingPage';
@@ -17,7 +17,7 @@ import styles from './player.css';
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, currentStage, showStage} = ctx.store;
+  const {game, currentStage, showStage, clueNewFlag, taskNewFlag,} = ctx.store;
   const {setContentView, currentContentView} = props;
 
   //toggle 阶段选择
@@ -31,6 +31,14 @@ export default function(props) {
       setContentView('story');
     }else{
       setContentView('clue');
+    }
+  }
+  //打开任务页面
+  function openTaskView(){
+    if(currentContentView==='task'){
+      setContentView('story');
+    }else{
+      setContentView('task');
     }
   }
 
@@ -63,6 +71,15 @@ export default function(props) {
       title:'线索',
       icon:'fa-eye',
       onClick:openClueView,
+      active:currentContentView==='clue',
+      newFlag:clueNewFlag,
+    },
+    {
+      title:'任务',
+      icon:'fa-list-ol',
+      onClick:openTaskView,
+      active:currentContentView==='task',
+      newFlag:taskNewFlag,
     }
   ];
 
@@ -80,10 +97,12 @@ export default function(props) {
   </div>)
 }
 
-function BarButton({title, icon, onClick, active}) {
+function BarButton({title, icon, onClick, active, newFlag}) {
 
   return (<div className={classnames(['flex-column-container', 'clickable', styles.bottomBarButton, active?styles.bottomBarButtonActive:''])} onClick={onClick}>
-    <i className={'fa '+ icon} />
+    <Badge dot={newFlag}>
+      <i className={'fa '+ icon} />
+    </Badge>
     <div>{title}</div>
   </div>)
 }

@@ -218,7 +218,7 @@ const service = {
   },
 //修改任务完成状况
   async modifyTaskStatus(gameId, roleId, taskId, finished) {
-    await game.updateTaskStatus(gameId, roleId, taskId, finished);
+    return await game.updateTaskStatus(gameId, roleId, taskId, finished);
   },
 //  获取所有未完成的游戏
   async getAllGameUnfinished() {

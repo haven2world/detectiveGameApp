@@ -109,7 +109,7 @@ router.put('/:gameId/roles/:roleId/tasks/:taskId',async(ctx, next)=>{
   await gameService.checkStatusPlaying(ctx.params.gameId, ctx.request.body);
   await gameService.modifyTaskStatus(ctx.params.gameId, ctx.params.roleId, ctx.params.taskId, ctx.request.body.finished);
   if(ctx.request.body.action){
-  //todo handle action
+    playerSender[ctx.request.body.action](ctx.params.gameId, ctx.params.roleId, ctx.params.taskId);
   }
 });
 
