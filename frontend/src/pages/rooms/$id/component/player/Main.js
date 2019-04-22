@@ -28,7 +28,7 @@ export default function(props) {
   const ctx = useContext(Player.Context);
   const {game, showStage, shownRowDetail} = ctx.store;
 
-  const [contentView, setContentView] = useState('clue');
+  const [contentView, setContentView] = useState('story');
 
   //初始化数据
   useEffect(()=>{
@@ -104,7 +104,7 @@ export default function(props) {
             {renderContentView()}
           </div>
         </Drawer>
-        <BottomBar setContentView={setContentView}/>
+        <BottomBar setContentView={setContentView} currentContentView={contentView}/>
       </div>);
   }
 }

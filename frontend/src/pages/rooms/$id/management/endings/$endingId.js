@@ -5,8 +5,6 @@ import router from 'umi/router';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, TextareaItem, Stepper, Checkbox} from 'antd-mobile';
 import LoadingPage from '@/component/LoadingPage';
 import ScrollableList from '@/component/ScrollableList';
-import PickerCaller from '@/component/PickerCaller';
-import RichEditor from '@/component/RichEditor/RichEditor';
 import * as services from '@/utils/services';
 import { toast } from '@/utils/toastUtils';
 import { changeQuery, isInArray, RenderIf } from '@/utils/commonUtils';

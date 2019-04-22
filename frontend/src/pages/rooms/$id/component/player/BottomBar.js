@@ -18,7 +18,7 @@ import styles from './player.css';
 export default function(props) {
   const ctx = useContext(Player.Context);
   const {game, currentStage, showStage} = ctx.store;
-  const {setContentView} = props;
+  const {setContentView, currentContentView} = props;
 
   //toggle 阶段选择
   function toggleStageDrawer() {
@@ -27,15 +27,28 @@ export default function(props) {
 
   //打开线索页面
   function openClueView(){
-    setContentView('clue');
+    if(currentContentView==='clue'){
+      setContentView('story');
+    }else{
+      setContentView('clue');
+    }
   }
 
   //跳转下一阶段
   function nextStage() {
     if(game.stage-currentStage){
+      setContentView('story');
       ctx.dispatch({type:gameViewActions.SET_STAGE, data:{stage:currentStage+1}});
     }else{
       toast.info('当前已经是最新阶段，请等待房主推进剧情');
+    }
+  }
+  //前往搜证页面
+  function openCombVIew() {
+    if(currentContentView==='scene'){
+      setContentView('story');
+    }else{
+      setContentView('scene');
     }
   }
 
@@ -57,7 +70,7 @@ export default function(props) {
     {buttons.map((button, index)=>
       <BarButton {...button} key={index} />)}
     <div className={'flex-container'} style={{flex:1, justifyContent: 'flex-end'}}>
-      <div className={classnames([styles.bottomBarPrimaryButton, styles.bottomBarSearchButton, 'clickable'])} onClick={()=>setContentView('scene')}>
+      <div className={classnames([styles.bottomBarPrimaryButton, styles.bottomBarSearchButton, 'clickable'])} onClick={openCombVIew}>
         搜证
       </div>
       <div className={classnames([styles.bottomBarPrimaryButton, 'clickable'])} onClick={nextStage}>

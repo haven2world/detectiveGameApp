@@ -53,7 +53,7 @@ export default class RichEditor extends Component{
           if(validateFileByExtensionName(file,'docx')){
             let reader = new FileReader();
 
-            reader.onload = function(loadEvent) {
+            reader.onload = (loadEvent)=>{
               let arrayBuffer = loadEvent.target.result;
               mammoth.convertToHtml({arrayBuffer: arrayBuffer})
                 .then(this.displayResult)

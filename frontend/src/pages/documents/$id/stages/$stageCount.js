@@ -142,10 +142,12 @@ function StoryEditorPage({role, closeEditor, stageCount, docId}) {
         icon={<Icon type={'left'}/>}
         onLeftClick={closeEditor}
       >{role.name} - 第{stageCount+1}阶段</NavBar>
-      <RichEditor
-        defaultValue={role.story?role.story.content:''}
-        onSaveContent={saveStory}
-      />
+      <ScrollableList>
+        <RichEditor
+          defaultValue={role.story?role.story.content:''}
+          onSaveContent={saveStory}
+        />
+      </ScrollableList>
     </div>
   )
 }

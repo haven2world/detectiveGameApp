@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constant/playerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constant/playerActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/websocket/playerWSController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/websocket/playerWSController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dao/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/dao/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/game.js" afterDir="false" />
+    <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[feat]: 共享线索完成">
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/games.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/games.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Clue.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Clue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/player.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/playerReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/component/player/playerReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RichEditor/RichEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RichEditor/RichEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/component/RichEditor/editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/RichEditor/editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/stages/$stageCount.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/documents/$id/stages/$stageCount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/management/endings/$endingId.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/pages/rooms/$id/management/endings/$endingId.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/websocket/playerWSController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="592">
-              <caret line="120" column="86" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
+            <state relative-caret-position="-820">
+              <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -204,7 +197,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -444,7 +437,7 @@
       <workItem from="1553954664221" duration="1277000" />
       <workItem from="1554015739999" duration="5401000" />
       <workItem from="1555402382117" duration="24366000" />
-      <workItem from="1555900988607" duration="9432000" />
+      <workItem from="1555900988607" duration="10066000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -558,11 +551,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555636635123</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="[feat]: 共享线索完成">
+      <created>1555922928755</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1555922928755</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="576706000" />
+    <option name="totallyTimeSpent" value="577340000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -574,7 +574,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21443625" />
@@ -624,7 +624,8 @@
     <MESSAGE value="[feat]: ws调整" />
     <MESSAGE value="[feat]: role demo" />
     <MESSAGE value="[feat]: 开始玩家部分" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 开始玩家部分" />
+    <MESSAGE value="[feat]: 共享线索完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 共享线索完成" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/controller/gameManagerController.js" />
@@ -890,8 +891,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/websocket/playerWSController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="120" column="86" selection-start-line="120" selection-start-column="86" selection-end-line="120" selection-end-column="86" />
+        <state relative-caret-position="-820">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
         </state>
       </provider>
     </entry>
