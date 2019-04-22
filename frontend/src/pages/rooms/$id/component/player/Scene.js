@@ -26,7 +26,7 @@ export default function(props) {
   function comb(scene) {
     ctx.actions(playerActions.COMB_SCENE, {sceneId:scene._id}).then(result=>{
       if(result && result.code === 0){
-        Modal.alert('线索', <div>{result.data.clueInstance.content}</div>,[
+        Modal.alert('线索', <div>{result.data.clueInstance.document.content}</div>,[
           {text:'知道了'},
         ]);
       }

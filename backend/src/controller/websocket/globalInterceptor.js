@@ -12,6 +12,7 @@ module.exports = async function (ctx) {
   const ws = ctx.websocket;
 
   ws.sendJSON = function (data) {
+    console.log('ws send:', data);
     return this.send(JSON.stringify(data));
   };
 

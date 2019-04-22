@@ -125,7 +125,7 @@ const service = {
     let roleInstance = gameInstance.roles.id(roleId);
     roleInstance = roleInstance.toObject();
     service.assembleDocumentToRole(gameInstance.document, roleInstance);
-    roleInstance.clues.forEach(async clue => await service.assembleDocumentToClue(gameInstance.document, clue));
+    roleInstance.clues.forEach(clue => service.assembleDocumentToClue(gameInstance.document, clue));
     let {tasks} = await document.getTaskForRole(gameInstance.document, roleInstance.document._id);
     roleInstance.tasks = tasks;
 
@@ -147,13 +147,13 @@ const service = {
     return endingInstance;
   },
 //  组装 role document
-  async assembleDocumentToRole(documentInstance, role) {
+  assembleDocumentToRole(documentInstance, role) {
     let roleDoc = documentInstance.roles.id(role.roleDocumentId);
     role.document = roleDoc.toObject();
     return role;
   },
 //  组装 clue document
-  async assembleDocumentToClue(documentInstance, clue) {
+  assembleDocumentToClue(documentInstance, clue) {
     let sceneDoc = documentInstance.scenes.id(clue.sceneId);
     let clueDoc = sceneDoc.clues.id(clue.clueDocumentId);
     clue.document = clueDoc.toObject();
@@ -161,29 +161,28 @@ const service = {
     return clue;
   },
 //  组装 clue game status 传入scene的时候将部分属性增加到scene
-  async assembleGameStatusToCluesDocument(gameInstance, clues, scene) {
+  assembleGameStatusToCluesDocument(gameInstance, clues, scene) {
     let documentInstance = gameInstance.document;
     gameInstance = gameInstance.toObject();
     let clueMap = {};
-    gameInstance.roles.forEach(async role => {
-      await service.assembleDocumentToRole(documentInstance, role);
+    gameInstance.roles.forEach(role => {
+      service.assembleDocumentToRole(documentInstance, role);
       role.clues.forEach(clue => {
-        let temp = clueMap[clue.clueDocumentId] || {founder: [], shared: false, sceneId: clue.sceneId,};
+        let temp = clueMap[clue.clueDocumentId.toString()] || {founder: [], shared: false, sceneId: clue.sceneId,};
         temp.founder.push({_id: clue.founder, name: role.document.name});
         temp.shared = temp.shared || clue.shared;
-        clueMap[clue.clueDocumentId] = temp;
+        clueMap[clue.clueDocumentId.toString()] = temp;
       });
     });
-
     clues.forEach(clue => {
-      clue.gameStatus = clueMap[clue._id];
+      clue.gameStatus = clueMap[clue._id.toString()];
     });
     if(scene){
       scene.clueCount = scene.clues.length;
       scene.clueLeftCount = 0;
       for(let i=0; i<scene.clues.length;++i){
         let clue = scene.clues[i];
-        if(!clueMap[clue._id]){
+        if(!clueMap[clue._id.toString()]){
           ++scene.clueLeftCount;
           scene.searchable = true;
         }
@@ -195,19 +194,19 @@ const service = {
     return clues;
   },
 //  为玩家增加场景线索状态
-  async assembleClueStatusToScene(gameInstance, scene){
+  assembleClueStatusToScene(gameInstance, scene){
     gameInstance = gameInstance.toObject();
     let clueMap = {};
-    gameInstance.roles.forEach(async role => {
+    gameInstance.roles.forEach(role => {
       role.clues.forEach(clue => {
-        clueMap[clue.clueDocumentId] = clue;
+        clueMap[clue.clueDocumentId.toString()] = clue;
       });
     });
     scene.clueCount = scene.clues.length;
     scene.clueLeftCount = 0;
     for(let i=0; i<scene.clues.length;++i){
       let clue = scene.clues[i];
-      if(!clueMap[clue._id]){
+      if(!clueMap[clue._id.toString()]){
         ++scene.clueLeftCount;
         scene.searchable = true;
       }
@@ -256,36 +255,36 @@ const service = {
     return await game.removeRoleAndItsPlayer(gameId, roleId);
   },
 //  初始化玩家数据
-  async generatePlayerData(game, userId){
+  async generatePlayerData(gameInstance, userId){
 
-    let result = game.toObject();
+    let result = gameInstance.toObject();
 
     //去除游戏中其他玩家的消息
     let role = null;
-    result.roles.forEach(async item=>{
+    result.roles.forEach(item=>{
       if(item.player.toString()===userId.toString()){
         role = item;
       }else{
         delete item.messages
       }
       //组装文档
-      await service.assembleDocumentToRole(game.document, item);
+      service.assembleDocumentToRole(gameInstance.document, item);
     });
     //增加其他玩家共享的线索
-    role.sharedClues = await service.findCluesOtherPlayersShared(game, userId);
+    role.sharedClues = await service.findCluesOtherPlayersShared(gameInstance, userId);
 
     //组装文档
-    role.clues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
-    role.sharedClues.forEach(async clue=>{await service.assembleDocumentToClue(game.document, clue)});
-    result.document.scenes.forEach(async scene=>await service.assembleClueStatusToScene(game, scene));
+    role.clues.forEach(clue=>{service.assembleDocumentToClue(gameInstance.document, clue)});
+    role.sharedClues.forEach(clue=>{service.assembleDocumentToClue(gameInstance.document, clue)});
+    result.document.scenes.forEach(scene=>service.assembleClueStatusToScene(gameInstance, scene));
 
     //清洗剧本中其他玩家的信息
-    await service.cleanOtherPlayersInfo(result, role.roleDocumentId);
+    service.cleanOtherPlayersInfo(result, role.roleDocumentId);
     //去除剧本中的线索与非当前阶段的场景和故事
-    await service.cleanStorySceneAndClue(result);
+    service.cleanStorySceneAndClue(result);
 
     //检查是否发送结局
-    if(!game.sentEnding){
+    if(!gameInstance.sentEnding){
       delete result.document.endings;
     }
 
@@ -307,7 +306,7 @@ const service = {
     return result;
   },
 //  清洗剧本中其他玩家的信息
-  async cleanOtherPlayersInfo(gameObject, roleDocId){
+  cleanOtherPlayersInfo(gameObject, roleDocId){
     const doc = gameObject.document;
   //  去除其他玩家的技能信息
     gameObject.roles.forEach(role=>{
@@ -322,21 +321,24 @@ const service = {
 
   },
   //去除剧本中的线索与非当前阶段的场景
-  async cleanStorySceneAndClue(gameObject){
+  cleanStorySceneAndClue(gameObject){
     const currentStage = gameObject.stage;
     const doc = gameObject.document;
-    doc.scenes = doc.scenes.filter(scene=>{
-      delete scene.clues;
-      return scene.enableStage <= currentStage;
-    });
-    doc.stories = doc.stories.filter(story=>story.stage <= currentStage);
+    if(doc.scenes){
+      doc.scenes = doc.scenes.filter(scene=>{
+        delete scene.clues;
+        return scene.enableStage <= currentStage;
+      });
+    }
+    if(doc.stories){
+      doc.stories = doc.stories.filter(story=>story.stage <= currentStage);
+    }
   },
 //  在某个场景搜证
   async combSomewhere(gameId, sceneId, gameRoleId){
     let gameInstance = await game.getGamePopulateBasicDoc(gameId);
-    console.log(sceneId)
     let scene = gameInstance.document.scenes.id(sceneId).toObject();
-    await service.assembleGameStatusToCluesDocument(gameInstance, scene.clues, scene);
+    service.assembleGameStatusToCluesDocument(gameInstance, scene.clues, scene);
     if(!scene.searchable){
       throw {
         code: global._Exceptions.COMB_ERROR,
@@ -349,7 +351,7 @@ const service = {
         message: '你已经精疲力尽无法继续搜证'
       }
     }
-    scene.clues = scene.clues.filter(clue=>{
+    let res = scene.clues.filter(clue=>{
       if(clue.enableStage<= gameInstance.stage ){
         if(!clue.gameStatus){
           return true;
@@ -360,6 +362,7 @@ const service = {
         }
       }
     });
+    scene.clues = res;
 
     let clueCount = scene.clues.length;
     let random = Math.floor(Math.random()*clueCount);
@@ -391,8 +394,20 @@ const service = {
       shared: !gameInstance.difficultyLevel.keepClueSecret,
     };
     let skillUse = await game.addClueToRole(gameId, gameRoleId, clueInstance, useSkillFlag, theSkillIndex);
+    service.assembleDocumentToClue(gameInstance.document, clueInstance);
 
-    return {skillUse, clueInstance}
+    return {skillUse, clueInstance, gameInstance}
+  },
+//  搜证副作用计算
+  async calculateCombEffect(gameInstance, clueInstance){
+    let gameObject = gameInstance.toObject();
+
+    //组装文档
+    gameObject.document.scenes.forEach(scene=>service.assembleClueStatusToScene(gameInstance, scene));
+
+    //去除剧本中的线索与非当前阶段的场景和故事
+    service.cleanStorySceneAndClue(gameObject);
+    return gameObject.document.scenes;
   },
 //  检查某个角色是否还能搜证
   async checkRoleCanComb(gameInstance, gameRoleId){

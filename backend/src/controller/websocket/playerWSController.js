@@ -17,7 +17,7 @@ module.exports = async function (ctx) {
   const ws = ctx.websocket;
   const userId = ctx._userId;
 
-  ctxs[userId] = ctx;
+  ctxs[userId.toString()] = ctx;
 
   ws.on('message',async function (message) {
     try{
@@ -74,8 +74,9 @@ const receiver = {
     const {gameId, roleId} = await getGameProps(ctx);
 
     try {
-      let {skillUse, clueInstance} = await gameService.combSomewhere(gameId, sceneId, roleId);
+      let {skillUse, clueInstance, gameInstance} = await gameService.combSomewhere(gameId, sceneId, roleId);
       ws.respond({skillUse, clueInstance}, uuid);
+      sender[playerActions.COMB_EFFECT](ctx, gameInstance, clueInstance );
     }catch (e) {
       if(!e.code){e.code = global._Exceptions.UNKNOWN_ERROR}
       console.error(e);
@@ -86,7 +87,16 @@ const receiver = {
 
 //发送消息
 const sender = {
-  [playerActions.INIT_GAME]:async function(ctx, game){
-
+  [playerActions.COMB_EFFECT]:async function(ctx, gameInstance, clueInstance){
+    const scenesObject = await gameService.calculateCombEffect(gameInstance, clueInstance);
+    gameInstance.players.forEach(player=>{
+      if(ctxs[player._id.toString()]){
+        try{
+          ctxs[player._id.toString()].websocket.sendType({scenes: scenesObject}, playerActions.COMB_EFFECT);
+        }catch (e) {
+          console.error(e);
+        }
+      }
+    });
   }
 };
