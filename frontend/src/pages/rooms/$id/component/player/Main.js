@@ -26,7 +26,7 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, showStage, shownRowDetail} = ctx.store;
+  const {game, showStage, shownRowDetail, leaveFlag} = ctx.store;
 
   const [contentView, setContentView] = useState('story');
 
@@ -34,6 +34,12 @@ export default function(props) {
   useEffect(()=>{
     ctx.actions(playerActions.INIT_GAME)
   },[]);
+  //检测被请离
+  if(leaveFlag){
+    Modal.alert('提示','您已被房主请离房间',[
+      {text:'离开', onPress:router.goBack},
+    ]);
+  }
 
   //渲染主体部分
   function renderContentView() {

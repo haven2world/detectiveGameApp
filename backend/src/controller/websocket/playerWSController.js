@@ -8,12 +8,13 @@
 const documentService = require('../../service/gameDocument');
 const gameService = require('../../service/game');
 const playerActions = require('../../constant/playerActions');
+const managerActions = require('../../constant/managerActions');
 
 //连接池
 const ctxs = {};//ctxs - userid
 
 //初始化ws
-module.exports = async function (ctx) {
+async function playWSController(ctx) {
   const ws = ctx.websocket;
   const userId = ctx._userId;
 
@@ -23,8 +24,8 @@ module.exports = async function (ctx) {
     try{
       message = JSON.parse(message);
       const {data:{type}} = message;
-      if(receiver[type]){
-        await receiver[type](ctx, message);
+      if(playWSController.receiver[type]){
+        await playWSController.receiver[type](ctx, message);
       }else{
         ws.sendJSON({
           code:global._Exceptions.NOT_FOUND_ERROR,
@@ -39,7 +40,7 @@ module.exports = async function (ctx) {
     }
   })
 
-};
+}
 //获取游戏参数
 async function getGameProps(ctx, refreshFlag) {
   const {websocket:ws, _userId:userId} = ctx;
@@ -57,7 +58,7 @@ async function getGameProps(ctx, refreshFlag) {
 }
 
 //接收消息
-const receiver = {
+playWSController.receiver = {
   [playerActions.INIT_GAME]:async function(ctx, message){
     const {websocket:ws, _userId:userId} = ctx;
     const {data, uuid} = message;
@@ -77,7 +78,7 @@ const receiver = {
       await gameService.checkStatusPlaying(gameId);
       let {skillUse, clueInstance, gameInstance} = await gameService.combSomewhere(gameId, sceneId, roleId);
       ws.respond({skillUse, clueInstance}, uuid);
-      sender[playerActions.COMB_EFFECT](ctx, gameInstance, clueInstance );
+      playWSController.sender[playerActions.COMB_EFFECT](ctx, gameInstance, clueInstance );
     }catch (e) {
       if(!e.code){e.code = global._Exceptions.UNKNOWN_ERROR}
       console.error(e);
@@ -93,7 +94,7 @@ const receiver = {
       await gameService.checkStatusPlaying(gameId);
       let gameInstance = await gameService.shareClue(gameId, roleId, gameClueId);
       ws.respond({gameClueId}, uuid);
-      sender[playerActions.SHARE_EFFECT](ctx, gameInstance );
+      playWSController.sender[playerActions.SHARE_EFFECT](ctx, gameInstance );
     }catch (e) {
       if(!e.code){e.code = global._Exceptions.UNKNOWN_ERROR}
       console.error(e);
@@ -103,7 +104,7 @@ const receiver = {
 };
 
 //发送消息
-const sender = {
+playWSController.sender = {
   [playerActions.COMB_EFFECT]:async function(ctx, gameInstance, clueInstance){
     const scenesObject = await gameService.calculateCombEffect(gameInstance, clueInstance);
     gameInstance.players.forEach(player=>{
@@ -128,4 +129,19 @@ const sender = {
       }
     }
   },
+  [managerActions.REMOVE_PLAYER]:async function(gameId, roleId, playerId){
+    if(ctxs[playerId.toString()]){
+      const props = await getGameProps(ctxs[playerId.toString()]);
+      if(props.roleId.toString()===roleId.toString()
+        && props.gameId.toString()===gameId.toString()){
+        try{
+          ctxs[playerId.toString()].websocket.sendType({gameId, roleId}, managerActions.REMOVE_PLAYER);
+        }catch (e) {
+          console.error(e);
+        }
+      }
+    }
+
+  },
 };
+module.exports = playWSController;

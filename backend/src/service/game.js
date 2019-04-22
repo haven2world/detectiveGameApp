@@ -354,6 +354,7 @@ const service = {
     }
     let res = scene.clues.filter(clue=>{
       if(clue.enableStage<= gameInstance.stage ){
+        console.log(clue)
         if(!clue.gameStatus){
           return true;
         }else if(clue.repeatable  && !clue.gameStatus.shared && !clue.gameStatus.founder.find(gameRole=>gameRole._id===gameRoleId)){
@@ -364,6 +365,12 @@ const service = {
       }
     });
     scene.clues = res;
+    if(scene.clues.length===0){
+      throw {
+        code: global._Exceptions.COMB_ERROR,
+        message: '该场景只剩下重复的线索了'
+      }
+    }
 
     let clueCount = scene.clues.length;
     let random = Math.floor(Math.random()*clueCount);

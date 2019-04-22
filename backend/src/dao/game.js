@@ -102,6 +102,7 @@ const dao = {
     roleInstance.remove(roleId);
     gameInstance.updateTime = new Date();
     await gameInstance.save();
+    return playerId;
   },
 //  为一个玩家增加一个线索
   async addClueToRole(gameId, roleId, clue, useSkillFlag, theSkillIndex){

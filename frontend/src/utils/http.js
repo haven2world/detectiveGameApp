@@ -151,7 +151,7 @@ class WebSocketWrapper extends Object{
           data:message,
           uuid,
         };
-        console.log('ws send:',message)
+        // console.log('ws send:',message)
         this.socket.send(JSON.stringify(sendData));
         this.respondMap[uuid] = resolve;
       }else{

@@ -71,7 +71,7 @@ export default function({computedMatch}) {
 
   //将一位玩家移出房间
   function removePlayer() {
-    Modal.alert('提示',<div>确定将<strong className={'error-text'}>{role.document.name}</strong>的扮演者<strong className={'error-text'}>请离</strong>当前游戏吗 ?<br/>(请离后其他人无法再扮演该角色可能导致游戏异常)</div>,[
+    Modal.alert('提示',<div>确定将<strong className={'error-text'}>{role.document.name}</strong>的扮演者<strong className={'error-text'}>请离</strong>当前游戏吗 ?<br/>(请离后无人扮演该角色可能导致游戏不顺畅)</div>,[
       {text:'取消',onPress:()=>{setRole(role)}},
       {text:'确认',onPress:()=>{
           services.removeRoleFromGame(gameId, roleId, {action:managerActions.REMOVE_PLAYER}).then(result=>{

@@ -8,6 +8,8 @@
 const Router = require('koa-router');
 const documentService = require('../service/gameDocument');
 const gameService = require('../service/game');
+const managerActions = require('../constant/managerActions');
+const playerSender = require('../controller/websocket/playerWSController').sender;
 
 
 let router = new Router();
@@ -161,10 +163,8 @@ router.delete('/:gameId/roles/:roleId',async(ctx, next)=>{
       message:'当前用户无权限操作'
     })
   }
-  await gameService.removeRoleFromGame(ctx.params.gameId, ctx.params.roleId);
-  if(ctx.request.body.action){
-    //todo handle action
-  }
+  let playerId = await gameService.removeRoleFromGame(ctx.params.gameId, ctx.params.roleId);
+  playerSender[managerActions.REMOVE_PLAYER](ctx.params.gameId, ctx.params.roleId, playerId);
 });
 
 

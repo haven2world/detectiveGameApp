@@ -13,6 +13,7 @@ export const initState = {
   currentStage:1,
   showStage:false,
   shownRowDetail:null,
+  leaveFlag:false,
 };
 
 export const playerReducer = (ws)=>(state, action)=>{
@@ -59,6 +60,14 @@ export const playerReducer = (ws)=>(state, action)=>{
     case gameViewActions.SET_ROLE_SHOWN:
       return {...state, shownRowDetail:data.role};
 
+    case managerActions.REMOVE_PLAYER:
+      const {gameId, roleId} = data;
+      console.log(gameId, roleId ,state.game)
+      if(!state.game || (gameId === state.game._id && roleId === state.game.currentRole._id)){
+        return {...state, leaveFlag:true};
+      }else{
+        return state;
+      }
   }
   return initState;
 };
