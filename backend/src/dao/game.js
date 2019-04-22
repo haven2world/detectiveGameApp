@@ -90,6 +90,7 @@ const dao = {
     let roleInstance = gameInstance.roles.create(role);
     gameInstance.roles.push(roleInstance);
     gameInstance.players.push(userId);
+    gameInstance.updateTime = new Date();
     await gameInstance.save();
   },
 //  移除一个角色扮演者
@@ -99,6 +100,7 @@ const dao = {
     let playerId = roleInstance.player;
     gameInstance.players = gameInstance.players.filter(item=>item.toString()!==playerId.toString());
     roleInstance.remove(roleId);
+    gameInstance.updateTime = new Date();
     await gameInstance.save();
   },
 //  为一个玩家增加一个线索
@@ -115,8 +117,20 @@ const dao = {
       ++roleInstance.skillUse[theSkillIndex].count;
     }
 
+    gameInstance.updateTime = new Date();
     await gameInstance.save();
     return roleInstance.skillUse;
+  },
+//  修改一个线索为公开
+  async updateClueShared(gameId, roleId, clueId){
+    let gameInstance = await dao.getGamePopulateBasicDoc(gameId);
+    let roleInstance = gameInstance.roles.id(roleId);
+    let clueInstance = roleInstance.clues.id(clueId);
+    clueInstance.shared = true;
+
+    gameInstance.updateTime = new Date();
+    await gameInstance.save();
+    return gameInstance;
   },
 };
 

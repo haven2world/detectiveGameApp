@@ -28,7 +28,7 @@ export default function(props) {
   const ctx = useContext(Player.Context);
   const {game, showStage, shownRowDetail} = ctx.store;
 
-  const [contentView, setContentView] = useState('scene');
+  const [contentView, setContentView] = useState('clue');
 
   //初始化数据
   useEffect(()=>{
@@ -93,7 +93,7 @@ export default function(props) {
           open={showStage}
         >
           <RoleListHorizontal setContentView={setContentView}/>
-          <div style={{flex:1}} className={styles.contentView}>
+          <div style={{flex:1}} className={classnames([styles.contentView])}>
             {/*重置页面为story*/}
             {RenderIf(contentView!=='story')(
               <div className={classnames([styles.resetButton, 'clickable'])} onClick={()=>{setContentView('story')}}>

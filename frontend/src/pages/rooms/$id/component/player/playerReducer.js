@@ -36,6 +36,19 @@ export const playerReducer = (ws)=>(state, action)=>{
       newGame.document.scenes = scenes;
       return {...state, game:newGame};
     }
+    case playerActions.SHARE_CLUE:{
+      const {gameClueId} = data;
+      let newGame = {...state.game};
+      newGame.currentRole.clues.find(clue=>clue._id===gameClueId).shared = true;
+      return {...state, game:newGame};
+    }
+    case playerActions.SHARE_EFFECT:{
+      const {scenes, sharedClues} = data;
+      let newGame = {...state.game};
+      newGame.document.scenes = scenes;
+      newGame.currentRole.sharedClues = sharedClues;
+      return {...state, game:newGame};
+    }
 
 
 

@@ -27,16 +27,16 @@
 .contentView{
     background: #fff;
     padding: 10px 10px;
+    position: relative;
 }
 
 .resetButton{
-    float: right;
     width:  30px;
     height: 30px;
     overflow: hidden;
-    position: relative;
-    bottom: 10px;
-    left: 10px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
     z-index: 2;
 }
 .resetButtonBackground{
@@ -109,4 +109,18 @@
 
 .searchOverviewBox div:nth-child(n+1) {
     padding-top: 5px;
+}
+
+.clueFilterWrapper{
+    padding: 10px 0;
+}
+
+.clueFilterTag:not(:first-child){
+    margin-left: 15px;
+}
+
+.clueFilterTagActive{
+    background: primary-color!important;
+    color:#fff!important;
+    border-color: primary-color!important;
 }

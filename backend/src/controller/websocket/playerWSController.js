@@ -74,9 +74,26 @@ const receiver = {
     const {gameId, roleId} = await getGameProps(ctx);
 
     try {
+      await gameService.checkStatusPlaying(gameId);
       let {skillUse, clueInstance, gameInstance} = await gameService.combSomewhere(gameId, sceneId, roleId);
       ws.respond({skillUse, clueInstance}, uuid);
       sender[playerActions.COMB_EFFECT](ctx, gameInstance, clueInstance );
+    }catch (e) {
+      if(!e.code){e.code = global._Exceptions.UNKNOWN_ERROR}
+      console.error(e);
+      ws.respond(null, uuid, e);
+    }
+  },
+  [playerActions.SHARE_CLUE]:async function(ctx, message){
+    const {websocket:ws, _userId:userId,} = ctx;
+    const {data:{gameClueId}, uuid} = message;
+    const {gameId, roleId} = await getGameProps(ctx);
+
+    try {
+      await gameService.checkStatusPlaying(gameId);
+      let gameInstance = await gameService.shareClue(gameId, roleId, gameClueId);
+      ws.respond({gameClueId}, uuid);
+      sender[playerActions.SHARE_EFFECT](ctx, gameInstance );
     }catch (e) {
       if(!e.code){e.code = global._Exceptions.UNKNOWN_ERROR}
       console.error(e);
@@ -98,5 +115,17 @@ const sender = {
         }
       }
     });
-  }
+  },
+  [playerActions.SHARE_EFFECT]:async function(ctx, gameInstance){
+    for(let player of gameInstance.players){
+      if(ctxs[player._id.toString()] && player._id.toString()!==ctx._userId.toString()){
+        try{
+          const {scenes, sharedClues} = await gameService.calculateShareEffect(gameInstance, player._id.toString());
+          ctxs[player._id.toString()].websocket.sendType({scenes, sharedClues}, playerActions.SHARE_EFFECT);
+        }catch (e) {
+          console.error(e);
+        }
+      }
+    }
+  },
 };

@@ -337,6 +337,7 @@ const service = {
 //  在某个场景搜证
   async combSomewhere(gameId, sceneId, gameRoleId){
     let gameInstance = await game.getGamePopulateBasicDoc(gameId);
+
     let scene = gameInstance.document.scenes.id(sceneId).toObject();
     service.assembleGameStatusToCluesDocument(gameInstance, scene.clues, scene);
     if(!scene.searchable){
@@ -412,6 +413,35 @@ const service = {
 //  检查某个角色是否还能搜证
   async checkRoleCanComb(gameInstance, gameRoleId){
     return gameInstance.difficultyLevel.maxInquiryTimes - gameInstance.roles.id(gameRoleId).clues.length;
+  },
+//  公开线索
+  async shareClue(gameId, gameRoleId, gameClueId){
+    return await game.updateClueShared(gameId, gameRoleId, gameClueId);
+  },
+//  公开线索副作用计算
+  async calculateShareEffect(gameInstance, userId){
+    let gameObject = gameInstance.toObject();
+
+    //去除游戏中其他玩家的消息
+    let role = null;
+    gameObject.roles.forEach(item=>{
+      if(item.player.toString()===userId.toString()){
+        role = item;
+      }else{
+        delete item.messages
+      }
+    });
+    //增加其他玩家共享的线索
+    role.sharedClues = await service.findCluesOtherPlayersShared(gameInstance, userId);
+
+    //组装文档
+    role.sharedClues.forEach(clue=>{service.assembleDocumentToClue(gameInstance.document, clue)});
+    gameObject.document.scenes.forEach(scene=>service.assembleClueStatusToScene(gameInstance, scene));
+
+    //去除剧本中的线索与非当前阶段的场景和故事
+    service.cleanStorySceneAndClue(gameObject);
+
+    return {scenes:gameObject.document.scenes, sharedClues:role.sharedClues};
   },
 };
 
