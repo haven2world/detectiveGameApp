@@ -25,7 +25,7 @@ const service = {
     return result
   },
 //  初始化并创建一个剧本
-  async createGameInstance(docId){
+  async createDocumentWithNameAndUser(name, user){
     const basicDocument = {
       isPrivate:true,
       creator:user,
