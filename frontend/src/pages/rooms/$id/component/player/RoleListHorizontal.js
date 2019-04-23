@@ -19,6 +19,7 @@ export default function({setContentView}) {
   }
 
   return (<div className={styles.roleList}>
+    <div className={styles.roleListContainer}>
       {game.roles.map((role, index)=><Avatar
         image={role.document.photo}
         name={role.document.name}
@@ -27,6 +28,7 @@ export default function({setContentView}) {
         isPlayer={!!role.sharedClues}
         onClickRole={onClickRole}
       />)}
+    </div>
   </div>);
 }
 
@@ -35,7 +37,7 @@ function Avatar({image, name, onClickRole, index, isPlayer}) {
     <div className={classnames([styles.avatarWrapper, 'clickable'])} onClick={()=>{onClickRole(index)}}>
       <img
         src={image||require('@/assets/img/contact_default.png')}
-        style={{height:40,width:40,borderRadius:20, border:'1px solid #f5f5f9',objectFit:'cover'}}
+        className={styles.roleImg}
       />
       <div ><span className='gray-text'>{isPlayer?'[扮演]':''}</span>{name}</div>
     </div>

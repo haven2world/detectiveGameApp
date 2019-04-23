@@ -117,7 +117,7 @@ export default function(props) {
           className={styles.drawer}
           sidebar={<StageDrawer setContentView={setContentView}/>}
           onOpenChange={()=> ctx.dispatch({type:gameViewActions.TOGGLE_STAGE})}
-          contentStyle={{display:'flex', flexDirection:'column', }}
+          contentStyle={{display:'flex', flexDirection:'column',height:'100%',position:'relative' }}
           sidebarStyle={{background:'#fff',height:'100%'}}
           open={showStage}
         >

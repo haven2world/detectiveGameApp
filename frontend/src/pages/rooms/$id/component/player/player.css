@@ -9,13 +9,22 @@
     background-color: #fff;
 
     width: 100%;
-    overflow-x: auto;
     white-space: nowrap;
-
-
+    position: relative;
 }
-.roleList::-webkit-scrollbar{
+.roleListContainer::-webkit-scrollbar{
     display:none;
+}
+.roleListContainer{
+    width: 100%;
+    overflow-x: auto;
+}
+.roleImg{
+    height:30px;
+    width:30px;
+    border-radius:15px;
+    border:1px solid #f5f5f9;
+    object-fit:cover
 }
 .avatarWrapper{
     display: inline-block;
