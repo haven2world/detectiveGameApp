@@ -18,6 +18,9 @@ export default function({game}) {
 
   let taskStatus = {};
   game.roles.forEach(role=>{
+    if(!role.finishedTask){
+      role.finishedTask = {};
+    }
     Object.keys(role.finishedTask).forEach((taskId)=>{
       taskStatus[taskId] = role.finishedTask[taskId];
     });

@@ -267,6 +267,9 @@ const service = {
       }else{
         delete item.messages
       }
+      if(!item.finishedTask){
+        item.finishedTask = {};
+      }
       //组装文档
       service.assembleDocumentToRole(gameInstance.document, item);
     });

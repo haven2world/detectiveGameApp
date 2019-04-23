@@ -110,6 +110,9 @@ export default function(props) {
           icon={<Icon type={'left'}/>}
           onLeftClick={router.goBack}
         >{renderTitle()}</NavBar>
+        {RenderIf(game.status===gameStatus.over)(
+          <NoticeBar >游戏已经结束</NoticeBar>
+        )}
         <Drawer
           className={styles.drawer}
           sidebar={<StageDrawer setContentView={setContentView}/>}

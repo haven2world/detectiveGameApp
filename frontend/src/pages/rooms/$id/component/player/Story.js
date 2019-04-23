@@ -24,14 +24,13 @@ export default function(props) {
     if(currentStage === 'ending'){
       return (<div className={'container flex-column-container'}>
         <ScrollableList>
-          {game.document.endings.map(ending=>{
+          {game.document.endings.map(ending=>
             <ListItem wrap key={ending._id}>
               {ending.name}
               <ListItem.Brief>
-                {ending.content}
+                <div dangerouslySetInnerHTML={{__html:ending.content}}/>
               </ListItem.Brief>
-            </ListItem>
-          })}
+            </ListItem>)}
         </ScrollableList>
       </div>)
     }else{

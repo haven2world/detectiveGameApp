@@ -46,6 +46,9 @@ export default function({computedMatch}) {
 
   //修改任务完成情况
   function toggleTask(task) {
+    if(!role.finishedTask){
+      role.finishedTask = {};
+    }
     let param = {
       finished:!role.finishedTask[task._id],
       action:!role.finishedTask[task._id]?managerActions.ENSURE_TASK:managerActions.CANCEL_TASK
