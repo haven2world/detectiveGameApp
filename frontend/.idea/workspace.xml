@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 状态提醒">
+    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 头像栏显示出错">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/ecosystem.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/ecosystem.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,11 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+            <state relative-caret-position="672">
+              <caret line="41" column="79" lean-forward="true" selection-start-line="41" selection-start-column="79" selection-end-line="41" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -46,6 +43,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
               <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -169,7 +175,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -453,7 +459,7 @@
       <workItem from="1554015740819" duration="4730000" />
       <workItem from="1554109475510" duration="76922000" />
       <workItem from="1555402358371" duration="30666000" />
-      <workItem from="1555901002886" duration="34985000" />
+      <workItem from="1555901002886" duration="35879000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
       <created>1544512763042</created>
@@ -763,11 +769,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556005457643</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="[feat]: 头像栏显示出错">
+      <created>1556006060006</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1556006060006</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="747943000" />
+    <option name="totallyTimeSpent" value="748837000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -779,10 +792,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19599578" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19599578" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -797,7 +810,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32960895" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32666665" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32666665" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.32777777" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -855,7 +868,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="[feat]: 发布完成" />
     <MESSAGE value="[feat]: 实现匿名登录" />
     <MESSAGE value="[feat]: 房间管理跳转" />
     <MESSAGE value="[feat]: 删除房间" />
@@ -880,7 +892,8 @@
     <MESSAGE value="[feat]: 任务完成-玩家" />
     <MESSAGE value="[feat]: 发送结局" />
     <MESSAGE value="[feat]: 状态提醒" />
-    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 状态提醒" />
+    <MESSAGE value="[feat]: 头像栏显示出错" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 头像栏显示出错" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/utils/services.js">
@@ -910,13 +923,6 @@
     <entry file="file://$PROJECT_DIR$/src/pages/main/_layout.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-120" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/documents/$id/scenes/$sceneId.js">
@@ -1251,8 +1257,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="672">
+          <caret line="41" column="79" lean-forward="true" selection-start-line="41" selection-start-column="79" selection-end-line="41" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="39" lean-forward="true" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
         </state>
       </provider>
     </entry>

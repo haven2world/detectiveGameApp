@@ -19,6 +19,10 @@ if(process.env.NODE_ENV === 'development'){
   global._Config  = require('./config/config.dev');
 }
 
+if(process.env.NODE_ENV === 'production'){
+  global._Config  = require('./config/config.prod');
+}
+
 //全局部分变量
 global._Exceptions = require('./src/constant/exceptions');
 
