@@ -4,6 +4,7 @@ var path = require('path');
 export default {
   base:'/detective',
   publicPath:'/detective/',
+  outputPath:'./detective',
   define:{
     'process.env.NODE_ENV':'production'
   },
