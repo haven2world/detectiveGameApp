@@ -49,7 +49,7 @@ export default function Player(props) {
       </PlayerContext.Provider>
     );
   }else{
-    return <div/>;
+    return null;
   }
 }
 

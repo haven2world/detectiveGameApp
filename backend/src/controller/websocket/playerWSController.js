@@ -43,11 +43,16 @@ async function playWSController(ctx) {
 
 }
 //获取游戏参数
-async function getGameProps(ctx, refreshFlag) {
+async function getGameProps(ctx, refreshFlag, gameIdInProps) {
   const {websocket:ws, _userId:userId} = ctx;
 
   if(refreshFlag || !ctx.gameId || !ctx.roleId){
-    const game = await gameService.findPlayingGameAndCompleteDocument(userId);
+    let game;
+    if(!gameIdInProps){
+      game = await gameService.findPlayingGame(userId).game;
+    }else{
+      game = await gameService.getGameWithDocument(gameIdInProps, false);
+    }
     //保存游戏相关属性
     ctx.gameId = game._id;
     let role = game.roles.find(item=>item.player.toString()===userId.toString());
@@ -69,8 +74,13 @@ playWSController.receiver = {
   [playerActions.INIT_GAME]:async function(ctx, message){
     const {websocket:ws, _userId:userId} = ctx;
     const {data, uuid} = message;
-    const game = await gameService.findPlayingGameAndCompleteDocument(userId);
-    await getGameProps(ctx, true);
+    let gameIdInProps = null;
+    if(data && data.gameId){
+      gameIdInProps = data.gameId;
+    }
+    let {gameId, roleId} = await getGameProps(ctx, true, gameIdInProps);
+
+    const game = await gameService.getGameWithDocument(gameId, true);
 
     let gameData = await gameService.generatePlayerData(game, userId);
 
@@ -189,7 +199,6 @@ playWSController.sender = {
   },
   [managerActions.ADJUST_DIFFICULTY]:async function(gameId, difficultyLevel){
     let userIds;
-    console.log(userGameRoleMap, gameId, userGameRoleMap[gameId.toString()],  Object.keys(userGameRoleMap[gameId.toString()]))
     if(userGameRoleMap[gameId.toString()]){
       userIds = Object.keys(userGameRoleMap[gameId.toString()]).map(roleId=>userGameRoleMap[gameId.toString()][roleId.toString()]);
     }else{
@@ -208,5 +217,93 @@ playWSController.sender = {
       }
     }
   },
+  [managerActions.PUSH_STAGE]: async function(gameId, stage){
+    let userIds;
+    if(userGameRoleMap[gameId.toString()]){
+      userIds = Object.keys(userGameRoleMap[gameId.toString()]).map(roleId=>userGameRoleMap[gameId.toString()][roleId.toString()]);
+    }else{
+      return;
+    }
+    let gameInstance = await gameService.getGameWithDocument(gameId, true);
+    for(let userId of userIds){
+      if(ctxs[userId.toString()]){
+        const props = await getGameProps(ctxs[userId.toString()]);
+        if(props.gameId.toString()===gameId.toString()){
+          try{
+            let {scenes, stories, newSceneFlag} = await gameService.calculatePushStageEffect(gameInstance, userId, stage);
+            ctxs[userId.toString()].websocket.sendType({gameId, scenes, stories, newSceneFlag, stage}, managerActions.PUSH_STAGE);
+          }catch (e) {
+            console.error(e);
+          }
+        }
+      }
+    }
+  },
+  [managerActions.SEND_ENDING]: async function(gameId){
+    let userIds;
+    if(userGameRoleMap[gameId.toString()]){
+      userIds = Object.keys(userGameRoleMap[gameId.toString()]).map(roleId=>userGameRoleMap[gameId.toString()][roleId.toString()]);
+    }else{
+      return;
+    }
+    let endings = await gameService.calculateEnding(gameId);
+    for(let userId of userIds){
+      if(ctxs[userId.toString()]){
+        const props = await getGameProps(ctxs[userId.toString()]);
+        if(props.gameId.toString()===gameId.toString()){
+          try{
+            ctxs[userId.toString()].websocket.sendType({gameId, endings}, managerActions.SEND_ENDING);
+          }catch (e) {
+            console.error(e);
+          }
+        }
+      }
+    }
+  },
+  [managerActions.START_GAME]:async function (gameId){
+    let userIds;
+    if(userGameRoleMap[gameId.toString()]){
+      userIds = Object.keys(userGameRoleMap[gameId.toString()]).map(roleId=>userGameRoleMap[gameId.toString()][roleId.toString()]);
+    }else{
+      return;
+    }
+    let gameInstance = await gameService.getGameWithDocument(gameId, true);
+    for(let userId of userIds){
+      if(ctxs[userId.toString()]){
+        const props = await getGameProps(ctxs[userId.toString()]);
+        if(props.gameId.toString()===gameId.toString()){
+          try{
+            let {scenes, stories, newSceneFlag} = await gameService.calculatePushStageEffect(gameInstance, userId, 1);
+            ctxs[userId.toString()].websocket.sendType({gameId, scenes, stories, newSceneFlag, stage:1}, managerActions.START_GAME);
+          }catch (e) {
+            console.error(e);
+          }
+        }
+      }
+    }
+  },
+  [managerActions.PAUSE_GAME]: changeGameStatusAction,
+  [managerActions.RESUME_GAME]: changeGameStatusAction,
+  [managerActions.OVER_GAME]: changeGameStatusAction,
 };
+async function changeGameStatusAction(gameId, action){
+  let userIds;
+  if(userGameRoleMap[gameId.toString()]){
+    userIds = Object.keys(userGameRoleMap[gameId.toString()]).map(roleId=>userGameRoleMap[gameId.toString()][roleId.toString()]);
+  }else{
+    return;
+  }
+  for(let userId of userIds){
+    if(ctxs[userId.toString()]){
+      const props = await getGameProps(ctxs[userId.toString()]);
+      if(props.gameId.toString()===gameId.toString()){
+        try{
+          ctxs[userId.toString()].websocket.sendType({gameId,}, action);
+        }catch (e) {
+          console.error(e);
+        }
+      }
+    }
+  }
+}
 module.exports = playWSController;

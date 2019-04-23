@@ -17,7 +17,7 @@ import styles from './player.css';
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, currentStage, showStage, clueNewFlag, taskNewFlag,} = ctx.store;
+  const {game, currentStage, showStage, clueNewFlag, taskNewFlag, newSceneFlag} = ctx.store;
   const {setContentView, currentContentView} = props;
 
   //toggle 阶段选择
@@ -43,8 +43,15 @@ export default function(props) {
   }
 
   //跳转下一阶段
+  let nextStageIsEnding = game.sentEnding && game.document.storyStageCount===currentStage;
+  let currentIsEnding = currentStage === 'ending';
   function nextStage() {
-    if(game.stage-currentStage){
+    if(nextStageIsEnding){
+      setContentView('story');
+      ctx.dispatch({type:gameViewActions.SET_STAGE, data:{stage:'ending'}});
+    }else if(currentIsEnding) {
+      toast.info('已经是结局了');
+    }else if(game.stage-currentStage){
       setContentView('story');
       ctx.dispatch({type:gameViewActions.SET_STAGE, data:{stage:currentStage+1}});
     }else{
@@ -87,11 +94,19 @@ export default function(props) {
     {buttons.map((button, index)=>
       <BarButton {...button} key={index} />)}
     <div className={'flex-container'} style={{flex:1, justifyContent: 'flex-end'}}>
-      <div className={classnames([styles.bottomBarPrimaryButton, styles.bottomBarSearchButton, 'clickable'])} onClick={openCombVIew}>
-        搜证
-      </div>
-      <div className={classnames([styles.bottomBarPrimaryButton, 'clickable'])} onClick={nextStage}>
-        下一阶段
+      {RenderIf(!game.sentEnding)(
+        <div className={classnames([styles.bottomBarPrimaryButton, styles.bottomBarSearchButton, 'clickable'])} onClick={openCombVIew}>
+          <Badge dot={newSceneFlag}>
+            搜证
+          </Badge>
+        </div>
+      )}
+
+      <div
+        className={classnames([styles.bottomBarPrimaryButton, 'clickable',
+          (game.stage===currentStage&&!nextStageIsEnding || currentIsEnding)?styles.bottomBarPrimaryButtonInactive:''])}
+        onClick={nextStage}>
+        {(nextStageIsEnding||currentIsEnding)?'查看结局':'下一阶段'}
       </div>
     </div>
   </div>)

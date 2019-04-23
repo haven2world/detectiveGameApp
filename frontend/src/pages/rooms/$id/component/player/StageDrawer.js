@@ -27,11 +27,20 @@ export default function({setContentView}) {
       onClick={()=> onChooseStage(i)}
     >
       <span style={isActive?{color:'#fff'}:{}}>第&nbsp;{i}&nbsp;阶段</span>
-    </List.Item>)
+    </List.Item>);
+  }
+  if(game.sentEnding){
+    let isActive = currentStage === 'ending';
+    stages.push(<List.Item
+      key={'ending'} className={isActive?styles.activeStageInDrawer:''}
+      onClick={()=> onChooseStage('ending')}
+    >
+      <span style={isActive?{color:'#fff'}:{}}>结局</span>
+    </List.Item>);
   }
 
   if(stages.length===0){
-    stages.push(<List.Item>游戏尚未开始</List.Item>)
+    stages.push(<List.Item key={'nothing'}>游戏尚未开始</List.Item>)
   }
 
   return stages

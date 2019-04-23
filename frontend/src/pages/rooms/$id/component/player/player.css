@@ -1,5 +1,5 @@
 @value theme: "@/assets/css/theme.css";
-@value danger-color, gray-color, primary-color, dark-gray-color, success-color, warning-color, background-gray-color from theme;
+@value danger-color, gray-color, dark-gray-color, primary-color, dark-gray-color, success-color, warning-color, background-gray-color from theme;
 
 .roleList{
     height: 60px;
@@ -92,6 +92,10 @@
     align-items: center;
 
     color: #fff;
+}
+
+.bottomBarPrimaryButtonInactive{
+    background-color: dark-gray-color;
 }
 
 .bottomBarSearchButton{

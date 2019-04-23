@@ -50,6 +50,18 @@ const dao = {
     return await game.save();
   },
 //  获取一个游戏和它的剧本
+  async getGamePopulateCompleteDoc(gameId){
+    let gameWithCompleteDoc = await Game.findById(gameId)
+      .populate({
+        path:'document',
+        populate:{
+          path:'roles.skills.skillInfo'
+        }
+      })
+      .populate('players', ['loginId']);
+    return gameWithCompleteDoc;
+  },
+  //  获取一个游戏和它的完整剧本
   async getGamePopulateBasicDoc(gameId){
     let gameWithBasicDoc = await Game.findById(gameId)
       .populate({

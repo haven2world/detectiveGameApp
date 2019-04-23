@@ -27,18 +27,36 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, showStage, shownRowDetail, leaveFlag} = ctx.store;
+  const {game, showStage, shownRowDetail, leaveFlag, stopFlag, sentEndingFlag} = ctx.store;
 
   const [contentView, setContentView] = useState('story');
 
   //初始化数据
   useEffect(()=>{
-    ctx.actions(playerActions.INIT_GAME)
+    ctx.actions(playerActions.INIT_GAME, {gameId: sessionStorage.getItem('playerGameId')});
   },[]);
   //检测被请离
   if(leaveFlag){
     Modal.alert('提示','您已被房主请离房间',[
       {text:'离开', onPress:router.goBack},
+    ]);
+  }
+  //检测游戏中止
+  if(stopFlag){
+    Modal.alert('提示','游戏已经被房主中止',[
+      {text:'离开', onPress:router.goBack},
+    ]);
+  }
+  //检测游戏结束
+  if (sentEndingFlag) {
+    Modal.alert('提示', '游戏已结束，请查看结局', [
+      {
+        text: '查看结局', onPress: () => {
+          setContentView('story');
+          ctx.dispatch({ type: gameViewActions.SET_STAGE, data: { stage: 'ending' } });
+          ctx.dispatch({ type: gameViewActions.SET_NEW_FLAG, data: { sentEndingFlag: false } });
+        },
+      },
     ]);
   }
 

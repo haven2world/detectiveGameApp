@@ -2,6 +2,8 @@ import React,{useReducer} from 'react';
 import playerActions from '@/constant/playerActions';
 import gameViewActions from '@/constant/gameViewActions';
 import managerActions from '@/constant/managerActions';
+import gameStatus from '@/constant/gameStatus';
+import { toast } from '@/utils/toastUtils';
 
 /**
  *  玩家数据reducer
@@ -14,8 +16,11 @@ export const initState = {
   showStage:false,
   shownRowDetail:null,
   leaveFlag:false,
+  stopFlag:false,
   clueNewFlag:false,
   taskNewFlag:true,
+  newSceneFlag:false,
+  sentEndingFlag: false,
 };
 
 export const playerReducer = (ws)=>(state, action)=>{
@@ -23,9 +28,13 @@ export const playerReducer = (ws)=>(state, action)=>{
   console.log(action)
   switch (action.type){
     case playerActions.INIT_GAME:
+      let currentStage = state.currentStage;
       //增加当前角色引用
       data.game.currentRole = data.game.roles.find(role=>!!role.sharedClues);
-      return {...state, game: data.game};
+      if(data.game.sentEnding){
+        currentStage = 'ending';
+      }
+      return {...state, game: data.game, currentStage};
     case playerActions.COMB_SCENE:{
       const {skillUse, clueInstance} = data;
       let newGame = {...state.game};
@@ -93,6 +102,71 @@ export const playerReducer = (ws)=>(state, action)=>{
       if(state.game && gameId === state.game._id){
         let newGame = {...state.game, difficultyLevel};
         return {...state, game: newGame};
+      }else{
+        return state;
+      }
+    }
+    case managerActions.PUSH_STAGE:{
+      const {gameId, scenes, stories, newSceneFlag, stage} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game};
+        newGame.document.scenes = scenes;
+        newGame.document.stories = newGame.document.stories.concat(stories);
+        newGame.stage = stage;
+        toast.info('游戏进入下一阶段！');
+        return {...state, game: newGame, newSceneFlag};
+      }else{
+        return state;
+      }
+    }
+    case managerActions.START_GAME:{
+      const {gameId, scenes, stories, newSceneFlag, stage} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game, status:gameStatus.playing};
+        newGame.document.scenes = scenes;
+        newGame.document.stories = newGame.document.stories.concat(stories);
+        newGame.stage = stage;
+        toast.info('游戏开始啦！');
+        return {...state, game: newGame, newSceneFlag};
+      }else{
+        return state;
+      }
+    }
+    case managerActions.PAUSE_GAME:{
+      const {gameId} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game, status:gameStatus.pause};
+        toast.info('游戏已暂停');
+        return {...state, game: newGame};
+      }else{
+        return state;
+      }
+    }
+    case managerActions.RESUME_GAME:{
+      const {gameId} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game, status:gameStatus.playing};
+        toast.info('游戏已继续');
+        return {...state, game: newGame};
+      }else{
+        return state;
+      }
+    }
+    case managerActions.SEND_ENDING:{
+      const {gameId, endings} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game, sentEnding:true};
+        newGame.document.endings = endings;
+        return {...state, game: newGame, sentEndingFlag:true};
+      }else{
+        return state;
+      }
+    }
+    case managerActions.OVER_GAME:{
+      const {gameId} = data;
+      if(state.game && gameId === state.game._id){
+        let newGame = {...state.game, status:gameStatus.over};
+        return {...state, game: newGame, stopFlag:true};
       }else{
         return state;
       }

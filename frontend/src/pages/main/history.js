@@ -41,7 +41,10 @@ export default function(){
           }else{
             return <ListItem
               key={'play_'+ game._id}
-              onClick={()=>router.push('/rooms/' + game._id)}
+              onClick={()=>{
+                sessionStorage.setItem('playerGameId', game._id);
+                router.push('/rooms/' + game._id + '/player')
+              }}
               arrow={'horizontal'}
               wrap
             >

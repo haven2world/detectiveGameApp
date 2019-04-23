@@ -11,6 +11,7 @@ import gameStatus from '@/constant/gameStatus';
 import styles from './player.css';
 import SearchOverView from './SearchOverView';
 import * as services from '@/utils/services';
+import gameViewActions from '@/constant/gameViewActions';
 
 const ListItem = List.Item;
 
@@ -20,7 +21,12 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, currentStage} = ctx.store;
+  const {game, newSceneFlag} = ctx.store;
+
+  if(newSceneFlag){
+    //置为已读
+    ctx.dispatch({type:gameViewActions.SET_NEW_FLAG, data:{newSceneFlag: false}});
+  }
 
   //搜证
   function comb(scene) {

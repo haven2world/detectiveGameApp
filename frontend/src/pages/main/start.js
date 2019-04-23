@@ -45,6 +45,7 @@ export default function(){
         router.push('/rooms/' + gameData.gameId + '/management');
       }else{
       //  以普通玩家加入游戏
+        sessionStorage.setItem('playerGameId', gameData.gameId);
         router.push('/rooms/' + gameData.gameId + '/player');
       }
     }else{

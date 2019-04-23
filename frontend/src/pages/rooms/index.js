@@ -62,6 +62,9 @@ export default function({computedMatch}) {
           onLeftClick={router.goBack}
         >选择游戏房间</NavBar>
         <ScrollableList>
+          {RenderIf(games.length===0)(
+            <div className={'flex-center gray-text'} style={{padding: '100px 0'}}>暂无游戏正在进行中</div>
+          )}
           {games.map(game=><ListItem key={game._id} wrap onClick={()=>clickRow(game)} arrow={'horizontal'}>
             {game.document.name}
             <ListItem.Brief>
