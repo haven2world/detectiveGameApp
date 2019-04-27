@@ -82,6 +82,7 @@ function RoleList(props) {
         {text:'确认',onPress:()=>{
             services.joinGameWithRole(game._id, role._id).then(result=>{
               if(result && result.code === 0){
+                sessionStorage.setItem('playerGameId', game._id);
                 router.replace('/rooms/' + game._id + '/player');
               }
             });
