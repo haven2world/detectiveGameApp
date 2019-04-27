@@ -141,7 +141,7 @@ function StoryEditorPage({role, closeEditor, stageCount, docId}) {
         mode={'light'}
         icon={<Icon type={'left'}/>}
         onLeftClick={closeEditor}
-      >{role.name} - 第{stageCount+1}阶段</NavBar>
+      >{role.name} - 第{stageCount}阶段</NavBar>
       <ScrollableList>
         <RichEditor
           defaultValue={role.story?role.story.content:''}
