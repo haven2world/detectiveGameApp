@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71e54faa-4848-45f9-8f3e-08986d3d094a" name="Default" comment="[fix]: 修复初始化剧本">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/.umirc.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.umirc.prod.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/component/AvatarCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/component/AvatarCard.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,7 +37,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
+            <state relative-caret-position="440">
               <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
             </state>
           </provider>
@@ -461,7 +459,7 @@
       <workItem from="1556259384582" duration="597000" />
       <workItem from="1556260310857" duration="245000" />
       <workItem from="1556261846898" duration="598000" />
-      <workItem from="1557105703952" duration="1206000" />
+      <workItem from="1557105703952" duration="1364000" />
     </task>
     <task id="LOCAL-00001" summary="[feat]: 登录返回token">
       <created>1544415536598</created>
@@ -614,7 +612,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="607777000" />
+    <option name="totallyTimeSpent" value="607935000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -627,6 +625,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21443625" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -640,7 +639,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32960895" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32628062" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2494432" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32962137" />
@@ -958,7 +957,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/service/gameDocument.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
+        <state relative-caret-position="440">
           <caret line="22" column="29" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
         </state>
       </provider>
