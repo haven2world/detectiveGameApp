@@ -193,8 +193,8 @@ export default function({game, updateGame}) {
           <div style={{flex:1}} className={'gray-text'}>是否自动公开所有线索：</div>
           <div >
             <Switch
-              checked={difficulty.keepClueSecret}
-              onChange={(v)=>adjustDifficulty('keepClueSecret',v)}
+              checked={!difficulty.keepClueSecret}
+              onChange={(v)=>adjustDifficulty('keepClueSecret',!v)}
             />
           </div>
         </div>
