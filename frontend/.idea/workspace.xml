@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[fix]: 错误按钮的x太过明显">
+    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[feat]: 头像小一点顺序自己第一 三角">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+            <state relative-caret-position="808">
+              <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
               <folding>
                 <element signature="e#0#75#0" expanded="true" />
               </folding>
@@ -65,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+            <state relative-caret-position="580">
+              <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -87,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
-              <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -96,7 +94,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/roles.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="544">
-              <caret line="104" column="100" lean-forward="true" selection-start-line="104" selection-start-column="100" selection-end-line="104" selection-end-column="100" />
+              <caret line="104" column="100" selection-start-line="104" selection-start-column="100" selection-end-line="104" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -105,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="332">
-              <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+              <caret line="87" column="44" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
               <folding>
                 <element signature="e#15#67#0" expanded="true" />
               </folding>
@@ -227,9 +225,9 @@
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js" />
         <option value="$PROJECT_DIR$/src/global.css" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
       </list>
     </option>
   </component>
@@ -563,14 +561,7 @@
       <workItem from="1556259376432" duration="597000" />
       <workItem from="1556260310857" duration="244000" />
       <workItem from="1556261846898" duration="598000" />
-      <workItem from="1557105705291" duration="9992000" />
-    </task>
-    <task id="LOCAL-00003" summary="[feat]:游戏历史">
-      <created>1544522315469</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1544522315469</updated>
+      <workItem from="1557105705291" duration="12234000" />
     </task>
     <task id="LOCAL-00004" summary="[feat]:游戏剧本列表">
       <created>1544673461874</created>
@@ -908,11 +899,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557138772096</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="[feat]: 头像小一点顺序自己第一 三角">
+      <created>1557191858755</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1557191858755</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="765168000" />
+    <option name="totallyTimeSpent" value="767410000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1000,7 +998,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="[feat]: 历史记录" />
     <MESSAGE value="[feat]: 暂停" />
     <MESSAGE value="[feat]: 调整难度" />
     <MESSAGE value="[feat]: 角色部分完成" />
@@ -1025,7 +1022,8 @@
     <MESSAGE value="[fix]: 上传头像无法及时看到" />
     <MESSAGE value="[fix]: 困难难度默认共享线索" />
     <MESSAGE value="[fix]: 错误按钮的x太过明显" />
-    <option name="LAST_COMMIT_MESSAGE" value="[fix]: 错误按钮的x太过明显" />
+    <MESSAGE value="[feat]: 头像小一点顺序自己第一 三角" />
+    <option name="LAST_COMMIT_MESSAGE" value="[feat]: 头像小一点顺序自己第一 三角" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/component/SceneDetail.js">
@@ -1318,14 +1316,14 @@
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/roles.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="104" column="100" lean-forward="true" selection-start-line="104" selection-start-column="100" selection-end-line="104" selection-end-column="100" />
+          <caret line="104" column="100" selection-start-line="104" selection-start-column="100" selection-end-line="104" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -1339,7 +1337,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
-          <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+          <caret line="87" column="44" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
           <folding>
             <element signature="e#15#67#0" expanded="true" />
           </folding>
@@ -1361,16 +1359,6 @@
         <state relative-caret-position="-360" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1390,8 +1378,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        <state relative-caret-position="580">
+          <caret line="29" column="23" lean-forward="true" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="808">
+          <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

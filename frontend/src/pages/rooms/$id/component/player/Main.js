@@ -81,9 +81,16 @@ export default function(props) {
     }
   }
 
+  const titleMap = {
+    story:'剧情',
+    clue:'线索',
+    scene:'搜证',
+    role:'个人汇总'
+  };
+
   //渲染标题
   function renderTitle() {
-    let title = game.document.name;
+    let title = titleMap[contentView];
     let isPause = game.status === gameStatus.pause;
     if(isPause){
       title = '暂停中';
