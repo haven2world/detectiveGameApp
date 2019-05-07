@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[fix]: 上传头像无法及时看到">
+    <list default="true" id="a363d792-fbe7-4bb7-b232-e7f6502d03fb" name="Default" comment="[fix]: 错误按钮的x太过明显">
       <change beforePath="$PROJECT_DIR$/../backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/documents/component/Difficulty.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/documents/component/Difficulty.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,46 +21,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.umirc.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.umirc.prod.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="12" selection-start-column="12" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13600">
-              <caret line="680" column="56" selection-start-line="680" selection-start-column="56" selection-end-line="680" selection-end-column="56" />
+            <state relative-caret-position="428">
+              <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#75#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,38 +45,78 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/commonUtils.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="223" column="20" lean-forward="true" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="20" />
+            <state relative-caret-position="220">
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/component/AvatarCard.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/documents/component/Difficulty.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="53" column="25" lean-forward="true" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
+            <state relative-caret-position="728">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
+              <folding>
+                <element signature="e#0#60#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="196" column="64" selection-start-line="196" selection-start-column="64" selection-end-line="196" selection-end-column="64" />
+            <state relative-caret-position="388">
+              <caret line="180" column="55" selection-start-line="180" selection-start-column="55" selection-end-line="180" selection-end-column="55" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/roles.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="104" column="100" lean-forward="true" selection-start-line="104" selection-start-column="100" selection-end-line="104" selection-end-column="100" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+              <folding>
+                <element signature="e#15#67#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-360" />
           </provider>
         </entry>
       </file>
@@ -125,8 +133,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>container</find>
-      <find>conso</find>
       <find>query</find>
       <find>editor</find>
       <find>slice</find>
@@ -155,6 +161,8 @@
       <find>createe</find>
       <find>modal.</find>
       <find>finishedTask</find>
+      <find>fini</find>
+      <find>SET_ROLE_SHOWN</find>
     </findStrings>
     <dirStrings>
       <dir>E:\myWorkspace\detectiveGameApp\frontend\src\utils</dir>
@@ -190,12 +198,10 @@
         <option value="$PROJECT_DIR$/src/constant/playerActions.js" />
         <option value="$PROJECT_DIR$/src/pages/main/user.js" />
         <option value="$PROJECT_DIR$/src/utils/services.js" />
-        <option value="$PROJECT_DIR$/src/global.css" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js" />
         <option value="$PROJECT_DIR$/src/component/SceneDetail.js" />
         <option value="$PROJECT_DIR$/../backend/src/constant/playerActions.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/$id/stages/$stageCount.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js" />
         <option value="$PROJECT_DIR$/src/component/RichEditor/RichEditor.js" />
         <option value="$PROJECT_DIR$/src/component/RichEditor/editor.css" />
         <option value="$PROJECT_DIR$/src/utils/http.js" />
@@ -213,15 +219,17 @@
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Story.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Ending.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/roles/$roleId.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" />
-        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" />
         <option value="$PROJECT_DIR$/.umirc.prod.js" />
         <option value="$PROJECT_DIR$/.umirc.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/component/AvatarCard.js" />
         <option value="$PROJECT_DIR$/src/pages/documents/component/Difficulty.js" />
         <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js" />
+        <option value="$PROJECT_DIR$/src/global.css" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js" />
+        <option value="$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css" />
       </list>
     </option>
   </component>
@@ -358,6 +366,16 @@
               <item name="rooms" type="462c0819:PsiDirectoryNode" />
               <item name="$id" type="462c0819:PsiDirectoryNode" />
               <item name="management" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="rooms" type="462c0819:PsiDirectoryNode" />
+              <item name="$id" type="462c0819:PsiDirectoryNode" />
+              <item name="management" type="462c0819:PsiDirectoryNode" />
+              <item name="endings" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -545,21 +563,7 @@
       <workItem from="1556259376432" duration="597000" />
       <workItem from="1556260310857" duration="244000" />
       <workItem from="1556261846898" duration="598000" />
-      <workItem from="1557105705291" duration="5244000" />
-    </task>
-    <task id="LOCAL-00001" summary="[feat]: tab页和注销功能">
-      <created>1544512763042</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1544512763042</updated>
-    </task>
-    <task id="LOCAL-00002" summary="[feat]: 完成登录功能">
-      <created>1544521477476</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1544521477476</updated>
+      <workItem from="1557105705291" duration="9992000" />
     </task>
     <task id="LOCAL-00003" summary="[feat]:游戏历史">
       <created>1544522315469</created>
@@ -890,11 +894,25 @@
       <option name="project" value="LOCAL" />
       <updated>1557136559083</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="[fix]: 困难难度默认共享线索">
+      <created>1557137087031</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1557137087031</updated>
+    </task>
+    <task id="LOCAL-00051" summary="[fix]: 错误按钮的x太过明显">
+      <created>1557138772096</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1557138772096</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="760420000" />
+    <option name="totallyTimeSpent" value="765168000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -982,8 +1000,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="[feat]: 推送阶段" />
-    <MESSAGE value="[feat]: 推送阶段完善" />
     <MESSAGE value="[feat]: 历史记录" />
     <MESSAGE value="[feat]: 暂停" />
     <MESSAGE value="[feat]: 调整难度" />
@@ -1007,32 +1023,15 @@
     <MESSAGE value="[feat]: 修改部署配置" />
     <MESSAGE value="[feat]: 修改打包配置" />
     <MESSAGE value="[fix]: 上传头像无法及时看到" />
-    <option name="LAST_COMMIT_MESSAGE" value="[fix]: 上传头像无法及时看到" />
+    <MESSAGE value="[fix]: 困难难度默认共享线索" />
+    <MESSAGE value="[fix]: 错误按钮的x太过明显" />
+    <option name="LAST_COMMIT_MESSAGE" value="[fix]: 错误按钮的x太过明显" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/component/RoleDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1500" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="40" column="43" selection-start-line="40" selection-start-column="43" selection-end-line="40" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/component/SceneDetail.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="30" selection-start-line="30" selection-end-line="42" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/global.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="105" />
         </state>
       </provider>
     </entry>
@@ -1085,13 +1084,6 @@
           <folding>
             <element signature="e#15#67#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -1159,9 +1151,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management.js">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/constant/gameViewActions.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1253,37 +1242,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="123" column="21" selection-start-line="123" selection-start-column="21" selection-end-line="123" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="41" column="79" selection-start-line="41" selection-start-column="79" selection-end-line="41" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1295,16 +1253,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13600">
           <caret line="680" column="56" selection-start-line="680" selection-start-column="56" selection-end-line="680" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
-          <folding>
-            <element signature="e#14#76#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1362,8 +1310,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/Overview.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="196" column="64" selection-start-line="196" selection-start-column="64" selection-end-line="196" selection-end-column="64" />
+        <state relative-caret-position="388">
+          <caret line="180" column="55" selection-start-line="180" selection-start-column="55" selection-end-line="180" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/SearchOverView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/roles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="104" column="100" lean-forward="true" selection-start-line="104" selection-start-column="100" selection-end-line="104" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/global.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="166" column="1" lean-forward="true" selection-start-line="166" selection-start-column="1" selection-end-line="166" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management/endings/$endingId.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="87" column="44" lean-forward="true" selection-start-line="87" selection-start-column="44" selection-end-line="87" selection-end-column="44" />
+          <folding>
+            <element signature="e#15#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+          <folding>
+            <element signature="e#14#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/management.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/playerReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/RoleListHorizontal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/rooms/$id/component/player/player.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
         </state>
       </provider>
     </entry>

@@ -2,7 +2,7 @@
 @value danger-color, gray-color, dark-gray-color, primary-color, dark-gray-color, success-color, warning-color, background-gray-color from theme;
 
 .roleList{
-    height: 60px;
+    height: 40px;
     border: 0 solid background-gray-color;
     border-bottom-width: 1px;
     border-top-width: 1px;
@@ -20,12 +20,29 @@
     overflow-x: auto;
 }
 .roleImg{
-    height:30px;
-    width:30px;
-    border-radius:15px;
+    height:24px;
+    width:24px;
+    border-radius:12px;
     border:1px solid #f5f5f9;
     object-fit:cover
 }
+.roleTriangle{
+    position: relative;
+}
+.roleTriangle::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid gray-color;
+    opacity: 0.3;
+    position: absolute;
+    bottom: -6px;
+    left: 48%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
 .avatarWrapper{
     display: inline-block;
     height: calc(100% - 10px);

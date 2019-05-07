@@ -121,7 +121,7 @@ export default function(props) {
           sidebarStyle={{background:'#fff',height:'100%'}}
           open={showStage}
         >
-          <RoleListHorizontal setContentView={setContentView}/>
+          <RoleListHorizontal contentView={contentView} setContentView={setContentView}/>
           <div style={{flex:1}} className={classnames([styles.contentView])}>
             {/*重置页面为story*/}
             {RenderIf(contentView!=='story')(
