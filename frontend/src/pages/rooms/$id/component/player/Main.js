@@ -15,6 +15,7 @@ import BottomBar from './BottomBar';
 import Clue from './Clue';
 import Scene from './Scene';
 import Task from './Task';
+import Role from './Role';
 import StageDrawer from './StageDrawer';
 import styles from './player.css';
 import gameViewActions from '@/constant/gameViewActions';
@@ -67,6 +68,7 @@ export default function(props) {
       clue:Clue,
       scene:Scene,
       task:Task,
+      role:Role
     };
     if(contentView === 'role'){
       let props = {
@@ -75,7 +77,7 @@ export default function(props) {
         name:shownRowDetail.document.name,
         description:shownRowDetail.document.description
       };
-      return createElement(AvatarCard, props);
+      return <Role avatorProps={props} />;
     }else{
       return createElement(viewMap[contentView]);
     }

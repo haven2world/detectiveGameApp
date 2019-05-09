@@ -147,6 +147,14 @@
     padding: 10px 0;
 }
 
+.clueFilterTag{
+    border-radius: 12.5px!important;
+}
+.clueFilterTag::before{
+    border-radius: 25px!important;
+}
+
+
 .clueFilterTag:not(:first-child){
     margin-left: 15px;
 }

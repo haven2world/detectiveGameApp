@@ -62,7 +62,7 @@ export default function({editable, url, name, description, docId, roleId}) {
       ['给人物起个名字吧']
     )
   }
-  return (<Flex style={{height:editable?200:400,backgroundColor:'#fff'}} direction={'column'} >
+  return (<Flex style={{height:editable?200:200,backgroundColor:'#fff'}} direction={'column'} >
     <div className={editable?'clickable':''} style={{marginTop:20, display:'flex', justifyContent: 'center'}} onClick={changeAvatar} >
       <img
         src={image}

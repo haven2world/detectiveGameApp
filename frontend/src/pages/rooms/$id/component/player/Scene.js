@@ -21,7 +21,9 @@ const ListItem = List.Item;
 
 export default function(props) {
   const ctx = useContext(Player.Context);
-  const {game, newSceneFlag} = ctx.store;
+  const {game, newSceneFlag, game: { difficultyLevel } } = ctx.store;
+
+  let clueCount = game.currentRole.clues.length;//发现线索数
 
   if(newSceneFlag){
     //置为已读
@@ -51,7 +53,8 @@ export default function(props) {
 
   return (<div className={classnames(['container flex-column-container'])}>
     <ScrollableList>
-      <SearchOverView defaultExpand/>
+      {RenderIf(!difficultyLevel.keepClueSecret)(<div className='warning-text'>本局游戏所有线索自动共享</div>)}
+      <div>此局剩余搜查次数：{(difficultyLevel.maxInquiryTimes - clueCount)}/{difficultyLevel.maxInquiryTimes}&nbsp;<span className='gray-text'>谨慎使用</span></div>
       {renderScenes()}
     </ScrollableList>
   </div>)

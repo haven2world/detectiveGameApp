@@ -80,13 +80,6 @@ export default function(props) {
       onClick:openClueView,
       active:currentContentView==='clue',
       newFlag:clueNewFlag,
-    },
-    {
-      title:'任务',
-      icon:'fa-list-ol',
-      onClick:openTaskView,
-      active:currentContentView==='task',
-      newFlag:taskNewFlag,
     }
   ];
 
