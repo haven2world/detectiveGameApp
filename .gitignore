@@ -1,2 +1,4 @@
 /backend/node_modules
 /backend/static/detective/assets/avatar
+/backend/.idea
+/frontend/.idea
