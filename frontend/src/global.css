@@ -3,6 +3,7 @@
 @value danger-color, gray-color, primary-color, dark-gray-color, success-color, warning-color from theme;
 
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css";
 @import "../node_modules/draft-js/dist/Draft.css";
 
 html, body, #root {

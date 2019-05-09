@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, NavBar, Icon, Result } from 'antd-mobile';
 import styles from './history.css';
 import * as services from '@/utils/services';
@@ -13,6 +13,9 @@ export default function(){
   const [history, setHistory] = useState([]);
 
   useEffect(()=>{
+    setTimeout(update);
+  },[]);
+  function update() {
     services.fetchHistoryGames().then(result=>{
       if(result && result.code === 0){
         let manage = result.data.games.manage;
@@ -21,7 +24,7 @@ export default function(){
         setHistory(history);
       }
     });
-  },[]);
+  }
 
   function renderContent() {
     if(history.length){
@@ -70,6 +73,7 @@ export default function(){
     <div className={'container flex-column-container'}>
       <NavBar
         mode={'light'}
+        rightContent={<span><i className="fa fa-refresh clickable" style={{fontSize:16 }} onClick={update}/></span>}
       >游戏历史</NavBar>
       {renderContent()}
     </div>
