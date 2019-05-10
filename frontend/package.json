@@ -3,6 +3,7 @@
   "scripts": {
     "start": "umi dev",
     "build": "UMI_ENV=prod umi build",
+    "win-build": "set UMI_ENV=prod&&umi build",
     "test": "umi test"
   },
   "devDependencies": {
@@ -20,7 +21,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-modules-values": "^2.0.0",
     "postcss-px-to-viewport": "^0.0.3",
-    "umi": "^2.1.2",
+    "umi": "^2.6.17",
     "umi-plugin-react": "^1.1.1"
   },
   "lint-staged": {

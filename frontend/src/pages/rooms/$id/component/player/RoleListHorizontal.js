@@ -3,43 +3,49 @@ import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Mod
 import styles from './player.css';
 import gameViewActions from '@/constant/gameViewActions';
 import Player from '../../player';
+import { RenderIf } from '@/utils/commonUtils';
 
 /**
  * 横向的角色头像列表
  */
 
-export default function({setContentView}) {
+export default function({contentView, setContentView}) {
   const ctx = useContext(Player.Context);
-  const {game} = ctx.store;
+  const {game, shownRowDetail} = ctx.store;
 
   //点击头像
-  function onClickRole(index) {
-    ctx.dispatch({type:gameViewActions.SET_ROLE_SHOWN, data:{role:game.roles[index]}});
+  function onClickRole(role) {
+    ctx.dispatch({type:gameViewActions.SET_ROLE_SHOWN, data:{role:role}});
     setContentView('role');
   }
 
   return (<div className={styles.roleList}>
     <div className={styles.roleListContainer}>
-      {game.roles.map((role, index)=><Avatar
+      {game.roles.sort((pre,next)=>((!pre.sharedClues&&!!next.sharedClues)?1:-1))
+        .map((role, index)=><Avatar
         image={role.document.photo}
         name={role.document.name}
         key={role._id}
-        index={index}
-        isPlayer={!!role.sharedClues}
+        role={role}
+        isChosen={contentView==='role'&&shownRowDetail===role}
         onClickRole={onClickRole}
       />)}
     </div>
   </div>);
 }
 
-function Avatar({image, name, onClickRole, index, isPlayer}) {
+function Avatar({image, name, onClickRole, role, isChosen}) {
   return (
-    <div className={classnames([styles.avatarWrapper, 'clickable'])} onClick={()=>{onClickRole(index)}}>
+    <div className={classnames([styles.avatarWrapper, 'clickable'])} onClick={()=>{onClickRole(role)}}>
       <img
         src={image||require('@/assets/img/contact_default.png')}
         className={styles.roleImg}
       />
-      <div ><span className='gray-text'>{isPlayer?'[扮演]':''}</span>{name}</div>
+      {RenderIf(isChosen)(
+        <div className={styles.roleTriangle}>
+
+        </div>
+      )}
     </div>
   )
 }

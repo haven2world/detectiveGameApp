@@ -53,6 +53,10 @@ export default function({computedMatch}) {
     const {taskMap, roleMap} = endingDoc;
     let task = taskMap[condition.taskId];
     let role = roleGameMap.current[task.belongToRoleId];
+    if(!role){
+      toast.fail('没有玩家扮演该角色');
+      return;
+    }
     let param = {
       finished:!role.finishedTask[task._id],
       action:!role.finishedTask[task._id]?managerActions.ENSURE_TASK:managerActions.CANCEL_TASK
@@ -90,7 +94,10 @@ export default function({computedMatch}) {
     });
     return endingDoc.conditions.map((condition, index)=>{
       let task = taskMap[condition.taskId]
-      let checked = !!roleGameMap.current[task.belongToRoleId].finishedTask[task._id] === condition.achieved;
+      if(roleGameMap.current[task.belongToRoleId] && !roleGameMap.current[task.belongToRoleId].finishedTask){
+        roleGameMap.current[task.belongToRoleId].finishedTask = {};
+      }
+      let checked = !roleGameMap.current[task.belongToRoleId] || !!roleGameMap.current[task.belongToRoleId].finishedTask[task._id] === condition.achieved;
       return (<CheckboxItem className={'closed-checkbox'} key={condition._id} wrap onChange={()=>toggleCondition(condition)} checked={checked}>
           【{condition.achieved?'完成任务':'任务失败'}】{roleMap[taskMap[condition.taskId].belongToRoleId].name}：{taskMap[condition.taskId].content}
         </CheckboxItem>

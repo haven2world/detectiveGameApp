@@ -3,6 +3,7 @@
 @value danger-color, gray-color, primary-color, dark-gray-color, success-color, warning-color from theme;
 
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "../node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css";
 @import "../node_modules/draft-js/dist/Draft.css";
 
 html, body, #root {
@@ -142,18 +143,28 @@ body {
 }
 
 /*重写红色X的checkbox样式*/
-.closed-checkbox span:not(.am-checkbox-checked) .am-checkbox-inner:after{
-    transform: none;
+.closed-checkbox span:not(.am-checkbox-checked) .am-checkbox-inner:before{
     display: block;
-    content:'x';
-    color:#fff;
-    background-color: danger-color;
-    border-width: 0;
-    left:6px;
-    top: -2px;
-    width:0;
-    height:0;
-    font-size: 15px;
+    content: "";
+    position: absolute;  /*方便进行定位*/
+    height: 14px;
+    width: 2px;
+    top: 3px;
+    right: 8px;  /*设置top和right使图像在20*20框中居中*/
+    background: #fff;
+    transform: rotate(45deg);  /*进行旋转*/
+}
+.closed-checkbox span:not(.am-checkbox-checked) .am-checkbox-inner:after{
+    display: block;
+    content: "";
+    position: absolute;  /*方便进行定位*/
+    height: 14px;
+    width: 2px;
+    top: 3px;
+    right: 8px;  /*设置top和right使图像在20*20框中居中*/
+    background: #fff;
+    transform: rotate(-45deg);
+    border: none;
 }
 .closed-checkbox  .am-checkbox-inner{
     border-color: danger-color;

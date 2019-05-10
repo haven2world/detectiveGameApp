@@ -108,7 +108,6 @@ export default function(props) {
 
   return (<div className={classnames(['container flex-column-container'])}>
     <ScrollableList>
-      <SearchOverView />
       <div className={styles.clueFilterWrapper}>{renderFilter()}</div>
       {renderClues()}
     </ScrollableList>

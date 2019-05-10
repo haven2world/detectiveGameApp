@@ -13,6 +13,7 @@ let init = ()=>{
   mongoose.connect(global._Config.mongodb,{
     keepAlive:true,
     keepAliveInitialDelay:300000,
+    connectTimeoutMS: 30000,
     useNewUrlParser: true
   });
 

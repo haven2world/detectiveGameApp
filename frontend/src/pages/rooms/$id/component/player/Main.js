@@ -15,6 +15,7 @@ import BottomBar from './BottomBar';
 import Clue from './Clue';
 import Scene from './Scene';
 import Task from './Task';
+import Role from './Role';
 import StageDrawer from './StageDrawer';
 import styles from './player.css';
 import gameViewActions from '@/constant/gameViewActions';
@@ -67,6 +68,7 @@ export default function(props) {
       clue:Clue,
       scene:Scene,
       task:Task,
+      role:Role
     };
     if(contentView === 'role'){
       let props = {
@@ -75,15 +77,22 @@ export default function(props) {
         name:shownRowDetail.document.name,
         description:shownRowDetail.document.description
       };
-      return createElement(AvatarCard, props);
+      return <Role avatorProps={props} />;
     }else{
       return createElement(viewMap[contentView]);
     }
   }
 
+  const titleMap = {
+    story:'剧情',
+    clue:'线索',
+    scene:'搜证',
+    role:'个人汇总'
+  };
+
   //渲染标题
   function renderTitle() {
-    let title = game.document.name;
+    let title = titleMap[contentView];
     let isPause = game.status === gameStatus.pause;
     if(isPause){
       title = '暂停中';
@@ -121,7 +130,7 @@ export default function(props) {
           sidebarStyle={{background:'#fff',height:'100%'}}
           open={showStage}
         >
-          <RoleListHorizontal setContentView={setContentView}/>
+          <RoleListHorizontal contentView={contentView} setContentView={setContentView}/>
           <div style={{flex:1}} className={classnames([styles.contentView])}>
             {/*重置页面为story*/}
             {RenderIf(contentView!=='story')(
