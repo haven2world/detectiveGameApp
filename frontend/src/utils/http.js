@@ -133,6 +133,11 @@ class WebSocketWrapper extends Object{
     this.socket.onerror = this.onWSError;
 
     this.respondMap = {};
+
+  //  心跳包
+    this.heartInterval = 5 * 60 * 100;
+    this.heartTimer = null;
+    this.resetHeartCheck();
   }
 
   open = ()=>{
@@ -193,11 +198,23 @@ class WebSocketWrapper extends Object{
     }
   };
 
+  //心跳检查
+  resetHeartCheck (){
+    let self = this;
+    this.heartTimer && clearTimeout(this.heartTimer);
+    this.heartTimer = setTimeout(()=>{
+      self.send('ping').then(result=>{
+        console.log('heart check successful');
+      })
+    }, this.heartInterval);
+  };
+
   onWSMessage = (messageEvent)=>{
     let data = JSON.parse(messageEvent.data);
     if(data.code !== 0 ){
       this.handleError(data);
     }
+    this.resetHeartCheck();
     if(data.uuid && this.respondMap[data.uuid]){
       this.respondMap[data.uuid](data, messageEvent);
       this.respondMap[data.uuid] = null;
