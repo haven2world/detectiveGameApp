@@ -364,6 +364,24 @@ router.post('/:id/endings',async(ctx, next)=>{
   ctx._data.ending  = await documentService.createEndingWithName(ctx.params.id, name);
 })
 
+//复制结局
+router.post('/:id/endings/copy',async(ctx, next)=>{
+  let {name, endingId} = ctx.request.body;
+  if(!ctx.params.id || !endingId){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'无有效ID'
+    })
+  }
+  if(!name){
+    ctx.throw({
+      code:_Exceptions.PARAM_ERROR,
+      message:'结局片段需要一个名字'
+    })
+  }
+  ctx._data.ending  = await documentService.copyEndingFromEnding(ctx.params.id, name, endingId);
+})
+
 //获取结局片段
 router.get('/:id/endings/:endingId',async(ctx, next)=>{
   if(!ctx.params.id || !ctx.params.endingId){

@@ -323,6 +323,16 @@ const service = {
     await service.changeDocumentComposingStage(doc,'difficulty');
     return endingInstance;
   },
+//复制一个结局片段
+async copyEndingFromEnding(docId, name, endingId){
+  let {ending} = await document.getEnding(docId, endingId);
+  ending = ending.toObject();
+  delete ending._id;
+  ending.conditions.forEach(item=>{delete item._id});
+  let {doc, endingInstance} = await document.createEnding(docId, {...ending, name});
+  await service.changeDocumentComposingStage(doc,'difficulty');
+  return endingInstance;
+},
 //  获取结局片段
   async getEndingDetail(docId, endingId){
     let {doc, ending} = await document.getEnding(docId, endingId);

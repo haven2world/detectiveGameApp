@@ -447,6 +447,20 @@ export function createEnding(id, param){
   return http.post(url, param);
 }
 
+/* 复制结局
+ - url: /detective/apis/auth/documents/:id/endings/copy
+ - method: post
+ - param:{
+ endingId
+ name
+ }
+ */
+
+export function copyEnding(id, param){
+  let url = '/detective/apis/auth/documents/' + id + '/endings/copy';
+  return http.post(url, param);
+}
+
 /* 获取结局
  - url: /detective/apis/auth/documents/:id/endings/:endingId
  - method: get
