@@ -24,6 +24,9 @@ async function playWSController(ctx) {
   ws.on('message',async function (message) {
     try{
       message = JSON.parse(message);
+      if(message.data === 'ping'){
+        return
+      }
       const {data:{type}} = message;
       if(playWSController.receiver[type]){
         await playWSController.receiver[type](ctx, message);
