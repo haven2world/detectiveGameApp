@@ -25,7 +25,8 @@ async function playWSController(ctx) {
     try{
       message = JSON.parse(message);
       if(message.data === 'ping'){
-        return
+        ws.respond('ping', message.uuid);
+        return;
       }
       const {data:{type}} = message;
       if(playWSController.receiver[type]){
