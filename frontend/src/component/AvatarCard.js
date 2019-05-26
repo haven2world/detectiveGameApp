@@ -75,7 +75,7 @@ export default function({editable, url, name, description, docId, roleId}) {
       </div>
     </Flex>
     {RenderIf(!editable)(
-      <Flex style={{flex:1}}>
+      <Flex style={{flex:1, padding: 20}}>
         <div className='gray-text' >
           {description}
         </div>
