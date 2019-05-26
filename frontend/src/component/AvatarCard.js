@@ -62,11 +62,19 @@ export default function({editable, url, name, description, docId, roleId}) {
       ['给人物起个名字吧']
     )
   }
+  //图片加载出错
+  function handleErrorImg(e) {
+    console.log(e)
+    e.target.onerror = null;
+    e.target.src=require('@/assets/img/contact_default.png');
+  }
   return (<Flex style={{height:editable?200:200,backgroundColor:'#fff'}} direction={'column'} >
     <div className={editable?'clickable':''} style={{marginTop:20, display:'flex', justifyContent: 'center'}} onClick={changeAvatar} >
       <img
+        alt={'头像'}
         src={image}
         style={{height:100,width:100,borderRadius:50, border:'2px solid #f5f5f9',objectFit:'cover'}}
+        onError={handleErrorImg}
       />
     </div>
     <Flex style={{flex:1}}>

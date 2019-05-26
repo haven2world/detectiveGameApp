@@ -40,7 +40,7 @@
     bottom: -6px;
     left: 48%;
     transform: translateX(-50%);
-    z-index: 100;
+    z-index: 3;
 }
 
 .avatarWrapper{

@@ -47,15 +47,18 @@ export default function(props) {
   
   //渲染技能列表
   function renderSkills() {
+    if(!isYourself){
+      return null;
+    }
     return game.currentRole.document.skills.map((skill, index)=>{
       let skillUse = game.currentRole.skillUse[index]||{count:0};
       let left = '无限';
       if(skill.maxCount){
         left = (skill.maxCount-skillUse.count)+ '/' + (skill.maxCount);
       }
-      return <ListItem key={index} extra={<div>{left}</div>}>
+      return <ListItem key={index} extra={<div>{left}</div>} wrap={true}>
         {skill.skillInfo.name}
-        <ListItem.Brief>
+        <ListItem.Brief style={{whiteSpace:'wrap'}}>
           {skill.skillInfo.description}
         </ListItem.Brief>
       </ListItem>
