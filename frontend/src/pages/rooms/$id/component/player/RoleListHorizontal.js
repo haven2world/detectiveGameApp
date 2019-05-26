@@ -1,4 +1,4 @@
-import React,{useEffect, useState, useContext} from 'react';
+import React,{useEffect, useState, useContext, useRef} from 'react';
 import { Flex, WhiteSpace, WingBlank, InputItem, List, Button, Icon, NavBar, Modal, Tabs, TextareaItem, NoticeBar, } from 'antd-mobile';
 import styles from './player.css';
 import gameViewActions from '@/constant/gameViewActions';
@@ -12,6 +12,12 @@ import { RenderIf } from '@/utils/commonUtils';
 export default function({contentView, setContentView}) {
   const ctx = useContext(Player.Context);
   const {game, shownRowDetail} = ctx.store;
+  const [sortedRoles, setRoles] = useState([]);
+
+  //监测数据变化
+  useEffect(()=>{
+    setRoles(sortRoles());
+  },[game.roles]);
 
   //点击头像
   function onClickRole(role) {
@@ -19,10 +25,22 @@ export default function({contentView, setContentView}) {
     setContentView('role');
   }
 
+  //对头像排序
+  function sortRoles() {
+    let result = [];
+    game.roles.forEach(role=>{
+      if(role.sharedClues){
+        result.unshift(role);
+      }else{
+        result.push(role);
+      }
+    });
+    return result;
+  }
+
   return (<div className={styles.roleList}>
     <div className={styles.roleListContainer}>
-      {game.roles.sort((pre,next)=>((!pre.sharedClues&&!!next.sharedClues)?1:-1))
-        .map((role, index)=><Avatar
+      { sortedRoles.map((role, index)=><Avatar
         image={role.document.photo}
         name={role.document.name}
         key={role._id}
