@@ -58,8 +58,10 @@ export default function(props) {
       }
       return <ListItem key={index} extra={<div>{left}</div>} wrap={true}>
         {skill.skillInfo.name}
-        <ListItem.Brief style={{whiteSpace:'wrap'}}>
-          {skill.skillInfo.description}
+        <ListItem.Brief >
+          <div className={styles.skillContent}>
+            {skill.skillInfo.description}
+          </div>
         </ListItem.Brief>
       </ListItem>
     });
