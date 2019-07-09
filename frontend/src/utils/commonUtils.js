@@ -335,3 +335,14 @@ export function validateFileByExtensionName(file,ext1,ext2){
     return isInArray(extName,ext)
   }
 }
+
+//读取嵌套obj key
+function getValueFromObject(obj, keyString) {
+  let keyArr = keyString.split('.');
+  return keyArr.reduce((accumulator, current)=>{
+    if(accumulator=== undefined){
+      return undefined;
+    }
+    return accumulator[current];
+  },obj);
+}
