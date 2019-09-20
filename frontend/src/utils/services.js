@@ -716,7 +716,7 @@ export function establishWSForGamer(){
   if(process.env.NODE_ENV==='development'){
     url = 'ws://' + location.hostname + ':1019' + url;
   }else if(process.env.NODE_ENV === 'production'){
-    url = 'ws://' + location.hostname + ':1019' + url;
+    url = 'ws://' + location.host + url;
   }
   return http.ws(url);
 }
