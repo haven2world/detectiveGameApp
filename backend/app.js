@@ -33,6 +33,10 @@ const wsRouter = require('./src/controller/websocket/index');
 
 //初始化 mongodb
 mongoUtils.init();
+app.use(async (ctx, next)=>{
+  console.log(ctx)
+  await next()
+})
 
 //body解析器
 app.use(koaBody({
