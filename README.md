@@ -28,3 +28,19 @@ This is an app used to play the face-to-face Detective game. And it only support
 服务端储存 sha1(hash + 随机盐)
 随机盐由csprng生成 保存在数据库
  
+### app 实际页面
+
+#### 登录
+![登录](https://github.com/haven2world/detectiveGameApp/raw/master/assets/login.png)
+
+#### 主页
+![主页](https://github.com/haven2world/detectiveGameApp/raw/master/assets/home.gif)
+
+#### 创建剧本
+![创建剧本](https://github.com/haven2world/detectiveGameApp/raw/master/assets/create.gif)
+
+#### 创建房间
+![创建房间](https://github.com/haven2world/detectiveGameApp/raw/master/assets/create%20room.gif)
+
+#### 进行游戏
+![进行游戏](https://github.com/haven2world/detectiveGameApp/raw/master/assets/play.gif)
